@@ -1,2 +1,14 @@
-E:\AYUDA\proyecto\src\main\java\Entity\Product.java
-E:\AYUDA\proyecto\src\main\java\com\unit\App.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Cliente.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Product.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Reserva.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Usuario.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\dao\impl\CrudImpl.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\com\unit\App.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\repository\repository.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Habitacion.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Nombre.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\dao\crud.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\vista\usuario.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Servicio.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\modelo\entity\Roles.java
+C:\Users\Chris\Desktop\SystemHotelReservas\src\main\java\controlador\pruebaCrolador.java

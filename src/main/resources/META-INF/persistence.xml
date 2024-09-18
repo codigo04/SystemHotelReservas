@@ -5,11 +5,18 @@
              version="3.0">
     <persistence-unit name="myPU">
         <!-- Define todas tus entidades aquí -->
+        <class>entity.Clientes</class>
+        <class>entity.Habitacion</class>
+        <class>entity.Nombre</class>
         <class>entity.Product</class>
+        <class>entity.Reservas</class>
+        <class>entity.Roles</class>
+        <class>entity.Servicios</class>
+        <class>entity.Usuarios</class>
            <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
         <properties>
             <!-- Configuración de la base de datos -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/prueba?serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/registroreserva?serverTimezone=UTC"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
