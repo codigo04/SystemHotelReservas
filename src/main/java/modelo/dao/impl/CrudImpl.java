@@ -22,9 +22,6 @@ public class CrudImpl implements crud {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
-    
-    
-    @Override
     public void crear() {
         EntityManager em = emf.createEntityManager();
 
@@ -37,5 +34,21 @@ public class CrudImpl implements crud {
             em.getTransaction().commit();
         } catch (Exception e) {
         }
+    }
+
+    public Object agregar(Object t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object actualizar(Object t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public boolean eliminar(Object t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void mostar(Object t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
