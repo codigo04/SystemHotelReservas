@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo.dao;
-
-import modelo.entity.Product;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
 /**
  *
  * @author Francisco
+ * @param <T>
  */
+public interface crud<T> {
 
-public interface crud {
+    public T agregar(T t);
     
-   void crear ();
+    public T actualizar(T t);
+    
+    public boolean eliminar(T t);
+    
+    public void mostar(T t);
     
 }
