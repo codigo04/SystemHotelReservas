@@ -5,7 +5,7 @@ import modelo.entity.Usuario;
  *
  * @author Chris
  */
-public class UsuarioImpl implements UsuarioDao{
+public final class UsuarioImpl implements UsuarioDao{
 
     public Usuario agregar(Usuario t) {
         throw new UnsupportedOperationException("Not supported yet.");

@@ -14,10 +14,10 @@ public class Habitacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHabitacion;
     
-    //RELACION CON LA TABLA Nombre
+    //RELACION CON LA TABLA TipoHabitacion
     @ManyToOne
     @JoinColumn(name = "idTipo")
-    private Nombre tipoHabitacion;
+    private TipoHabitacion tipoHabitacion;
     
     @OneToMany(mappedBy = "habitacion")
     private List<Reserva> reservas;
@@ -31,11 +31,11 @@ public class Habitacion {
         this.idHabitacion = idHabitacion;
     }
 
-    public Nombre getTipoHabitacion() {
+    public TipoHabitacion getTipoHabitacion() {
         return tipoHabitacion;
     }
 
-    public void setTipoHabitacion(Nombre tipoHabitacion) {
+    public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
         this.tipoHabitacion = tipoHabitacion;
     }
 

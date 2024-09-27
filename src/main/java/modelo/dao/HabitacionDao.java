@@ -6,6 +6,6 @@ import modelo.entity.Habitacion;
  */
 public interface HabitacionDao extends crud<Habitacion> {
     
-    public void verificarEstado();
+    public boolean verificarEstado();
     
 }

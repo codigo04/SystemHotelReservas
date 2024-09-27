@@ -5,9 +5,9 @@ import modelo.entity.Habitacion;
  *
  * @author Chris
  */
-public class HabitacionImpl implements HabitacionDao {
+public final class HabitacionImpl implements HabitacionDao {
 
-    public void verificarEstado() {
+    public boolean verificarEstado() {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
@@ -26,5 +26,4 @@ public class HabitacionImpl implements HabitacionDao {
     public void mostar(Habitacion t) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
 }
