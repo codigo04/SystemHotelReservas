@@ -24,7 +24,6 @@ public class CrudImpl implements crud {
 
     public void crear() {
         EntityManager em = emf.createEntityManager();
-
         try {
             em.getTransaction().begin();
             Product product = new Product();
