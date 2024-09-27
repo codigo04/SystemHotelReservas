@@ -5,7 +5,7 @@ import modelo.entity.Roles;
  *
  * @author Chris
  */
-public class RolesImpl implements RolesDao{
+public final class RolesImpl implements RolesDao{
 
     public Roles agregar(Roles t) {
         throw new UnsupportedOperationException("Not supported yet.");

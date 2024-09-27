@@ -5,7 +5,7 @@ import modelo.entity.Reserva;
  *
  * @author Chris
  */
-public class ReservaImpl implements ReservaDao {
+public final class ReservaImpl implements ReservaDao {
 
     public Reserva agregar(Reserva t) {
         throw new UnsupportedOperationException("Not supported yet.");

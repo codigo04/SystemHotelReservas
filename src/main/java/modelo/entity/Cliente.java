@@ -6,8 +6,7 @@ import java.util.List;
  *
  * @author Chris
  */
-
-@Entity (name = "Clientes")
+@Entity (name = "Cliente")
 public class Cliente {
     
     @Id
@@ -26,11 +25,11 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public List<Reserva> getIdReservas() {
+    public List<Reserva> getReservas() {
         return reservas;
     }
 
-    public void setIdReservas(List<Reserva> reservas) {
+    public void setReservas(List<Reserva> reservas) {
         this.reservas = reservas;
     }
 
@@ -42,20 +41,20 @@ public class Cliente {
         this.dni = dni;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreoElectronico() {
@@ -74,10 +73,9 @@ public class Cliente {
         this.celular = celular;
     }
     
-    
     private String dni;
-    private String nombres;
-    private String apellidos;
+    private String nombre;
+    private String apellido;
     private String correoElectronico;
     private String celular;
 }
