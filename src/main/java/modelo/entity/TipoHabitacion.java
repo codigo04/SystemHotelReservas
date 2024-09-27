@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 import java.util.List;
 //import javax.persistence.Table;
 
-@Entity(name = "Nombre")
-public class Nombre {
+@Entity(name = "TipoHabitacion")
+public class TipoHabitacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
