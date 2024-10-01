@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vista;
+package vista.Empleado.paneles;
+
+import vista.JfrmCancelarRva;
+import vista.JfrmModificarRva;
 
 /**
  *
@@ -30,7 +33,6 @@ public class Panel4 extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jBX = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTxtBuscar = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
@@ -83,16 +85,6 @@ public class Panel4 extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(518, 475));
-
-        jBX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/X.png"))); // NOI18N
-        jBX.setBorder(null);
-        jBX.setContentAreaFilled(false);
-        jBX.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBXActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,15 +178,10 @@ public class Panel4 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(239, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jBX)
-                        .addGap(68, 68, 68))))
+                .addComponent(jTxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,9 +190,7 @@ public class Panel4 extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jBX)
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -215,7 +200,7 @@ public class Panel4 extends javax.swing.JPanel {
                             .addComponent(jTxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(175, Short.MAX_VALUE))
+                        .addContainerGap(172, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -229,13 +214,8 @@ public class Panel4 extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jBXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBXActionPerformed
-System.exit(0);        
-        
-    }//GEN-LAST:event_jBXActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -250,9 +230,8 @@ System.exit(0);
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        
 
-         JfrmModificarRva newframe = new JfrmModificarRva();
+        JfrmModificarRva newframe = new JfrmModificarRva();
         newframe.setVisible(true);
     }//GEN-LAST:event_jBModificarActionPerformed
 
@@ -266,7 +245,6 @@ System.exit(0);
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBModificar;
-    private javax.swing.JButton jBX;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
