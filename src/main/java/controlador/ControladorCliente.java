@@ -12,8 +12,9 @@ import modelo.entity.Cliente;
 public class ControladorCliente implements ActionListener {
 
     ClienteImpl cliente = new ClienteImpl();
-
+    ControladorLogin con = new ControladorLogin();
     private usuario frm;
+    
 
     public ControladorCliente(usuario frm) {
         this.frm = frm;
@@ -22,15 +23,11 @@ public class ControladorCliente implements ActionListener {
     }
   
     public void actionPerformed(ActionEvent e) {
+        
+        
+        
         if (e.getSource() == frm.clickbtn) {
-            Cliente nuevoCliente = new Cliente();
-            nuevoCliente.setNombre("Francisco");
-            nuevoCliente.setApellido("Cueva");
-            nuevoCliente.setCorreoElectronico("Francisco@gmail.com");
-            nuevoCliente.setCelular("98542150");
-            nuevoCliente.setDni("75482015");
-            frm.textoPrueba.setText("funcionando");
-            cliente.agregar(nuevoCliente);
+            con.correrLogin();
         }
     }
 }

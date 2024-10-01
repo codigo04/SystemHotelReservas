@@ -73,7 +73,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3.add(logoname, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 290, 30));
 
         principal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        principal.setIcon(new javax.swing.ImageIcon("E:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\Proyecto nuevo.png")); // NOI18N
+        principal.setIcon(new javax.swing.ImageIcon("F:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
         jPanel3.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 270, 480));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
