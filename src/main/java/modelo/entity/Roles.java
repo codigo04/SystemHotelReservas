@@ -16,7 +16,7 @@ public class Roles {
     
     //ESTABLECIENDO RELACION DE MUCHOS A MUCHOS
     @ManyToMany(mappedBy = "roles")
-    private List<Usuario> usuarios;
+    private List<Empleado> usuarios;
 
     public Long getIdRol() {
         return idRol;
@@ -26,11 +26,11 @@ public class Roles {
         this.idRol = idRol;
     }
 
-    public List<Usuario> getUsuarios() {
+    public List<Empleado> getUsuarios() {
         return usuarios;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
+    public void setUsuarios(List<Empleado> usuarios) {
         this.usuarios = usuarios;
     }
 
@@ -41,7 +41,9 @@ public class Roles {
     public void setNombreRol(String nombreRol) {
         this.nombreRol = nombreRol;
     }
-     
+
+    
+    @Column(name = "nombreRol")
     private String nombreRol;
     
 }

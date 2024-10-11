@@ -5,10 +5,13 @@ package com.unit;
  */
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import controlador.ControladorCliente;
+import controlador.ControladorEmpleado;
+import controlador.ControladorLogin;
 import controlador.pruebaCrolador;
 import jakarta.persistence.*;
 import modelo.dao.impl.ReservaImpl;
 import modelo.entity.Product;
+import vista.Administrador.JfrmAdministradorPrueba;
 
 import vista.usuario;
 
@@ -19,7 +22,10 @@ public class App {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPU");
         // pruebaCrolador crolador = new pruebaCrolador(new usuario());
         
-        ControladorCliente contClient = new ControladorCliente(new usuario());
+       // ControladorCliente contClient = new ControladorCliente(new usuario());
+       
+       ControladorLogin con = new ControladorLogin();
+       con.correrLogin();
     }
 
 }

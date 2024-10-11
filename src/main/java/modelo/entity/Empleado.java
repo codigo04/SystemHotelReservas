@@ -7,17 +7,18 @@ import java.util.List;
  * @author Chris
  */
 
-@Entity (name = "Usuario")
-public class Usuario {
+@Entity (name = "Empleado")
+public class Empleado {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuarios;
     
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "empleado")
     private List<Reserva> reservas;
     
     //RELACION DE MUCHOS A MUCHOS CON LA TABLA Roles
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "Usuario_Roles",
         joinColumns = @JoinColumn(name = "idUsuario"),
@@ -98,20 +99,34 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getClave() {
-        return clave;
+  
+
+     public String getEstado() {
+        return estado;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    public String getPassword() {
+        return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
     private String dni;
     private String nombres;
     private String apellidos;
     private String direccion;
     private String correoElectronico;
     private String usuario;
-    private String clave;
+    private String password;
+    private String estado ;
+
     
+   
 }

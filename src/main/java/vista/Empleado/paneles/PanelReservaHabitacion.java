@@ -56,8 +56,14 @@ public class PanelReservaHabitacion extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jBRegistrar = new javax.swing.JButton();
 
+<<<<<<< HEAD
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+=======
+        setBackground(new java.awt.Color(204, 255, 102));
+
+        jLabel1.setText("Otro panel");
+>>>>>>> 45a71805ed9e69bba3e9fb5c255219963c71b4d3
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N

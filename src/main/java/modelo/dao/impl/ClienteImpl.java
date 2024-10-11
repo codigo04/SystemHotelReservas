@@ -44,7 +44,7 @@ public class ClienteImpl implements ClienteDao {
                 clienteExistente.setCelular(cliente.getCelular());
                 // Si es necesario, también podrías actualizar la lista de reservas del cliente
                 clienteExistente.setReservas(cliente.getReservas());
-                
+
                 em.merge(clienteExistente);
                 em.getTransaction().commit();
                 return clienteExistente;
@@ -80,8 +80,8 @@ public class ClienteImpl implements ClienteDao {
         }
     }
 
-    public void mostar(Cliente cliente) {
-       EntityManager em = emf.createEntityManager();
+    public Cliente mostar(Cliente cliente) {
+        EntityManager em = emf.createEntityManager();
         try {
             Cliente clienteExistente = em.find(Cliente.class, cliente.getIdCliente());
             if (clienteExistente != null) {
@@ -96,11 +96,16 @@ public class ClienteImpl implements ClienteDao {
                     System.out.println("Reserva ID: " + reserva.getIdReserva());
                     // Mostrar otros detalles de la reserva...
                 });
+
+                return clienteExistente;
             } else {
                 System.out.println("Cliente no encontrado con ID: " + cliente.getIdCliente());
             }
         } finally {
             em.close();
+
+            return null;
         }
+
     }
 }

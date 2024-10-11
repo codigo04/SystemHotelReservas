@@ -26,7 +26,7 @@ public class Reserva {
     
     @ManyToOne
     @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    private Empleado empleado;
     
     //RELACIONES DE MUCHOS A MUCHOS
     @ManyToMany
@@ -62,12 +62,12 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Empleado getUsuario() {
+        return empleado;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Empleado usuario) {
+        this.empleado = usuario;
     }
 
     public List<Servicio> getServicios() {
