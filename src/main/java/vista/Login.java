@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jExit = new javax.swing.JLabel();
         favicom2 = new javax.swing.JLabel();
         favicom4 = new javax.swing.JLabel();
-        btnIngresar = new javax.swing.JButton();
+        btnLongin = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtContrasennaError = new javax.swing.JLabel();
@@ -74,12 +74,13 @@ public class Login extends javax.swing.JFrame {
 
         principal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         principal.setIcon(new javax.swing.ImageIcon("F:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
-        jPanel3.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 270, 480));
+        jPanel3.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 260, 480));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INCIAR SESION");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, -1));
 
         txtUsuario.setBackground(new java.awt.Color(0, 0, 0));
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
@@ -200,29 +201,29 @@ public class Login extends javax.swing.JFrame {
         favicom4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel3.add(favicom4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 240, 80, 50));
 
-        btnIngresar.setBackground(new java.awt.Color(0, 0, 0));
-        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnIngresar.setForeground(new java.awt.Color(255, 255, 0));
-        btnIngresar.setText("INGRESAR");
-        btnIngresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLongin.setBackground(new java.awt.Color(0, 0, 0));
+        btnLongin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLongin.setForeground(new java.awt.Color(255, 255, 0));
+        btnLongin.setText("INGRESAR");
+        btnLongin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnLongin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLongin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseClicked(evt);
+                btnLonginMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseEntered(evt);
+                btnLonginMouseEntered(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnIngresarMousePressed(evt);
+                btnLonginMousePressed(evt);
             }
         });
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+        btnLongin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
+                btnLonginActionPerformed(evt);
             }
         });
-        jPanel3.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
+        jPanel3.add(btnLongin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -315,21 +316,21 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtpasswordMousePressed
 
-    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+    private void btnLonginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLonginMouseClicked
         
 
-    }//GEN-LAST:event_btnIngresarMouseClicked
+    }//GEN-LAST:event_btnLonginMouseClicked
 
-    private void btnIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseEntered
+    private void btnLonginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLonginMouseEntered
         
 
-    }//GEN-LAST:event_btnIngresarMouseEntered
+    }//GEN-LAST:event_btnLonginMouseEntered
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    private void btnLonginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLonginActionPerformed
         String usuario;
         String contraseña;
         //llamaos al metod registrarEmpleado
@@ -354,11 +355,11 @@ public class Login extends javax.swing.JFrame {
         }
         */
   
-    }//GEN-LAST:event_btnIngresarActionPerformed
+    }//GEN-LAST:event_btnLonginActionPerformed
 
-    private void btnIngresarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMousePressed
+    private void btnLonginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLonginMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresarMousePressed
+    }//GEN-LAST:event_btnLonginMousePressed
 
     private void jExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jExitMouseExited
         // TODO add your handling code here:
@@ -374,6 +375,8 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        /*
+        ESTYLO BONITO
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -390,6 +393,8 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
+        */
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -409,7 +414,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnExit;
-    private javax.swing.JButton btnIngresar;
+    public javax.swing.JButton btnLongin;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel favicom2;
     private javax.swing.JLabel favicom4;
