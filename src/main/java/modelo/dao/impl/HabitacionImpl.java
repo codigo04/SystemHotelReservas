@@ -23,7 +23,7 @@ public final class HabitacionImpl implements HabitacionDao {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void mostar(Habitacion t) {
+    public Habitacion mostar(Habitacion t) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

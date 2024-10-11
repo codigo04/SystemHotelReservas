@@ -17,6 +17,6 @@ public interface crud<T> {
     
     public boolean eliminar(T t);
     
-    public void mostar(T t);
+    public T mostar(T t);
     
 }

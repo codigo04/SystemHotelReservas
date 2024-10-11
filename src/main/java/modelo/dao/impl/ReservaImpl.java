@@ -19,7 +19,7 @@ public final class ReservaImpl implements ReservaDao {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void mostar(Reserva t) {
+    public Reserva mostar(Reserva t) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

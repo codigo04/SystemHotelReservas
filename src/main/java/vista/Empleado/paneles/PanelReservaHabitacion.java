@@ -30,6 +30,8 @@ public class PanelReservaHabitacion extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 102));
+
         jLabel1.setText("Otro panel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
