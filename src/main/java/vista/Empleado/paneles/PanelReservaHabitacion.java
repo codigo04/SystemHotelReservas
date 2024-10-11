@@ -4,6 +4,8 @@
  */
 package vista.Empleado.paneles;
 
+import java.awt.GridLayout;
+
 
 
 /**
@@ -29,31 +31,261 @@ public class PanelReservaHabitacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTxtDni = new javax.swing.JTextField();
+        jBBuscar1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTxtCodigo = new javax.swing.JTextField();
+        jBBuscar2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jTxtNombre = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTxtNroPersonas = new javax.swing.JTextField();
+        jTxtTipoHbi = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTxtPrecio = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTxtCorreo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTxtfin = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jBCancelar = new javax.swing.JButton();
+        jTxtTelefono = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTxtllegada = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jBRegistrar = new javax.swing.JButton();
 
+<<<<<<< HEAD
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+=======
         setBackground(new java.awt.Color(204, 255, 102));
 
         jLabel1.setText("Otro panel");
+>>>>>>> 45a71805ed9e69bba3e9fb5c255219963c71b4d3
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jLabel1)
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel1)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        jLabel1.setText("Reserva");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel2.setText("DNI");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jTxtDni.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtDni.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtDni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtDni.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 139, 26));
+
+        jBBuscar1.setBackground(new java.awt.Color(0, 0, 0));
+        jBBuscar1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jBBuscar1.setForeground(new java.awt.Color(255, 255, 255));
+        jBBuscar1.setText("Buscar");
+        jBBuscar1.setBorder(null);
+        jBBuscar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscar1ActionPerformed(evt);
+            }
+        });
+        add(jBBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 58, 22));
+
+        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel3.setText("Código");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, -1));
+
+        jTxtCodigo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtCodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 102, 26));
+
+        jBBuscar2.setBackground(new java.awt.Color(0, 0, 0));
+        jBBuscar2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jBBuscar2.setForeground(new java.awt.Color(255, 255, 255));
+        jBBuscar2.setText("Buscar");
+        jBBuscar2.setBorder(null);
+        jBBuscar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscar2ActionPerformed(evt);
+            }
+        });
+        add(jBBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 58, 22));
+
+        jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel4.setText("Nombre Completo");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jTxtNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtNombre.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 315, 26));
+
+        jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel5.setText("N° de Personas");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
+
+        jTxtNroPersonas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtNroPersonas.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtNroPersonas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtNroPersonas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtNroPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 83, 26));
+
+        jTxtTipoHbi.setBackground(new java.awt.Color(153, 153, 153));
+        jTxtTipoHbi.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtTipoHbi.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtTipoHbi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtTipoHbi.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTxtTipoHbi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtTipoHbiActionPerformed(evt);
+            }
+        });
+        add(jTxtTipoHbi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 139, 26));
+
+        jLabel8.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setText("Tipo de Habitación");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+
+        jTxtPrecio.setBackground(new java.awt.Color(153, 153, 153));
+        jTxtPrecio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtPrecio.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 139, 26));
+
+        jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setText("Precio");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
+
+        jTxtCorreo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtCorreo.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtCorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 210, 26));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel7.setText("Correo Electronico");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+
+        jTxtfin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtfin.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtfin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtfin.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtfin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 139, 26));
+
+        jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel10.setText("Fecha de fin");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
+
+        jBCancelar.setBackground(new java.awt.Color(0, 0, 0));
+        jBCancelar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jBCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jBCancelar.setText("Cancelar");
+        jBCancelar.setBorder(null);
+        jBCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBCancelar.setPreferredSize(new java.awt.Dimension(49, 15));
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
+        add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 79, 30));
+
+        jTxtTelefono.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtTelefono.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 139, 26));
+
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel6.setText("Telefono");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        jTxtllegada.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTxtllegada.setForeground(new java.awt.Color(51, 51, 51));
+        jTxtllegada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtllegada.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        add(jTxtllegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 139, 26));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel9.setText("Fecha de llegada");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        jBRegistrar.setBackground(new java.awt.Color(0, 0, 0));
+        jBRegistrar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jBRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        jBRegistrar.setText("Registrar");
+        jBRegistrar.setBorder(null);
+        jBRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegistrarActionPerformed(evt);
+            }
+        });
+        add(jBRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBBuscar1ActionPerformed
+
+    private void jBBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBBuscar2ActionPerformed
+
+    private void jTxtTipoHbiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTipoHbiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtTipoHbiActionPerformed
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+       PanelHabitaciones panelHabitaciones= new PanelHabitaciones();
+
+        this.setLayout(new GridLayout(1, 1));
+
+        this.removeAll();
+        this.add(panelHabitaciones);
+        this.revalidate();
+        this.repaint();
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBRegistrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBuscar1;
+    private javax.swing.JButton jBBuscar2;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBRegistrar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTxtCodigo;
+    private javax.swing.JTextField jTxtCorreo;
+    private javax.swing.JTextField jTxtDni;
+    private javax.swing.JTextField jTxtNombre;
+    private javax.swing.JTextField jTxtNroPersonas;
+    private javax.swing.JTextField jTxtPrecio;
+    private javax.swing.JTextField jTxtTelefono;
+    private javax.swing.JTextField jTxtTipoHbi;
+    private javax.swing.JTextField jTxtfin;
+    private javax.swing.JTextField jTxtllegada;
     // End of variables declaration//GEN-END:variables
 }
