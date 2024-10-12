@@ -147,14 +147,7 @@ public class PanelHabitaciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PanelReservaHabitacion panelReservaHabitacion = new PanelReservaHabitacion();
-
-        this.setLayout(new GridLayout(1, 1));
-       
-        this.removeAll();
-        this.add(panelReservaHabitacion);
-        this.revalidate();
-        this.repaint();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
