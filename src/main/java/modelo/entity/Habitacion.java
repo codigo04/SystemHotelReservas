@@ -47,11 +47,11 @@ public class Habitacion {
         this.reservas = idReserva;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
@@ -63,6 +63,7 @@ public class Habitacion {
         this.codigo = codigo;
     }
     
-    private String estado;
+    private boolean estado;
+
     private int codigo;
 }
