@@ -4,6 +4,8 @@
  */
 package vista.Empleado.paneles;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.GridLayout;
 
 
@@ -19,6 +21,7 @@ public class PanelPerfil extends javax.swing.JPanel {
      */
     public PanelPerfil() {
         initComponents();
+        Panel_RegistroEmpleados.setVisible(false);
     }
 
     /**
@@ -30,17 +33,35 @@ public class PanelPerfil extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        Panel_RegistroEmpleados = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        txtNueContraEm = new javax.swing.JTextField();
+        btnAceptarEm = new javax.swing.JButton();
+        btnCancelarEm = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        txtNombreEm1 = new javax.swing.JTextField();
+        txtDireccionEm = new javax.swing.JTextField();
+        txtCorreoEm = new javax.swing.JTextField();
+        txtDNIemple = new javax.swing.JTextField();
+        txtContraseñaEm = new javax.swing.JTextField();
+        panelDatos = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTxtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTxtDireccion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTxtTelefono = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        panelInfo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -49,90 +70,19 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
+        jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel25.setText("Correo Electronico");
+
         setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Email");
-
-        jTxtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtEmailActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Direccion");
-
-        jTxtDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtDireccionActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setText("Telefono");
-
-        jTxtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtTelefonoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTxtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTxtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(155, 155, 155))
-                                    .addComponent(jTxtTelefono))))
-                        .addGap(18, 18, 18))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Francisco Cueva");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 201, -1));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 27, 118, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -143,124 +93,235 @@ public class PanelPerfil extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 106, 32));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        Panel_RegistroEmpleados.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_RegistroEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        Panel_RegistroEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Panel_RegistroEmpleados.setEnabled(false);
+        Panel_RegistroEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel14.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel14.setText(" Nombre Completo:");
+        Panel_RegistroEmpleados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 110, 20));
+
+        txtNueContraEm.setBackground(new java.awt.Color(153, 153, 153));
+        txtNueContraEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtNueContraEm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNueContraEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNueContraEmActionPerformed(evt);
+            }
+        });
+        txtNueContraEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNueContraEmKeyTyped(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(txtNueContraEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 210, -1));
+
+        btnAceptarEm.setBackground(new java.awt.Color(102, 204, 0));
+        btnAceptarEm.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btnAceptarEm.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarEm.setText("ACEPTAR");
+        btnAceptarEm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarEmActionPerformed(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(btnAceptarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 170, 30));
+
+        btnCancelarEm.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelarEm.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btnCancelarEm.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarEm.setText("CANCELAR");
+        btnCancelarEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEmActionPerformed(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 170, 30));
+
+        jLabel38.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel38.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel38.setText("Dirección:");
+        Panel_RegistroEmpleados.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 60, 20));
+
+        jLabel22.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel22.setText("Datos personales");
+        Panel_RegistroEmpleados.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lesli\\OneDrive\\Desktop\\ProyectoRes\\SystemHotelReservas\\src\\main\\java\\Imagenes\\Empleado.png")); // NOI18N
+        Panel_RegistroEmpleados.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel26.setText("Contraseña:");
+        Panel_RegistroEmpleados.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel27.setText("Correo Electronico:");
+        Panel_RegistroEmpleados.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel28.setText("DNI:");
+        Panel_RegistroEmpleados.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel29.setText("Nueva Contraseña:");
+        Panel_RegistroEmpleados.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 110, 20));
+
+        txtNombreEm1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtNombreEm1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEm1ActionPerformed(evt);
+            }
+        });
+        txtNombreEm1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreEm1KeyTyped(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(txtNombreEm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 210, -1));
+
+        txtDireccionEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtDireccionEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionEmActionPerformed(evt);
+            }
+        });
+        txtDireccionEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionEmKeyTyped(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(txtDireccionEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 210, -1));
+
+        txtCorreoEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtCorreoEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoEmActionPerformed(evt);
+            }
+        });
+        txtCorreoEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoEmKeyTyped(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(txtCorreoEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 210, -1));
+
+        txtDNIemple.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtDNIemple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNIempleActionPerformed(evt);
+            }
+        });
+        txtDNIemple.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDNIempleKeyTyped(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(txtDNIemple, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, -1));
+
+        txtContraseñaEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtContraseñaEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaEmActionPerformed(evt);
+            }
+        });
+        txtContraseñaEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContraseñaEmKeyTyped(evt);
+            }
+        });
+        Panel_RegistroEmpleados.add(txtContraseñaEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 210, 20));
+
+        add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 400, 450));
+
+        panelDatos.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Email");
+        panelDatos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 18, -1, -1));
+
+        jTxtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtEmailActionPerformed(evt);
+            }
+        });
+        panelDatos.add(jTxtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 49, 233, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Direccion");
+        panelDatos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 83, -1, -1));
+
+        jTxtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtDireccionActionPerformed(evt);
+            }
+        });
+        panelDatos.add(jTxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 482, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Telefono");
+        panelDatos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 18, -1, -1));
+
+        jTxtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtTelefonoActionPerformed(evt);
+            }
+        });
+        panelDatos.add(jTxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 49, 231, -1));
+
+        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 80, 520, 170));
+
+        panelInfo.setBackground(new java.awt.Color(255, 255, 255));
+        panelInfo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Posicion");
+        panelInfo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 91, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Recepcionista");
+        panelInfo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 122, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setText("Informacion Laboral");
+        panelInfo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 15, 257, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        panelInfo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 91, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Fecha Inicio");
+        panelInfo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 91, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("14/20/2024");
+        panelInfo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 122, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        panelInfo.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 91, -1, 50));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel3))
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel5))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel6)
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel10))
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(93, 93, 93)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
+        add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 270, 520, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PanelEditarPerfil panelEditarPerfil = new PanelEditarPerfil();
-
-        this.setLayout(new GridLayout(1, 1));
-       
-        this.removeAll();
-        this.add(panelEditarPerfil);
-        this.revalidate();
-        this.repaint();
+      Panel_RegistroEmpleados.setVisible(true);
+        bloquear(panelDatos);
+        bloquear(panelInfo);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTxtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTelefonoActionPerformed
@@ -275,25 +336,168 @@ public class PanelPerfil extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtEmailActionPerformed
 
+    private void txtNueContraEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNueContraEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNueContraEmActionPerformed
+
+    private void txtNueContraEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNueContraEmKeyTyped
+
+        // validarLetras(evt, txtNombre);
+    }//GEN-LAST:event_txtNueContraEmKeyTyped
+
+    private void btnAceptarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEmActionPerformed
+        desbloquear(panelDatos);
+        desbloquear(panelInfo);
+        Panel_RegistroEmpleados.setVisible(false);
+
+        //creamos una arreglo de tipos object
+        //Object fila[] = new Object[7];
+        // ArrayList<String> list = new ArrayList<>();
+        //obtenemos los datos que agrega el usuario
+        // String tDni = txtDni.getText();
+        //String tNombre = txtNombre.getText();
+        //String tApellido = txtApellido.getText();
+        //  String puesto = (String) cboxPuesto.getSelectedItem();
+        //  String tSalario = txtSalario.getText();
+        //  String tTelefno = txtTelefono.getText();
+        // list.add(tDni); //0
+        // list.add(tNombre); //1
+        // list.add(tApellido); //2
+        //falta fecha de contratacion
+        // list.add(puesto); //3
+        //  list.add(tSalario);//4
+        // list.add(tTelefno);//5
+        //  administrador.registrarEmpleado(modTablaEmpleados, list);
+
+        /*
+        String tPuesto = String.valueOf(cboxPuesto.getSelectedItem());
+        //
+        Empleado empledo1 = new Mozo(tDni, tPuesto, 200, tNombre, tApellido, "", tTelefno, "");
+        //        administrador.registrarEmpleado(empledo1);
+        //"DNI","NOMBRE","APELLIDO","TELEFONO" ,"PUESTO","FECHA INGRESO","SALARIO"
+        //agregamos cada ctenido al arreglo
+        fila[0] = empledo1.getDni();
+        fila[1] = empledo1.getNombre();
+        fila[2] = empledo1.getApellido();
+        fila[3] = empledo1.getCelular();
+        fila[4] = empledo1.getPuesto();
+        fila[5] = "200";
+        fila[6] = empledo1.getSalario();
+        //agregamos una fila  a la tabla con el contedio que tiene el arreglo
+        modTablaEmpleados.addRow(fila);
+        */
+    }//GEN-LAST:event_btnAceptarEmActionPerformed
+
+    private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
+desbloquear(panelDatos);
+        desbloquear(panelInfo);
+        Panel_RegistroEmpleados.setVisible(false);
+       
+    }//GEN-LAST:event_btnCancelarEmActionPerformed
+
+    private void txtNombreEm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEm1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEm1ActionPerformed
+
+    private void txtNombreEm1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEm1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEm1KeyTyped
+
+    private void txtDireccionEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionEmActionPerformed
+
+    private void txtDireccionEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionEmKeyTyped
+
+    private void txtCorreoEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoEmActionPerformed
+
+    private void txtCorreoEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoEmKeyTyped
+
+    private void txtDNIempleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIempleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIempleActionPerformed
+
+    private void txtDNIempleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIempleKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIempleKeyTyped
+
+    private void txtContraseñaEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaEmActionPerformed
+
+    private void txtContraseñaEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaEmKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel Panel_RegistroEmpleados;
+    public javax.swing.JButton btnAceptarEm;
+    public javax.swing.JButton btnCancelarEm;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTxtDireccion;
     private javax.swing.JTextField jTxtEmail;
     private javax.swing.JTextField jTxtTelefono;
+    private javax.swing.JPanel panelDatos;
+    private javax.swing.JPanel panelInfo;
+    public javax.swing.JTextField txtContraseñaEm;
+    public javax.swing.JTextField txtCorreoEm;
+    public javax.swing.JTextField txtDNIemple;
+    public javax.swing.JTextField txtDireccionEm;
+    public javax.swing.JTextField txtNombreEm1;
+    public javax.swing.JTextField txtNueContraEm;
     // End of variables declaration//GEN-END:variables
+
+
+public void bloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                bloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(false);
+
+    }
+
+    public void desbloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                desbloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(true);
+
+    }
+
 }
