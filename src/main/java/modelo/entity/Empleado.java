@@ -13,12 +13,22 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuarios;
+
+    private String dni;
+    @Column(name = "nombre")
+    private String nombre;
+    private String apellido;
+    private String direccion;
+    private String correoElectronico;
+    private String usuario;
+    private String password;
+    private String estado ;
     
     @OneToMany(mappedBy = "empleado")
     private List<Reserva> reservas;
     
     //RELACION DE MUCHOS A MUCHOS CON LA TABLA Roles
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(
         name = "Usuario_Roles",
         joinColumns = @JoinColumn(name = "idUsuario"),
@@ -27,28 +37,14 @@ public class Empleado {
     private List<Roles> roles;
     
     //GETTER Y SETTER
+
+
     public Long getIdUsuarios() {
         return idUsuarios;
     }
 
     public void setIdUsuarios(Long idUsuarios) {
         this.idUsuarios = idUsuarios;
-    }
-
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
-    public List<Roles> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Roles> roles) {
-        this.roles = roles;
     }
 
     public String getDni() {
@@ -59,20 +55,20 @@ public class Empleado {
         this.dni = dni;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getDireccion() {
@@ -99,16 +95,6 @@ public class Empleado {
         this.usuario = usuario;
     }
 
-  
-
-     public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    
     public String getPassword() {
         return password;
     }
@@ -117,16 +103,27 @@ public class Empleado {
         this.password = password;
     }
 
-    
-    private String dni;
-    private String nombres;
-    private String apellidos;
-    private String direccion;
-    private String correoElectronico;
-    private String usuario;
-    private String password;
-    private String estado ;
+    public String getEstado() {
+        return estado;
+    }
 
-    
-   
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
+    }
 }
