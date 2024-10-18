@@ -1,82 +1,108 @@
 package modelo.dao.impl;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.NonUniqueResultException;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 import modelo.dao.RolesDao;
 import modelo.entity.Empleado;
 import modelo.entity.Roles;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  *
  * @author Chris
  */
+@Repository
 public final class RolesImpl implements RolesDao {
 
     private EntityManagerFactory emf;
+
 
     public RolesImpl() {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
-    public Roles agregar(Roles t) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
-    public Roles actualizar(Roles t) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
-    public boolean eliminar(Roles t) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
-    public Roles mostar(Roles t) {
-
+    @Override
+    public List<Roles> getAllRoles() {
         EntityManager em = emf.createEntityManager();
-
-        System.out.println("el rol es:" + t.getNombreRol());
-        Roles rol = null;
-
+        List<Roles> rolesList = null;
         try {
-            em.getTransaction().begin();
+            TypedQuery<Roles> query = em.createQuery("from Roles", Roles.class);
+            rolesList = query.getResultList();
+        } finally {
+            em.close(); // Siempre cerrar el EntityManager
+        }
+        return rolesList;
+    }
 
-            rol = em.find(Roles.class, "ADMIN");
 
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error al buscar el rol: " + e.getMessage());
+    @Override
+    public Roles findRoleById(Long id) {
+       return null;
+    }
+
+    @Override
+    public Roles findRoleByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        Roles role = null;
+        try {
+            TypedQuery<Roles> query = em.createQuery("from Roles where nombreRol = :name", Roles.class);
+            query.setParameter("name", name);
+            role = query.getSingleResult();
         } finally {
             em.close();
         }
-
-        return rol;
+        return role;
     }
 
-    public Roles mostar2(String t) {
-
+    @Override
+    public void saveRole(Roles role) {
         EntityManager em = emf.createEntityManager();
-        Roles rol = null;
-
         try {
-            em.getTransaction().begin();
-
-            rol = em.createQuery("SELECT r FROM Roles r WHERE r.nombreRol = :nombreRol", Roles.class)
-                    .setParameter("nombreRol", t)
-                    .getSingleResult();
-
-            em.getTransaction().commit();
+            em.getTransaction().begin(); // Iniciar la transacción
+            em.persist(role);            // Guardar el nuevo rol
+            em.getTransaction().commit(); // Confirmar la transacción
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error al buscar el rol: " + e.getMessage());
+            em.getTransaction().rollback(); // Revertir en caso de error
+            throw e;
         } finally {
             em.close();
         }
-
-        return rol; // Devuelve el rol encontrado o null si no existe
     }
 
+    @Override
+    public void updateRole(Roles role) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(role);               // Actualizar el rol existente
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void deleteRoleById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Roles role = em.find(Roles.class, id);
+            if (role != null) {
+                em.remove(role);           // Eliminar el rol por id
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
 }

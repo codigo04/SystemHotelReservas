@@ -56,14 +56,10 @@ public class PanelReservaHabitacion extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jBRegistrar = new javax.swing.JButton();
 
-<<<<<<< HEAD
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-=======
-        setBackground(new java.awt.Color(204, 255, 102));
 
-        jLabel1.setText("Otro panel");
->>>>>>> 45a71805ed9e69bba3e9fb5c255219963c71b4d3
+
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
@@ -165,6 +161,8 @@ public class PanelReservaHabitacion extends javax.swing.JPanel {
         jLabel11.setText("Precio");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
 
+
+
         jTxtCorreo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTxtCorreo.setForeground(new java.awt.Color(51, 51, 51));
         jTxtCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -231,6 +229,7 @@ public class PanelReservaHabitacion extends javax.swing.JPanel {
             }
         });
         add(jBRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 90, 30));
+ main
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar1ActionPerformed

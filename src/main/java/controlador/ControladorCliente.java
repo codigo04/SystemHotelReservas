@@ -11,14 +11,13 @@ import vista.Administrador.JfrmAdministradorPrueba;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 
 public class ControladorCliente implements ActionListener {
-    
 
     ClienteImpl cliente = new ClienteImpl();
     ControladorLogin con = new ControladorLogin();
 
     private JfrmAdministradorPrueba administradorPrueba;
-    ControladorEmpleado ctrEmpleado ; 
-    
+    ControladorEmpleado ctrEmpleado;
+    ControladorRoles controladorRoles;
     private usuario frm;
 
     public ControladorCliente(JfrmAdministradorPrueba administradorPrueba) {
@@ -27,8 +26,8 @@ public class ControladorCliente implements ActionListener {
         // this.frm = frm;
         // frm.clickbtn.addActionListener(this);
         administradorPrueba.bntEmpleado.addActionListener(this);
-        
         ctrEmpleado = new ControladorEmpleado(administradorPrueba.panelEmpleadoAdm);
+        controladorRoles = new ControladorRoles(administradorPrueba.panelEmpleadoAdm);
         //ctrEmpleado.cargarDatos();
         // frm.setVisible(true);
     }
@@ -39,9 +38,6 @@ public class ControladorCliente implements ActionListener {
 
     }
 
-    
-    
-    
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == administradorPrueba.bntEmpleado) {
 

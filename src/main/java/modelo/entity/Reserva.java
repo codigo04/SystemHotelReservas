@@ -1,39 +1,50 @@
 package modelo.entity;
 
 import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
+
 /**
- *
  * @author Chris
  */
 
-@Entity (name = "Reserva")
+@Entity(name = "Reserva")
 public class Reserva {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
-    
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaRegistro;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaLLegada;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaFin;
+
+    private Double montoTotal;
     //RELACIONES ENTRE TABLAS
     @ManyToOne
     @JoinColumn(name = "idHabitacion")
     private Habitacion habitacion;
-    
+
     @ManyToOne
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
-    
+
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Empleado empleado;
-    
+
     //RELACIONES DE MUCHOS A MUCHOS
     @ManyToMany
     @JoinTable(
-        name = "Reserva_Servicios",
-        joinColumns = @JoinColumn(name = "idReserva"),
-        inverseJoinColumns = @JoinColumn(name = "idServicios")
+            name = "Reserva_Servicios",
+            joinColumns = @JoinColumn(name = "idReserva"),
+            inverseJoinColumns = @JoinColumn(name = "idServicios")
     )
     private List<Servicio> servicios;
 
@@ -109,12 +120,6 @@ public class Reserva {
     public void setMontoTotal(Double montoTotal) {
         this.montoTotal = montoTotal;
     }
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaRegistro;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaLLegada;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaFin;
-    private Double montoTotal;
+
+
 }
