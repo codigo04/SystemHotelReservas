@@ -41,6 +41,7 @@ public class ControladorRoles {
 
     public void cargarEstados() {
 
+        /* 
         JComboBox<String> roles = panelEmpleadoAdm.cboxEstado;
 
         String[] estados = {"ACTIVO", "INACTIVO"};
@@ -48,6 +49,6 @@ public class ControladorRoles {
         for (String esta : estados) {
             roles.addItem(esta);
         }
-
+*/
     }
 }
