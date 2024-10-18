@@ -3,8 +3,11 @@ package modelo.dao.impl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import modelo.dao.ClienteDao;
 import modelo.entity.Cliente;
+
+import java.util.List;
 
 public class ClienteImpl implements ClienteDao {
 
@@ -14,98 +17,108 @@ public class ClienteImpl implements ClienteDao {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
+
+
     @Override
-    public Cliente agregar(Cliente cliente) {
+    public List<Cliente> getAllClientes() {
+        EntityManager em = emf.createEntityManager();
+        List<Cliente> clientes = null;
+        try {
+            TypedQuery<Cliente> query = em.createQuery("from Cliente", Cliente.class);
+            clientes = query.getResultList();
+        } finally {
+            em.close();
+        }
+        return clientes;
+    }
+
+    @Override
+    public Cliente findClienteById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        Cliente cliente = null;
+        try {
+            cliente = em.find(Cliente.class, id);
+        } finally {
+            em.close();
+        }
+        return cliente;
+    }
+
+    @Override
+    public Cliente findClienteByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        Cliente cliente = null;
+        try {
+            TypedQuery<Cliente> query = em.createQuery("from Cliente where nombre = :name", Cliente.class);
+            query.setParameter("name", name);
+            cliente = query.getSingleResult();
+        } finally {
+            em.close();
+        }
+        return cliente;
+    }
+
+    @Override
+    public Cliente findClienteByEmail(String email) {
+        EntityManager em = emf.createEntityManager();
+        Cliente cliente = null;
+        try {
+            TypedQuery<Cliente> query = em.createQuery("from Cliente where correoElectronico = :email", Cliente.class);
+            query.setParameter("email", email);
+            cliente = query.getSingleResult();
+        } finally {
+            em.close();
+        }
+        return cliente;
+    }
+
+
+
+    @Override
+    public void saveCliente(Cliente cliente) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(cliente);
+            em.persist(cliente);  // Guardar el nuevo cliente
             em.getTransaction().commit();
-            return cliente;
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error al agregar cliente: " + e.getMessage());
+            em.getTransaction().rollback();  // Revertir en caso de error
+            throw e;
         } finally {
             em.close();
         }
     }
 
     @Override
-    public Cliente actualizar(Cliente cliente) {
+    public void updateCliente(Cliente cliente) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Cliente clienteExistente = em.find(Cliente.class, cliente.getIdCliente());
-            if (clienteExistente != null) {
-                clienteExistente.setDni(cliente.getDni());
-                clienteExistente.setNombre(cliente.getNombre());
-                clienteExistente.setApellido(cliente.getApellido());
-                clienteExistente.setCorreoElectronico(cliente.getCorreoElectronico());
-                clienteExistente.setCelular(cliente.getCelular());
-                // Si es necesario, también podrías actualizar la lista de reservas del cliente
-                clienteExistente.setReservas(cliente.getReservas());
-
-                em.merge(clienteExistente);
-                em.getTransaction().commit();
-                return clienteExistente;
-            } else {
-                throw new RuntimeException("Cliente no encontrado con ID: " + cliente.getIdCliente());
-            }
+            em.merge(cliente);  // Actualizar el cliente existente
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            throw new RuntimeException("Error al actualizar cliente: " + e.getMessage());
+            throw e;
         } finally {
             em.close();
         }
     }
 
     @Override
-    public boolean eliminar(Cliente cliente) {
+    public void deleteClienteById(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Cliente clienteExistente = em.find(Cliente.class, cliente.getIdCliente());
-            if (clienteExistente != null) {
-                em.remove(clienteExistente);
-                em.getTransaction().commit();
-                return true;
-            } else {
-                throw new RuntimeException("Cliente no encontrado con ID: " + cliente.getIdCliente());
+            Cliente cliente = em.find(Cliente.class, id);
+            if (cliente != null) {
+                em.remove(cliente);  // Eliminar el cliente si se encuentra
             }
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            throw new RuntimeException("Error al eliminar cliente: " + e.getMessage());
+            throw e;
         } finally {
             em.close();
         }
-    }
-
-    public Cliente mostar(Cliente cliente) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            Cliente clienteExistente = em.find(Cliente.class, cliente.getIdCliente());
-            if (clienteExistente != null) {
-                System.out.println("Cliente ID: " + clienteExistente.getIdCliente());
-                System.out.println("DNI: " + clienteExistente.getDni());
-                System.out.println("Nombres: " + clienteExistente.getNombre());
-                System.out.println("Apellidos: " + clienteExistente.getApellido());
-                System.out.println("Correo Electrónico: " + clienteExistente.getCorreoElectronico());
-                System.out.println("Celular: " + clienteExistente.getCelular());
-                // Si quieres mostrar las reservas asociadas al cliente, también puedes hacerlo aquí.
-                clienteExistente.getReservas().forEach(reserva -> {
-                    System.out.println("Reserva ID: " + reserva.getIdReserva());
-                    // Mostrar otros detalles de la reserva...
-                });
-
-                return clienteExistente;
-            } else {
-                System.out.println("Cliente no encontrado con ID: " + cliente.getIdCliente());
-            }
-        } finally {
-            em.close();
-
-            return null;
-        }
-
     }
 }
