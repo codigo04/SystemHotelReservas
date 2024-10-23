@@ -122,13 +122,13 @@ public  class HabitacionImpl implements HabitacionDao {
     }
 
     @Override
-    public void updateDisponibilidadHabitacion(Long id, boolean disponible) {
+    public void updateDisponibilidadHabitacion(Long id, String estado) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             Habitacion habitacion = em.find(Habitacion.class, id);
             if (habitacion != null) {
-                habitacion.setEstado(disponible);  // Actualizar disponibilidad
+                habitacion.setEstado(estado);  // Actualizar disponibilidad
                 em.merge(habitacion);
             }
             em.getTransaction().commit();
@@ -140,6 +140,7 @@ public  class HabitacionImpl implements HabitacionDao {
         }
     }
 
+    
 
 
 }

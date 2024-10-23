@@ -25,6 +25,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        txtUsuario.setText("admin@admin.com");
+        txtpassword.setText("admin");
     }
 
     /**
@@ -52,7 +54,7 @@ public class Login extends javax.swing.JFrame {
         jExit = new javax.swing.JLabel();
         favicom2 = new javax.swing.JLabel();
         favicom4 = new javax.swing.JLabel();
-        btnLongin = new javax.swing.JButton();
+        btnIniciarSesion = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtContrasennaError = new javax.swing.JLabel();
@@ -73,7 +75,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3.add(logoname, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 290, 30));
 
         principal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        principal.setIcon(new javax.swing.ImageIcon("F:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
+        principal.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
         jPanel3.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 260, 480));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -119,6 +121,11 @@ public class Login extends javax.swing.JFrame {
         txtpassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtpasswordMousePressed(evt);
+            }
+        });
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
             }
         });
         jPanel3.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 140, 20));
@@ -201,29 +208,29 @@ public class Login extends javax.swing.JFrame {
         favicom4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel3.add(favicom4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 240, 80, 50));
 
-        btnLongin.setBackground(new java.awt.Color(0, 0, 0));
-        btnLongin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnLongin.setForeground(new java.awt.Color(255, 255, 0));
-        btnLongin.setText("INGRESAR");
-        btnLongin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        btnLongin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLongin.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
+        btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 0));
+        btnIniciarSesion.setText("INGRESAR");
+        btnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLonginMouseClicked(evt);
+                btnIniciarSesionMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnLonginMouseEntered(evt);
+                btnIniciarSesionMouseEntered(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnLonginMousePressed(evt);
+                btnIniciarSesionMousePressed(evt);
             }
         });
-        btnLongin.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLonginActionPerformed(evt);
+                btnIniciarSesionActionPerformed(evt);
             }
         });
-        jPanel3.add(btnLongin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
+        jPanel3.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,21 +323,21 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtpasswordMousePressed
 
-    private void btnLonginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLonginMouseClicked
+    private void btnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarSesionMouseClicked
         
 
-    }//GEN-LAST:event_btnLonginMouseClicked
+    }//GEN-LAST:event_btnIniciarSesionMouseClicked
 
-    private void btnLonginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLonginMouseEntered
+    private void btnIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarSesionMouseEntered
         
 
-    }//GEN-LAST:event_btnLonginMouseEntered
+    }//GEN-LAST:event_btnIniciarSesionMouseEntered
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void btnLonginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLonginActionPerformed
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         String usuario;
         String contraseña;
         //llamaos al metod registrarEmpleado
@@ -355,16 +362,20 @@ public class Login extends javax.swing.JFrame {
         }
         */
   
-    }//GEN-LAST:event_btnLonginActionPerformed
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
-    private void btnLonginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLonginMousePressed
+    private void btnIniciarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarSesionMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLonginMousePressed
+    }//GEN-LAST:event_btnIniciarSesionMousePressed
 
     private void jExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jExitMouseExited
         // TODO add your handling code here:
         btnExit.setBackground(Color.BLACK);
     }//GEN-LAST:event_jExitMouseExited
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -414,7 +425,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnExit;
-    public javax.swing.JButton btnLongin;
+    public javax.swing.JButton btnIniciarSesion;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel favicom2;
     private javax.swing.JLabel favicom4;
@@ -431,7 +442,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel pExit;
     private javax.swing.JLabel principal;
     private javax.swing.JLabel txtContrasennaError;
-    private javax.swing.JTextField txtUsuario;
-    private javax.swing.JPasswordField txtpassword;
+    public javax.swing.JTextField txtUsuario;
+    public javax.swing.JPasswordField txtpassword;
     // End of variables declaration//GEN-END:variables
 }

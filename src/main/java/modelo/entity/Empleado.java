@@ -23,12 +23,13 @@ public class Empleado {
     private String usuario;
     private String password;
     private String estado ;
-    
+    private String telefono;
+
     @OneToMany(mappedBy = "empleado")
     private List<Reserva> reservas;
     
     //RELACION DE MUCHOS A MUCHOS CON LA TABLA Roles
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "Usuario_Roles",
         joinColumns = @JoinColumn(name = "idUsuario"),
@@ -37,6 +38,7 @@ public class Empleado {
     private List<Roles> roles;
     
     //GETTER Y SETTER
+
 
 
     public Long getIdUsuarios() {
@@ -125,5 +127,13 @@ public class Empleado {
 
     public void setRoles(List<Roles> roles) {
         this.roles = roles;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

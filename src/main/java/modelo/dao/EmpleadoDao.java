@@ -34,4 +34,7 @@ public interface EmpleadoDao {
 
     // Buscar empleados por su rol
     List<Empleado> findEmpleadosByRole(String role);
+
+
+    public Optional<Empleado> authenticateEmpleado(String correoElectronico, String password);
 }

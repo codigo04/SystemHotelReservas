@@ -31,7 +31,7 @@ public interface HabitacionDao  {
     void deleteHabitacionById(Long id);
 
     // Actualizar el estado de disponibilidad de una habitación (disponible/no disponible)
-    void updateDisponibilidadHabitacion(Long id, boolean disponible);
+    void updateDisponibilidadHabitacion(Long id,String estado);
 
     // Buscar habitaciones por precio máximo
     //List<Habitacion> findHabitacionesByPrecioMax(double precioMax);

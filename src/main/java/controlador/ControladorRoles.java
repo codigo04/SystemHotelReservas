@@ -28,9 +28,9 @@ public class ControladorRoles {
 
     public void cargarRoles() {
 
-        JComboBox<String> roles = panelEmpleadoAdm.cboxPuesto;
+        JComboBox<String> roles = panelEmpleadoAdm.cboxRoles;
 
-        String[] puestos = {"ADMIN", "RECEPCIONISTA", "MultiRol"};
+        String[] puestos = {"ADMIN", "RECEPCIONISTA"};
 
         for (String puesto : puestos) {
             roles.addItem(puesto);

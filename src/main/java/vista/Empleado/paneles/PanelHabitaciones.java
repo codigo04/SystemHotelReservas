@@ -214,7 +214,7 @@ public class PanelHabitaciones extends javax.swing.JPanel {
                 jBBuscar3jBBuscarActionPerformed(evt);
             }
         });
-        Panel_Reserva.add(jBBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 58, 22));
+        Panel_Reserva.add(jBBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 58, 20));
 
         jLabel37.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel37.setText("Código");
@@ -239,7 +239,7 @@ public class PanelHabitaciones extends javax.swing.JPanel {
         TxtCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Panel_Reserva.add(TxtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 102, 26));
 
-        add(Panel_Reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 540, -1));
+        add(Panel_Reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 550, 460));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
