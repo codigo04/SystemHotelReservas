@@ -4,10 +4,14 @@
  */
 package controlador;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Optional;
+import modelo.dao.impl.EmpleadoImpl;
+import modelo.entity.Empleado;
+import modelo.entity.Roles;
 import vista.Administrador.JfrmAdministradorPrueba;
+import vista.Empleado.JfrmEmpleado;
 import vista.Login;
 
 /**
@@ -17,10 +21,14 @@ import vista.Login;
 public class ControladorLogin implements ActionListener {
 
     private Login vistaLogin;
+    private EmpleadoImpl empleadoImpl;
+    private ControladorPrincipal controladorCliente;
 
     public ControladorLogin() {
+        empleadoImpl = new EmpleadoImpl();
         vistaLogin = new Login();
-        vistaLogin.btnLongin.addActionListener(this);
+        controladorCliente = new ControladorPrincipal(new JfrmAdministradorPrueba(), new JfrmEmpleado());
+        vistaLogin.btnIniciarSesion.addActionListener(this);
     }
 
     public void correrLogin() {
@@ -31,11 +39,40 @@ public class ControladorLogin implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == vistaLogin.btnLongin) {
+        if (e.getSource() == vistaLogin.btnIniciarSesion) {
 
-            ControladorCliente controladorCliente = new ControladorCliente(new JfrmAdministradorPrueba());
-            vistaLogin.setVisible(false);
+            char[] passwordChars = vistaLogin.txtpassword.getPassword();
+            String password = new String(passwordChars);
+
+            String contraseña = String.valueOf(vistaLogin.txtpassword.getPassword());
+
+            System.out.println(contraseña);
+
+            Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado(vistaLogin.txtUsuario.getText(), contraseña);
+
+            if (empleadoExist.isPresent()) {
+                Empleado emplLoged = empleadoExist.get();
+
+                for (Roles roles : emplLoged.getRoles()) {
+
+                    System.out.println(roles.getNombreRol());
+
+                    if ("ADMIN".equals(roles.getNombreRol())) {
+                        System.out.println("entroo");
+                        controladorCliente.iniciarPanelAdministrador();
+                        vistaLogin.setVisible(false);
+                    } else {
+                        controladorCliente.iniciarPanelEmpleado();
+                        vistaLogin.setVisible(false);
+                    }
+                }
+
+            }
+
+        } else {
+            System.out.println("no hay datos");
         }
+
     }
 
 }

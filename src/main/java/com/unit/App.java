@@ -4,7 +4,7 @@ package com.unit;
  * Hello world!
  */
 
-import controlador.ControladorCliente;
+import controlador.ControladorPrincipal;
 import controlador.ControladorEmpleado;
 import controlador.ControladorLogin;
 import controlador.pruebaCrolador;

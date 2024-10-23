@@ -14,10 +14,17 @@ public class Habitacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHabitacion;
     
+    private String estado;
+
+    private String numeroDeHabitacion;
+    
+    
     //RELACION CON LA TABLA TipoHabitacion
     @ManyToOne
     @JoinColumn(name = "idTipo")
     private TipoHabitacion tipoHabitacion;
+    
+    
     
     @OneToMany(mappedBy = "habitacion")
     private List<Reserva> reservas;
@@ -47,23 +54,31 @@ public class Habitacion {
         this.reservas = idReserva;
     }
 
-    public boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getNumeroDeHabitacion() {
+        return numeroDeHabitacion;
     }
-    
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-    
-    private boolean estado;
 
-    private int codigo;
+    public void setNumeroDeHabitacion(String numeroDeHabitacion) {
+        this.numeroDeHabitacion = numeroDeHabitacion;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+ 
+    
+    
 }

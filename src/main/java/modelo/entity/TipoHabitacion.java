@@ -1,4 +1,5 @@
 package modelo.entity;
+
 /**
  *
  * @author Chris
@@ -13,7 +14,11 @@ public class TipoHabitacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTipo;
-    
+
+    private String tipoHabitacion;
+    private String caracteristicas;
+    private Double precio;
+
     @OneToMany(mappedBy = "tipoHabitacion")
     private List<Habitacion> habitaciones;
 
@@ -57,7 +62,4 @@ public class TipoHabitacion {
         this.precio = precio;
     }
 
-    private String tipoHabitacion;
-    private String caracteristicas;
-    private Double precio;
 }

@@ -28,6 +28,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
      */
     public JfrmEmpleado() {
         initComponents();
+        setVisible(false);
         //panelPrincipal.setLayout(new BorderLayout());  
     }
 

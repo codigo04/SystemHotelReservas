@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import java.util.Optional;
 import modelo.dao.EmpleadoDao;
 import modelo.entity.Empleado;
+import modelo.entity.Roles;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -68,7 +69,8 @@ public class EmpleadoImpl implements EmpleadoDao {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(empleado);  // Persistir el nuevo empleado
+
+            em.persist(empleado);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();  // Revertir en caso de error
@@ -128,15 +130,41 @@ public class EmpleadoImpl implements EmpleadoDao {
     @Override
     public Optional<Empleado> findEmpleadoByDni(String dni) {
         EntityManager em = emf.createEntityManager();
-        Empleado empleado = null;
+
         try {
             TypedQuery<Empleado> query = em.createQuery("from Empleado where dni = :dni", Empleado.class);
             query.setParameter("dni", dni);
-            empleado = query.getSingleResult();
+            Empleado empleado = query.getSingleResult();
+            System.out.println("Empleado encontrado");
+            return Optional.of(empleado);
+        } catch (NoResultException e) {
+            // Manejo del caso cuando no se encuentra el empleado
+            System.out.println("Empleado no encontrado");
+            return Optional.empty();
         } finally {
             em.close();
         }
-        return Optional.of(empleado);
+
+    }
+
+    @Override
+    public Optional<Empleado> authenticateEmpleado(String correoElectronico, String password) {
+        EntityManager em = emf.createEntityManager();
+        Empleado empleado = null;
+        try {
+            TypedQuery<Empleado> query = em.createQuery("FROM Empleado WHERE correoElectronico = :correo AND password = :pass", Empleado.class);
+            query.setParameter("correo", correoElectronico);
+            query.setParameter("pass", password);
+
+            // Intentamos obtener un único resultado
+            empleado = query.getSingleResult();
+        } catch (NoResultException e) {
+            // Si no se encuentra ningún empleado con esas credenciales, se puede manejar adecuadamente (por ejemplo, registrando un intento fallido de inicio de sesión)
+            return Optional.empty(); // Retornamos null indicando que las credenciales no son válidas
+        } finally {
+            em.close();
+        }
+        return Optional.of(empleado); // Retornamos el empleado si las credenciales son válidas
     }
 
 }

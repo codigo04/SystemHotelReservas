@@ -21,16 +21,16 @@ import modelo.entity.TipoHabitacion;
  *
  * @author FranDev
  */
-public class PanelHabitacionesAdm extends javax.swing.JPanel {
+public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
     public DefaultTableModel modTablaHabitaciones = new DefaultTableModel();
 
     /**
      * Creates new form PanelHabitacionesAdm
      */
-    public PanelHabitacionesAdm() {
+    public PanelTipoHabitacionesAdm() {
         initComponents();
-        String cabeTableProduc[] = {"ID", "Número de Habitación", "Tipo de Habitación	", "Características", "Precio", "Estado"};
+        String cabeTableProduc[] = {"ID", "Características", "Precio", "Tipo Habitacion"};
 
         modTablaHabitaciones.setColumnIdentifiers(cabeTableProduc);
 
@@ -40,6 +40,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         tablaHabitaciones.setForeground(Color.WHITE);
 
         Panel_RegistroHabitaciones.setVisible(false);
+        Panel_EditHabitaciones.setVisible(false);
 
     }
 
@@ -54,6 +55,18 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnAgregarHabi = new javax.swing.JButton();
+        Panel_EditHabitaciones = new javax.swing.JPanel();
+        btnAceptarEditHabi = new javax.swing.JButton();
+        btnCancelarEditHabi = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txtPrecioEditHabi = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txtCaracteristicasEditHabi = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtTipoEditHabi = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtIdEditHabi = new javax.swing.JTextField();
         Panel_RegistroHabitaciones = new javax.swing.JPanel();
         btnAceptarGuardarHabitacion = new javax.swing.JButton();
         btnCancelarHabitacion = new javax.swing.JButton();
@@ -64,8 +77,6 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         txtCaracteristicasHabi = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtTipoHabi = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        txtCodigoHabi = new javax.swing.JTextField();
         jpanelContenidoHabi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -81,19 +92,132 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Gestión de Habitaciones");
+        jLabel1.setText("Gestión de Tipos de Habitaciones");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 571, -1));
 
         btnAgregarHabi.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarHabi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAgregarHabi.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarHabi.setText("+ Añadir Habitacion");
+        btnAgregarHabi.setText("+ Añadir Tipo Habitacion");
         btnAgregarHabi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarHabiActionPerformed(evt);
             }
         });
-        add(btnAgregarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(869, 30, 150, 48));
+        add(btnAgregarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(839, 30, 180, 48));
+
+        Panel_EditHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_EditHabitaciones.setEnabled(false);
+        Panel_EditHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAceptarEditHabi.setBackground(new java.awt.Color(0, 255, 0));
+        btnAceptarEditHabi.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnAceptarEditHabi.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarEditHabi.setText("ACEPTAR");
+        btnAceptarEditHabi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarEditHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarEditHabiActionPerformed(evt);
+            }
+        });
+        Panel_EditHabitaciones.add(btnAceptarEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 180, 30));
+
+        btnCancelarEditHabi.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelarEditHabi.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnCancelarEditHabi.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarEditHabi.setText("CANCELAR");
+        btnCancelarEditHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEditHabiActionPerformed(evt);
+            }
+        });
+        Panel_EditHabitaciones.add(btnCancelarEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 170, 30));
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\img-editar.png")); // NOI18N
+        Panel_EditHabitaciones.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 90));
+
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("PRECIO");
+        Panel_EditHabitaciones.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 110, 20));
+
+        txtPrecioEditHabi.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecioEditHabi.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioEditHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioEditHabiActionPerformed(evt);
+            }
+        });
+        txtPrecioEditHabi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioEditHabiKeyTyped(evt);
+            }
+        });
+        Panel_EditHabitaciones.add(txtPrecioEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 190, -1));
+
+        jLabel23.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("CARACTERISTICAS");
+        Panel_EditHabitaciones.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 170, 20));
+
+        txtCaracteristicasEditHabi.setBackground(new java.awt.Color(255, 255, 255));
+        txtCaracteristicasEditHabi.setForeground(new java.awt.Color(0, 0, 0));
+        txtCaracteristicasEditHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCaracteristicasEditHabiActionPerformed(evt);
+            }
+        });
+        txtCaracteristicasEditHabi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCaracteristicasEditHabiKeyTyped(evt);
+            }
+        });
+        Panel_EditHabitaciones.add(txtCaracteristicasEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 380, 60));
+
+        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Tipo Habitacion");
+        Panel_EditHabitaciones.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 100, 20));
+
+        txtTipoEditHabi.setBackground(new java.awt.Color(255, 255, 255));
+        txtTipoEditHabi.setForeground(new java.awt.Color(0, 0, 0));
+        txtTipoEditHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoEditHabiActionPerformed(evt);
+            }
+        });
+        txtTipoEditHabi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTipoEditHabiKeyTyped(evt);
+            }
+        });
+        Panel_EditHabitaciones.add(txtTipoEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 150, -1));
+
+        jLabel24.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel24.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setText("ID");
+        Panel_EditHabitaciones.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 70, 20));
+
+        txtIdEditHabi.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdEditHabi.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdEditHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdEditHabiActionPerformed(evt);
+            }
+        });
+        txtIdEditHabi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdEditHabiKeyTyped(evt);
+            }
+        });
+        Panel_EditHabitaciones.add(txtIdEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 60, -1));
+
+        add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 470, 410));
 
         Panel_RegistroHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
         Panel_RegistroHabitaciones.setEnabled(false);
@@ -109,7 +233,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
                 btnAceptarGuardarHabitacionActionPerformed(evt);
             }
         });
-        Panel_RegistroHabitaciones.add(btnAceptarGuardarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 180, 30));
+        Panel_RegistroHabitaciones.add(btnAceptarGuardarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 180, 30));
 
         btnCancelarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarHabitacion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -120,11 +244,11 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
                 btnCancelarHabitacionActionPerformed(evt);
             }
         });
-        Panel_RegistroHabitaciones.add(btnCancelarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 170, 30));
+        Panel_RegistroHabitaciones.add(btnCancelarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 170, 30));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\img-editar.png")); // NOI18N
-        Panel_RegistroHabitaciones.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 90));
+        Panel_RegistroHabitaciones.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 90));
 
         jLabel17.setBackground(new java.awt.Color(0, 0, 0));
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -150,7 +274,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("CARACTERISTICAS");
-        Panel_RegistroHabitaciones.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 170, 20));
+        Panel_RegistroHabitaciones.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, 20));
 
         txtCaracteristicasHabi.setBackground(new java.awt.Color(255, 255, 255));
         txtCaracteristicasHabi.setForeground(new java.awt.Color(0, 0, 0));
@@ -164,7 +288,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
                 txtCaracteristicasHabiKeyTyped(evt);
             }
         });
-        Panel_RegistroHabitaciones.add(txtCaracteristicasHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 380, 60));
+        Panel_RegistroHabitaciones.add(txtCaracteristicasHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 380, 60));
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -186,27 +310,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         });
         Panel_RegistroHabitaciones.add(txtTipoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 150, -1));
 
-        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel21.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setText("CODIGO");
-        Panel_RegistroHabitaciones.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 70, 20));
-
-        txtCodigoHabi.setBackground(new java.awt.Color(255, 255, 255));
-        txtCodigoHabi.setForeground(new java.awt.Color(0, 0, 0));
-        txtCodigoHabi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoHabiActionPerformed(evt);
-            }
-        });
-        txtCodigoHabi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCodigoHabiKeyTyped(evt);
-            }
-        });
-        Panel_RegistroHabitaciones.add(txtCodigoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 150, -1));
-
-        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 470, 450));
+        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 470, 410));
 
         jpanelContenidoHabi.setBackground(new java.awt.Color(255, 255, 255));
         jpanelContenidoHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -293,6 +397,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
 
     private void btnAceptarGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarHabitacionActionPerformed
+
         desbloquear(jpanelContenidoHabi);
         Panel_RegistroHabitaciones.setVisible(false);
 
@@ -363,8 +468,21 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCaracteristicasHabiKeyTyped
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        bloquear(jpanelContenidoHabi);
-        Panel_RegistroHabitaciones.setVisible(true);
+
+        bloquearImputsEdit();
+
+        int fila = tablaHabitaciones.getSelectedRow();
+
+        if (fila == -1) {
+
+            JOptionPane.showConfirmDialog(null, "SELECCIONA UN TIPO   ", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            bloquear(jpanelContenidoHabi);
+            llenarFormEditar();
+            Panel_EditHabitaciones.setVisible(true);
+
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtTipoHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoHabiActionPerformed
@@ -375,38 +493,82 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoHabiKeyTyped
 
-    private void txtCodigoHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoHabiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoHabiActionPerformed
+    private void btnAceptarEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabiActionPerformed
+        desbloquear(jpanelContenidoHabi);
+        Panel_EditHabitaciones.setVisible(false);
+    }//GEN-LAST:event_btnAceptarEditHabiActionPerformed
 
-    private void txtCodigoHabiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoHabiKeyTyped
+    private void btnCancelarEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabiActionPerformed
+        desbloquear(jpanelContenidoHabi);
+        Panel_EditHabitaciones.setVisible(false);
+    }//GEN-LAST:event_btnCancelarEditHabiActionPerformed
+
+    private void txtPrecioEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioEditHabiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoHabiKeyTyped
+    }//GEN-LAST:event_txtPrecioEditHabiActionPerformed
+
+    private void txtPrecioEditHabiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioEditHabiKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioEditHabiKeyTyped
+
+    private void txtCaracteristicasEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCaracteristicasEditHabiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCaracteristicasEditHabiActionPerformed
+
+    private void txtCaracteristicasEditHabiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCaracteristicasEditHabiKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCaracteristicasEditHabiKeyTyped
+
+    private void txtTipoEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoEditHabiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoEditHabiActionPerformed
+
+    private void txtTipoEditHabiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoEditHabiKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoEditHabiKeyTyped
+
+    private void txtIdEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEditHabiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdEditHabiActionPerformed
+
+    private void txtIdEditHabiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdEditHabiKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdEditHabiKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel Panel_EditHabitaciones;
     public javax.swing.JPanel Panel_RegistroHabitaciones;
+    public javax.swing.JButton btnAceptarEditHabi;
     public javax.swing.JButton btnAceptarGuardarHabitacion;
     public javax.swing.JButton btnAgregarHabi;
     public javax.swing.JButton btnBuscarEmpleado;
+    public javax.swing.JButton btnCancelarEditHabi;
     public javax.swing.JButton btnCancelarHabitacion;
     public javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jpanelContenidoHabi;
     public javax.swing.JTable tablaHabitaciones;
+    public javax.swing.JTextField txtCaracteristicasEditHabi;
     public javax.swing.JTextField txtCaracteristicasHabi;
-    public javax.swing.JTextField txtCodigoHabi;
+    public javax.swing.JTextField txtIdEditHabi;
+    public javax.swing.JTextField txtPrecioEditHabi;
     public javax.swing.JTextField txtPrecioHabi;
+    public javax.swing.JTextField txtTipoEditHabi;
     public javax.swing.JTextField txtTipoHabi;
     // End of variables declaration//GEN-END:variables
     public void bloquear(Component component) {
@@ -433,35 +595,27 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
     }
 
-    public Empleado getDatosEmpleado() {
-        Empleado emVista = new Empleado();
+    public TipoHabitacion datosUpdateHbitacion() {
+        TipoHabitacion tipoHabitacion = new TipoHabitacion();
+        
+        tipoHabitacion.setIdTipo(Long.valueOf(txtIdEditHabi.getText()));
+        tipoHabitacion.setTipoHabitacion(txtTipoEditHabi.getText());
+        tipoHabitacion.setPrecio(Double.parseDouble(txtPrecioEditHabi.getText()));
+        tipoHabitacion.setCaracteristicas(txtCaracteristicasEditHabi.getText());
 
-        List<Roles> assginedRoles = new ArrayList<>();
-        Roles rol = new Roles();
-
-      //  rol.setNombreRol((String) cboxTipoHabi.getSelectedItem());
-
-        assginedRoles.add(rol);
-
-        emVista.setRoles(assginedRoles);
-
-        return emVista;
+        return tipoHabitacion;
     }
 
     public boolean validarCampos() {
-        /*
-        if (txtApellidoEm.getText().trim().isEmpty()
-                || txtCorreoEm.getText().trim().isEmpty()
-                || txtCaracteristicasHabi.getText().trim().isEmpty()
-                || txtDniEm.getText().trim().isEmpty()
-                || txtNombreEm.getText().trim().isEmpty()
-                || txtPasswordEm.getText().trim().isEmpty()
-                || txtPrecioHabi.getText().trim().isEmpty()) {
 
-            //javax.swing.JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+        if (txtTipoHabi.getText().trim().isEmpty()
+                || txtPrecioHabi.getText().trim().isEmpty()
+                || txtCaracteristicasHabi.getText().trim().isEmpty()) {
+
+            javax.swing.JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
             return false;
         }
-         */
+
         return true;
     }
 
@@ -476,6 +630,11 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         // txtNombreEm.
         // txtPasswordEm.
         // txtTelefonoEm.
+    }
+
+    public void bloquearImputsEdit() {
+
+        txtIdEditHabi.setEnabled(false);
     }
 
     public void desbloquearImputs() {
@@ -499,32 +658,19 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
          */
         int fila = tablaHabitaciones.getSelectedRow();
 
-        //depurar
-        // System.out.println("el cont de la fila es: " + idP);
-        //veridicaos si se ha a selcionado alguna fila
-        Panel_RegistroHabitaciones.setVisible(true);
+        String id = String.valueOf(tablaHabitaciones.getValueAt(fila, 0));
+        String caracteristicas = String.valueOf(tablaHabitaciones.getValueAt(fila, 1));
+        String precio = String.valueOf(tablaHabitaciones.getValueAt(fila, 2));
+        String tipoHasbitacion = String.valueOf(tablaHabitaciones.getValueAt(fila, 3));
 
-        String nombre = String.valueOf(tablaHabitaciones.getValueAt(fila, 1));
-        String apellido = String.valueOf(tablaHabitaciones.getValueAt(fila, 2));
-        String dni = String.valueOf(tablaHabitaciones.getValueAt(fila, 3));
-        String correo = String.valueOf(tablaHabitaciones.getValueAt(fila, 4));
-        String telefono = String.valueOf(tablaHabitaciones.getValueAt(fila, 5));
-
-        String estado = String.valueOf(tablaHabitaciones.getValueAt(fila, 6));
-
-        // txtNombreEm.setText(nombre);
-        //  txtApellidoEm.setText(apellido);
-        //  txtCorreoEm.setText(correo);
-        txtCaracteristicasHabi.setText("SN");
-        //txtDniEm.setText(dni);
-        txtPrecioHabi.setText(telefono);
-        //   txtPasswordEm.setText(datos.getDni());
-        //  txtTelefonoEm.setText(datos.getDni());
+        txtIdEditHabi.setText(id);
+        txtTipoEditHabi.setText(tipoHasbitacion);
+        txtCaracteristicasEditHabi.setText(caracteristicas);
+        txtPrecioEditHabi.setText(precio);
 
     }
 
-
-    public TipoHabitacion datosSaveHbitacion(){
+    public TipoHabitacion datosSaveHbitacion() {
         TipoHabitacion tipoHabitacion = new TipoHabitacion();
 
         tipoHabitacion.setTipoHabitacion(txtTipoHabi.getText());

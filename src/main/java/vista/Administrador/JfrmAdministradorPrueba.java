@@ -11,6 +11,7 @@ import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
 import vista.Administrador.paneles.PanelPerfilAdm;
+import vista.Administrador.paneles.PanelTipoHabitacionesAdm;
 import vista.Administrador.paneles.PanelUsuariosAdm;
 
 /**
@@ -18,17 +19,24 @@ import vista.Administrador.paneles.PanelUsuariosAdm;
  * @author FranDev
  */
 public class JfrmAdministradorPrueba extends javax.swing.JFrame {
-   public PanelEmpleadoAdm panelEmpleadoAdm = new PanelEmpleadoAdm();  
+
+    public PanelEmpleadoAdm panelEmpleadoAdm = new PanelEmpleadoAdm();
+    public PanelHabitacionesAdm panelHabitacionesAdm = new PanelHabitacionesAdm();
+    public PanelTipoHabitacionesAdm panelTipoHabitacionesAdm = new PanelTipoHabitacionesAdm();
+
     /**
      * Creates new form JfrmAdministrador
      */
     public JfrmAdministradorPrueba() {
         initComponents();
-        GraphicsDevice dispositivoGrafico = GraphicsEnvironment
+        setVisible(false);
+
+        //setAlwaysOnTop(true);
+        /* ************ para pantalla grande **************
+       GraphicsDevice dispositivoGrafico = GraphicsEnvironment
                 .getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
-        dispositivoGrafico.setFullScreenWindow(this);
-
+        dispositivoGrafico.setFullScreenWindow(this);  */
     }
 
     /**
@@ -46,6 +54,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         btnPerfil = new javax.swing.JButton();
         bntEmpleado = new javax.swing.JButton();
         btnGestionHabi = new javax.swing.JButton();
+        btnTipoHabitaciones = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         btnConfiguracion = new javax.swing.JButton();
@@ -113,6 +122,14 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnGestionHabi);
 
+        btnTipoHabitaciones.setText("Tipo Habitaciones");
+        btnTipoHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoHabitacionesActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnTipoHabitaciones);
+
         jButton1.setText("Reservas");
         panelBotones.add(jButton1);
 
@@ -133,28 +150,24 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         panelBotones.add(btnConfiguracion);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("F:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
+                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addGap(46, 46, 46)
                 .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(274, Short.MAX_VALUE))
         );
@@ -206,7 +219,6 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void btnGestionHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionHabiActionPerformed
-        PanelHabitacionesAdm panelHabitacionesAdm = new PanelHabitacionesAdm();
 
 // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         this.panelPaginas.removeAll();
@@ -217,7 +229,6 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
 
     private void bntEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEmpleadoActionPerformed
 
-        
 // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         this.panelPaginas.removeAll();
         this.panelPaginas.add(panelEmpleadoAdm);
@@ -227,13 +238,21 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_bntEmpleadoActionPerformed
 
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
-       PanelConfiguracionAdm configuracionAdm = new PanelConfiguracionAdm();
-       
-       this.panelPaginas.removeAll();
-       this.panelPaginas.add(configuracionAdm);
-       this.revalidate();
-       this.repaint();
+        PanelConfiguracionAdm configuracionAdm = new PanelConfiguracionAdm();
+
+        this.panelPaginas.removeAll();
+        this.panelPaginas.add(configuracionAdm);
+        this.revalidate();
+        this.repaint();
     }//GEN-LAST:event_btnConfiguracionActionPerformed
+
+    private void btnTipoHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoHabitacionesActionPerformed
+
+        this.panelPaginas.removeAll();
+        this.panelPaginas.add(panelTipoHabitacionesAdm);
+        this.panelPaginas.revalidate();
+        this.panelPaginas.repaint();
+    }//GEN-LAST:event_btnTipoHabitacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +296,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     private javax.swing.JButton btnGestionHabi;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPerfil;
+    public javax.swing.JButton btnTipoHabitaciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToggleButton jToggleButton1;

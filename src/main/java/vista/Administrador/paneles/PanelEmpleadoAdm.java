@@ -9,12 +9,13 @@ import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 import modelo.entity.Empleado;
 import modelo.entity.Roles;
 
 /**
- *
  * @author FranDev
  */
 public class PanelEmpleadoAdm extends javax.swing.JPanel {
@@ -26,7 +27,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
      */
     public PanelEmpleadoAdm() {
         initComponents();
-        String cabeTableProduc[] = {"ID", "NOMBRE", "DNI", "CARGO", "ESTADO"};
+        String cabeTableProduc[] = {"ID", "NOMBRE", "APELLIDO", "DNI", "CORREO", "TELEFONO", "CARGO", "ESTADO"};
 
         modTablaEmpleados.setColumnIdentifiers(cabeTableProduc);
 
@@ -36,6 +37,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         tablaEmpleados.setForeground(Color.WHITE);
 
         Panel_RegistroEmpleados.setVisible(false);
+        Panel_EditEmpleados.setVisible(false);
 
     }
 
@@ -50,17 +52,37 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        Panel_EditEmpleados = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtNombreEditEm = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        btnAceptarEditarEm = new javax.swing.JButton();
+        btnCancelarEditEm = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        cboxRolesEditEm = new javax.swing.JComboBox<>();
+        txtApellidoEditEm = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txtDniEditEm = new javax.swing.JTextField();
+        txtPasswordEditEm = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txtTelefonoEditEm = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtCorreoEditEm = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        txtDireccionEditEm = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        cboxEstadoEditEm = new javax.swing.JComboBox<>();
         Panel_RegistroEmpleados = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNombreEm = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtSalario = new javax.swing.JTextField();
-        btnAceptarEm = new javax.swing.JButton();
+        btnAceptarGuardarEm = new javax.swing.JButton();
         btnCancelarEm = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        cboxPuesto = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
+        cboxRoles = new javax.swing.JComboBox<>();
         txtApellidoEm = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -101,6 +123,206 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, -1, 48));
 
+        Panel_EditEmpleados.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_EditEmpleados.setEnabled(false);
+        Panel_EditEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText(" DNI: ");
+        Panel_EditEmpleados.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, 20));
+
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText(" NOMBRE:");
+        Panel_EditEmpleados.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 60, 20));
+
+        txtNombreEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEditEmActionPerformed(evt);
+            }
+        });
+        txtNombreEditEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreEditEmKeyTyped(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtNombreEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 210, -1));
+
+        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("PUESTO:");
+        Panel_EditEmpleados.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 70, 20));
+
+        btnAceptarEditarEm.setBackground(new java.awt.Color(0, 255, 0));
+        btnAceptarEditarEm.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnAceptarEditarEm.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarEditarEm.setText("ACEPTAR");
+        btnAceptarEditarEm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarEditarEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarEditarEmActionPerformed(evt);
+            }
+        });
+        Panel_EditEmpleados.add(btnAceptarEditarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 180, 30));
+
+        btnCancelarEditEm.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelarEditEm.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnCancelarEditEm.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarEditEm.setText("CANCELAR");
+        btnCancelarEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEditEmActionPerformed(evt);
+            }
+        });
+        Panel_EditEmpleados.add(btnCancelarEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 170, 30));
+
+        jLabel14.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("APELLIDO:");
+        Panel_EditEmpleados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+
+        cboxRolesEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        cboxRolesEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        cboxRolesEditEm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cboxRolesEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxRolesEditEmActionPerformed(evt);
+            }
+        });
+        Panel_EditEmpleados.add(cboxRolesEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 210, -1));
+
+        txtApellidoEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoEditEmActionPerformed(evt);
+            }
+        });
+        txtApellidoEditEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoEditEmKeyTyped(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtApellidoEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 210, -1));
+
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("CONTRASEÑA:");
+        Panel_EditEmpleados.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 90, 20));
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\img-editar.png")); // NOI18N
+        Panel_EditEmpleados.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 90));
+
+        txtDniEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtDniEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtDniEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniEditEmActionPerformed(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtDniEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 112, 140, -1));
+
+        txtPasswordEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtPasswordEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtPasswordEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordEditEmActionPerformed(evt);
+            }
+        });
+        txtPasswordEditEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordEditEmKeyTyped(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtPasswordEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 210, -1));
+
+        jLabel23.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("TELEFONO:");
+        Panel_EditEmpleados.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 70, 20));
+
+        txtTelefonoEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonoEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefonoEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoEditEmActionPerformed(evt);
+            }
+        });
+        txtTelefonoEditEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoEditEmKeyTyped(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtTelefonoEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 210, -1));
+
+        jLabel24.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel24.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setText("CORREO");
+        Panel_EditEmpleados.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 20));
+
+        txtCorreoEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtCorreoEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoEditEmActionPerformed(evt);
+            }
+        });
+        txtCorreoEditEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoEditEmKeyTyped(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtCorreoEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 210, -1));
+
+        jLabel25.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel25.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setText("DIRECCION:");
+        Panel_EditEmpleados.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 70, 20));
+
+        txtDireccionEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccionEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        txtDireccionEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionEditEmActionPerformed(evt);
+            }
+        });
+        txtDireccionEditEm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionEditEmKeyTyped(evt);
+            }
+        });
+        Panel_EditEmpleados.add(txtDireccionEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, -1));
+
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("ESTADO:");
+        Panel_EditEmpleados.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 70, 20));
+
+        cboxEstadoEditEm.setBackground(new java.awt.Color(255, 255, 255));
+        cboxEstadoEditEm.setForeground(new java.awt.Color(0, 0, 0));
+        cboxEstadoEditEm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "ACTIVO", "INACTIVO" }));
+        cboxEstadoEditEm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxEstadoEditEmActionPerformed(evt);
+            }
+        });
+        Panel_EditEmpleados.add(cboxEstadoEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 210, -1));
+
+        add(Panel_EditEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, 450));
+
         Panel_RegistroEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         Panel_RegistroEmpleados.setEnabled(false);
         Panel_RegistroEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -137,31 +359,17 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         jLabel5.setText("PUESTO:");
         Panel_RegistroEmpleados.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 70, 20));
 
-        txtSalario.setBackground(new java.awt.Color(255, 255, 255));
-        txtSalario.setForeground(new java.awt.Color(0, 0, 0));
-        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptarGuardarEm.setBackground(new java.awt.Color(0, 255, 0));
+        btnAceptarGuardarEm.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnAceptarGuardarEm.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarGuardarEm.setText("ACEPTAR");
+        btnAceptarGuardarEm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarGuardarEm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalarioActionPerformed(evt);
+                btnAceptarGuardarEmActionPerformed(evt);
             }
         });
-        txtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSalarioKeyTyped(evt);
-            }
-        });
-        Panel_RegistroEmpleados.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 60, -1));
-
-        btnAceptarEm.setBackground(new java.awt.Color(0, 255, 0));
-        btnAceptarEm.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        btnAceptarEm.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptarEm.setText("ACEPTAR");
-        btnAceptarEm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAceptarEm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarEmActionPerformed(evt);
-            }
-        });
-        Panel_RegistroEmpleados.add(btnAceptarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 180, 30));
+        Panel_RegistroEmpleados.add(btnAceptarGuardarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 180, 30));
 
         btnCancelarEm.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarEm.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -180,21 +388,15 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         jLabel13.setText("APELLIDO:");
         Panel_RegistroEmpleados.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
 
-        cboxPuesto.setBackground(new java.awt.Color(255, 255, 255));
-        cboxPuesto.setForeground(new java.awt.Color(0, 0, 0));
-        cboxPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Administrador", "Recepcionista", "MultiRol " }));
-        cboxPuesto.addActionListener(new java.awt.event.ActionListener() {
+        cboxRoles.setBackground(new java.awt.Color(255, 255, 255));
+        cboxRoles.setForeground(new java.awt.Color(0, 0, 0));
+        cboxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cboxRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboxPuestoActionPerformed(evt);
+                cboxRolesActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(cboxPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 210, -1));
-
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("SALARIO");
-        Panel_RegistroEmpleados.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 70, 20));
+        Panel_RegistroEmpleados.add(cboxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 210, -1));
 
         txtApellidoEm.setBackground(new java.awt.Color(255, 255, 255));
         txtApellidoEm.setForeground(new java.awt.Color(0, 0, 0));
@@ -217,7 +419,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         Panel_RegistroEmpleados.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 90, 20));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon("F:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\registrarse.png")); // NOI18N
         Panel_RegistroEmpleados.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 90));
 
         btnBuscarReniecEm.setBackground(new java.awt.Color(0, 0, 0));
@@ -323,8 +524,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Lista de Empleados");
         jpanelContenidoEm.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 7, -1, 48));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("F:\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icon-user.png")); // NOI18N
         jpanelContenidoEm.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 7, -1, -1));
 
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
@@ -368,7 +567,23 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
+        bloquearImputs();
+
+        int fila = tablaEmpleados.getSelectedRow();
+
+        if (fila == -1) {
+
+            JOptionPane.showConfirmDialog(null, "SELECCIONA UN PLATO", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            bloquear(jpanelContenidoEm);
+            bloquearImputs();
+            llenarFormEditar();
+            Panel_EditEmpleados.setVisible(true);
+        }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed
@@ -384,16 +599,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         // validarLetras(evt, txtNombre);
     }//GEN-LAST:event_txtNombreEmKeyTyped
 
-    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalarioActionPerformed
-
-    private void txtSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioKeyTyped
-
-        // validarNum(evt, txtSalario);
-    }//GEN-LAST:event_txtSalarioKeyTyped
-
-    private void btnAceptarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEmActionPerformed
+    private void btnAceptarGuardarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarEmActionPerformed
         desbloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(false);
 
@@ -433,22 +639,22 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         //agregamos una fila  a la tabla con el contedio que tiene el arreglo
         modTablaEmpleados.addRow(fila);
          */
-    }//GEN-LAST:event_btnAceptarEmActionPerformed
+    }//GEN-LAST:event_btnAceptarGuardarEmActionPerformed
 
     private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
         desbloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(false);
     }//GEN-LAST:event_btnCancelarEmActionPerformed
 
-    private void cboxPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxPuestoActionPerformed
-        cboxPuesto.getSelectedItem();
-        if (cboxPuesto.getSelectedIndex() == 1 || cboxPuesto.getSelectedIndex() == 2 || cboxPuesto.getSelectedIndex() == 3) {
-            txtSalario.setText("1200");
+    private void cboxRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRolesActionPerformed
+        cboxRoles.getSelectedItem();
+        if (cboxRoles.getSelectedIndex() == 1 || cboxRoles.getSelectedIndex() == 2 || cboxRoles.getSelectedIndex() == 3) {
+            // txtSalario.setText("1200");
 
-        } else if (cboxPuesto.getSelectedIndex() == 4) {
-            txtSalario.setText("2000");
+        } else if (cboxRoles.getSelectedIndex() == 4) {
+            // txtSalario.setText("2000");
         }
-    }//GEN-LAST:event_cboxPuestoActionPerformed
+    }//GEN-LAST:event_cboxRolesActionPerformed
 
     private void txtApellidoEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoEmActionPerformed
         // TODO add your handling code here:
@@ -535,10 +741,10 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarReniecEmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        desbloquearImputs();
         bloquear(jpanelContenidoEm);
-
         Panel_RegistroEmpleados.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPasswordEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordEmActionPerformed
@@ -577,43 +783,133 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionEmKeyTyped
 
+    private void txtNombreEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEditEmActionPerformed
+
+    private void txtNombreEditEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEditEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEditEmKeyTyped
+
+    private void btnAceptarEditarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditarEmActionPerformed
+        desbloquear(jpanelContenidoEm);
+        Panel_EditEmpleados.setVisible(false);
+    }//GEN-LAST:event_btnAceptarEditarEmActionPerformed
+
+    private void btnCancelarEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditEmActionPerformed
+        desbloquear(jpanelContenidoEm);
+        Panel_EditEmpleados.setVisible(false);
+    }//GEN-LAST:event_btnCancelarEditEmActionPerformed
+
+    private void cboxRolesEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRolesEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxRolesEditEmActionPerformed
+
+    private void txtApellidoEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoEditEmActionPerformed
+
+    private void txtApellidoEditEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEditEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoEditEmKeyTyped
+
+    private void txtDniEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniEditEmActionPerformed
+
+    private void txtPasswordEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordEditEmActionPerformed
+
+    private void txtPasswordEditEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordEditEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordEditEmKeyTyped
+
+    private void txtTelefonoEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoEditEmActionPerformed
+
+    private void txtTelefonoEditEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEditEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoEditEmKeyTyped
+
+    private void txtCorreoEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoEditEmActionPerformed
+
+    private void txtCorreoEditEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoEditEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoEditEmKeyTyped
+
+    private void txtDireccionEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionEditEmActionPerformed
+
+    private void txtDireccionEditEmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionEditEmKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionEditEmKeyTyped
+
+    private void cboxEstadoEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxEstadoEditEmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxEstadoEditEmActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel Panel_EditEmpleados;
     public javax.swing.JPanel Panel_RegistroEmpleados;
-    public javax.swing.JButton btnAceptarEm;
+    public javax.swing.JButton btnAceptarEditarEm;
+    public javax.swing.JButton btnAceptarGuardarEm;
     public javax.swing.JButton btnBuscarEmpleado;
     public javax.swing.JButton btnBuscarReniecEm;
+    public javax.swing.JButton btnCancelarEditEm;
     public javax.swing.JButton btnCancelarEm;
-    public javax.swing.JComboBox<String> cboxPuesto;
+    public javax.swing.JComboBox<String> cboxEstadoEditEm;
+    public javax.swing.JComboBox<String> cboxRoles;
+    public javax.swing.JComboBox<String> cboxRolesEditEm;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jpanelContenidoEm;
     public javax.swing.JTable tablaEmpleados;
+    public javax.swing.JTextField txtApellidoEditEm;
     public javax.swing.JTextField txtApellidoEm;
+    public javax.swing.JTextField txtCorreoEditEm;
     public javax.swing.JTextField txtCorreoEm;
+    public javax.swing.JTextField txtDireccionEditEm;
     public javax.swing.JTextField txtDireccionEm;
+    public javax.swing.JTextField txtDniEditEm;
     public javax.swing.JTextField txtDniEm;
+    public javax.swing.JTextField txtNombreEditEm;
     public javax.swing.JTextField txtNombreEm;
+    public javax.swing.JTextField txtPasswordEditEm;
     public javax.swing.JTextField txtPasswordEm;
-    public javax.swing.JTextField txtSalario;
+    public javax.swing.JTextField txtTelefonoEditEm;
     public javax.swing.JTextField txtTelefonoEm;
     // End of variables declaration//GEN-END:variables
-  public void bloquear(Component component) {
+    public void bloquear(Component component) {
 
         if (component instanceof Container) {
             Component[] components = ((Container) component).getComponents();
@@ -639,25 +935,144 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
 
     public Empleado getDatosEmpleado() {
         Empleado emVista = new Empleado();
-        
-        List<Roles> roles = new ArrayList<>();
-        
+
         emVista.setDni(txtDniEm.getText());
-       // emVista.setNombres(txtNombreEm.getText());
-       // emVista.setApellidos(txtApellidoEm.getText());
+        emVista.setNombre(txtNombreEm.getText());
+        emVista.setApellido(txtApellidoEm.getText());
         emVista.setDireccion(txtDireccionEm.getText());
+        emVista.setTelefono(txtTelefonoEm.getText());
         emVista.setCorreoElectronico(txtCorreoEm.getText());
         emVista.setPassword(txtPasswordEm.getText());
-        
+
+        List<Roles> assginedRoles = new ArrayList<>();
         Roles rol = new Roles();
-                
-        rol.setNombreRol((String) cboxPuesto.getSelectedItem()); 
-        
-        roles.add(rol);
-        
-        emVista.setRoles(roles);
-    
+
+        rol.setNombreRol((String) cboxRoles.getSelectedItem());
+
+        assginedRoles.add(rol);
+
+        emVista.setRoles(assginedRoles);
 
         return emVista;
+    }
+
+    public boolean validarCampos() {
+
+        if (txtApellidoEm.getText().trim().isEmpty()
+                || txtCorreoEm.getText().trim().isEmpty()
+                || txtDireccionEm.getText().trim().isEmpty()
+                || txtDniEm.getText().trim().isEmpty()
+                || txtNombreEm.getText().trim().isEmpty()
+                || txtPasswordEm.getText().trim().isEmpty()
+                || txtTelefonoEm.getText().trim().isEmpty()) {
+
+            //javax.swing.JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public void bloquearImputs() {
+
+        txtDniEm.setEnabled(false);
+        txtNombreEm.setEnabled(false);
+        txtApellidoEm.setEnabled(false);
+        // txtCorreoEm.
+        // txtDireccionEm.
+        // txtDniEm.
+        // txtNombreEm.
+        // txtPasswordEm.
+        // txtTelefonoEm.
+
+    }
+
+    public void desbloquearImputs() {
+
+        txtDniEm.setEnabled(true);
+        txtNombreEm.setEnabled(true);
+        txtApellidoEm.setEnabled(true);
+        // txtCorreoEm.
+        // txtDireccionEm.
+        // txtDniEm.
+        // txtNombreEm.
+        // txtPasswordEm.
+        // txtTelefonoEm.
+
+    }
+
+    public void llenarFormEditar() {
+
+        /*
+          
+        
+         */
+        int fila = tablaEmpleados.getSelectedRow();
+
+        String nombre = String.valueOf(tablaEmpleados.getValueAt(fila, 1));
+        String apellido = String.valueOf(tablaEmpleados.getValueAt(fila, 2));
+        String dni = String.valueOf(tablaEmpleados.getValueAt(fila, 3));
+        String correo = String.valueOf(tablaEmpleados.getValueAt(fila, 4));
+        String telefono = String.valueOf(tablaEmpleados.getValueAt(fila, 5));
+        String estado = String.valueOf(tablaEmpleados.getValueAt(fila, 6));
+
+        txtDniEditEm.setText(dni);
+        txtNombreEditEm.setText(nombre);
+        txtApellidoEditEm.setText(apellido);
+        txtTelefonoEditEm.setText(telefono);
+        txtDireccionEditEm.setText("SN");
+        txtCorreoEditEm.setText(correo);
+
+        //   txtPasswordEm.setText(datos.getDni());
+        //  txtTelefonoEm.setText(datos.getDni());
+    }
+
+    public void limpiarCamposEdit() {
+
+        txtDniEditEm.setText("");
+        txtNombreEditEm.setText("");
+        txtApellidoEditEm.setText("");
+        txtTelefonoEditEm.setText("");
+        txtDireccionEditEm.setText("");
+        txtCorreoEditEm.setText("");
+        txtPasswordEditEm.setText("");
+    }
+
+    public void limpiarCamposRegistrar() {
+
+        txtDniEm.setText("");
+        txtNombreEm.setText("");
+        txtApellidoEm.setText("");
+        txtDireccionEm.setText("");
+        txtTelefonoEm.setText("");
+        txtCorreoEm.setText("");
+        txtPasswordEm.setText("");
+
+    }
+
+    public Empleado getDatosEmpleadoEdit() {
+        
+ 
+        Empleado emEditVista = new Empleado();
+
+        emEditVista.setDni(txtDniEditEm.getText());
+        emEditVista.setNombre(txtNombreEditEm.getText());
+        emEditVista.setApellido(txtApellidoEditEm.getText());
+         emEditVista.setTelefono(txtTelefonoEditEm.getText());
+        emEditVista.setDireccion(txtDireccionEditEm.getText());
+        emEditVista.setCorreoElectronico(txtCorreoEditEm.getText());
+        emEditVista.setPassword(txtPasswordEditEm.getText());
+
+        List<Roles> assginedRoles = new ArrayList<>();
+        Roles rol = new Roles();
+
+        rol.setNombreRol((String) cboxRoles.getSelectedItem());
+
+        assginedRoles.add(rol);
+
+        emEditVista.setRoles(assginedRoles);
+        emEditVista.setEstado((String) cboxEstadoEditEm.getSelectedItem());
+        
+        return emEditVista;
     }
 }
