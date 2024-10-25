@@ -2,6 +2,7 @@ package modelo.dao;
 import modelo.entity.Habitacion;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -13,7 +14,7 @@ public interface HabitacionDao  {
     List<Habitacion> getAllHabitaciones();
 
     // Buscar una habitación por su ID
-    Habitacion findHabitacionById(Long id);
+    Optional<Habitacion> findHabitacionById(Long id);
 
     // Buscar habitaciones por tipo (ejemplo: simple, doble, suite)
     List<Habitacion> findHabitacionesByTipo(String tipo);

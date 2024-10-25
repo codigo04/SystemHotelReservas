@@ -19,6 +19,7 @@ public class ControladorPrincipal implements ActionListener {
     private ControladorRoles controladorRoles;
     private ControladorHabitaciones controladorHabitaciones;
     private ControladorTipoHabitaciones controladorTipoHabitaciones;
+    private ControladorPerfil controladorPerfil;
 
     public ControladorPrincipal(JfrmAdministradorPrueba administradorPrueba, JfrmEmpleado vistaEmpleado) {
         this.administradorPrueba = administradorPrueba;
@@ -26,17 +27,22 @@ public class ControladorPrincipal implements ActionListener {
 
         // Configurar eventos
         administradorPrueba.bntEmpleado.addActionListener(this);
-
+ administradorPrueba.btnPerfil.addActionListener(this);
         // Inicializar controladores
         ctrEmpleado = new ControladorEmpleado(administradorPrueba.panelEmpleadoAdm);
         controladorRoles = new ControladorRoles(administradorPrueba.panelEmpleadoAdm);
         controladorHabitaciones = new ControladorHabitaciones(administradorPrueba.panelHabitacionesAdm);
         controladorTipoHabitaciones = new ControladorTipoHabitaciones(administradorPrueba.panelTipoHabitacionesAdm);
+        controladorPerfil = new ControladorPerfil(administradorPrueba.panelPerfilAdm);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == administradorPrueba.bntEmpleado) {
-
+              
+        }
+        
+        if (e.getSource() == administradorPrueba.btnPerfil) {
+              controladorPerfil.cargarUser();
         }
     }
 

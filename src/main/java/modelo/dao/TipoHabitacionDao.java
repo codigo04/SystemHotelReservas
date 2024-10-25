@@ -30,7 +30,7 @@ public interface TipoHabitacionDao {
     List<TipoHabitacion> findAll();
 
     // Buscar todas las habitaciones que tengan un tipo específico, devuelve lista opcional
-    Optional<List<TipoHabitacion>> findByTipoHabitacion(String tipoHabitacion);
+    Optional<TipoHabitacion> findByTipoHabitacion(String tipoHabitacion);
 
     // Buscar todas las habitaciones con un precio menor al valor dado, devuelve lista opcional
     Optional<List<TipoHabitacion>> findByPrecioLessThan(Double precio);

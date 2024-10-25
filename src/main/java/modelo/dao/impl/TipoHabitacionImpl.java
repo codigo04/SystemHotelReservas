@@ -7,6 +7,7 @@ package modelo.dao.impl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
@@ -104,15 +105,24 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
     }
 
     @Override
-    public Optional<List<TipoHabitacion>> findByTipoHabitacion(String tipoHabitacion) {
+    public Optional<TipoHabitacion> findByTipoHabitacion(String tipoHabitacion) {
         EntityManager em = emf.createEntityManager();
         try {
-            List<TipoHabitacion> tipos = em.createQuery("SELECT th FROM TipoHabitacion th WHERE th.tipoHabitacion = :tipoHabitacion", TipoHabitacion.class)
+            TipoHabitacion tipo = em.createQuery(
+                    "SELECT th FROM TipoHabitacion th WHERE th.tipoHabitacion = :tipoHabitacion", TipoHabitacion.class)
                     .setParameter("tipoHabitacion", tipoHabitacion)
-                    .getResultList();
-            return Optional.ofNullable(tipos.isEmpty() ? null : tipos);
+                    .getSingleResult();
+
+            return Optional.of(tipo);
+
+        } catch (NoResultException e) {
+            // Si no se encuentra ningún resultado, devolvemos un Optional vacío
+            return Optional.empty();
+        } catch (Exception e) {
+            e.printStackTrace();  // Manejo de excepción 
+            return Optional.empty();
         } finally {
-            em.close();
+            em.close();  // cerrar el entity manager
         }
     }
 
