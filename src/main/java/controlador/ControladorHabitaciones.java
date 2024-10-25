@@ -7,9 +7,11 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Optional;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import modelo.dao.HabitacionDao;
 import modelo.dao.impl.HabitacionImpl;
 import modelo.dao.impl.TipoHabitacionImpl;
 import modelo.entity.Habitacion;
@@ -37,13 +39,28 @@ public class ControladorHabitaciones implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-          if (e.getSource() == panelHabitacionesAdm.btnAgregarHabi) {
-             // cargarTipoHabitaciones();
-          }
+        if (e.getSource() == panelHabitacionesAdm.btnAgregarHabi) {
+            // cargarTipoHabitaciones();
+        }
 
-          if (e.getSource() == panelHabitacionesAdm.btnAceptarGuardarHabitacion){
-              saveTipoHabitacion();
-          }
+        if (e.getSource() == panelHabitacionesAdm.btnAgregarHabi) {
+            cargarTipoHabitaciones();
+        }
+
+        if (e.getSource() == panelHabitacionesAdm.btnEditarHabi) {
+            cargarTipoHabitacionesEdit();
+        }
+
+        if (e.getSource() == panelHabitacionesAdm.btnAceptarGuardarHabitacion) {
+            saveHabitacion();
+            cargarHabitaciones();
+        }
+
+        if (e.getSource() == panelHabitacionesAdm.btnAceptarEditHabitacion) {
+            updateHabitacion();
+            cargarHabitaciones();
+        }
+
     }
 
     public void cargarHabitaciones() {
@@ -69,30 +86,72 @@ public class ControladorHabitaciones implements ActionListener {
 
     }
 
+    public void saveHabitacion() {
+        Habitacion newHabitacion = panelHabitacionesAdm.datosSaveHabitacion();
 
-    public void saveTipoHabitacion(){
-     TipoHabitacion newTipoHabi =   panelHabitacionesAdm.datosSaveHbitacion();
+        Optional<TipoHabitacion> tipoHabitacion = tipoHabitacionImpl.findByTipoHabitacion(newHabitacion.getTipoHabitacion().getTipoHabitacion());
 
-        System.out.printf(newTipoHabi.getCaracteristicas());
-      tipoHabitacionImpl.save(newTipoHabi);
+        if (tipoHabitacion.isPresent()) {
+            newHabitacion.setTipoHabitacion(tipoHabitacion.get());
+        }
+
+        habitacionImpl.saveHabitacion(newHabitacion);
+    }
+
+    public void updateHabitacion() {
+
+        Habitacion dataNewHabitacion = panelHabitacionesAdm.datosUpdateHabitacion();
+
+        Optional<Habitacion> habitacionExist = habitacionImpl.findHabitacionById(dataNewHabitacion.getIdHabitacion());
+
+        if (habitacionExist.isPresent()) {
+            Habitacion updateHabi = habitacionExist.get();
+
+            updateHabi.setNumeroDeHabitacion(dataNewHabitacion.getNumeroDeHabitacion());
+            updateHabi.setEstado(dataNewHabitacion.getEstado());
+
+            Optional<TipoHabitacion> tipoHabitacion = tipoHabitacionImpl.findByTipoHabitacion(dataNewHabitacion.getTipoHabitacion().getTipoHabitacion());
+
+            if (tipoHabitacion.isPresent()) {
+                updateHabi.setTipoHabitacion(tipoHabitacion.get());
+            }
+            habitacionImpl.updateHabitacion(updateHabi);
+        }
 
     }
 
-/*
-    public void cargarTipoHabitaciones(){
-        JComboBox<String> Tipohabitaciones = panelHabitacionesAdm.cboxTipoHabi;
+    public void cargarTipoHabitaciones() {
+        JComboBox<String> Tipohabitaciones = panelHabitacionesAdm.cboxTipoHabitacionHabi;
         Tipohabitaciones.removeAllItems();
         List<TipoHabitacion> tipoHabitacions = tipoHabitacionImpl.findAll();
+        Tipohabitaciones.addItem("SELECCIONAR");
+        for (TipoHabitacion tipoHabitacion : tipoHabitacions) {
 
+            Tipohabitaciones.addItem(tipoHabitacion.getTipoHabitacion());
+        }
+
+    }
+
+    public void cargarTipoHabitacionesEdit() {
+        JComboBox<String> Tipohabitaciones = panelHabitacionesAdm.cboxTipoHabitacionEditHabi;
+        Tipohabitaciones.removeAllItems();
+        List<TipoHabitacion> tipoHabitacions = tipoHabitacionImpl.findAll();
+        Tipohabitaciones.addItem("SELECCIONAR");
         for (TipoHabitacion tipoHabitacion : tipoHabitacions) {
             Tipohabitaciones.addItem(tipoHabitacion.getTipoHabitacion());
         }
 
     }
-*/
+
     private void agregarListeners() {
         panelHabitacionesAdm.btnAgregarHabi.addActionListener(this);
         panelHabitacionesAdm.btnAceptarGuardarHabitacion.addActionListener(this);
         panelHabitacionesAdm.btnCancelarHabitacion.addActionListener(this);
+        panelHabitacionesAdm.btnEditarHabi.addActionListener(this);
+        panelHabitacionesAdm.btnEliminarHabi.addActionListener(this);
+
+        panelHabitacionesAdm.btnAceptarEditHabitacion.addActionListener(this);
+        panelHabitacionesAdm.btnCancelarEditHabitacion.addActionListener(this);
+        panelHabitacionesAdm.btnBuscarHabitacion.addActionListener(this);
     }
 }

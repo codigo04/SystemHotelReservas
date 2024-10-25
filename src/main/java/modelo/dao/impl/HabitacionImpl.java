@@ -7,6 +7,7 @@ import modelo.dao.HabitacionDao;
 import modelo.entity.Habitacion;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -35,15 +36,20 @@ public  class HabitacionImpl implements HabitacionDao {
     }
 
     @Override
-    public Habitacion findHabitacionById(Long id) {
+    public Optional<Habitacion> findHabitacionById(Long id) {
         EntityManager em = emf.createEntityManager();
-        Habitacion habitacion = null;
+
         try {
-            habitacion = em.find(Habitacion.class, id);
-        } finally {
+            Habitacion habitacion = em.find(Habitacion.class, id);
+
+            return Optional.of(habitacion);
+        } catch (Exception e) {
+
+            return Optional.empty();
+        }finally {
             em.close();
         }
-        return habitacion;
+
     }
 
     @Override
@@ -65,7 +71,7 @@ public  class HabitacionImpl implements HabitacionDao {
         EntityManager em = emf.createEntityManager();
         List<Habitacion> habitaciones = null;
         try {
-            TypedQuery<Habitacion> query = em.createQuery("from Habitacion where estado = true", Habitacion.class);
+            TypedQuery<Habitacion> query = em.createQuery("from Habitacion where estado = estado", Habitacion.class);
             habitaciones = query.getResultList();
         } finally {
             em.close();

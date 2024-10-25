@@ -23,17 +23,13 @@ public class ControladorLogin implements ActionListener {
     private Login vistaLogin;
     private EmpleadoImpl empleadoImpl;
     private ControladorPrincipal controladorCliente;
+    public static Empleado eLoged;
 
     public ControladorLogin() {
         empleadoImpl = new EmpleadoImpl();
         vistaLogin = new Login();
         controladorCliente = new ControladorPrincipal(new JfrmAdministradorPrueba(), new JfrmEmpleado());
         vistaLogin.btnIniciarSesion.addActionListener(this);
-    }
-
-    public void correrLogin() {
-
-        vistaLogin.setVisible(true);
     }
 
     @Override
@@ -52,6 +48,8 @@ public class ControladorLogin implements ActionListener {
 
             if (empleadoExist.isPresent()) {
                 Empleado emplLoged = empleadoExist.get();
+
+                eLoged = emplLoged;
 
                 for (Roles roles : emplLoged.getRoles()) {
 
@@ -73,6 +71,15 @@ public class ControladorLogin implements ActionListener {
             System.out.println("no hay datos");
         }
 
+    }
+
+    public void correrLogin() {
+
+        vistaLogin.setVisible(true);
+    }
+
+    public static Optional<Empleado> authUserLogin() {
+        return Optional.of(eLoged);
     }
 
 }

@@ -23,6 +23,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelEmpleadoAdm panelEmpleadoAdm = new PanelEmpleadoAdm();
     public PanelHabitacionesAdm panelHabitacionesAdm = new PanelHabitacionesAdm();
     public PanelTipoHabitacionesAdm panelTipoHabitacionesAdm = new PanelTipoHabitacionesAdm();
+    public PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
 
     /**
      * Creates new form JfrmAdministrador
@@ -207,7 +208,6 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfiguracionMouseClicked
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
 
 // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         this.panelPaginas.removeAll();
@@ -295,7 +295,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnGestionHabi;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnPerfil;
+    public javax.swing.JButton btnPerfil;
     public javax.swing.JButton btnTipoHabitaciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
