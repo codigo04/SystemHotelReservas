@@ -11,6 +11,7 @@ import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
 import vista.Administrador.paneles.PanelPerfilAdm;
+import vista.Administrador.paneles.PanelRecervasAdm;
 import vista.Administrador.paneles.PanelTipoHabitacionesAdm;
 import vista.Administrador.paneles.PanelUsuariosAdm;
 
@@ -24,6 +25,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelHabitacionesAdm panelHabitacionesAdm = new PanelHabitacionesAdm();
     public PanelTipoHabitacionesAdm panelTipoHabitacionesAdm = new PanelTipoHabitacionesAdm();
     public PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
+    public  PanelRecervasAdm panelRecervasAdm = new PanelRecervasAdm();
 
     /**
      * Creates new form JfrmAdministrador
@@ -132,6 +134,11 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         panelBotones.add(btnTipoHabitaciones);
 
         jButton1.setText("Reservas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         panelBotones.add(jButton1);
 
         jToggleButton1.setText("Clientes");
@@ -253,6 +260,13 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         this.panelPaginas.revalidate();
         this.panelPaginas.repaint();
     }//GEN-LAST:event_btnTipoHabitacionesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.panelPaginas.removeAll();
+        this.panelPaginas.add(panelRecervasAdm);
+        this.panelPaginas.revalidate();
+        this.panelPaginas.repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

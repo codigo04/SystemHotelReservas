@@ -2,20 +2,26 @@ package modelo.entity;
 
 import jakarta.persistence.*;
 import java.util.List;
+
 /**
  *
  * @author Chris
  */
-@Entity (name = "Cliente")
+
+@Entity(name = "Cliente")
 public class Cliente {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
-
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private String correoElectronico;
+    private String celular;
     @OneToMany(mappedBy = "cliente")
     private List<Reserva> reservas;
-    
+
     //GETTER Y SETTER
     public Long getIdCliente() {
         return idCliente;
@@ -72,10 +78,5 @@ public class Cliente {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-    
-    private String dni;
-    private String nombre;
-    private String apellido;
-    private String correoElectronico;
-    private String celular;
+
 }
