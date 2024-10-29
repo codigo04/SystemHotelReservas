@@ -7,15 +7,20 @@ import java.util.List;
  *
  * @author Chris
  */
-
-@Entity (name = "Servicios")
+@Entity(name = "Servicios")
 public class Servicio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idServicios;
-    
+
     @ManyToMany(mappedBy = "servicios")
     private List<Reserva> reservas;
+
+    private String nombreServicio;
+    private Double precio;
+    private String descripcion;
+    private Boolean disponibilidad; 
 
     public Long getIdServicios() {
         return idServicios;
@@ -64,10 +69,5 @@ public class Servicio {
     public void setDisponibilidad(Boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
-    
-    private String nombreServicio;
-    private Double precio;
-    private String descripcion;
-    private Boolean disponibilidad;
-    
+
 }

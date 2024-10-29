@@ -4,12 +4,19 @@
  */
 package controlador;
 
+import aggregates.apis.EmpleadoService;
+import aggregates.request.PersonaRequest;
+import aggregates.response.ResponceReniec;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import modelo.dao.impl.EmpleadoImpl;
 import modelo.dao.impl.RolesImpl;
@@ -26,9 +33,11 @@ public class ControladorEmpleado implements ActionListener {
 
     public EmpleadoImpl empleadoImpl = new EmpleadoImpl();
     public RolesImpl rolesImpl = new RolesImpl();
+    public EmpleadoService clienteReniec;
 
     public ControladorEmpleado(PanelEmpleadoAdm panelEmpleadoAdm) {
         this.panelEmpleadoAdm = panelEmpleadoAdm;
+        clienteReniec = new EmpleadoService();
         agregarListeners();
 
         cargarDatos();
@@ -37,9 +46,15 @@ public class ControladorEmpleado implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        PersonaRequest personaRequest = new PersonaRequest();
 
-        if (e.getSource() == panelEmpleadoAdm.btnBuscarEmpleado) {
+        if (e.getSource() == panelEmpleadoAdm.btnBuscarReniecEm) {
             System.out.println("se esta buscando el empleado espera");
+            try {
+                bucarPersona();
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         if (e.getSource() == panelEmpleadoAdm.btnAceptarGuardarEm) {
@@ -74,6 +89,7 @@ public class ControladorEmpleado implements ActionListener {
         panelEmpleadoAdm.btnCancelarEm.addActionListener(this);
         panelEmpleadoAdm.btnAceptarEditarEm.addActionListener(this);
         panelEmpleadoAdm.btnCancelarEditEm.addActionListener(this);
+
     }
 
     private void saveEmpleado(Empleado empleado) {
@@ -116,7 +132,7 @@ public class ControladorEmpleado implements ActionListener {
 
         if (emplExist.isPresent()) {
             Empleado newEm = emplExist.get();
-            
+
             newEm.setNombre(empleado.getNombre());
             newEm.setApellido(empleado.getApellido());
             newEm.setTelefono(empleado.getTelefono());
@@ -167,6 +183,21 @@ public class ControladorEmpleado implements ActionListener {
 
             System.out.println(empleado.getApellido());
             model.addRow(fila);  // Agrega la fila al modelo de tabla
+        }
+    }
+
+    public void bucarPersona() throws IOException {
+
+        PersonaRequest personaRequest = new PersonaRequest();
+
+        personaRequest.setDni(panelEmpleadoAdm.txtDniEm.getText());
+
+        ResponceReniec responceReniec = clienteReniec.getEntityRetrofit(personaRequest);
+        System.out.println(responceReniec.getApellidoMaterno());
+        if (responceReniec != null) {
+            panelEmpleadoAdm.txtNombreEm.setText(responceReniec.getNombres());
+            panelEmpleadoAdm.txtApellidoEm.setText(responceReniec.getApellidoPaterno() + " " + responceReniec.getApellidoMaterno());
+
         }
     }
 

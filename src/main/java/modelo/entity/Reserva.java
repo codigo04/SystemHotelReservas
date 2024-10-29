@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * @author Chris
  */
-
 @Entity(name = "Reserva")
+@Table
 public class Reserva {
 
     @Id
@@ -48,45 +48,20 @@ public class Reserva {
     )
     private List<Servicio> servicios;
 
+    @OneToMany(mappedBy = "reserva")
+    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy = "reserva")
+    private List<Pago> pagos;
+    
     //GETTER Y SETTER
+
     public Long getIdReserva() {
         return idReserva;
     }
 
     public void setIdReserva(Long idReserva) {
         this.idReserva = idReserva;
-    }
-
-    public Habitacion getHabitacion() {
-        return habitacion;
-    }
-
-    public void setHabitacion(Habitacion habitacion) {
-        this.habitacion = habitacion;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Empleado getUsuario() {
-        return empleado;
-    }
-
-    public void setUsuario(Empleado usuario) {
-        this.empleado = usuario;
-    }
-
-    public List<Servicio> getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(List<Servicio> servicios) {
-        this.servicios = servicios;
     }
 
     public Date getFechaRegistro() {
@@ -121,5 +96,53 @@ public class Reserva {
         this.montoTotal = montoTotal;
     }
 
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public List<Pago> getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(List<Pago> pagos) {
+        this.pagos = pagos;
+    }
+    
 
 }

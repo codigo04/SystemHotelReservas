@@ -7,10 +7,14 @@ package vista.Administrador.paneles;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import modelo.entity.Empleado;
 import modelo.entity.Habitacion;
@@ -31,13 +35,13 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     public PanelTipoHabitacionesAdm() {
         initComponents();
         String cabeTableProduc[] = {"ID", "Características", "Precio", "Tipo Habitacion"};
-
+        busquedaDinamica();
         modTablaHabitaciones.setColumnIdentifiers(cabeTableProduc);
 
-        tablaHabitaciones.setModel(modTablaHabitaciones);
+        tablaTipoHabitaciones.setModel(modTablaHabitaciones);
 
-        tablaHabitaciones.setBackground(Color.BLACK);
-        tablaHabitaciones.setForeground(Color.WHITE);
+        tablaTipoHabitaciones.setBackground(Color.BLACK);
+        tablaTipoHabitaciones.setForeground(Color.WHITE);
 
         Panel_RegistroHabitaciones.setVisible(false);
         Panel_EditHabitaciones.setVisible(false);
@@ -81,9 +85,9 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaHabitaciones = new javax.swing.JTable();
+        tablaTipoHabitaciones = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscarTipoHabitacion = new javax.swing.JTextField();
         btnBuscarEmpleado = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -322,7 +326,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jpanelContenidoHabi.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 48));
         jpanelContenidoHabi.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 7, -1, -1));
 
-        tablaHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTipoHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -330,7 +334,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(tablaHabitaciones);
+        jScrollPane1.setViewportView(tablaTipoHabitaciones);
 
         jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 860, 170));
 
@@ -345,8 +349,23 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         });
         jpanelContenidoHabi.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 180, 86, 35));
 
-        jTextField1.setText("Buscar Habitacion");
-        jpanelContenidoHabi.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
+        txtBuscarTipoHabitacion.setText("Buscar Tipo Habitacion");
+        txtBuscarTipoHabitacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarTipoHabitacionFocusLost(evt);
+            }
+        });
+        txtBuscarTipoHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBuscarTipoHabitacionMouseClicked(evt);
+            }
+        });
+        txtBuscarTipoHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarTipoHabitacionActionPerformed(evt);
+            }
+        });
+        jpanelContenidoHabi.add(txtBuscarTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
 
         btnBuscarEmpleado.setBackground(new java.awt.Color(0, 0, 0));
         btnBuscarEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -377,7 +396,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
         bloquearImputs();
 
-        int fila = tablaHabitaciones.getSelectedRow();
+        int fila = tablaTipoHabitaciones.getSelectedRow();
 
         if (fila == -1) {
 
@@ -471,7 +490,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
         bloquearImputsEdit();
 
-        int fila = tablaHabitaciones.getSelectedRow();
+        int fila = tablaTipoHabitaciones.getSelectedRow();
 
         if (fila == -1) {
 
@@ -535,6 +554,22 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdEditHabiKeyTyped
 
+    private void txtBuscarTipoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarTipoHabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarTipoHabitacionActionPerformed
+
+    private void txtBuscarTipoHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarTipoHabitacionMouseClicked
+        if (txtBuscarTipoHabitacion.getText().equals("Buscar Tipo Habitacion")) {
+            txtBuscarTipoHabitacion.setText("");
+        }
+    }//GEN-LAST:event_txtBuscarTipoHabitacionMouseClicked
+
+    private void txtBuscarTipoHabitacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarTipoHabitacionFocusLost
+        if (txtBuscarTipoHabitacion.getText().isEmpty()) {
+            txtBuscarTipoHabitacion.setText("Buscar Tipo Habitacion");
+        }
+    }//GEN-LAST:event_txtBuscarTipoHabitacionFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_EditHabitaciones;
@@ -560,9 +595,9 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jpanelContenidoHabi;
-    public javax.swing.JTable tablaHabitaciones;
+    public javax.swing.JTable tablaTipoHabitaciones;
+    private javax.swing.JTextField txtBuscarTipoHabitacion;
     public javax.swing.JTextField txtCaracteristicasEditHabi;
     public javax.swing.JTextField txtCaracteristicasHabi;
     public javax.swing.JTextField txtIdEditHabi;
@@ -597,7 +632,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
     public TipoHabitacion datosUpdateHbitacion() {
         TipoHabitacion tipoHabitacion = new TipoHabitacion();
-        
+
         tipoHabitacion.setIdTipo(Long.valueOf(txtIdEditHabi.getText()));
         tipoHabitacion.setTipoHabitacion(txtTipoEditHabi.getText());
         tipoHabitacion.setPrecio(Double.parseDouble(txtPrecioEditHabi.getText()));
@@ -656,12 +691,12 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
           
         
          */
-        int fila = tablaHabitaciones.getSelectedRow();
+        int fila = tablaTipoHabitaciones.getSelectedRow();
 
-        String id = String.valueOf(tablaHabitaciones.getValueAt(fila, 0));
-        String caracteristicas = String.valueOf(tablaHabitaciones.getValueAt(fila, 1));
-        String precio = String.valueOf(tablaHabitaciones.getValueAt(fila, 2));
-        String tipoHasbitacion = String.valueOf(tablaHabitaciones.getValueAt(fila, 3));
+        String id = String.valueOf(tablaTipoHabitaciones.getValueAt(fila, 0));
+        String caracteristicas = String.valueOf(tablaTipoHabitaciones.getValueAt(fila, 1));
+        String precio = String.valueOf(tablaTipoHabitaciones.getValueAt(fila, 2));
+        String tipoHasbitacion = String.valueOf(tablaTipoHabitaciones.getValueAt(fila, 3));
 
         txtIdEditHabi.setText(id);
         txtTipoEditHabi.setText(tipoHasbitacion);
@@ -680,4 +715,26 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         return tipoHabitacion;
     }
 
+    public void busquedaDinamica() {
+        // Crear un TableRowSorter para el modelo de la tabla
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modTablaHabitaciones);
+        tablaTipoHabitaciones.setRowSorter(sorter);
+
+        // Añadir un KeyListener al campo de búsqueda
+        txtBuscarTipoHabitacion.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String textoBusqueda = txtBuscarTipoHabitacion.getText().trim();
+
+                // Si el campo de búsqueda está vacío, mostrar todas las filas
+                if (textoBusqueda.isEmpty()) {
+                    sorter.setRowFilter(null);
+                } else {
+                    // Aplicar un filtro en la tabla según el texto ingresado
+                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + textoBusqueda));
+                }
+            }
+        });
+
+    }
 }

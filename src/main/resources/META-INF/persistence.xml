@@ -13,6 +13,7 @@
         <class>entity.Roles</class>
         <class>entity.Servicios</class>
         <class>entity.Empleado</class>
+         <class>entity.Pago</class>
            <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
         <properties>
             <!-- Configuración de la base de datos -->
