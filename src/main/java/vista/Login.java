@@ -6,10 +6,8 @@ package vista;
 
 
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 //import com.sun.mail.imap.ACL;
-import java.util.ArrayList;
 
 /**
  *

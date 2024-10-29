@@ -32,8 +32,6 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.2.8.Final</version>
         </dependency>
-    
-    
         <!--
       driver para concexion a bd
         -->
@@ -55,9 +53,12 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE210</version>
         </dependency>
-        
-        
-        
+
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.5.2</version>
+        </dependency>
         <!--
        para iformes excel
         -->
@@ -71,9 +72,7 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.3.0</version>
-        </dependency> 
-        
-        
+        </dependency>
          <!--
        para consumo de apis externas openfeign
         -->
@@ -97,6 +96,5 @@
             <artifactId>converter-gson</artifactId>
             <version>2.9.0</version>
         </dependency>
-        
     </dependencies>
 </project>
