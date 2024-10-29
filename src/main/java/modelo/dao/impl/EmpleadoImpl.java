@@ -2,14 +2,11 @@ package modelo.dao.impl;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.transaction.Transactional;
 import java.util.Optional;
 import modelo.dao.EmpleadoDao;
 import modelo.entity.Empleado;
-import modelo.entity.Roles;
 import org.springframework.stereotype.Repository;
 
 /**

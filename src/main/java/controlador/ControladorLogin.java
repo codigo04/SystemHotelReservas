@@ -37,9 +37,7 @@ public class ControladorLogin implements ActionListener {
 
         if (e.getSource() == vistaLogin.btnIniciarSesion) {
 
-            char[] passwordChars = vistaLogin.txtpassword.getPassword();
-            String password = new String(passwordChars);
-
+            String usuario ;
             String contraseña = String.valueOf(vistaLogin.txtpassword.getPassword());
 
             System.out.println(contraseña);
