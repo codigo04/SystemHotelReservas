@@ -20,10 +20,14 @@ import vista.Login;
  */
 public class ControladorLogin implements ActionListener {
 
+    //vista
     private Login vistaLogin;
+
+    //modelo
     private EmpleadoImpl empleadoImpl;
+
     private ControladorPrincipal controladorCliente;
-    public static Empleado eLoged;
+    public static Optional<Empleado> eLoged;
 
     public ControladorLogin() {
         empleadoImpl = new EmpleadoImpl();
@@ -32,22 +36,30 @@ public class ControladorLogin implements ActionListener {
         vistaLogin.btnIniciarSesion.addActionListener(this);
     }
 
+    //detecta las acciones
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == vistaLogin.btnIniciarSesion) {
 
-            String usuario ;
+            // char[] passwordChars = vistaLogin.txtpassword.getPassword();
+            // String password = new String(passwordChars);
+            
+            //jalamos usuario de vista
+            String usuario = vistaLogin.txtUsuario.getText();
+            //jalamos contraseña de vista
             String contraseña = String.valueOf(vistaLogin.txtpassword.getPassword());
 
             System.out.println(contraseña);
 
-            Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado(vistaLogin.txtUsuario.getText(), contraseña);
+            //comunicacion con el modelo
+            Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado(usuario, contraseña);
 
             if (empleadoExist.isPresent()) {
                 Empleado emplLoged = empleadoExist.get();
 
-                eLoged = emplLoged;
+                //guardar el usuari logeado
+                eLoged = Optional.of(emplLoged);
 
                 for (Roles roles : emplLoged.getRoles()) {
 
@@ -55,10 +67,14 @@ public class ControladorLogin implements ActionListener {
 
                     if ("ADMIN".equals(roles.getNombreRol())) {
                         System.out.println("entroo");
+
                         controladorCliente.iniciarPanelAdministrador();
+
                         vistaLogin.setVisible(false);
                     } else {
+
                         controladorCliente.iniciarPanelEmpleado();
+
                         vistaLogin.setVisible(false);
                     }
                 }
@@ -77,7 +93,14 @@ public class ControladorLogin implements ActionListener {
     }
 
     public static Optional<Empleado> authUserLogin() {
-        return Optional.of(eLoged);
+
+        if (eLoged == null) {
+            return Optional.empty();
+
+        } else {
+            return Optional.of(eLoged).get();
+        }
+
     }
 
 }

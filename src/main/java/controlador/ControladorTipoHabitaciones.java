@@ -30,6 +30,7 @@ public class ControladorTipoHabitaciones implements ActionListener {
         this.panelTipoHabitacionesAdm = panelTipoHabitacionesAdm;
         habitacionImpl = new HabitacionImpl();
         tipoHabitacionImpl = new TipoHabitacionImpl();
+        
         agregarListeners();
         cargarTipoHabitaciones();
     }

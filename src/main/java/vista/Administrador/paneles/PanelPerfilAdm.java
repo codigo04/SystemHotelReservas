@@ -4,9 +4,10 @@
  */
 package vista.Administrador.paneles;
 
+import java.awt.Component;
+import java.awt.Container;
+import modelo.entity.Empleado;
 import vista.Empleado.paneles.*;
-
-
 
 /**
  *
@@ -15,10 +16,13 @@ import vista.Empleado.paneles.*;
 public class PanelPerfilAdm extends javax.swing.JPanel {
 
     /**
+     *
      * Creates new form PanelPerfil
      */
     public PanelPerfilAdm() {
         initComponents();
+        Panel_EditPerfil.setVisible(false);
+        bloquearComponentes();
     }
 
     /**
@@ -30,78 +34,250 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        txtUsuarioLoged = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        btnEditarPerfil = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        Panel_EditPerfil = new javax.swing.JPanel();
+        btnAceptarEditHabitacion = new javax.swing.JButton();
+        btnCancelarEditHabitacion = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        txtCorreoElectronicoEditPerf = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        txtTelefonoEditPerf = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtDireccionEditPerf = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtNombreEditPerf = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtApellidoEditPerf = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtPasswordEditPerf = new javax.swing.JTextField();
+        jpanelInfoPerf = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCorreoUsPerfil = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDireccionUsPerfil = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtTelefonoUsPerfil = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        btnEditarPerfil = new javax.swing.JButton();
+        txtUsuarioLoged1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtApellidoUsLoged = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtRolEmpleadoUsPerfil = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtNombreUsLoged = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtPasswordEmpleadoUsPerfil = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jpanelInforLaboralPerf = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jlabelFechaInicio = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel_EditPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_EditPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_EditPerfil.setEnabled(false);
+        Panel_EditPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAceptarEditHabitacion.setBackground(new java.awt.Color(0, 255, 0));
+        btnAceptarEditHabitacion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnAceptarEditHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarEditHabitacion.setText("ACEPTAR");
+        btnAceptarEditHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarEditHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarEditHabitacionActionPerformed(evt);
+            }
+        });
+        Panel_EditPerfil.add(btnAceptarEditHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 180, 30));
+
+        btnCancelarEditHabitacion.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelarEditHabitacion.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        btnCancelarEditHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarEditHabitacion.setText("CANCELAR");
+        btnCancelarEditHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEditHabitacionActionPerformed(evt);
+            }
+        });
+        Panel_EditPerfil.add(btnCancelarEditHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 170, 30));
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\img-editar.png")); // NOI18N
+        Panel_EditPerfil.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
+
+        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("NOMBRE");
+        Panel_EditPerfil.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 150, 20));
+
+        txtCorreoElectronicoEditPerf.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoElectronicoEditPerf.setForeground(new java.awt.Color(0, 0, 0));
+        txtCorreoElectronicoEditPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoElectronicoEditPerfActionPerformed(evt);
+            }
+        });
+        txtCorreoElectronicoEditPerf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoElectronicoEditPerfKeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtCorreoElectronicoEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 330, -1));
+
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("TELEFONO");
+        Panel_EditPerfil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 130, 20));
+
+        txtTelefonoEditPerf.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonoEditPerf.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefonoEditPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoEditPerfActionPerformed(evt);
+            }
+        });
+        txtTelefonoEditPerf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoEditPerfKeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtTelefonoEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 330, -1));
+
+        jLabel13.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("DIRECCION");
+        Panel_EditPerfil.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 70, 20));
+
+        txtDireccionEditPerf.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccionEditPerf.setForeground(new java.awt.Color(0, 0, 0));
+        txtDireccionEditPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionEditPerfActionPerformed(evt);
+            }
+        });
+        txtDireccionEditPerf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionEditPerfKeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtDireccionEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 330, -1));
+
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("CORREO ELECTRONICO");
+        Panel_EditPerfil.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 150, 20));
+
+        txtNombreEditPerf.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreEditPerf.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreEditPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEditPerfActionPerformed(evt);
+            }
+        });
+        txtNombreEditPerf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreEditPerfKeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtNombreEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 330, -1));
+
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("APELLIDO");
+        Panel_EditPerfil.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 150, 20));
+
+        txtApellidoEditPerf.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoEditPerf.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoEditPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoEditPerfActionPerformed(evt);
+            }
+        });
+        txtApellidoEditPerf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoEditPerfKeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtApellidoEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 330, -1));
+
+        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("CONTRASEÑA:");
+        Panel_EditPerfil.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 100, 20));
+
+        txtPasswordEditPerf.setBackground(new java.awt.Color(255, 255, 255));
+        txtPasswordEditPerf.setForeground(new java.awt.Color(0, 0, 0));
+        txtPasswordEditPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordEditPerfActionPerformed(evt);
+            }
+        });
+        txtPasswordEditPerf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordEditPerfKeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtPasswordEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 330, -1));
+
+        add(Panel_EditPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 430, 470));
+
+        jpanelInfoPerf.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelInfoPerf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jpanelInfoPerf.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Email");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 18, -1, -1));
+        jLabel2.setText("APELLIDO:");
+        jpanelInfoPerf.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoUsPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtCorreoUsPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 49, 437, -1));
+        jpanelInfoPerf.add(txtCorreoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 270, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Direccion");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 83, -1, -1));
+        jLabel4.setText("ROL:");
+        jpanelInfoPerf.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtDireccionUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccionUsPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtDireccionUsPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 686, -1));
+        jpanelInfoPerf.add(txtDireccionUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 270, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Telefono");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 18, -1, -1));
+        jLabel9.setText("TELEFONO:");
+        jpanelInfoPerf.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefonoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonoUsPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtTelefonoUsPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 49, 231, -1));
+        jpanelInfoPerf.add(txtTelefonoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 270, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 725, 150));
-
-        txtUsuarioLoged.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsuarioLoged.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtUsuarioLoged.setForeground(new java.awt.Color(0, 0, 0));
-        add(txtUsuarioLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 420, 40));
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 90, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(13, 110, 253));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnEditarPerfil.setBackground(new java.awt.Color(0, 0, 0));
         btnEditarPerfil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -112,76 +288,195 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
                 btnEditarPerfilActionPerformed(evt);
             }
         });
-        add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 115, 32));
+        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 110, 30));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        txtUsuarioLoged1.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuarioLoged1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtUsuarioLoged1.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuarioLoged1.setText("Perfil del Administrador");
+        jPanel1.add(txtUsuarioLoged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 410, 50));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jpanelInfoPerf.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 50));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Posicion");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 91, -1, -1));
+        jLabel3.setText("CORREO ELECTRONICO:");
+        jpanelInfoPerf.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Recepcionista");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 122, -1, -1));
+        txtApellidoUsLoged.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoUsLoged.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoUsLogedActionPerformed(evt);
+            }
+        });
+        jpanelInfoPerf.add(txtApellidoUsLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 270, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("DIRECCION");
+        jpanelInfoPerf.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        txtRolEmpleadoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelInfoPerf.add(txtRolEmpleadoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 270, -1));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("NOMBRE:");
+        jpanelInfoPerf.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        txtNombreUsLoged.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreUsLoged.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreUsLogedActionPerformed(evt);
+            }
+        });
+        jpanelInfoPerf.add(txtNombreUsLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 270, -1));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("CONTRASEÑA:");
+        jpanelInfoPerf.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        txtPasswordEmpleadoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelInfoPerf.add(txtPasswordEmpleadoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 270, -1));
+
+        add(jpanelInfoPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 730, 380));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 90, -1, -1));
+
+        jpanelInforLaboralPerf.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelInforLaboralPerf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jpanelInforLaboralPerf.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Informacion Laboral");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 15, 257, -1));
+        jpanelInforLaboralPerf.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 15, 257, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 78, -1, 50));
+        jpanelInforLaboralPerf.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 78, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fecha Inicio");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 91, -1, -1));
+        jpanelInforLaboralPerf.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("14/20/2024");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 122, -1, -1));
+        jlabelFechaInicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlabelFechaInicio.setForeground(new java.awt.Color(204, 204, 204));
+        jlabelFechaInicio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlabelFechaInicio.setText("14/20/2024");
+        jpanelInforLaboralPerf.add(jlabelFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 78, -1, 50));
+        jpanelInforLaboralPerf.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 78, -1, 50));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 725, 170));
-
-        jLabel13.setText("Administrador");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
+        add(jpanelInforLaboralPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 730, 170));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-        // TODO add your handling code here:
+        Panel_EditPerfil.setVisible(true);
+        llenearFormEditarPerfilUs();
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtTelefonoUsPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoUsPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtTelefonoUsPerfilActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtDireccionUsPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionUsPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtDireccionUsPerfilActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCorreoUsPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoUsPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCorreoUsPerfilActionPerformed
+
+    private void btnAceptarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabitacionActionPerformed
+        desbloquear(jpanelInfoPerf);
+        bloquearComponentes();
+        Panel_EditPerfil.setVisible(false);
+    }//GEN-LAST:event_btnAceptarEditHabitacionActionPerformed
+
+    private void btnCancelarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabitacionActionPerformed
+        desbloquear(jpanelInforLaboralPerf);
+        Panel_EditPerfil.setVisible(false);
+    }//GEN-LAST:event_btnCancelarEditHabitacionActionPerformed
+
+    private void txtCorreoElectronicoEditPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoEditPerfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoElectronicoEditPerfActionPerformed
+
+    private void txtCorreoElectronicoEditPerfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoEditPerfKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoElectronicoEditPerfKeyTyped
+
+    private void txtTelefonoEditPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoEditPerfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoEditPerfActionPerformed
+
+    private void txtTelefonoEditPerfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEditPerfKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoEditPerfKeyTyped
+
+    private void txtDireccionEditPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionEditPerfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionEditPerfActionPerformed
+
+    private void txtDireccionEditPerfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionEditPerfKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionEditPerfKeyTyped
+
+    private void txtApellidoUsLogedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoUsLogedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoUsLogedActionPerformed
+
+    private void txtNombreUsLogedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsLogedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreUsLogedActionPerformed
+
+    private void txtNombreEditPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEditPerfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEditPerfActionPerformed
+
+    private void txtNombreEditPerfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEditPerfKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEditPerfKeyTyped
+
+    private void txtApellidoEditPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoEditPerfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoEditPerfActionPerformed
+
+    private void txtApellidoEditPerfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEditPerfKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoEditPerfKeyTyped
+
+    private void txtPasswordEditPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordEditPerfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordEditPerfActionPerformed
+
+    private void txtPasswordEditPerfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordEditPerfKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordEditPerfKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel Panel_EditPerfil;
+    public javax.swing.JButton btnAceptarEditHabitacion;
+    public javax.swing.JButton btnCancelarEditHabitacion;
     public javax.swing.JButton btnEditarPerfil;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -190,10 +485,87 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField7;
-    public javax.swing.JLabel txtUsuarioLoged;
+    public javax.swing.JLabel jlabelFechaInicio;
+    private javax.swing.JPanel jpanelInfoPerf;
+    private javax.swing.JPanel jpanelInforLaboralPerf;
+    public javax.swing.JTextField txtApellidoEditPerf;
+    public javax.swing.JTextField txtApellidoUsLoged;
+    public javax.swing.JTextField txtCorreoElectronicoEditPerf;
+    public javax.swing.JTextField txtCorreoUsPerfil;
+    public javax.swing.JTextField txtDireccionEditPerf;
+    public javax.swing.JTextField txtDireccionUsPerfil;
+    public javax.swing.JTextField txtNombreEditPerf;
+    public javax.swing.JTextField txtNombreUsLoged;
+    public javax.swing.JTextField txtPasswordEditPerf;
+    public javax.swing.JTextField txtPasswordEmpleadoUsPerfil;
+    public javax.swing.JTextField txtRolEmpleadoUsPerfil;
+    public javax.swing.JTextField txtTelefonoEditPerf;
+    public javax.swing.JTextField txtTelefonoUsPerfil;
+    public javax.swing.JLabel txtUsuarioLoged1;
     // End of variables declaration//GEN-END:variables
+
+    public void bloquearComponentes() {
+        txtCorreoUsPerfil.setEnabled(false);
+        txtTelefonoUsPerfil.setEnabled(false);
+        txtDireccionUsPerfil.setEnabled(false);
+        txtRolEmpleadoUsPerfil.setEnabled(false);
+        txtNombreUsLoged.setEnabled(false);
+        txtApellidoUsLoged.setEnabled(false);
+    }
+
+    public void llenearFormEditarPerfilUs() {
+        txtNombreEditPerf.setText(txtNombreUsLoged.getText());
+        txtApellidoEditPerf.setText(txtApellidoUsLoged.getText());
+        txtCorreoElectronicoEditPerf.setText(txtCorreoUsPerfil.getText());
+        txtTelefonoEditPerf.setText(txtTelefonoUsPerfil.getText());
+        txtDireccionEditPerf.setText(txtDireccionUsPerfil.getText());
+        txtPasswordEditPerf.setText(txtPasswordEmpleadoUsPerfil.getText());
+    }
+
+    public void limpiarFormEditarPerfilUs() {
+        txtNombreEditPerf.setText("");
+        txtApellidoEditPerf.setText("");
+        txtCorreoElectronicoEditPerf.setText("");
+        txtTelefonoEditPerf.setText("");
+        txtDireccionEditPerf.setText("");
+    }
+
+    public void bloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                bloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(false);
+
+    }
+
+    public void desbloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                desbloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(true);
+
+    }
+
+    public Empleado datosUpdateEmpleadoPerfil() {
+        Empleado empleadoUpdate = new Empleado();
+
+        empleadoUpdate.setNombre(txtNombreEditPerf.getText());
+        empleadoUpdate.setApellido(txtApellidoEditPerf.getText());
+        empleadoUpdate.setCorreoElectronico(txtCorreoElectronicoEditPerf.getText());
+        empleadoUpdate.setTelefono(txtTelefonoEditPerf.getText());
+        empleadoUpdate.setDireccion(txtDireccionEditPerf.getText());
+        empleadoUpdate.setPassword(txtPasswordEditPerf.getText());
+
+     
+        return empleadoUpdate;
+    }
+
 }

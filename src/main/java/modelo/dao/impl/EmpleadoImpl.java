@@ -144,6 +144,8 @@ public class EmpleadoImpl implements EmpleadoDao {
 
     }
 
+    
+    //BUSCA EL USUARIO
     @Override
     public Optional<Empleado> authenticateEmpleado(String correoElectronico, String password) {
         EntityManager em = emf.createEntityManager();

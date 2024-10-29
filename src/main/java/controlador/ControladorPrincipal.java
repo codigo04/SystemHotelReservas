@@ -20,29 +20,31 @@ public class ControladorPrincipal implements ActionListener {
     private ControladorHabitaciones controladorHabitaciones;
     private ControladorTipoHabitaciones controladorTipoHabitaciones;
     private ControladorPerfil controladorPerfil;
-
+    private ControladorReservas controladorReservas;
     public ControladorPrincipal(JfrmAdministradorPrueba administradorPrueba, JfrmEmpleado vistaEmpleado) {
         this.administradorPrueba = administradorPrueba;
         this.vistaEmpleado = vistaEmpleado;
 
         // Configurar eventos
         administradorPrueba.bntEmpleado.addActionListener(this);
- administradorPrueba.btnPerfil.addActionListener(this);
+        administradorPrueba.btnPerfil.addActionListener(this);
         // Inicializar controladores
         ctrEmpleado = new ControladorEmpleado(administradorPrueba.panelEmpleadoAdm);
         controladorRoles = new ControladorRoles(administradorPrueba.panelEmpleadoAdm);
         controladorHabitaciones = new ControladorHabitaciones(administradorPrueba.panelHabitacionesAdm);
         controladorTipoHabitaciones = new ControladorTipoHabitaciones(administradorPrueba.panelTipoHabitacionesAdm);
         controladorPerfil = new ControladorPerfil(administradorPrueba.panelPerfilAdm);
+         controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == administradorPrueba.bntEmpleado) {
-              
+
         }
-        
+
         if (e.getSource() == administradorPrueba.btnPerfil) {
-              controladorPerfil.cargarUser();
+
+            controladorPerfil.cargarDatosPerfil();
         }
     }
 
@@ -60,4 +62,5 @@ public class ControladorPrincipal implements ActionListener {
         }
         vistaEmpleado.setVisible(true);
     }
+
 }
