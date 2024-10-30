@@ -1,4 +1,5 @@
 package modelo.dao.impl;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -13,14 +14,13 @@ import java.util.Optional;
  *
  * @author Chris
  */
-public  class HabitacionImpl implements HabitacionDao {
+public class HabitacionImpl implements HabitacionDao {
 
     private EntityManagerFactory emf;
 
     public HabitacionImpl() {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
-
 
     @Override
     public List<Habitacion> getAllHabitaciones() {
@@ -35,8 +35,6 @@ public  class HabitacionImpl implements HabitacionDao {
         return habitaciones;
     }
 
-    
-    
     @Override
     public Optional<Habitacion> findHabitacionById(Long id) {
         EntityManager em = emf.createEntityManager();
@@ -48,7 +46,7 @@ public  class HabitacionImpl implements HabitacionDao {
         } catch (Exception e) {
 
             return Optional.empty();
-        }finally {
+        } finally {
             em.close();
         }
 
@@ -69,16 +67,17 @@ public  class HabitacionImpl implements HabitacionDao {
     }
 
     @Override
-    public List<Habitacion> findHabitacionesDisponibles() {
+    public Optional<List<Habitacion>> findHabitacionesPorEstado(String estado) {
         EntityManager em = emf.createEntityManager();
         List<Habitacion> habitaciones = null;
         try {
-            TypedQuery<Habitacion> query = em.createQuery("from Habitacion where estado = estado", Habitacion.class);
+            TypedQuery<Habitacion> query = em.createQuery("from Habitacion where estado = :estado", Habitacion.class);
+            query.setParameter("estado", estado);
             habitaciones = query.getResultList();
         } finally {
             em.close();
         }
-        return habitaciones;
+        return Optional.ofNullable(habitaciones);
     }
 
     @Override
@@ -147,8 +146,5 @@ public  class HabitacionImpl implements HabitacionDao {
             em.close();
         }
     }
-
-    
-
 
 }

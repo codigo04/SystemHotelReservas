@@ -55,7 +55,7 @@ public class ControladorReservas implements ActionListener {
             Object[] fila = new Object[7];
             fila[0] = reserva.getIdReserva();
             fila[1] = reserva.getCliente().getNombre();
-            fila[2] = reserva.getHabitacion().getNumeroDeHabitacion();
+            fila[2] = reserva.getHabitacion().getTipoHabitacion().getTipoHabitacion()+ "  " + reserva.getHabitacion().getNumeroDeHabitacion();
             fila[3] = reserva.getFechaLLegada();
             fila[4] = reserva.getFechaFin();
             fila[5] = "POR DEFENIR";
@@ -88,7 +88,7 @@ public class ControladorReservas implements ActionListener {
 
             fila.createCell(0).setCellValue(reserva.getIdReserva()); // ID de la reserva
             fila.createCell(1).setCellValue(reserva.getCliente().getNombre()); // Nombre del cliente
-            fila.createCell(2).setCellValue(reserva.getHabitacion().getNumeroDeHabitacion()); // Fecha de reserva
+            fila.createCell(2).setCellValue(reserva.getHabitacion().getTipoHabitacion().getTipoHabitacion()+ "  " + reserva.getHabitacion().getNumeroDeHabitacion()); // Fecha de reserva
             fila.createCell(3).setCellValue(reserva.getFechaLLegada()); // Estado de la reserva
             fila.createCell(4).setCellValue(reserva.getFechaFin()); // Monto de la reserva
             fila.createCell(5).setCellValue("por definir");
