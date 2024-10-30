@@ -22,6 +22,7 @@ public class ControladorPrincipal implements ActionListener {
     private ControladorPerfil controladorPerfil;
     private ControladorReservas controladorReservas;
     private ControladorInicio controladorInicio;
+    private ControladorClientes controladorClientes;
 
     public ControladorPrincipal(JfrmAdministradorPrueba administradorPrueba, JfrmEmpleado vistaEmpleado) {
         this.administradorPrueba = administradorPrueba;
@@ -38,6 +39,7 @@ public class ControladorPrincipal implements ActionListener {
         controladorPerfil = new ControladorPerfil(administradorPrueba.panelPerfilAdm);
         controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm);
         controladorInicio = new ControladorInicio(administradorPrueba.panelInicio);
+        controladorClientes = new ControladorClientes(administradorPrueba.panelClientesAdm);
     }
 
     public void actionPerformed(ActionEvent e) {

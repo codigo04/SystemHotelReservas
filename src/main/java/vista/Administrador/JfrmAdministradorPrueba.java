@@ -6,11 +6,14 @@ package vista.Administrador;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import vista.Administrador.paneles.PanelClientesAdm;
 import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
@@ -30,10 +33,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelTipoHabitacionesAdm panelTipoHabitacionesAdm = new PanelTipoHabitacionesAdm();
     public PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
     public PanelRecervasAdm panelRecervasAdm = new PanelRecervasAdm();
-<<<<<<< HEAD
+
     public PanelInicio panelInicio = new PanelInicio();
-=======
->>>>>>> 8ca00c58d75ce1f827d44e8f3c7e63c3faa67365
+    public PanelClientesAdm panelClientesAdm = new PanelClientesAdm();
 
     /**
      * Creates new form JfrmAdministrador
@@ -42,7 +44,6 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         initComponents();
         setVisible(false);
         this.setLocationRelativeTo(null);
-
         //setAlwaysOnTop(true);
         /* ************ para pantalla grande **************
        GraphicsDevice dispositivoGrafico = GraphicsEnvironment
@@ -53,6 +54,8 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         this.panelPaginas.add(panelInicio);
         this.panelPaginas.revalidate();
         this.panelPaginas.repaint();
+
+        interacionBontenes(btnInicio);
     }
 
     /**
@@ -71,11 +74,12 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         bntEmpleado = new javax.swing.JButton();
         btnGestionHabi = new javax.swing.JButton();
         btnTipoHabitaciones = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnReservas = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
         btnConfiguracion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jBSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         panelPaginas = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -101,10 +105,24 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInicioMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInicioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInicioMouseExited(evt);
+            }
         });
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
+            }
+        });
+        btnInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnInicioKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnInicioKeyReleased(evt);
             }
         });
         panelBotones.add(btnInicio);
@@ -161,6 +179,11 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         btnTipoHabitaciones.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         btnTipoHabitaciones.setForeground(new java.awt.Color(51, 51, 51));
         btnTipoHabitaciones.setText("Tipo Habitaciones");
+        btnTipoHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTipoHabitacionesMouseClicked(evt);
+            }
+        });
         btnTipoHabitaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTipoHabitacionesActionPerformed(evt);
@@ -168,22 +191,37 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnTipoHabitaciones);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jButton1.setText("Reservas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        btnReservas.setBackground(new java.awt.Color(204, 204, 204));
+        btnReservas.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnReservas.setForeground(new java.awt.Color(51, 51, 51));
+        btnReservas.setText("Reservas");
+        btnReservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReservasMouseClicked(evt);
             }
         });
-        panelBotones.add(jButton1);
+        btnReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservasActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnReservas);
 
-        jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jToggleButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jToggleButton1.setText("Clientes");
-        panelBotones.add(jToggleButton1);
+        btnClientes.setBackground(new java.awt.Color(204, 204, 204));
+        btnClientes.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnClientes.setForeground(new java.awt.Color(51, 51, 51));
+        btnClientes.setText("Clientes");
+        btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClientesMouseClicked(evt);
+            }
+        });
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+        panelBotones.add(btnClientes);
 
         btnConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
         btnConfiguracion.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -218,11 +256,15 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelMenu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 80, 25));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
+        panelMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 120));
+
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 640));
 
         panelPaginas.setBackground(new java.awt.Color(153, 255, 51));
         panelPaginas.setAutoscrolls(true);
-        panelPaginas.setLayout(new java.awt.GridLayout(1, 0));
+        panelPaginas.setLayout(new java.awt.GridLayout());
         getContentPane().add(panelPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 1000, 640));
 
         jMenu2.setText("Themes");
@@ -258,23 +300,23 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
-
+        interacionBontenes(btnInicio);
     }//GEN-LAST:event_btnInicioMouseClicked
 
     private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
-
+        interacionBontenes(btnPerfil);
     }//GEN-LAST:event_btnPerfilMouseClicked
 
     private void bntEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntEmpleadoMouseClicked
-
+        interacionBontenes(bntEmpleado);
     }//GEN-LAST:event_bntEmpleadoMouseClicked
 
     private void btnGestionHabiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionHabiMouseClicked
-
+        interacionBontenes(btnGestionHabi);
     }//GEN-LAST:event_btnGestionHabiMouseClicked
 
     private void btnConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfiguracionMouseClicked
-
+        interacionBontenes(btnConfiguracion);
     }//GEN-LAST:event_btnConfiguracionMouseClicked
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
@@ -324,12 +366,12 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         this.panelPaginas.repaint();
     }//GEN-LAST:event_btnTipoHabitacionesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservasActionPerformed
         this.panelPaginas.removeAll();
         this.panelPaginas.add(panelRecervasAdm);
         this.panelPaginas.revalidate();
         this.panelPaginas.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnReservasActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         SwingUtilities.invokeLater(() -> {
@@ -357,6 +399,42 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void btnInicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnInicioKeyPressed
+
+    }//GEN-LAST:event_btnInicioKeyPressed
+
+    private void btnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseEntered
+
+    }//GEN-LAST:event_btnInicioMouseEntered
+
+    private void btnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseExited
+
+    }//GEN-LAST:event_btnInicioMouseExited
+
+    private void btnInicioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnInicioKeyReleased
+
+    }//GEN-LAST:event_btnInicioKeyReleased
+
+    private void btnTipoHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoHabitacionesMouseClicked
+        interacionBontenes(btnTipoHabitaciones);
+    }//GEN-LAST:event_btnTipoHabitacionesMouseClicked
+
+    private void btnReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReservasMouseClicked
+        interacionBontenes(btnReservas);
+    }//GEN-LAST:event_btnReservasMouseClicked
+
+    private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientesMouseClicked
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        interacionBontenes(btnClientes);
+        this.panelPaginas.removeAll();
+        this.panelPaginas.add(panelClientesAdm);
+        this.panelPaginas.revalidate();
+        this.panelPaginas.repaint();
+    }//GEN-LAST:event_btnClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,22 +483,51 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bntEmpleado;
+    private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnGestionHabi;
     private javax.swing.JButton btnInicio;
     public javax.swing.JButton btnPerfil;
+    private javax.swing.JButton btnReservas;
     public javax.swing.JButton btnTipoHabitaciones;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelPaginas;
     // End of variables declaration//GEN-END:variables
 
+    public void interacionBontenes(javax.swing.JButton button) {
+        btnConfiguracion.setBackground(Color.WHITE);
+        btnConfiguracion.setForeground(Color.BLACK);
+
+        btnGestionHabi.setBackground(Color.WHITE);
+        btnGestionHabi.setForeground(Color.BLACK);
+
+        btnInicio.setBackground(Color.WHITE);
+        btnInicio.setForeground(Color.BLACK);
+
+        btnTipoHabitaciones.setBackground(Color.WHITE);
+        btnTipoHabitaciones.setForeground(Color.BLACK);
+
+        btnReservas.setBackground(Color.WHITE);
+        btnReservas.setForeground(Color.BLACK);
+
+        btnClientes.setBackground(Color.WHITE);
+        btnClientes.setForeground(Color.BLACK);
+
+        bntEmpleado.setBackground(Color.WHITE);
+        bntEmpleado.setForeground(Color.BLACK);
+
+        btnPerfil.setBackground(Color.WHITE);
+        btnPerfil.setForeground(Color.BLACK);
+
+        button.setBackground(Color.RED);
+        button.setForeground(Color.WHITE);
+    }
 }
