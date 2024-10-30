@@ -60,7 +60,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBInicio.setBackground(new java.awt.Color(204, 204, 204));
-        jBInicio.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jBInicio.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jBInicio.setForeground(new java.awt.Color(51, 51, 51));
         jBInicio.setText("Inicio");
         jBInicio.addActionListener(new java.awt.event.ActionListener() {

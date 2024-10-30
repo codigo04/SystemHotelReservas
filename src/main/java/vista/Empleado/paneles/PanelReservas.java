@@ -417,14 +417,14 @@ public class PanelReservas extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         bloquear(PanelBotones);
-        Panel_Cancelar.setVisible(true);
         background.setVisible(true);
+        Panel_Cancelar.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         bloquear(PanelBotones);
-        Panel_Editar.setVisible(true);
         background.setVisible(true);
+        Panel_Editar.setVisible(true);
 
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
@@ -465,13 +465,15 @@ public class PanelReservas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+    
+    
+    // PANEL EDITAR RESERVA !!!
     private void btnCancelar_PanelEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_PanelEditarActionPerformed
         desbloquear(PanelBotones);
         Panel_Editar.setVisible(false);
@@ -488,7 +490,8 @@ public class PanelReservas extends javax.swing.JPanel {
         Panel_Editar.setVisible(false);
         background.setVisible(false);
     }//GEN-LAST:event_btnActualizar_PanelEditar1ActionPerformed
-
+    
+    // PANEL CONFIRMAR CANCELACIÓN !!!!
     private void btnCancelar_PanelCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_PanelCancelarActionPerformed
         // CANCELAR DE LA VENTANA CANCELAR
         desbloquear(PanelBotones);
