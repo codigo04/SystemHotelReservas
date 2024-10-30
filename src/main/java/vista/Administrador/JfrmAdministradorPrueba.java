@@ -4,9 +4,13 @@
  */
 package vista.Administrador;
 
-import java.awt.BorderLayout;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
@@ -14,7 +18,6 @@ import vista.Administrador.paneles.PanelInicio;
 import vista.Administrador.paneles.PanelPerfilAdm;
 import vista.Administrador.paneles.PanelRecervasAdm;
 import vista.Administrador.paneles.PanelTipoHabitacionesAdm;
-import vista.Administrador.paneles.PanelUsuariosAdm;
 
 /**
  *
@@ -27,7 +30,10 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelTipoHabitacionesAdm panelTipoHabitacionesAdm = new PanelTipoHabitacionesAdm();
     public PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
     public PanelRecervasAdm panelRecervasAdm = new PanelRecervasAdm();
+<<<<<<< HEAD
     public PanelInicio panelInicio = new PanelInicio();
+=======
+>>>>>>> 8ca00c58d75ce1f827d44e8f3c7e63c3faa67365
 
     /**
      * Creates new form JfrmAdministrador
@@ -35,6 +41,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public JfrmAdministradorPrueba() {
         initComponents();
         setVisible(false);
+        this.setLocationRelativeTo(null);
 
         //setAlwaysOnTop(true);
         /* ************ para pantalla grande **************
@@ -68,17 +75,27 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         btnConfiguracion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jBSalir = new javax.swing.JButton();
         panelPaginas = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMenu.setBackground(new java.awt.Color(0, 0, 0));
+        panelMenu.setBackground(new java.awt.Color(51, 51, 51));
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelBotones.setBackground(new java.awt.Color(0, 0, 0));
-        panelBotones.setForeground(new java.awt.Color(255, 204, 102));
+        panelBotones.setBackground(new java.awt.Color(51, 51, 51));
+        panelBotones.setForeground(new java.awt.Color(255, 255, 255));
         panelBotones.setLayout(new java.awt.GridLayout(0, 1, 0, 15));
 
+        btnInicio.setBackground(new java.awt.Color(204, 204, 204));
+        btnInicio.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnInicio.setForeground(new java.awt.Color(51, 51, 51));
         btnInicio.setText("Inicio");
         btnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,6 +109,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnInicio);
 
+        btnPerfil.setBackground(new java.awt.Color(204, 204, 204));
+        btnPerfil.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnPerfil.setForeground(new java.awt.Color(51, 51, 51));
         btnPerfil.setText("Perfil");
         btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,6 +125,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnPerfil);
 
+        bntEmpleado.setBackground(new java.awt.Color(204, 204, 204));
+        bntEmpleado.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        bntEmpleado.setForeground(new java.awt.Color(51, 51, 51));
         bntEmpleado.setText("Empleados");
         bntEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,6 +141,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(bntEmpleado);
 
+        btnGestionHabi.setBackground(new java.awt.Color(204, 204, 204));
+        btnGestionHabi.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnGestionHabi.setForeground(new java.awt.Color(51, 51, 51));
         btnGestionHabi.setText("Habitaciones");
         btnGestionHabi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,6 +157,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnGestionHabi);
 
+        btnTipoHabitaciones.setBackground(new java.awt.Color(204, 204, 204));
+        btnTipoHabitaciones.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        btnTipoHabitaciones.setForeground(new java.awt.Color(51, 51, 51));
         btnTipoHabitaciones.setText("Tipo Habitaciones");
         btnTipoHabitaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +168,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnTipoHabitaciones);
 
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Reservas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,9 +179,15 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(jButton1);
 
+        jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jToggleButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(51, 51, 51));
         jToggleButton1.setText("Clientes");
         panelBotones.add(jToggleButton1);
 
+        btnConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
+        btnConfiguracion.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnConfiguracion.setForeground(new java.awt.Color(51, 51, 51));
         btnConfiguracion.setText("Configuracion");
         btnConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,35 +201,51 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnConfiguracion);
 
+        panelMenu.add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 427));
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
+        panelMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 190, -1));
 
-        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
-        panelMenu.setLayout(panelMenuLayout);
-        panelMenuLayout.setHorizontalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelMenuLayout.setVerticalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(274, Short.MAX_VALUE))
-        );
+        jBSalir.setBackground(new java.awt.Color(153, 0, 0));
+        jBSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jBSalir.setText("Salir");
+        jBSalir.setBorder(null);
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
+        panelMenu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 80, 25));
 
-        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 750));
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 640));
 
         panelPaginas.setBackground(new java.awt.Color(153, 255, 51));
         panelPaginas.setAutoscrolls(true);
         panelPaginas.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(panelPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1210, 770));
+        getContentPane().add(panelPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 1000, 640));
+
+        jMenu2.setText("Themes");
+
+        jMenuItem1.setText("White");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Black");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,6 +331,33 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         this.panelPaginas.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(new FlatLightLaf());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(JfrmAdministradorPrueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(new FlatDarkLaf());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(JfrmAdministradorPrueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jBSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,11 +386,20 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JfrmAdministradorPrueba().setVisible(true);
-            }
+        try {
+            FlatLightLaf.setup();
+            //FlatDarkLaf.setup();
+            UIManager.put("TextComponent.arc", 10);
+            UIManager.put("Button.arc", 20);
+            UIManager.put("Componente.focusWidth", 0);
+        } catch (Exception ex) {
+            System.err.println("No se pudo inicializar el Look and Feel de FlatLaf.");
+        }
+
+        // Crear y mostrar la GUI de tu aplicación
+        java.awt.EventQueue.invokeLater(() -> {
+            // Inicializa y muestra tu ventana principal
+            new JfrmAdministradorPrueba().setVisible(true);
         });
     }
 
@@ -320,8 +410,13 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     public javax.swing.JButton btnPerfil;
     public javax.swing.JButton btnTipoHabitaciones;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelMenu;

@@ -70,7 +70,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         Panel_EditHabitaciones = new javax.swing.JPanel();
         btnAceptarEditHabitacion = new javax.swing.JButton();
         btnCancelarEditHabitacion = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         txtIdEditHabi = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -82,7 +81,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         Panel_RegistroHabitaciones = new javax.swing.JPanel();
         btnAceptarGuardarHabitacion = new javax.swing.JButton();
         btnCancelarHabitacion = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtPrecioHabi = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -91,6 +89,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cboxTipoHabitacionHabi = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
         jpanelContenidoHabi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -101,16 +100,15 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         btnBuscarHabitacion = new javax.swing.JButton();
         btnEditarHabi = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gestión de Reservas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 571, -1));
 
         btnExportarReporteReservas.setBackground(new java.awt.Color(0, 0, 0));
-        btnExportarReporteReservas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExportarReporteReservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnExportarReporteReservas.setForeground(new java.awt.Color(255, 255, 255));
         btnExportarReporteReservas.setText("Exportar Excel");
         btnExportarReporteReservas.addActionListener(new java.awt.event.ActionListener() {
@@ -118,9 +116,10 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
                 btnExportarReporteReservasActionPerformed(evt);
             }
         });
-        add(btnExportarReporteReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 150, 48));
+        add(btnExportarReporteReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 150, 48));
 
-        Panel_EditHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_EditHabitaciones.setBackground(new java.awt.Color(102, 102, 102));
+        Panel_EditHabitaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         Panel_EditHabitaciones.setEnabled(false);
         Panel_EditHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -146,10 +145,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
             }
         });
         Panel_EditHabitaciones.add(btnCancelarEditHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 170, 30));
-
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\img-editar.png")); // NOI18N
-        Panel_EditHabitaciones.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 90));
 
         jLabel20.setBackground(new java.awt.Color(0, 0, 0));
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -223,9 +218,10 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         });
         Panel_EditHabitaciones.add(cboxTipoHabitacionEditHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 150, -1));
 
-        add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 470, 370));
+        add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 470, 370));
 
-        Panel_RegistroHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_RegistroHabitaciones.setBackground(new java.awt.Color(102, 102, 102));
+        Panel_RegistroHabitaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         Panel_RegistroHabitaciones.setEnabled(false);
         Panel_RegistroHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -251,10 +247,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
             }
         });
         Panel_RegistroHabitaciones.add(btnCancelarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 170, 30));
-
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\img-editar.png")); // NOI18N
-        Panel_RegistroHabitaciones.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 90));
 
         jLabel17.setBackground(new java.awt.Color(0, 0, 0));
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -328,18 +320,25 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         });
         Panel_RegistroHabitaciones.add(cboxTipoHabitacionHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 150, -1));
 
-        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 470, 370));
+        jLabel4.setText("Registar");
+        Panel_RegistroHabitaciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+
+        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 470, 370));
 
         jpanelContenidoHabi.setBackground(new java.awt.Color(255, 255, 255));
-        jpanelContenidoHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jpanelContenidoHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jpanelContenidoHabi.setForeground(new java.awt.Color(0, 0, 0));
         jpanelContenidoHabi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Lista de Reservas");
         jpanelContenidoHabi.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 48));
         jpanelContenidoHabi.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 7, -1, -1));
 
+        tablaReservas.setBackground(new java.awt.Color(180, 180, 180));
+        tablaReservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tablaReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tablaReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -348,12 +347,13 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
 
             }
         ));
+        tablaReservas.setGridColor(new java.awt.Color(180, 180, 180));
         jScrollPane1.setViewportView(tablaReservas);
 
-        jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 860, 170));
+        jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 860, 200));
 
         btnEliminarHabi.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminarHabi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEliminarHabi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEliminarHabi.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarHabi.setText("Eliminar");
         btnEliminarHabi.addActionListener(new java.awt.event.ActionListener() {
@@ -361,8 +361,11 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
                 btnEliminarHabiActionPerformed(evt);
             }
         });
-        jpanelContenidoHabi.add(btnEliminarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 180, 86, 35));
+        jpanelContenidoHabi.add(btnEliminarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 86, 35));
 
+        txtBuscarReservas.setBackground(new java.awt.Color(180, 180, 180));
+        txtBuscarReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtBuscarReservas.setForeground(new java.awt.Color(0, 0, 0));
         txtBuscarReservas.setText("Buscar Reserva");
         txtBuscarReservas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -377,7 +380,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         jpanelContenidoHabi.add(txtBuscarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
 
         btnBuscarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
-        btnBuscarHabitacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarHabitacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnBuscarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarHabitacion.setText("Buscar");
         btnBuscarHabitacion.addActionListener(new java.awt.event.ActionListener() {
@@ -388,7 +391,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         jpanelContenidoHabi.add(btnBuscarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 73, 86, 35));
 
         btnEditarHabi.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditarHabi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEditarHabi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEditarHabi.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarHabi.setText("Editar");
         btnEditarHabi.addActionListener(new java.awt.event.ActionListener() {
@@ -396,9 +399,9 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
                 btnEditarHabiActionPerformed(evt);
             }
         });
-        jpanelContenidoHabi.add(btnEditarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 86, 35));
+        jpanelContenidoHabi.add(btnEditarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 86, 35));
 
-        add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 89, 990, 320));
+        add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 910, 370));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarHabiActionPerformed
@@ -582,11 +585,10 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
