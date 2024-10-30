@@ -297,7 +297,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         });
         jpanelInfoPerf.add(txtTelefonoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 270, -1));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnEditarPerfil.setBackground(new java.awt.Color(51, 51, 51));

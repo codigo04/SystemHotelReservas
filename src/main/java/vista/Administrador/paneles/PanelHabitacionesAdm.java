@@ -650,14 +650,13 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         if (txtBuscarHabitaciones.getText().equals("Buscar Habitacion")) {
             txtBuscarHabitaciones.setText("");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_txtBuscarHabitacionesMouseClicked
 
     private void txtBuscarHabitacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarHabitacionesFocusLost
         if (txtBuscarHabitaciones.getText().isEmpty()) {
-             txtBuscarHabitaciones.setText("Buscar Habitacion");
+            txtBuscarHabitaciones.setText("Buscar Habitacion");
         }
     }//GEN-LAST:event_txtBuscarHabitacionesFocusLost
 
@@ -667,14 +666,16 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // CANCELAR DE LA VENTANA CANCELAR
-        
+
         Panel_Cancelar.setVisible(false);
         background.setVisible(false);
+
+        desbloquear(jpanelContenidoHabi);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // SALIR DE LA VENTANA CANCELAR
-        
+        desbloquear(jpanelContenidoHabi);
         Panel_Cancelar.setVisible(false);
         background.setVisible(false);
     }//GEN-LAST:event_btnSalirActionPerformed

@@ -34,28 +34,27 @@ import modelo.entity.TipoHabitacion;
 /**
  * @author FranDev
  */
-public class PanelRecervasAdm extends javax.swing.JPanel {
+public class PanelClientesAdm extends javax.swing.JPanel {
 
-    public DefaultTableModel modTablaReservas = new DefaultTableModel();
+    public DefaultTableModel modTablaClientes = new DefaultTableModel();
 
     /**
      * Creates new form PanelHabitacionesAdm
      */
-    public PanelRecervasAdm() {
+    public PanelClientesAdm() {
         initComponents();
-        String cabeTableProduc[] = {"ID", "Cliente", "Habitacion", "Check-in", "Check-out", "Estado","Total"};
+        String cabeTableProduc[] = {"ID", "Nombre", "Apellido", "Dni", "Correo Electronico", "Telefono"};
         darBordes(jpanelContenidoHabi);
-        modTablaReservas.setColumnIdentifiers(cabeTableProduc);
+        modTablaClientes.setColumnIdentifiers(cabeTableProduc);
         busquedaDinamica();
-        tablaReservas.setModel(modTablaReservas);
+        tablaClientes.setModel(modTablaClientes);
 
-        tablaReservas.setBackground(Color.BLACK);
-        tablaReservas.setForeground(Color.WHITE);
+        tablaClientes.setBackground(Color.BLACK);
+        tablaClientes.setForeground(Color.WHITE);
 
         Panel_RegistroHabitaciones.setVisible(false);
         Panel_EditHabitaciones.setVisible(false);
-        btnEditarReservas.setVisible(false);
-        btnEliminarReservas.setVisible(false);
+      
     }
 
     /**
@@ -68,7 +67,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnExportarReporteReservas = new javax.swing.JButton();
         Panel_EditHabitaciones = new javax.swing.JPanel();
         btnAceptarEditHabitacion = new javax.swing.JButton();
         btnCancelarEditHabitacion = new javax.swing.JButton();
@@ -96,29 +94,16 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaReservas = new javax.swing.JTable();
-        btnEliminarReservas = new javax.swing.JButton();
+        tablaClientes = new javax.swing.JTable();
         txtBuscarReservas = new javax.swing.JTextField();
         btnBuscarHabitacion = new javax.swing.JButton();
-        btnEditarReservas = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Gestión de Reservas");
+        jLabel1.setText("Gestión de Clientes");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 571, -1));
-
-        btnExportarReporteReservas.setBackground(new java.awt.Color(0, 0, 0));
-        btnExportarReporteReservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnExportarReporteReservas.setForeground(new java.awt.Color(255, 255, 255));
-        btnExportarReporteReservas.setText("Exportar Excel");
-        btnExportarReporteReservas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportarReporteReservasActionPerformed(evt);
-            }
-        });
-        add(btnExportarReporteReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 150, 48));
 
         Panel_EditHabitaciones.setBackground(new java.awt.Color(102, 102, 102));
         Panel_EditHabitaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -334,14 +319,14 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Lista de Reservas");
+        jLabel2.setText("Lista de Clintes");
         jpanelContenidoHabi.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 48));
         jpanelContenidoHabi.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 7, -1, -1));
 
-        tablaReservas.setBackground(new java.awt.Color(180, 180, 180));
-        tablaReservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        tablaReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tablaReservas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setBackground(new java.awt.Color(180, 180, 180));
+        tablaClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tablaClientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -349,26 +334,15 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
 
             }
         ));
-        tablaReservas.setGridColor(new java.awt.Color(180, 180, 180));
-        jScrollPane1.setViewportView(tablaReservas);
+        tablaClientes.setGridColor(new java.awt.Color(180, 180, 180));
+        jScrollPane1.setViewportView(tablaClientes);
 
         jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 860, 200));
-
-        btnEliminarReservas.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminarReservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnEliminarReservas.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarReservas.setText("Eliminar");
-        btnEliminarReservas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarReservasActionPerformed(evt);
-            }
-        });
-        jpanelContenidoHabi.add(btnEliminarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 86, 35));
 
         txtBuscarReservas.setBackground(new java.awt.Color(180, 180, 180));
         txtBuscarReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBuscarReservas.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscarReservas.setText("Buscar Reserva");
+        txtBuscarReservas.setText("Buscar cliente");
         txtBuscarReservas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtBuscarReservasFocusLost(evt);
@@ -377,6 +351,11 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         txtBuscarReservas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtBuscarReservasMouseClicked(evt);
+            }
+        });
+        txtBuscarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarReservasActionPerformed(evt);
             }
         });
         jpanelContenidoHabi.add(txtBuscarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
@@ -392,35 +371,8 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         });
         jpanelContenidoHabi.add(btnBuscarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 73, 86, 35));
 
-        btnEditarReservas.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditarReservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnEditarReservas.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarReservas.setText("Editar");
-        btnEditarReservas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarReservasActionPerformed(evt);
-            }
-        });
-        jpanelContenidoHabi.add(btnEditarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 86, 35));
-
         add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 910, 370));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEliminarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarReservasActionPerformed
-        int fila = tablaReservas.getSelectedRow();
-
-        if (fila == -1) {
-
-            JOptionPane.showConfirmDialog(null, "SELECCIONA UN HABITACION   ", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-
-        } else {
-            bloquear(jpanelContenidoHabi);
-            bloquearImputs();
-            llenarFormEditar();
-        }
-
-
-    }//GEN-LAST:event_btnEliminarReservasActionPerformed
 
     private void btnBuscarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHabitacionActionPerformed
         // TODO add your handling code here:
@@ -473,12 +425,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         Panel_RegistroHabitaciones.setVisible(false);
     }//GEN-LAST:event_btnCancelarHabitacionActionPerformed
 
-    private void btnExportarReporteReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarReporteReservasActionPerformed
-
-       
-
-    }//GEN-LAST:event_btnExportarReporteReservasActionPerformed
-
     private void txtPrecioHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioHabiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioHabiActionPerformed
@@ -486,22 +432,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
     private void txtPrecioHabiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioHabiKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioHabiKeyTyped
-
-    private void btnEditarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarReservasActionPerformed
-
-        int fila = tablaReservas.getSelectedRow();
-
-        if (fila == -1) {
-
-            JOptionPane.showConfirmDialog(null, "SELECCIONA UN HABITACION   ", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-
-        } else {
-            bloquearImputs();
-            bloquear(jpanelContenidoHabi);
-            Panel_EditHabitaciones.setVisible(true);
-            llenarFormEditar();
-        }
-    }//GEN-LAST:event_btnEditarReservasActionPerformed
 
     private void txtNumeroHabitacionHiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHabitacionHiActionPerformed
         // TODO add your handling code here:
@@ -565,6 +495,10 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarReservasFocusLost
 
+    private void txtBuscarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarReservasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarReservasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_EditHabitaciones;
@@ -574,9 +508,6 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
     public javax.swing.JButton btnBuscarHabitacion;
     public javax.swing.JButton btnCancelarEditHabitacion;
     public javax.swing.JButton btnCancelarHabitacion;
-    public javax.swing.JButton btnEditarReservas;
-    public javax.swing.JButton btnEliminarReservas;
-    public javax.swing.JButton btnExportarReporteReservas;
     public javax.swing.JComboBox<String> cboxEstadoEditHabi;
     public javax.swing.JComboBox<String> cboxEstadoHabi;
     public javax.swing.JComboBox<String> cboxTipoHabitacionEditHabi;
@@ -595,7 +526,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpanelContenidoHabi;
-    public javax.swing.JTable tablaReservas;
+    public javax.swing.JTable tablaClientes;
     private javax.swing.JTextField txtBuscarReservas;
     public javax.swing.JTextField txtIdEditHabi;
     public javax.swing.JTextField txtNumeroHabitacionEdit;
@@ -682,10 +613,10 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
 
 
          */
-        int fila = tablaReservas.getSelectedRow();
+        int fila = tablaClientes.getSelectedRow();
 
-        String idHabitacion = String.valueOf(tablaReservas.getValueAt(fila, 0));
-        String numeroHabitacion = String.valueOf(tablaReservas.getValueAt(fila, 1));
+        String idHabitacion = String.valueOf(tablaClientes.getValueAt(fila, 0));
+        String numeroHabitacion = String.valueOf(tablaClientes.getValueAt(fila, 1));
 
         txtIdEditHabi.setText(idHabitacion);
         txtNumeroHabitacionEdit.setText(numeroHabitacion);
@@ -761,8 +692,8 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
     
     public void busquedaDinamica() {
         // Crear un TableRowSorter para el modelo de la tabla
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modTablaReservas);
-        tablaReservas.setRowSorter(sorter);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modTablaClientes);
+        tablaClientes.setRowSorter(sorter);
 
         // Añadir un KeyListener al campo de búsqueda
         txtBuscarReservas.addKeyListener(new KeyAdapter() {
