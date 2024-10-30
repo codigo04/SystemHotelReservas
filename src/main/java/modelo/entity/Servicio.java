@@ -14,13 +14,13 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idServicios;
 
-    @ManyToMany(mappedBy = "servicios")
-    private List<Reserva> reservas;
-
     private String nombreServicio;
     private Double precio;
     private String descripcion;
-    private Boolean disponibilidad; 
+    private Boolean disponibilidad;
+
+    @ManyToMany(mappedBy = "servicios")
+    private List<Reserva> reservas;
 
     public Long getIdServicios() {
         return idServicios;

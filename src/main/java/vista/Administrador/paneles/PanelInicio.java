@@ -4,17 +4,25 @@
  */
 package vista.Administrador.paneles;
 
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
+
 /**
  *
  * @author FranDev
  */
 public class PanelInicio extends javax.swing.JPanel {
 
+  public Grafico graficoReportes = new Grafico();
+
     /**
      * Creates new form PanelInicio
      */
     public PanelInicio() {
         initComponents();
+
+        //panelGrafico.setLayout(new AbsoluteLayout());
+        panelGrafico.add(graficoReportes);
     }
 
     /**
@@ -26,21 +34,95 @@ public class PanelInicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1 = new javax.swing.JPanel();
+        jlbIngresoTotales = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        panelGrafico = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jlbReservasNuevas = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jlbClientes = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbIngresoTotales.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbIngresoTotales.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jlbIngresoTotales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 170, 40));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Ingresos Totales");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 240, 120));
+
+        panelGrafico.setBackground(new java.awt.Color(255, 255, 255));
+        panelGrafico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelGrafico.setLayout(new java.awt.GridLayout(1, 0));
+        add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 770, 330));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, 290, 470));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Dashboard");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 200, 40));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbReservasNuevas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbReservasNuevas.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(jlbReservasNuevas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 170, 40));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Reservas Nuevas");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 240, 120));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbClientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbClientes.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel5.add(jlbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 170, 40));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Clientes Activos");
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 240, 120));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    public javax.swing.JLabel jlbClientes;
+    public javax.swing.JLabel jlbIngresoTotales;
+    public javax.swing.JLabel jlbReservasNuevas;
+    private javax.swing.JPanel panelGrafico;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,8 +6,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import modelo.dao.impl.EmpleadoImpl;
+import modelo.dao.impl.RolesImpl;
 import modelo.entity.Empleado;
 import modelo.entity.Roles;
 import vista.Administrador.JfrmAdministradorPrueba;
@@ -25,15 +28,18 @@ public class ControladorLogin implements ActionListener {
 
     //modelo
     private EmpleadoImpl empleadoImpl;
-
+    private RolesImpl rolesImpl;
     private ControladorPrincipal controladorCliente;
     public static Optional<Empleado> eLoged;
 
     public ControladorLogin() {
         empleadoImpl = new EmpleadoImpl();
         vistaLogin = new Login();
+        rolesImpl = new RolesImpl();
         controladorCliente = new ControladorPrincipal(new JfrmAdministradorPrueba(), new JfrmEmpleado());
         vistaLogin.btnIniciarSesion.addActionListener(this);
+        //crearRoles();
+        crearPrimerUser();
     }
 
     //detecta las acciones
@@ -44,7 +50,6 @@ public class ControladorLogin implements ActionListener {
 
             // char[] passwordChars = vistaLogin.txtpassword.getPassword();
             // String password = new String(passwordChars);
-            
             //jalamos usuario de vista
             String usuario = vistaLogin.txtUsuario.getText();
             //jalamos contraseña de vista
@@ -71,8 +76,7 @@ public class ControladorLogin implements ActionListener {
                         controladorCliente.iniciarPanelAdministrador();
 
                         vistaLogin.setVisible(false);
-                    } else {
-
+                    } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
                         controladorCliente.iniciarPanelEmpleado();
 
                         vistaLogin.setVisible(false);
@@ -101,6 +105,70 @@ public class ControladorLogin implements ActionListener {
             return Optional.of(eLoged).get();
         }
 
+    }
+
+    public void crearRoles() {
+
+        if (rolesImpl.findRoleByName("ADMIN") == null || rolesImpl.findRoleByName("RECEPCIONISTA") == null) {
+            Roles admin = new Roles();
+            admin.setNombreRol("ADMIN");
+
+            Roles recepcionista = new Roles();
+            recepcionista.setNombreRol("RECEPCIONISTA");
+
+            rolesImpl.saveRole(admin);
+            rolesImpl.saveRole(recepcionista);
+        }
+
+    }
+
+    public void crearPrimerUser() {
+        Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado("admin@admin.com", "admin");
+
+        if (!empleadoExist.isPresent()) {
+            Empleado empleado = new Empleado();
+            empleado.setCorreoElectronico("admin@admin.com");
+            empleado.setPassword("admin");
+            empleado.setDni("00000000");
+            empleado.setDireccion("sin calle");
+            empleado.setEstado("ACTIVO");
+
+            // Verificar y crear el rol "ADMIN" si no existe
+            Roles rolAdmin = rolesImpl.findRoleByName("ADMIN");
+            if (rolAdmin == null) {
+                rolAdmin = new Roles();
+                rolAdmin.setNombreRol("ADMIN");
+                rolesImpl.saveRole(rolAdmin);
+                System.out.println("Rol 'ADMIN' creado.");
+            } else {
+                System.out.println("Rol 'ADMIN' ya existe.");
+            }
+
+            /* Verificar y crear el rol "RECEPCIONISTA" si no existe
+            Roles rolRecepcionista = rolesImpl.findRoleByName("RECEPCIONISTA");
+            if (rolRecepcionista == null) {
+                rolRecepcionista = new Roles();
+                rolRecepcionista.setNombreRol("RECEPCIONISTA");
+                rolesImpl.saveRole(rolRecepcionista);
+                System.out.println("Rol 'RECEPCIONISTA' creado.");
+            } else {
+                System.out.println("Rol 'RECEPCIONISTA' ya existe.");
+            }
+           
+            
+            // Asignar ambos roles al empleado
+            
+            assignedRoles.add(rolRecepcionista);
+            
+             */
+            
+            List<Roles> assignedRoles = new ArrayList<>();
+            assignedRoles.add(rolAdmin);
+            empleado.setRoles(assignedRoles);
+            
+            // Guardar el empleado en la base de datos
+            empleadoImpl.saveEmpleado(empleado);
+        }
     }
 
 }

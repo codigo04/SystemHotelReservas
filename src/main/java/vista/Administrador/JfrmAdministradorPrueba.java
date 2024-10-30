@@ -14,6 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
+import vista.Administrador.paneles.PanelInicio;
 import vista.Administrador.paneles.PanelPerfilAdm;
 import vista.Administrador.paneles.PanelRecervasAdm;
 import vista.Administrador.paneles.PanelTipoHabitacionesAdm;
@@ -29,6 +30,10 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelTipoHabitacionesAdm panelTipoHabitacionesAdm = new PanelTipoHabitacionesAdm();
     public PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
     public PanelRecervasAdm panelRecervasAdm = new PanelRecervasAdm();
+<<<<<<< HEAD
+    public PanelInicio panelInicio = new PanelInicio();
+=======
+>>>>>>> 8ca00c58d75ce1f827d44e8f3c7e63c3faa67365
 
     /**
      * Creates new form JfrmAdministrador
@@ -44,6 +49,10 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
                 .getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
         dispositivoGrafico.setFullScreenWindow(this);  */
+        this.panelPaginas.removeAll();
+        this.panelPaginas.add(panelInicio);
+        this.panelPaginas.revalidate();
+        this.panelPaginas.repaint();
     }
 
     /**
@@ -242,7 +251,10 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-
+        this.panelPaginas.removeAll();
+        this.panelPaginas.add(panelInicio);
+        this.panelPaginas.revalidate();
+        this.panelPaginas.repaint();
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked

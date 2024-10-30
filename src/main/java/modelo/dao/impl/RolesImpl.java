@@ -12,19 +12,28 @@ import java.util.List;
  *
  * @author Chris
  */
-@Repository
+/**
+ * Implementación de la interfaz RolesDao para realizar operaciones CRUD sobre
+ * la entidad Roles. Utiliza JPA para manejar la persistencia de datos en la
+ * base de datos.
+ */
 public final class RolesImpl implements RolesDao {
 
     private EntityManagerFactory emf;
 
-
+    /**
+     * Constructor de RolesImpl. Inicializa el EntityManagerFactory utilizando
+     * la unidad de persistencia "myPU".
+     */
     public RolesImpl() {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
-
-
-
+    /**
+     * Obtiene una lista de todos los roles en la base de datos.
+     *
+     * @return Una lista de objetos Roles.
+     */
     @Override
     public List<Roles> getAllRoles() {
         EntityManager em = emf.createEntityManager();
@@ -33,52 +42,57 @@ public final class RolesImpl implements RolesDao {
             TypedQuery<Roles> query = em.createQuery("from Roles", Roles.class);
             rolesList = query.getResultList();
         } finally {
-            em.close(); // Siempre cerrar el EntityManager
+            em.close();
         }
         return rolesList;
     }
 
-
+    /**
+     * Busca un rol en la base de datos por su ID. (Actualmente no implementado,
+     * retorna null)
+     *
+     * @param id El ID del rol a buscar.
+     * @return El objeto Roles si se encuentra, o null si no se implementa.
+     */
     @Override
     public Roles findRoleById(Long id) {
-       return null;
+        return null;
     }
 
+    /**
+     * Busca un rol en la base de datos por su nombre.
+     *
+     * @param name El nombre del rol a buscar.
+     * @return El objeto Roles si se encuentra.
+     */
     @Override
     public Roles findRoleByName(String name) {
-        EntityManager em = emf.createEntityManager();
-        Roles role = null;
-        try {
-            TypedQuery<Roles> query = em.createQuery("from Roles where nombreRol = :name", Roles.class);
-            query.setParameter("name", name);
-            role = query.getSingleResult();
-        } finally {
-            em.close();
-        }
-        return role;
+       EntityManager em = emf.createEntityManager();
+    Roles role = null;
+    try {
+        TypedQuery<Roles> query = em.createQuery("from Roles where nombreRol = :name", Roles.class);
+        query.setParameter("name", name);
+        role = query.getSingleResult();
+    } catch (NoResultException e) {
+        // Aquí podrías registrar un mensaje o simplemente devolver null si no se encuentra el rol
+        System.out.println("No se encontró el rol con nombre: " + name);
+    } finally {
+        em.close();
+    }
+    return role;
     }
 
+    /**
+     * Guarda un nuevo rol en la base de datos.
+     *
+     * @param role El objeto Roles a guardar.
+     */
     @Override
     public void saveRole(Roles role) {
         EntityManager em = emf.createEntityManager();
         try {
-            em.getTransaction().begin(); // Iniciar la transacción
-            em.persist(role);            // Guardar el nuevo rol
-            em.getTransaction().commit(); // Confirmar la transacción
-        } catch (Exception e) {
-            em.getTransaction().rollback(); // Revertir en caso de error
-            throw e;
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public void updateRole(Roles role) {
-        EntityManager em = emf.createEntityManager();
-        try {
             em.getTransaction().begin();
-            em.merge(role);               // Actualizar el rol existente
+            em.persist(role);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -88,6 +102,31 @@ public final class RolesImpl implements RolesDao {
         }
     }
 
+    /**
+     * Actualiza la información de un rol existente en la base de datos.
+     *
+     * @param role El objeto Roles con la información actualizada.
+     */
+    @Override
+    public void updateRole(Roles role) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(role);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * Elimina un rol de la base de datos por su ID.
+     *
+     * @param id El ID del rol a eliminar.
+     */
     @Override
     public void deleteRoleById(Long id) {
         EntityManager em = emf.createEntityManager();
@@ -95,7 +134,7 @@ public final class RolesImpl implements RolesDao {
             em.getTransaction().begin();
             Roles role = em.find(Roles.class, id);
             if (role != null) {
-                em.remove(role);           // Eliminar el rol por id
+                em.remove(role);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

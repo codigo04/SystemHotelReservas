@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import modelo.dao.impl.EmpleadoImpl;
+import modelo.dao.impl.PagoImpl;
 import modelo.entity.Empleado;
 import vista.Administrador.paneles.PanelPerfilAdm;
 
@@ -20,11 +21,12 @@ public class ControladorPerfil implements ActionListener {
 
     private PanelPerfilAdm panelPerfilAdm;
     private EmpleadoImpl empleadoImpl;
+    
 
     ControladorPerfil(PanelPerfilAdm panelPerfilAdm) {
         this.panelPerfilAdm = panelPerfilAdm;
         empleadoImpl = new EmpleadoImpl();
-
+       
         agregarListeners();
 
     }

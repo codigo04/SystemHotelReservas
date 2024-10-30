@@ -1,27 +1,44 @@
 package modelo.dao.impl;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import modelo.dao.ReservaDao;
 import modelo.entity.Reserva;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Chris
  */
+/**
+ * Implementación de la interfaz ReservaDao para realizar operaciones CRUD sobre
+ * la entidad Reserva. Utiliza JPA para manejar la persistencia de datos en la
+ * base de datos.
+ */
 public final class ReservaImpl implements ReservaDao {
 
     private EntityManagerFactory emf;
 
-
+    /**
+     * Constructor de ReservaImpl. Inicializa el EntityManagerFactory utilizando
+     * la unidad de persistencia "myPU".
+     */
     public ReservaImpl() {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
+    /**
+     * Obtiene una lista de todas las reservas en la base de datos.
+     *
+     * @return Una lista de objetos Reserva.
+     */
     @Override
     public List<Reserva> getAllReservas() {
         EntityManager em = emf.createEntityManager();
@@ -35,6 +52,12 @@ public final class ReservaImpl implements ReservaDao {
         return reservas;
     }
 
+    /**
+     * Busca una reserva en la base de datos por su ID.
+     *
+     * @param id El ID de la reserva a buscar.
+     * @return El objeto Reserva si se encuentra, o null si no se encuentra.
+     */
     @Override
     public Reserva findReservaById(Long id) {
         EntityManager em = emf.createEntityManager();
@@ -47,27 +70,17 @@ public final class ReservaImpl implements ReservaDao {
         return reserva;
     }
 
+    /**
+     * Guarda una nueva reserva en la base de datos.
+     *
+     * @param reserva El objeto Reserva a guardar.
+     */
     @Override
     public void saveReserva(Reserva reserva) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(reserva);  // Guardar nueva reserva
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();  // Revertir en caso de error
-            throw e;
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public void updateReserva(Reserva reserva) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.merge(reserva);  // Actualizar reserva existente
+            em.persist(reserva);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -77,6 +90,31 @@ public final class ReservaImpl implements ReservaDao {
         }
     }
 
+    /**
+     * Actualiza la información de una reserva existente en la base de datos.
+     *
+     * @param reserva El objeto Reserva con la información actualizada.
+     */
+    @Override
+    public void updateReserva(Reserva reserva) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(reserva);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * Elimina una reserva de la base de datos por su ID.
+     *
+     * @param id El ID de la reserva a eliminar.
+     */
     @Override
     public void deleteReservaById(Long id) {
         EntityManager em = emf.createEntityManager();
@@ -84,7 +122,7 @@ public final class ReservaImpl implements ReservaDao {
             em.getTransaction().begin();
             Reserva reserva = em.find(Reserva.class, id);
             if (reserva != null) {
-                em.remove(reserva);  // Eliminar reserva
+                em.remove(reserva);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -95,6 +133,12 @@ public final class ReservaImpl implements ReservaDao {
         }
     }
 
+    /**
+     * Busca reservas en la base de datos por el ID del cliente.
+     *
+     * @param idCliente El ID del cliente asociado a las reservas.
+     * @return Una lista de reservas asociadas al cliente especificado.
+     */
     @Override
     public List<Reserva> findReservasByClienteId(Long idCliente) {
         EntityManager em = emf.createEntityManager();
@@ -109,12 +153,21 @@ public final class ReservaImpl implements ReservaDao {
         return reservas;
     }
 
+    /**
+     * Busca reservas en la base de datos que están programadas entre dos fechas
+     * específicas.
+     *
+     * @param fechaInicio La fecha de inicio del rango de búsqueda.
+     * @param fechaFin La fecha de fin del rango de búsqueda.
+     * @return Una lista de reservas que están programadas entre las fechas
+     * especificadas.
+     */
     @Override
     public List<Reserva> findReservasByFecha(Date fechaInicio, Date fechaFin) {
         EntityManager em = emf.createEntityManager();
         List<Reserva> reservas = null;
         try {
-            TypedQuery<Reserva> query = em.createQuery("from Reserva where fechaLLegada >= :fechaInicio and fechaFin <= :fechaFin", Reserva.class);
+            TypedQuery<Reserva> query = em.createQuery("from Reserva where fechaLlegada >= :fechaInicio and fechaFin <= :fechaFin", Reserva.class);
             query.setParameter("fechaInicio", fechaInicio);
             query.setParameter("fechaFin", fechaFin);
             reservas = query.getResultList();
@@ -123,5 +176,38 @@ public final class ReservaImpl implements ReservaDao {
         }
         return reservas;
     }
+
+    public List<Object[]> obtenerOcupacionPorDiaSemana() {
+        EntityManager em = emf.createEntityManager();
+        String sql = "SELECT DAYNAME(r.fechaLlegada) AS dia_semana, COUNT(r.idReserva) AS total_reservas "
+                + "FROM Reserva r "
+                + "GROUP BY dia_semana "
+                + "ORDER BY FIELD(dia_semana,  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
+
+        Query query = em.createNativeQuery(sql);
+        return query.getResultList();
+    }
+
     
+    public static void main(String[] args) {
+       ReservaImpl reservaImpl = new ReservaImpl();
+        List<Object[]> ocupacionPorDia = reservaImpl.obtenerOcupacionPorDiaSemana();
+
+        // Mapeo de días de la semana en inglés a español
+        Map<String, String> diasSemanaMap = new HashMap<>();
+        diasSemanaMap.put("Monday", "Lunes");
+        diasSemanaMap.put("Tuesday", "Martes");
+        diasSemanaMap.put("Wednesday", "Miércoles");
+        diasSemanaMap.put("Thursday", "Jueves");
+        diasSemanaMap.put("Friday", "Viernes");
+        diasSemanaMap.put("Saturday", "Sábado");
+        diasSemanaMap.put("Sunday", "Domingo");
+
+        for (Object[] row : ocupacionPorDia) {
+            String diaSemanaIngles = (String) row[0];
+            String diaSemanaEspanol = diasSemanaMap.getOrDefault(diaSemanaIngles, diaSemanaIngles);
+            Long totalReservas = ((Number) row[1]).longValue();
+            System.out.println("Día: " + diaSemanaEspanol + ", Total de reservas: " + totalReservas);
+        }
+    }
 }

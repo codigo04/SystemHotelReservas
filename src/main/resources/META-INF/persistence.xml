@@ -17,7 +17,7 @@
            <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
         <properties>
             <!-- Configuración de la base de datos -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdHotelCostabela?serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdhotelcostabela?serverTimezone=UTC"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
