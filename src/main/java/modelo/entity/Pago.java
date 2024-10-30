@@ -19,7 +19,7 @@ public class Pago {
 
     private Double montoPago;
 
-    private boolean estadoPago;
+    private String estadoPago;
 
     private String metodoPago;
 
@@ -62,13 +62,7 @@ public class Pago {
         this.montoPago = montoPago;
     }
 
-    public boolean isEstadoPago() {
-        return estadoPago;
-    }
-
-    public void setEstadoPago(boolean estadoPago) {
-        this.estadoPago = estadoPago;
-    }
+    
 
     public String getMetodoPago() {
         return metodoPago;
@@ -93,5 +87,15 @@ public class Pago {
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
     }
+
+    public String getEstadoPago() {
+        return estadoPago;
+    }
+
+    public void setEstadoPago(String estadoPago) {
+        this.estadoPago = estadoPago;
+    }
+    
+    
 
 }

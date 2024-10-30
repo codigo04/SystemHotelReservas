@@ -9,16 +9,28 @@ import modelo.entity.Cliente;
 
 import java.util.List;
 
+/**
+ * Implementación de la interfaz ClienteDao para operaciones CRUD en la entidad
+ * Cliente. Utiliza JPA para manejar la persistencia de datos en una base de
+ * datos.
+ */
 public class ClienteImpl implements ClienteDao {
 
     private EntityManagerFactory emf;
 
+    /**
+     * Constructor de ClienteImpl. Inicializa el EntityManagerFactory utilizando
+     * la unidad de persistencia "myPU".
+     */
     public ClienteImpl() {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
-
-
+    /**
+     * Obtiene una lista de todos los clientes en la base de datos.
+     *
+     * @return Una lista de objetos Cliente.
+     */
     @Override
     public List<Cliente> getAllClientes() {
         EntityManager em = emf.createEntityManager();
@@ -32,6 +44,12 @@ public class ClienteImpl implements ClienteDao {
         return clientes;
     }
 
+    /**
+     * Busca un cliente en la base de datos por su ID.
+     *
+     * @param id El ID del cliente a buscar.
+     * @return El objeto Cliente si se encuentra, o null si no se encuentra.
+     */
     @Override
     public Cliente findClienteById(Long id) {
         EntityManager em = emf.createEntityManager();
@@ -44,6 +62,12 @@ public class ClienteImpl implements ClienteDao {
         return cliente;
     }
 
+    /**
+     * Busca un cliente en la base de datos por su nombre.
+     *
+     * @param name El nombre del cliente a buscar.
+     * @return El objeto Cliente si se encuentra.
+     */
     @Override
     public Cliente findClienteByName(String name) {
         EntityManager em = emf.createEntityManager();
@@ -58,6 +82,12 @@ public class ClienteImpl implements ClienteDao {
         return cliente;
     }
 
+    /**
+     * Busca un cliente en la base de datos por su correo electrónico.
+     *
+     * @param email El correo electrónico del cliente a buscar.
+     * @return El objeto Cliente si se encuentra.
+     */
     @Override
     public Cliente findClienteByEmail(String email) {
         EntityManager em = emf.createEntityManager();
@@ -72,29 +102,17 @@ public class ClienteImpl implements ClienteDao {
         return cliente;
     }
 
-
-
+    /**
+     * Guarda un nuevo cliente en la base de datos.
+     *
+     * @param cliente El objeto Cliente a guardar.
+     */
     @Override
     public void saveCliente(Cliente cliente) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(cliente);  // Guardar el nuevo cliente
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();  // Revertir en caso de error
-            throw e;
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public void updateCliente(Cliente cliente) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.merge(cliente);  // Actualizar el cliente existente
+            em.persist(cliente);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -104,6 +122,31 @@ public class ClienteImpl implements ClienteDao {
         }
     }
 
+    /**
+     * Actualiza la información de un cliente existente en la base de datos.
+     *
+     * @param cliente El objeto Cliente con la información actualizada.
+     */
+    @Override
+    public void updateCliente(Cliente cliente) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(cliente);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * Elimina un cliente de la base de datos por su ID.
+     *
+     * @param id El ID del cliente a eliminar.
+     */
     @Override
     public void deleteClienteById(Long id) {
         EntityManager em = emf.createEntityManager();
@@ -111,7 +154,7 @@ public class ClienteImpl implements ClienteDao {
             em.getTransaction().begin();
             Cliente cliente = em.find(Cliente.class, id);
             if (cliente != null) {
-                em.remove(cliente);  // Eliminar el cliente si se encuentra
+                em.remove(cliente);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

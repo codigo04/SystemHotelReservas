@@ -16,6 +16,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RectangularShape;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Locale;
 import org.jfree.chart.renderer.category.BarPainter;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.chart.ui.RectangleEdge;
@@ -26,9 +30,35 @@ import org.jfree.chart.ui.RectangleEdge;
  */
 public class Grafico extends JPanel {
 
+   // DefaultCategoryDataset dataset;
+
     public Grafico() {
-        // Crear el dataset
-        CategoryDataset dataset = crearDataset();
+        /* Crear el dataset
+      //  dataset = new DefaultCategoryDataset();
+
+        // Crear el gráfico con un estilo más moderno
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Ocupación Semanal",
+                "Día de la Semana",
+                "Porcentaje de Ocupación",
+                dataset,
+                PlotOrientation.VERTICAL,
+                false, true, false);
+
+        // Personalizar el gráfico
+        personalizarGrafico(chart);
+
+        // Crear el panel para mostrar el gráfico
+        ChartPanel panel = new ChartPanel(chart);
+        panel.setBackground(Color.white);
+
+        // Añadir el panel del gráfico al panel principal
+        this.setLayout(new BorderLayout());
+        this.add(panel, BorderLayout.CENTER);  */
+    }
+
+    public CategoryDataset crearDataset(DefaultCategoryDataset dataset) {
+        
 
         // Crear el gráfico con un estilo más moderno
         JFreeChart chart = ChartFactory.createBarChart(
@@ -49,17 +79,7 @@ public class Grafico extends JPanel {
         // Añadir el panel del gráfico al panel principal
         this.setLayout(new BorderLayout());
         this.add(panel, BorderLayout.CENTER);
-    }
 
-    private CategoryDataset crearDataset() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(65, "Ocupación", "Lun");
-        dataset.addValue(75, "Ocupación", "Mar");
-        dataset.addValue(80, "Ocupación", "Mie");
-        dataset.addValue(85, "Ocupación", "Jue");
-        dataset.addValue(90, "Ocupación", "Vie");
-        dataset.addValue(100, "Ocupación", "Sab");
-        dataset.addValue(100, "Ocupación", "Dom");
         return dataset;
     }
 
@@ -78,7 +98,7 @@ public class Grafico extends JPanel {
                     RectangularShape bar,
                     RectangleEdge base) {
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-               // g2.setColor(getSeriesPaint(row));
+                // g2.setColor(getSeriesPaint(row));
                 g2.fillRoundRect((int) bar.getX(), (int) bar.getY(), (int) bar.getWidth(), (int) bar.getHeight(), 15, 15);
             }
         };
@@ -102,5 +122,18 @@ public class Grafico extends JPanel {
         plot.getRangeAxis().setLabelPaint(new Color(80, 80, 80));
         plot.getRangeAxis().setTickLabelPaint(new Color(60, 60, 60));
         plot.getRangeAxis().setRange(0, 100);
+    }
+
+    public static void main(String[] args) {
+        LocalDate fechaActual = LocalDate.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+
+        System.out.println("Días de la semana desde hoy hacia atrás:");
+
+        // Recorremos los últimos 7 días desde el día actual hacia atrás
+        for (int i = 0; i < 7; i++) {
+            LocalDate fecha = fechaActual.minus(i, ChronoUnit.DAYS);
+            System.out.println(fecha.format(formato));
+        }
     }
 }

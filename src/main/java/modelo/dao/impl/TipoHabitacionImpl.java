@@ -18,14 +18,28 @@ import modelo.entity.TipoHabitacion;
  *
  * @author FranDev
  */
+/**
+ * Implementación de la interfaz TipoHabitacionDao para realizar operaciones
+ * CRUD sobre la entidad TipoHabitacion. Utiliza JPA para manejar la
+ * persistencia de datos en la base de datos.
+ */
 public class TipoHabitacionImpl implements TipoHabitacionDao {
 
     private EntityManagerFactory emf;
 
+    /**
+     * Constructor de TipoHabitacionImpl. Inicializa el EntityManagerFactory
+     * utilizando la unidad de persistencia "myPU".
+     */
     public TipoHabitacionImpl() {
         emf = Persistence.createEntityManagerFactory("myPU");
     }
 
+    /**
+     * Guarda un nuevo tipo de habitación en la base de datos.
+     *
+     * @param tipoHabitacion El objeto TipoHabitacion a guardar.
+     */
     @Override
     public void save(TipoHabitacion tipoHabitacion) {
         EntityManager em = emf.createEntityManager();
@@ -38,12 +52,19 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw e; // Maneja la excepción según sea necesario
+            throw e;
         } finally {
             em.close();
         }
     }
 
+    /**
+     * Actualiza la información de un tipo de habitación existente en la base de
+     * datos.
+     *
+     * @param tipoHabitacion El objeto TipoHabitacion con la información
+     * actualizada.
+     */
     @Override
     public void update(TipoHabitacion tipoHabitacion) {
         EntityManager em = emf.createEntityManager();
@@ -56,12 +77,17 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw e; // Maneja la excepción según sea necesario
+            throw e;
         } finally {
             em.close();
         }
     }
 
+    /**
+     * Elimina un tipo de habitación de la base de datos por su ID.
+     *
+     * @param idTipo El ID del tipo de habitación a eliminar.
+     */
     @Override
     public void deleteById(Long idTipo) {
         EntityManager em = emf.createEntityManager();
@@ -77,12 +103,19 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            throw e; // Maneja la excepción según sea necesario
+            throw e;
         } finally {
             em.close();
         }
     }
 
+    /**
+     * Busca un tipo de habitación en la base de datos por su ID.
+     *
+     * @param idTipo El ID del tipo de habitación a buscar.
+     * @return Un Optional que contiene el tipo de habitación si se encuentra, o
+     * vacío si no se encuentra.
+     */
     @Override
     public Optional<TipoHabitacion> findById(Long idTipo) {
         EntityManager em = emf.createEntityManager();
@@ -94,6 +127,11 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
         }
     }
 
+    /**
+     * Obtiene una lista de todos los tipos de habitación en la base de datos.
+     *
+     * @return Una lista de objetos TipoHabitacion.
+     */
     @Override
     public List<TipoHabitacion> findAll() {
         EntityManager em = emf.createEntityManager();
@@ -104,6 +142,13 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
         }
     }
 
+    /**
+     * Busca un tipo de habitación en la base de datos por su nombre.
+     *
+     * @param tipoHabitacion El nombre del tipo de habitación a buscar.
+     * @return Un Optional que contiene el tipo de habitación si se encuentra, o
+     * vacío si no se encuentra.
+     */
     @Override
     public Optional<TipoHabitacion> findByTipoHabitacion(String tipoHabitacion) {
         EntityManager em = emf.createEntityManager();
@@ -116,21 +161,30 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
             return Optional.of(tipo);
 
         } catch (NoResultException e) {
-            // Si no se encuentra ningún resultado, devolvemos un Optional vacío
             return Optional.empty();
         } catch (Exception e) {
-            e.printStackTrace();  // Manejo de excepción 
+            e.printStackTrace();
             return Optional.empty();
         } finally {
-            em.close();  // cerrar el entity manager
+            em.close();
         }
     }
 
+    /**
+     * Busca tipos de habitación en la base de datos con un precio menor al
+     * especificado.
+     *
+     * @param precio El precio máximo.
+     * @return Un Optional que contiene una lista de tipos de habitación con
+     * precios menores que el especificado, o vacío si no se encuentran
+     * resultados.
+     */
     @Override
     public Optional<List<TipoHabitacion>> findByPrecioLessThan(Double precio) {
         EntityManager em = emf.createEntityManager();
         try {
-            List<TipoHabitacion> tipos = em.createQuery("SELECT th FROM TipoHabitacion th WHERE th.precio < :precio", TipoHabitacion.class)
+            List<TipoHabitacion> tipos = em.createQuery(
+                    "SELECT th FROM TipoHabitacion th WHERE th.precio < :precio", TipoHabitacion.class)
                     .setParameter("precio", precio)
                     .getResultList();
             return Optional.ofNullable(tipos.isEmpty() ? null : tipos);
@@ -139,11 +193,21 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
         }
     }
 
+    /**
+     * Busca tipos de habitación en la base de datos con un precio mayor o igual
+     * al especificado.
+     *
+     * @param precio El precio mínimo.
+     * @return Un Optional que contiene una lista de tipos de habitación con
+     * precios mayores o iguales que el especificado, o vacío si no se
+     * encuentran resultados.
+     */
     @Override
     public Optional<List<TipoHabitacion>> findByPrecioGreaterThanEqual(Double precio) {
         EntityManager em = emf.createEntityManager();
         try {
-            List<TipoHabitacion> tipos = em.createQuery("SELECT th FROM TipoHabitacion th WHERE th.precio >= :precio", TipoHabitacion.class)
+            List<TipoHabitacion> tipos = em.createQuery(
+                    "SELECT th FROM TipoHabitacion th WHERE th.precio >= :precio", TipoHabitacion.class)
                     .setParameter("precio", precio)
                     .getResultList();
             return Optional.ofNullable(tipos.isEmpty() ? null : tipos);
@@ -152,11 +216,20 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
         }
     }
 
+    /**
+     * Busca tipos de habitación en la base de datos cuyas características
+     * contengan la cadena especificada.
+     *
+     * @param caracteristica La cadena de características a buscar.
+     * @return Un Optional que contiene una lista de tipos de habitación que
+     * coinciden con la característica, o vacío si no se encuentran resultados.
+     */
     @Override
     public Optional<List<TipoHabitacion>> findByCaracteristicasContaining(String caracteristica) {
         EntityManager em = emf.createEntityManager();
         try {
-            List<TipoHabitacion> tipos = em.createQuery("SELECT th FROM TipoHabitacion th WHERE th.caracteristicas LIKE :caracteristica", TipoHabitacion.class)
+            List<TipoHabitacion> tipos = em.createQuery(
+                    "SELECT th FROM TipoHabitacion th WHERE th.caracteristicas LIKE :caracteristica", TipoHabitacion.class)
                     .setParameter("caracteristica", "%" + caracteristica + "%")
                     .getResultList();
             return Optional.ofNullable(tipos.isEmpty() ? null : tipos);
