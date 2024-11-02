@@ -3,11 +3,13 @@ package com.unit;
 /**
  * Hello world!
  */
+import com.formdev.flatlaf.FlatLightLaf;
 import controlador.ControladorPrincipal;
 import controlador.ControladorEmpleado;
 import controlador.ControladorLogin;
 import controlador.ControladorInicio;
 import jakarta.persistence.*;
+import javax.swing.UIManager;
 import modelo.dao.impl.ReservaImpl;
 import modelo.entity.Product;
 import vista.Administrador.JfrmAdministradorPrueba;
@@ -26,6 +28,14 @@ public class App {
      * @param args Argumentos de la línea de comandos
      */
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            UIManager.put("TextComponent.arc", 10);
+            UIManager.put("Button.arc", 20);
+            UIManager.put("Componente.focusWidth", 0);
+        } catch (Exception ex) {
+            System.err.println("No se pudo establecer el Look and Feel.");
+        }
         // Configuración del EntityManagerFactory con el nombre de la unidad de persistencia "myPU"
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPU");
 
