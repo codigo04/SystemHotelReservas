@@ -37,6 +37,13 @@ public class PanelReservas extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
+        PanelBotones = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnBuscar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         background = new javax.swing.JPanel();
         Panel_Cancelar = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -51,7 +58,6 @@ public class PanelReservas extends javax.swing.JPanel {
         Panel_Editar = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -62,7 +68,6 @@ public class PanelReservas extends javax.swing.JPanel {
         btnCancelar_PanelEditar = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
@@ -71,19 +76,102 @@ public class PanelReservas extends javax.swing.JPanel {
         jTextField10 = new javax.swing.JTextField();
         btnEditar_PanelEditar1 = new javax.swing.JButton();
         btnActualizar_PanelEditar1 = new javax.swing.JButton();
-        PanelBotones = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        cboxRoles = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jEditorPane1);
 
         setPreferredSize(new java.awt.Dimension(700, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
+        PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
+        PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204, 150));
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setToolTipText("Buscar");
+        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField1.setName(""); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 189, 31));
+        jTextField1.getAccessibleContext().setAccessibleName("Buscar");
+
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
+
+        jTable1.setBackground(new java.awt.Color(180, 180, 180));
+        jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N°", "Cliente", "Fecha de Registro", "Fecha de Llegada", "Fecha de Finalizacion", "Codigo", "Persona", "Monto"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setGridColor(new java.awt.Color(180, 180, 180));
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(20);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(120);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(105);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(110);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(120);
+        }
+
+        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 652, 243));
+
+        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnBuscar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
+        btnEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 80, -1));
+
+        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 790, 350));
 
         background.setBackground(new java.awt.Color(0, 0, 0, 150));
         background.setForeground(new java.awt.Color(153, 153, 153));
@@ -134,7 +222,6 @@ public class PanelReservas extends javax.swing.JPanel {
         jTextField12.setAutoscrolls(false);
         jTextField12.setEnabled(false);
         jTextField12.setFocusable(false);
-        jTextField12.setOpaque(false);
         jTextField12.setRequestFocusEnabled(false);
         Panel_Cancelar.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
 
@@ -182,14 +269,8 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel33.setBackground(new java.awt.Color(255, 255, 255));
         jLabel33.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel33.setText("Nombre Completo");
-        Panel_Editar.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
-
-        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("N° de Personas");
-        Panel_Editar.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
+        jLabel33.setText("Apellido");
+        Panel_Editar.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -255,13 +336,7 @@ public class PanelReservas extends javax.swing.JPanel {
         jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 320, 30));
-
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 100, 30));
+        Panel_Editar.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 130, 30));
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setForeground(new java.awt.Color(0, 0, 0));
@@ -319,96 +394,39 @@ public class PanelReservas extends javax.swing.JPanel {
         });
         Panel_Editar.add(btnActualizar_PanelEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, 30));
 
+        jTextField13.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField13.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField13.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 130, 30));
+
+        jLabel36.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel36.setText("Nombre ");
+        Panel_Editar.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+
+        cboxRoles.setBackground(new java.awt.Color(255, 255, 255));
+        cboxRoles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cboxRoles.setForeground(new java.awt.Color(0, 0, 0));
+        cboxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cboxRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxRolesActionPerformed(evt);
+            }
+        });
+        Panel_Editar.add(cboxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 160, -1));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Habitacion");
+        Panel_Editar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 80, 20));
+
         background.add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
 
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1070, 690));
-
-        PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
-        PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
-        PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204, 150));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setToolTipText("Buscar");
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setName(""); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 189, 31));
-        jTextField1.getAccessibleContext().setAccessibleName("Buscar");
-
-        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
-        btnCancelar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
-
-        jTable1.setBackground(new java.awt.Color(180, 180, 180));
-        jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N°", "Cliente", "Fecha de Registro", "Fecha de Llegada", "Fecha de Finalizacion", "Codigo", "Persona", "Monto"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(180, 180, 180));
-        jTable1.setShowHorizontalLines(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(20);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(105);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(110);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(120);
-        }
-
-        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 652, 243));
-
-        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
-        btnBuscar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
-
-        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
-        btnEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 80, -1));
-
-        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 790, 350));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Reservas");
@@ -506,6 +524,16 @@ public class PanelReservas extends javax.swing.JPanel {
         background.setVisible(false);
     }//GEN-LAST:event_btnSalir_PanelCancelarActionPerformed
 
+    private void cboxRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRolesActionPerformed
+        cboxRoles.getSelectedItem();
+        if (cboxRoles.getSelectedIndex() == 1 || cboxRoles.getSelectedIndex() == 2 || cboxRoles.getSelectedIndex() == 3) {
+            // txtSalario.setText("1200");
+
+        } else if (cboxRoles.getSelectedIndex() == 4) {
+            // txtSalario.setText("2000");
+        }
+    }//GEN-LAST:event_cboxRolesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelBotones;
@@ -520,6 +548,7 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEditar_PanelEditar1;
     private javax.swing.JButton btnSalir_PanelCancelar;
+    private javax.swing.JComboBox<String> cboxRoles;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -534,9 +563,10 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -545,9 +575,9 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

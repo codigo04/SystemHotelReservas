@@ -4,7 +4,7 @@
  */
 package controlador;
 
-import aggregates.apis.EmpleadoService;
+import aggregates.Servicios.apis.EmpleadoService;
 import aggregates.request.PersonaRequest;
 import aggregates.response.ResponceReniec;
 import java.awt.event.ActionEvent;

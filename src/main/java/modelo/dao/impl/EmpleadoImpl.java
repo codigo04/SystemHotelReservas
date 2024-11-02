@@ -13,21 +13,46 @@ import org.springframework.stereotype.Repository;
  *
  * @author Chris
  */
-
 /**
- * Implementación de la interfaz EmpleadoDao para realizar operaciones CRUD sobre la entidad Empleado.
- * Utiliza JPA para manejar la persistencia de datos en una base de datos.
+ * Implementación de la interfaz EmpleadoDao para realizar operaciones CRUD
+ * sobre la entidad Empleado. Utiliza JPA para manejar la persistencia de datos
+ * en una base de datos.
  */
 public class EmpleadoImpl implements EmpleadoDao {
 
     private EntityManagerFactory emf;
 
-    /**
-     * Constructor de EmpleadoImpl.
-     * Inicializa el EntityManagerFactory utilizando la unidad de persistencia "myPU".
-     */
+    
     public EmpleadoImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
+        
+    }
+
+    /**
+     * Autentica un empleado verificando su correo electrónico y contraseña.
+     *
+     * @param correoElectronico El correo electrónico del empleado.
+     * @param password La contraseña del empleado.
+     * @return Un Optional que contiene el empleado si las credenciales son
+     * válidas, o vacío si no lo son.
+     */
+    @Override
+    public Optional<Empleado> authenticateEmpleado(String correoElectronico, String password) {
+        EntityManager em = emf.createEntityManager();
+        Empleado empleado = null;
+        try {
+            TypedQuery<Empleado> query = em.createQuery("FROM Empleado WHERE correoElectronico = :correo AND password = :pass", Empleado.class);
+            query.setParameter("correo", correoElectronico);
+            query.setParameter("pass", password);
+            empleado = query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("Credenciales inválidas");
+            return Optional.empty();
+        } finally {
+            em.close();
+        }
+
+        return Optional.of(empleado);
     }
 
     /**
@@ -45,6 +70,8 @@ public class EmpleadoImpl implements EmpleadoDao {
         } finally {
             em.close();
         }
+
+  
         return empleados;
     }
 
@@ -173,7 +200,8 @@ public class EmpleadoImpl implements EmpleadoDao {
      * Busca un empleado en la base de datos por su DNI.
      *
      * @param dni El DNI del empleado a buscar.
-     * @return Un Optional que contiene el empleado si se encuentra, o vacío si no se encuentra.
+     * @return Un Optional que contiene el empleado si se encuentra, o vacío si
+     * no se encuentra.
      */
     @Override
     public Optional<Empleado> findEmpleadoByDni(String dni) {
@@ -192,28 +220,7 @@ public class EmpleadoImpl implements EmpleadoDao {
         }
     }
 
-    /**
-     * Autentica un empleado verificando su correo electrónico y contraseña.
-     *
-     * @param correoElectronico El correo electrónico del empleado.
-     * @param password          La contraseña del empleado.
-     * @return Un Optional que contiene el empleado si las credenciales son válidas, o vacío si no lo son.
-     */
-    @Override
-    public Optional<Empleado> authenticateEmpleado(String correoElectronico, String password) {
-        EntityManager em = emf.createEntityManager();
-        Empleado empleado = null;
-        try {
-            TypedQuery<Empleado> query = em.createQuery("FROM Empleado WHERE correoElectronico = :correo AND password = :pass", Empleado.class);
-            query.setParameter("correo", correoElectronico);
-            query.setParameter("pass", password);
-            empleado = query.getSingleResult();
-        } catch (NoResultException e) {
-            System.out.println("Credenciales inválidas");
-            return Optional.empty();
-        } finally {
-            em.close();
-        }
-        return Optional.of(empleado);
+    public void close() {
+        EntityManagerFactorySingleton.close();
     }
 }

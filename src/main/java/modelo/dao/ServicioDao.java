@@ -2,6 +2,7 @@ package modelo.dao;
 import modelo.entity.Servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -21,7 +22,7 @@ public interface ServicioDao  {
      * @param id el ID del servicio a buscar.
      * @return el objeto Servicio correspondiente al ID proporcionado, o null si no se encuentra.
      */
-    Servicio findServicioById(Long id);
+    Optional<Servicio> findServicioById(Long id);
 
     /**
      * Guarda un nuevo servicio en la base de datos.

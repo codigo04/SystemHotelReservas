@@ -27,12 +27,9 @@ public class TipoHabitacionImpl implements TipoHabitacionDao {
 
     private EntityManagerFactory emf;
 
-    /**
-     * Constructor de TipoHabitacionImpl. Inicializa el EntityManagerFactory
-     * utilizando la unidad de persistencia "myPU".
-     */
     public TipoHabitacionImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
+
     }
 
     /**

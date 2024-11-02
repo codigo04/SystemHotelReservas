@@ -18,12 +18,8 @@ public class ClienteImpl implements ClienteDao {
 
     private EntityManagerFactory emf;
 
-    /**
-     * Constructor de ClienteImpl. Inicializa el EntityManagerFactory utilizando
-     * la unidad de persistencia "myPU".
-     */
     public ClienteImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
     }
 
     /**
@@ -108,12 +104,15 @@ public class ClienteImpl implements ClienteDao {
      * @param cliente El objeto Cliente a guardar.
      */
     @Override
-    public void saveCliente(Cliente cliente) {
+    public Cliente saveCliente(Cliente cliente) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(cliente);
             em.getTransaction().commit();
+
+            // Retornar el cliente gestionado por el EntityManager (incluye ID y otros valores generados)
+            return cliente;
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw e;
@@ -163,5 +162,9 @@ public class ClienteImpl implements ClienteDao {
         } finally {
             em.close();
         }
+    }
+
+    public void close() {
+        EntityManagerFactorySingleton.close();
     }
 }
