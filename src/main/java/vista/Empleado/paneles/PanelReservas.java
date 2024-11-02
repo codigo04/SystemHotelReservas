@@ -21,7 +21,6 @@ public class PanelReservas extends javax.swing.JPanel {
         initComponents();
         Panel_Cancelar.setVisible(false);
         Panel_Editar.setVisible(false);
-        background.setVisible(false);
         
     }
 
@@ -37,7 +36,6 @@ public class PanelReservas extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
-        background = new javax.swing.JPanel();
         Panel_Cancelar = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -84,10 +82,6 @@ public class PanelReservas extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(700, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        background.setBackground(new java.awt.Color(0, 0, 0, 150));
-        background.setForeground(new java.awt.Color(153, 153, 153));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Cancelar.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -165,7 +159,7 @@ public class PanelReservas extends javax.swing.JPanel {
         Panel_Cancelar.add(btnSalir_PanelCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 120, 30));
         btnSalir_PanelCancelar.getAccessibleContext().setAccessibleName("SALIR");
 
-        background.add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
+        add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
 
         Panel_Editar.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Editar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -319,9 +313,7 @@ public class PanelReservas extends javax.swing.JPanel {
         });
         Panel_Editar.add(btnActualizar_PanelEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, 30));
 
-        background.add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
-
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1070, 690));
+        add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
 
         PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
         PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -417,13 +409,11 @@ public class PanelReservas extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         bloquear(PanelBotones);
-        background.setVisible(true);
         Panel_Cancelar.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         bloquear(PanelBotones);
-        background.setVisible(true);
         Panel_Editar.setVisible(true);
 
         //creamos una arreglo de tipos object
@@ -477,7 +467,6 @@ public class PanelReservas extends javax.swing.JPanel {
     private void btnCancelar_PanelEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_PanelEditarActionPerformed
         desbloquear(PanelBotones);
         Panel_Editar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnCancelar_PanelEditarActionPerformed
 
     private void btnEditar_PanelEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_PanelEditar1ActionPerformed
@@ -488,7 +477,6 @@ public class PanelReservas extends javax.swing.JPanel {
         // ACTUALIZAR DE LA VENTANA EDITAR
         desbloquear(PanelBotones);
         Panel_Editar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnActualizar_PanelEditar1ActionPerformed
     
     // PANEL CONFIRMAR CANCELACIÓN !!!!
@@ -496,14 +484,12 @@ public class PanelReservas extends javax.swing.JPanel {
         // CANCELAR DE LA VENTANA CANCELAR
         desbloquear(PanelBotones);
         Panel_Cancelar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnCancelar_PanelCancelarActionPerformed
 
     private void btnSalir_PanelCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir_PanelCancelarActionPerformed
         // SALIR DE LA VENTANA CANCELAR
         desbloquear(PanelBotones);
         Panel_Cancelar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnSalir_PanelCancelarActionPerformed
 
 
@@ -511,7 +497,6 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JPanel PanelBotones;
     public javax.swing.JPanel Panel_Cancelar;
     public javax.swing.JPanel Panel_Editar;
-    private javax.swing.JPanel background;
     private javax.swing.JButton btnActualizar_PanelEditar1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;

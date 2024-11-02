@@ -325,7 +325,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         jLabel4.setText("Registar");
         Panel_RegistroHabitaciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
-        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 470, 370));
+        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, 470, 370));
 
         jpanelContenidoHabi.setBackground(new java.awt.Color(255, 255, 255));
         jpanelContenidoHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

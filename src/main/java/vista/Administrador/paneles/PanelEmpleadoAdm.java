@@ -43,7 +43,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         Panel_RegistroEmpleados.setVisible(false);
         Panel_EditEmpleados.setVisible(false);
         busquedaDinamica();
-        background.setVisible(false);
 
     }
 
@@ -56,7 +55,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background = new javax.swing.JPanel();
         Panel_RegistroEmpleados = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -112,10 +110,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         btnBuscarEmpleado = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        background.setBackground(new java.awt.Color(0, 0, 0, 150));
-        background.setForeground(new java.awt.Color(153, 153, 153));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_RegistroEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         Panel_RegistroEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -329,7 +323,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         jLabel12.setText("Crear nuevo Empleado");
         Panel_RegistroEmpleados.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        background.add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 410, 450));
+        add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 410, 450));
 
         Panel_EditEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         Panel_EditEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -542,9 +536,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         });
         Panel_EditEmpleados.add(btnCancelarEditEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 140, 30));
 
-        background.add(Panel_EditEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 410, 450));
-
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1000, 650));
+        add(Panel_EditEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 410, 450));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel1.setText("Gestión de Empleados");
@@ -649,7 +641,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
             JOptionPane.showConfirmDialog(null, "SELECCIONA UN PLATO", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
         } else {
-            background.setVisible(true);
             bloquear(jpanelContenidoEm);
             bloquearImputs();
             llenarFormEditar();
@@ -673,7 +664,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreEmKeyTyped
 
     private void btnAceptarGuardarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarEmActionPerformed
-        background.setVisible(false);
+        
         desbloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(false);
 
@@ -716,7 +707,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAceptarGuardarEmActionPerformed
 
     private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
-        background.setVisible(false);
+        
         desbloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(false);
     }//GEN-LAST:event_btnCancelarEmActionPerformed
@@ -816,7 +807,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarReniecEmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        background.setVisible(true);
+        
         desbloquearImputs();
         bloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(true);
@@ -868,13 +859,13 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreEditEmKeyTyped
 
     private void btnAceptarEditarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditarEmActionPerformed
-        background.setVisible(false);
+        
         desbloquear(jpanelContenidoEm);
         Panel_EditEmpleados.setVisible(false);
     }//GEN-LAST:event_btnAceptarEditarEmActionPerformed
 
     private void btnCancelarEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditEmActionPerformed
-        background.setVisible(false);
+        
         desbloquear(jpanelContenidoEm);
         Panel_EditEmpleados.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditEmActionPerformed
@@ -959,7 +950,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_EditEmpleados;
     public javax.swing.JPanel Panel_RegistroEmpleados;
-    private javax.swing.JPanel background;
     public javax.swing.JButton btnAceptarEditarEm;
     public javax.swing.JButton btnAceptarGuardarEm;
     public javax.swing.JButton btnBuscarEmpleado;
