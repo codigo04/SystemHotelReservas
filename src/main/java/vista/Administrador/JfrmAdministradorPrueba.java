@@ -6,6 +6,7 @@ package vista.Administrador;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import controlador.ControladorPrincipal;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,12 +45,6 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         initComponents();
         setVisible(false);
         this.setLocationRelativeTo(null);
-        //setAlwaysOnTop(true);
-        /* ************ para pantalla grande **************
-       GraphicsDevice dispositivoGrafico = GraphicsEnvironment
-                .getLocalGraphicsEnvironment().getDefaultScreenDevice();
-
-        dispositivoGrafico.setFullScreenWindow(this);  */
         this.panelPaginas.removeAll();
         this.panelPaginas.add(panelInicio);
         this.panelPaginas.revalidate();
@@ -239,7 +234,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelBotones.add(btnConfiguracion);
 
-        panelMenu.add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 427));
+        panelMenu.add(panelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 160, 427));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 190, -1));
@@ -257,14 +252,11 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         panelMenu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 80, 25));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
         panelMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 120));
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 640));
 
-        panelPaginas.setBackground(new java.awt.Color(153, 255, 51));
-        panelPaginas.setAutoscrolls(true);
-        panelPaginas.setLayout(new java.awt.GridLayout());
+        panelPaginas.setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(panelPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 1000, 640));
 
         jMenu2.setText("Themes");
@@ -439,6 +431,9 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+        /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -480,7 +475,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
             new JfrmAdministradorPrueba().setVisible(true);
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bntEmpleado;
     private javax.swing.JButton btnClientes;

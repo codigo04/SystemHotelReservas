@@ -47,14 +47,13 @@ public class PanelInicio extends javax.swing.JPanel {
         jlbClientes = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbIngresoTotales.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbIngresoTotales.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbIngresoTotales.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jlbIngresoTotales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 130, 40));
 
@@ -69,21 +68,18 @@ public class PanelInicio extends javax.swing.JPanel {
         panelGrafico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelGrafico.setLayout(new java.awt.GridLayout(1, 0));
         add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 610, 330));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 290, 470));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel2.setText("Dashboard");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 200, 40));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 250, 40));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbReservasNuevas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbReservasNuevas.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbReservasNuevas.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jlbReservasNuevas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, 40));
 
@@ -98,7 +94,7 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbClientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbClientes.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbClientes.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jlbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, 40));
 

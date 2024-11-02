@@ -161,7 +161,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
         PanelInicio panelInicio = new PanelInicio();
 
-// Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
+        // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         panelPrincipal.removeAll();
         panelPrincipal.add(panelInicio);
         panelPrincipal.revalidate();
