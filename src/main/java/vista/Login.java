@@ -4,9 +4,15 @@
  */
 package vista;
 
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+
+import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.Color;
+import javax.swing.UIManager;
+
 
 //import com.sun.mail.imap.ACL;
 /**
@@ -18,7 +24,7 @@ public class Login extends javax.swing.JFrame {
     // Autenticar val = new Autenticar();
 
     int yMouse, xMouse;
-    
+
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -67,6 +73,7 @@ public class Login extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
 
         panelAutenticacion.setBackground(new java.awt.Color(255, 255, 255));
         panelAutenticacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
@@ -135,14 +142,19 @@ public class Login extends javax.swing.JFrame {
         principal.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
         panelLogin.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 320, 480));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         jLabel1.setText("INCIAR SESION");
         panelLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(0, 0, 0));
-        txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtUsuario.setBackground(new java.awt.Color(50, 50, 50));
+        txtUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtUsuario.setText("Ingrese su usuario");
         txtUsuario.setBorder(null);
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,15 +167,19 @@ public class Login extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
+
         panelLogin.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 140, -1));
+
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel2.setText("USUARIO");
         panelLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 0));
+
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         panelLogin.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 10));
+
 
         jLabel3.setText("Contraseña");
         panelLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
@@ -171,7 +187,8 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 140, -1));
 
-        txtpassword.setBackground(new java.awt.Color(0, 0, 0));
+        txtpassword.setBackground(new java.awt.Color(50, 50, 50));
+        txtpassword.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(204, 204, 204));
         txtpassword.setText("********");
         txtpassword.setBorder(null);
@@ -187,7 +204,7 @@ public class Login extends javax.swing.JFrame {
         });
         panelLogin.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 140, 20));
 
-        pExit.setBackground(new java.awt.Color(0, 0, 0));
+        pExit.setBackground(new java.awt.Color(30, 30, 30));
         pExit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 pExitMouseDragged(evt);
@@ -204,7 +221,7 @@ public class Login extends javax.swing.JFrame {
 
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
 
-        jExit.setBackground(new java.awt.Color(0, 0, 0));
+        jExit.setBackground(new java.awt.Color(51, 51, 51));
         jExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jExit.setForeground(new java.awt.Color(255, 255, 255));
         jExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -265,11 +282,11 @@ public class Login extends javax.swing.JFrame {
         favicom4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelLogin.add(favicom4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 240, 80, 50));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(0, 0, 0));
-        btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 0));
+        btnIniciarSesion.setBackground(new java.awt.Color(102, 102, 102));
+        btnIniciarSesion.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("INGRESAR");
-        btnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnIniciarSesion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -289,12 +306,12 @@ public class Login extends javax.swing.JFrame {
         });
         panelLogin.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Hola!");
         panelLogin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Buenos Dias");
         panelLogin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
@@ -326,7 +343,7 @@ public class Login extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
-        
+
 
     }//GEN-LAST:event_pExitMouseDragged
 
@@ -354,25 +371,25 @@ public class Login extends javax.swing.JFrame {
         if (txtUsuario.getText().equals("Ingrese su usuario")) {
             txtUsuario.setText("");
             txtUsuario.setForeground(Color.WHITE);
-            
+
         }
-        
+
         if (String.valueOf(txtpassword.getPassword()).isEmpty()) {
             txtpassword.setText("********");
             txtpassword.setForeground(Color.GRAY);
         }
-        
+
 
     }//GEN-LAST:event_txtUsuarioMousePressed
 
     private void txtpasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpasswordMousePressed
-        
+
         if (txtUsuario.getText().isEmpty()) {
-            
+
             txtUsuario.setText("Ingrese su usuario");
             txtUsuario.setForeground(Color.GRAY);
         }
-        
+
         if (String.valueOf(txtpassword.getPassword()).equals("********")) {
             txtpassword.setText("");
             txtpassword.setForeground(Color.WHITE);
@@ -381,12 +398,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswordMousePressed
 
     private void btnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarSesionMouseClicked
-        
+
 
     }//GEN-LAST:event_btnIniciarSesionMouseClicked
 
     private void btnIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarSesionMouseEntered
-        
+
 
     }//GEN-LAST:event_btnIniciarSesionMouseEntered
 
@@ -500,6 +517,14 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        try {
+            FlatDarkLaf.setup();
+            UIManager.put("TextComponent.arc", 10);
+            UIManager.put("Button.arc", 20);
+            UIManager.put("Componente.focusWidth", 0);
+        } catch (Exception ex) {
+            System.err.println("No se pudo inicializar el Look and Feel de FlatLaf.");
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
