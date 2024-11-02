@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package aggregates.apis.Client;
+package aggregates.Servicios.apis.Client;
 
 import aggregates.response.ResponceReniec;
 import retrofit2.Call;

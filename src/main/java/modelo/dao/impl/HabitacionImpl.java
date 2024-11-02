@@ -2,6 +2,7 @@ package modelo.dao.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import modelo.dao.HabitacionDao;
@@ -23,12 +24,9 @@ public class HabitacionImpl implements HabitacionDao {
 
     private EntityManagerFactory emf;
 
-    /**
-     * Constructor de HabitacionImpl. Inicializa el EntityManagerFactory
-     * utilizando la unidad de persistencia "myPU".
-     */
     public HabitacionImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
+       
     }
 
     /**
@@ -110,18 +108,39 @@ public class HabitacionImpl implements HabitacionDao {
         return Optional.ofNullable(habitaciones);
     }
 
+    @Override
+    public Optional<Habitacion> findHabitacionesPorNumHabitacion(String numeroHabi) {
+        EntityManager em = emf.createEntityManager();
+        Habitacion habitacion = null;
+        try {
+            TypedQuery<Habitacion> query = em.createQuery("from Habitacion where numeroDeHabitacion = :numero", Habitacion.class);
+            query.setParameter("numero", numeroHabi);
+
+            // Usar getSingleResult() para obtener un solo resultado
+            habitacion = query.getSingleResult();
+        } catch (NoResultException e) {
+            // No hacer nada, habitacion se mantendrá como null
+        } finally {
+            em.close();
+        }
+        return Optional.ofNullable(habitacion);
+    }
+
     /**
      * Guarda una nueva habitación en la base de datos.
      *
      * @param habitacion El objeto Habitacion a guardar.
      */
     @Override
-    public void saveHabitacion(Habitacion habitacion) {
+    public Habitacion saveHabitacion(Habitacion habitacion) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(habitacion);
             em.getTransaction().commit();
+
+            // Retornar la habitacion gestionada por el EntityManager (incluye valores generados)
+            return habitacion;
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw e;

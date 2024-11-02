@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package aggregates.apis;
+package aggregates.Servicios.apis;
 
-import aggregates.apis.Client.ClienteRetro;
+import aggregates.Servicios.apis.Client.ClienteRetro;
 import aggregates.request.PersonaRequest;
 import aggregates.response.ResponceReniec;
 import java.io.IOException;

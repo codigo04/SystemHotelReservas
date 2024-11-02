@@ -24,7 +24,7 @@ public interface HabitacionDao {
     Optional<List<Habitacion>> findHabitacionesPorEstado(String estado);
 
     // Guardar una nueva habitación
-    void saveHabitacion(Habitacion habitacion);
+    Habitacion saveHabitacion(Habitacion habitacion);
 
     // Actualizar los detalles de una habitación existente
     void updateHabitacion(Habitacion habitacion);
@@ -37,4 +37,6 @@ public interface HabitacionDao {
 
     // Buscar habitaciones por precio máximo
     //List<Habitacion> findHabitacionesByPrecioMax(double precioMax);
+    
+    public Optional<Habitacion> findHabitacionesPorNumHabitacion(String numeroHabi);
 }

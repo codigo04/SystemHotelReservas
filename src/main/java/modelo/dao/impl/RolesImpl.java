@@ -21,12 +21,9 @@ public final class RolesImpl implements RolesDao {
 
     private EntityManagerFactory emf;
 
-    /**
-     * Constructor de RolesImpl. Inicializa el EntityManagerFactory utilizando
-     * la unidad de persistencia "myPU".
-     */
     public RolesImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
+       
     }
 
     /**

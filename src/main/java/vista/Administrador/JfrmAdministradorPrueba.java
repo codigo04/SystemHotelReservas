@@ -78,7 +78,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         btnClientes = new javax.swing.JButton();
         btnConfiguracion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jBSalir = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelPaginas = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -244,17 +244,22 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 190, -1));
 
-        jBSalir.setBackground(new java.awt.Color(153, 0, 0));
-        jBSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jBSalir.setForeground(new java.awt.Color(255, 255, 255));
-        jBSalir.setText("Salir");
-        jBSalir.setBorder(null);
-        jBSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSalirActionPerformed(evt);
+        btnSalir.setBackground(new java.awt.Color(153, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
             }
         });
-        panelMenu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 80, 25));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        panelMenu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 80, 25));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
@@ -264,7 +269,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
 
         panelPaginas.setBackground(new java.awt.Color(153, 255, 51));
         panelPaginas.setAutoscrolls(true);
-        panelPaginas.setLayout(new java.awt.GridLayout());
+        panelPaginas.setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(panelPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 1000, 640));
 
         jMenu2.setText("Themes");
@@ -395,10 +400,10 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jBSalirActionPerformed
+       // System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnInicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnInicioKeyPressed
 
@@ -435,6 +440,10 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         this.panelPaginas.revalidate();
         this.panelPaginas.repaint();
     }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -489,8 +498,8 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     public javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnReservas;
+    public javax.swing.JButton btnSalir;
     public javax.swing.JButton btnTipoHabitaciones;
-    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;

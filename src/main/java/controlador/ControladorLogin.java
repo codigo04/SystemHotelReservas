@@ -4,11 +4,16 @@
  */
 package controlador;
 
+import aggregates.Servicios.EmailService.EmailService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.swing.JOptionPane;
 import modelo.dao.impl.EmpleadoImpl;
 import modelo.dao.impl.RolesImpl;
 import modelo.entity.Empleado;
@@ -30,14 +35,18 @@ public class ControladorLogin implements ActionListener {
     private EmpleadoImpl empleadoImpl;
     private RolesImpl rolesImpl;
     private ControladorPrincipal controladorCliente;
+    private EmailService emailService;
     public static Optional<Empleado> eLoged;
+    String numeroGenerado = null;
 
     public ControladorLogin() {
         empleadoImpl = new EmpleadoImpl();
         vistaLogin = new Login();
         rolesImpl = new RolesImpl();
+        emailService = new EmailService();
         controladorCliente = new ControladorPrincipal(new JfrmAdministradorPrueba(), new JfrmEmpleado());
         vistaLogin.btnIniciarSesion.addActionListener(this);
+        vistaLogin.btnVerificarCodigo.addActionListener(this);
         //crearRoles();
         crearPrimerUser();
     }
@@ -71,11 +80,13 @@ public class ControladorLogin implements ActionListener {
                     System.out.println(roles.getNombreRol());
 
                     if ("ADMIN".equals(roles.getNombreRol())) {
-                        System.out.println("entroo");
-
-                        controladorCliente.iniciarPanelAdministrador();
-
-                        vistaLogin.setVisible(false);
+                        vistaLogin.panelAutenticacion.setVisible(true);
+                        try {
+                            
+                           mandarToken(emplLoged);
+                        } catch (MessagingException ex) {
+                            Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
                         controladorCliente.iniciarPanelEmpleado();
 
@@ -89,6 +100,19 @@ public class ControladorLogin implements ActionListener {
             System.out.println("no hay datos");
         }
 
+        if (e.getSource() == vistaLogin.btnVerificarCodigo) {
+
+            String codigoIngresado = vistaLogin.txtCodigoVerificacion.getText();
+            boolean leged = validarToken(codigoIngresado);
+
+            if (leged) {
+                controladorCliente.iniciarPanelAdministrador();
+
+                vistaLogin.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "CODIGO INCORRECTO", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
 
     public void correrLogin() {
@@ -161,14 +185,33 @@ public class ControladorLogin implements ActionListener {
             assignedRoles.add(rolRecepcionista);
             
              */
-            
             List<Roles> assignedRoles = new ArrayList<>();
             assignedRoles.add(rolAdmin);
             empleado.setRoles(assignedRoles);
-            
+
             // Guardar el empleado en la base de datos
             empleadoImpl.saveEmpleado(empleado);
         }
+    }
+
+    private int generarNumeroAleatorio6Digitos() {
+        int numero = (int) (Math.random() * 900000) + 100000;
+        return numero;
+    }
+
+    private void mandarToken(Empleado empleado) throws MessagingException {
+        numeroGenerado = String.valueOf(generarNumeroAleatorio6Digitos());
+
+      //  emailService.sendVerificationCode(empleado.getCorreoElectronico(), numeroGenerado);
+    }
+
+    private boolean validarToken(String token) {
+
+        if (token == null ? numeroGenerado == null : token.equals(numeroGenerado)) {
+            return true;
+        }
+
+        return true;
     }
 
 }

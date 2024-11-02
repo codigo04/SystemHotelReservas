@@ -31,15 +31,17 @@ public class ControladorPrincipal implements ActionListener {
         // Configurar eventos
         administradorPrueba.bntEmpleado.addActionListener(this);
         administradorPrueba.btnPerfil.addActionListener(this);
+        administradorPrueba.btnSalir.addActionListener(this);
         // Inicializar controladores
         ctrEmpleado = new ControladorEmpleado(administradorPrueba.panelEmpleadoAdm);
         controladorRoles = new ControladorRoles(administradorPrueba.panelEmpleadoAdm);
-        controladorHabitaciones = new ControladorHabitaciones(administradorPrueba.panelHabitacionesAdm);
+        controladorHabitaciones = new ControladorHabitaciones(administradorPrueba.panelHabitacionesAdm, vistaEmpleado.panelRecervaHabitaciones);
         controladorTipoHabitaciones = new ControladorTipoHabitaciones(administradorPrueba.panelTipoHabitacionesAdm);
         controladorPerfil = new ControladorPerfil(administradorPrueba.panelPerfilAdm);
-        controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm);
+        controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm, vistaEmpleado.panelRecervaHabitaciones);
         controladorInicio = new ControladorInicio(administradorPrueba.panelInicio);
         controladorClientes = new ControladorClientes(administradorPrueba.panelClientesAdm);
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -51,9 +53,14 @@ public class ControladorPrincipal implements ActionListener {
 
             controladorPerfil.cargarDatosPerfil();
         }
+
+        if (e.getSource() == administradorPrueba.btnSalir) {
+            ControladorLogin controladorLogin = new ControladorLogin();
+            controladorLogin.correrLogin();
+              administradorPrueba.setVisible(false);
+        }
     }
 
-    // Otros métodos necesarios según la lógica de tu aplicación
     public void iniciarPanelAdministrador() {
         if (administradorPrueba == null) {
             administradorPrueba = new JfrmAdministradorPrueba();

@@ -1,5 +1,6 @@
 package modelo.entity;
 
+import java.sql.Timestamp;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -16,14 +17,14 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaRegistro;
+   
+    private Timestamp fechaRegistro;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaLLegada;
+    
+    private Timestamp fechaLLegada;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaFin;
+   
+    private Timestamp fechaFin;
 
     private Double montoTotal;
     //RELACIONES ENTRE TABLAS
@@ -53,9 +54,8 @@ public class Reserva {
 
     @OneToMany(mappedBy = "reserva")
     private List<Pago> pagos;
-    
-    //GETTER Y SETTER
 
+    //GETTER Y SETTER
     public Long getIdReserva() {
         return idReserva;
     }
@@ -64,27 +64,27 @@ public class Reserva {
         this.idReserva = idReserva;
     }
 
-    public Date getFechaRegistro() {
+    public Timestamp getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(Timestamp fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Date getFechaLLegada() {
+    public Timestamp getFechaLLegada() {
         return fechaLLegada;
     }
 
-    public void setFechaLLegada(Date fechaLLegada) {
+    public void setFechaLLegada(Timestamp fechaLLegada) {
         this.fechaLLegada = fechaLLegada;
     }
 
-    public Date getFechaFin() {
+    public Timestamp getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(Timestamp fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -143,6 +143,5 @@ public class Reserva {
     public void setPagos(List<Pago> pagos) {
         this.pagos = pagos;
     }
-    
 
 }

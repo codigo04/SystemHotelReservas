@@ -24,14 +24,11 @@ import java.util.Map;
  */
 public final class ReservaImpl implements ReservaDao {
 
-    private EntityManagerFactory emf;
+  private EntityManagerFactory emf;
 
-    /**
-     * Constructor de ReservaImpl. Inicializa el EntityManagerFactory utilizando
-     * la unidad de persistencia "myPU".
-     */
     public ReservaImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
+       
     }
 
     /**

@@ -1,4 +1,5 @@
 package modelo.dao;
+
 import modelo.entity.Cliente;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * @author Chris
  */
 public interface ClienteDao {
+
     // Obtener todos los clientes
     List<Cliente> getAllClientes();
 
@@ -18,7 +20,7 @@ public interface ClienteDao {
     Cliente findClienteByName(String name);
 
     // Guardar un nuevo cliente
-    void saveCliente(Cliente cliente);
+    Cliente saveCliente(Cliente cliente);
 
     // Actualizar un cliente existente
     void updateCliente(Cliente cliente);
@@ -28,6 +30,5 @@ public interface ClienteDao {
 
     // Buscar clientes por email
     Cliente findClienteByEmail(String email);
-
 
 }

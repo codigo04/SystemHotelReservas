@@ -16,25 +16,34 @@ import modelo.dao.impl.HabitacionImpl;
 import modelo.dao.impl.TipoHabitacionImpl;
 import modelo.entity.Habitacion;
 import modelo.entity.TipoHabitacion;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Controller;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
-import vista.Empleado.paneles.PanelHabitaciones;
+import vista.Empleado.paneles.PanelRecervarHabitaciones;
 
 /**
  * @author FranDev
  */
+@Controller
 public class ControladorHabitaciones implements ActionListener {
 
     private PanelHabitacionesAdm panelHabitacionesAdm;
-    private final HabitacionImpl habitacionImpl;
-    private final TipoHabitacionImpl tipoHabitacionImpl;
 
-    ControladorHabitaciones(PanelHabitacionesAdm panelHabitacionesAdm) {
+    private PanelRecervarHabitaciones panelRecervarHabitaciones;
+
+    private HabitacionImpl habitacionImpl;
+    private TipoHabitacionImpl tipoHabitacionImpl;
+
+    ControladorHabitaciones(PanelHabitacionesAdm panelHabitacionesAdm, PanelRecervarHabitaciones panelRecervarHabitaciones) {
         this.panelHabitacionesAdm = panelHabitacionesAdm;
+        this.panelRecervarHabitaciones = panelRecervarHabitaciones;
+
         habitacionImpl = new HabitacionImpl();
         tipoHabitacionImpl = new TipoHabitacionImpl();
         agregarListeners();
         cargarHabitaciones();
+
     }
 
     @Override
@@ -63,14 +72,16 @@ public class ControladorHabitaciones implements ActionListener {
 
     }
 
+    @Scheduled(fixedRate = 60000)
     public void cargarHabitaciones() {
         System.out.println("hola siii entro");
         List<Habitacion> habitaciones = habitacionImpl.getAllHabitaciones();
 
         // Limpiar la tabla antes de agregar nuevos datos
-        DefaultTableModel model = panelHabitacionesAdm.modTablaHabitaciones;
-        model.setRowCount(0);  // Limpiar filas anteriores
-
+        DefaultTableModel modelHabiAdm = panelHabitacionesAdm.modTablaHabitaciones;
+        DefaultTableModel modelHabiEm = panelRecervarHabitaciones.modTablaHabitacionesRecervas;
+        modelHabiAdm.setRowCount(0);  // Limpiar filas anteriores
+        modelHabiEm.setRowCount(0);
         // Rellenar la tabla con los datos de los empleados
         for (Habitacion habitacion : habitaciones) {
             Object[] fila = new Object[6];
@@ -81,7 +92,8 @@ public class ControladorHabitaciones implements ActionListener {
             fila[4] = habitacion.getTipoHabitacion().getPrecio();
             fila[5] = habitacion.getEstado();
 
-            model.addRow(fila);  // Agrega la fila al modelo de tabla
+            modelHabiAdm.addRow(fila);
+            modelHabiEm.addRow(fila);
         }
 
     }

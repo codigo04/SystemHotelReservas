@@ -8,6 +8,7 @@ import modelo.dao.ServicioDao;
 import modelo.entity.Servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Implementación de la interfaz ServicioDao para realizar operaciones CRUD
@@ -16,15 +17,13 @@ import java.util.List;
  */
 public class ServicioImpl implements ServicioDao {
 
-    private EntityManagerFactory emf;
+   private EntityManagerFactory emf;
 
-    /**
-     * Constructor de ServicioImpl. Inicializa el EntityManagerFactory
-     * utilizando la unidad de persistencia "myPU".
-     */
     public ServicioImpl() {
-        emf = Persistence.createEntityManagerFactory("myPU");
+        this.emf = EntityManagerFactorySingleton.getInstance();
+       
     }
+
 
     /**
      * Obtiene una lista de todos los servicios en la base de datos.
@@ -49,10 +48,13 @@ public class ServicioImpl implements ServicioDao {
      * @return El objeto Servicio si se encuentra, o null si no se encuentra.
      */
     @Override
-    public Servicio findServicioById(Long id) {
+    public Optional<Servicio> findServicioById(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.find(Servicio.class, id);
+
+            return Optional.of(em.find(Servicio.class, id));
+        } catch (Exception e) {
+            return Optional.empty();
         } finally {
             em.close();
         }

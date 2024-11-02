@@ -13,12 +13,14 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import vista.Empleado.paneles.PanelHabitaciones;
+import vista.Empleado.paneles.PanelRecervarHabitaciones;
 import vista.Empleado.paneles.PanelInicio;
 import vista.Empleado.paneles.PanelPerfil;
 import vista.Empleado.paneles.PanelReservas;
 
 public class JfrmEmpleado extends javax.swing.JFrame {
+    
+  public  PanelRecervarHabitaciones panelRecervaHabitaciones = new PanelRecervarHabitaciones();
     public JfrmEmpleado() {
         initComponents();
         setVisible(false);
@@ -68,7 +70,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBInicioActionPerformed(evt);
             }
         });
-        menu.add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 194, 185, 41));
+        menu.add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 194, 130, 41));
 
         jBPerfil.setBackground(new java.awt.Color(204, 204, 204));
         jBPerfil.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -79,7 +81,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBPerfilActionPerformed(evt);
             }
         });
-        menu.add(jBPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 247, 185, 41));
+        menu.add(jBPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 247, 130, 41));
 
         jBAsiHabitacion.setBackground(new java.awt.Color(204, 204, 204));
         jBAsiHabitacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -91,7 +93,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBAsiHabitacionActionPerformed(evt);
             }
         });
-        menu.add(jBAsiHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 300, 185, 41));
+        menu.add(jBAsiHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 300, 130, 41));
 
         jBHistorial.setBackground(new java.awt.Color(204, 204, 204));
         jBHistorial.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -102,7 +104,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBHistorialActionPerformed(evt);
             }
         });
-        menu.add(jBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 185, 42));
+        menu.add(jBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 130, 42));
 
         jBSalir.setBackground(new java.awt.Color(153, 0, 0));
         jBSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -114,19 +116,19 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBSalirActionPerformed(evt);
             }
         });
-        menu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 441, 80, 25));
+        menu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 80, 25));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Empleado");
-        menu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 142, -1, -1));
+        menu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         menu.add(empleadopng, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 136, -1, -1));
 
-        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 660));
+        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 660));
 
         panelPrincipal.setPreferredSize(new java.awt.Dimension(523, 480));
-        panelPrincipal.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel1.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, -10, 960, 690));
+        panelPrincipal.setLayout(new java.awt.GridLayout());
+        jPanel1.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 980, 630));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 
@@ -195,10 +197,10 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     private void jBAsiHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsiHabitacionActionPerformed
         // TODO 
-        PanelHabitaciones panelHabitaciones = new PanelHabitaciones();
+        
 
         panelPrincipal.removeAll();
-        panelPrincipal.add(panelHabitaciones);
+        panelPrincipal.add(panelRecervaHabitaciones);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
 
