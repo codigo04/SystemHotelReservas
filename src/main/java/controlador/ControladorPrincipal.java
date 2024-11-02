@@ -57,7 +57,7 @@ public class ControladorPrincipal implements ActionListener {
         if (e.getSource() == administradorPrueba.btnSalir) {
             ControladorLogin controladorLogin = new ControladorLogin();
             controladorLogin.correrLogin();
-              administradorPrueba.setVisible(false);
+            administradorPrueba.setVisible(false);
         }
     }
 
