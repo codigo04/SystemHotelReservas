@@ -45,7 +45,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
         Panel_RegistroHabitaciones.setVisible(false);
         Panel_EditHabitaciones.setVisible(false);
-        background.setVisible(false);
 
     }
 
@@ -58,7 +57,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background = new javax.swing.JPanel();
         Panel_EditHabitaciones = new javax.swing.JPanel();
         btnAceptarEditHabi = new javax.swing.JButton();
         btnCancelarEditHabi = new javax.swing.JButton();
@@ -94,10 +92,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        background.setBackground(new java.awt.Color(0, 0, 0, 150));
-        background.setForeground(new java.awt.Color(153, 153, 153));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_EditHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
         Panel_EditHabitaciones.setForeground(new java.awt.Color(0, 0, 0));
@@ -221,7 +215,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel5.setText("Editar Tipo de Habitación");
         Panel_EditHabitaciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
 
-        background.add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 410));
+        add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 410));
 
         Panel_RegistroHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
         Panel_RegistroHabitaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -318,9 +312,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel4.setText("Agregar Tipo de Habitación");
         Panel_RegistroHabitaciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        background.add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 410));
-
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1000, 650));
+        add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 410));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel1.setText("Gestión de Tipos de Habitaciones");
@@ -435,7 +427,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
             bloquear(jpanelContenidoHabi);
             bloquearImputs();
             llenarFormEditar();
-            background.setVisible(true);
             
         }
 
@@ -450,7 +441,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
         desbloquear(jpanelContenidoHabi);
         Panel_RegistroHabitaciones.setVisible(false);
-        background.setVisible(false);
         
 
         //creamos una arreglo de tipos object
@@ -494,13 +484,11 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     private void btnCancelarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarHabitacionActionPerformed
         desbloquear(jpanelContenidoHabi);
         Panel_RegistroHabitaciones.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnCancelarHabitacionActionPerformed
 
     private void btnAgregarHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarHabiActionPerformed
 
         bloquear(jpanelContenidoHabi);
-        background.setVisible(true);
         Panel_RegistroHabitaciones.setVisible(true);
 
     }//GEN-LAST:event_btnAgregarHabiActionPerformed
@@ -534,7 +522,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         } else {
             bloquear(jpanelContenidoHabi);
             llenarFormEditar();
-            background.setVisible(true);
             Panel_EditHabitaciones.setVisible(true);
 
         }
@@ -551,13 +538,11 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     private void btnAceptarEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabiActionPerformed
         desbloquear(jpanelContenidoHabi);
         Panel_EditHabitaciones.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnAceptarEditHabiActionPerformed
 
     private void btnCancelarEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabiActionPerformed
         desbloquear(jpanelContenidoHabi);
         Panel_EditHabitaciones.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditHabiActionPerformed
 
     private void txtPrecioEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioEditHabiActionPerformed
@@ -612,7 +597,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_EditHabitaciones;
     public javax.swing.JPanel Panel_RegistroHabitaciones;
-    private javax.swing.JPanel background;
     public javax.swing.JButton btnAceptarEditHabi;
     public javax.swing.JButton btnAceptarGuardarHabitacion;
     public javax.swing.JButton btnAgregarHabi;

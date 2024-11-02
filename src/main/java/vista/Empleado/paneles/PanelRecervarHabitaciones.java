@@ -118,11 +118,11 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         btnBuscarHabitacion = new javax.swing.JButton();
         btnRecervar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Reserva.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Reserva.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        Panel_Reserva.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Reserva.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Panel_Reserva.setEnabled(false);
         Panel_Reserva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,14 +133,14 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel25.setText(" Reserva");
         Panel_Reserva.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jLabel32.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel32.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel32.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel32.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("DNI");
         Panel_Reserva.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 40, -1));
 
-        jLabel33.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel33.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Apellido");
         Panel_Reserva.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 60, -1));
@@ -152,8 +152,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         TxtApellidoClienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Panel_Reserva.add(TxtApellidoClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 150, 30));
 
-        jLabel35.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel35.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel35.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel35.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("Celular");
         Panel_Reserva.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 100, -1));
@@ -165,8 +165,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         txtCelularClienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Panel_Reserva.add(txtCelularClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 150, 30));
 
-        jLabel26.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel26.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Correo Electronico");
         Panel_Reserva.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
@@ -178,8 +178,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         txtCorreoClienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Panel_Reserva.add(txtCorreoClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 150, 30));
 
-        jLabel27.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel27.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText(" Numero Habitación");
         Panel_Reserva.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 140, -1));
@@ -196,14 +196,14 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         });
         Panel_Reserva.add(txtNumHabitacionClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 150, 30));
 
-        jLabel28.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel28.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("Fecha de llegada");
         Panel_Reserva.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 110, -1));
 
-        jLabel29.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel29.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setText("Fecha de salida");
         Panel_Reserva.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 110, -1));
@@ -215,8 +215,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         txtPrecioRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Panel_Reserva.add(txtPrecioRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 150, 30));
 
-        jLabel30.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel30.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel30.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setText("Precio");
         Panel_Reserva.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 50, -1));
@@ -246,8 +246,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         });
         Panel_Reserva.add(btnAgregarService, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 80, 20));
 
-        jLabel36.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel36.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel36.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel36.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Nombres");
         Panel_Reserva.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, -1));
@@ -293,14 +293,16 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         });
         Panel_Reserva.add(btnCancelarRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 160, 30));
 
+        fechaLlegadaRes.setBackground(new java.awt.Color(255, 255, 255));
         fechaLlegadaRes.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Reserva.add(fechaLlegadaRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 150, 30));
 
+        fechaSalidaRes.setBackground(new java.awt.Color(255, 255, 255));
         fechaSalidaRes.setForeground(new java.awt.Color(0, 0, 0));
         Panel_Reserva.add(fechaSalidaRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 150, 30));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Tipo Pago");
@@ -318,12 +320,14 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Panel_Reserva.add(cboxTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 150, 30));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Servicios Selecionado");
         Panel_Reserva.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 180, 20));
 
+        tablaServiciosElegido.setBackground(new java.awt.Color(255, 255, 255));
+        tablaServiciosElegido.setForeground(new java.awt.Color(0, 0, 0));
         tablaServiciosElegido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -337,6 +341,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
         Panel_Reserva.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 190, 90));
 
+        tablaServicios.setBackground(new java.awt.Color(255, 255, 255));
+        tablaServicios.setForeground(new java.awt.Color(0, 0, 0));
         tablaServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -351,14 +357,14 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Panel_Reserva.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 132, 190, 90));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Servicios");
         Panel_Reserva.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 70, 20));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Servicios");
@@ -410,9 +416,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
         add(Panel_Reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 690, 520));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         jLabel1.setText("Gestión de Reservas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 

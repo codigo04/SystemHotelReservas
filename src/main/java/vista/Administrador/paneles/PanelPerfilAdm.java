@@ -23,7 +23,6 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         initComponents();
         Panel_EditPerfil.setVisible(false);
         bloquearComponentes();
-        background.setVisible(false);
     }
 
     /**
@@ -35,7 +34,6 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background = new javax.swing.JPanel();
         Panel_EditPerfil = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -76,10 +74,6 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jlabelFechaInicio = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        background.setBackground(new java.awt.Color(0, 0, 0, 150));
-        background.setForeground(new java.awt.Color(153, 153, 153));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_EditPerfil.setBackground(new java.awt.Color(255, 255, 255));
         Panel_EditPerfil.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -241,9 +235,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         });
         Panel_EditPerfil.add(btnAceptarEditHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 140, 30));
 
-        background.add(Panel_EditPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 430, 470));
-
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1000, 650));
+        add(Panel_EditPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 430, 470));
 
         jpanelInfoPerf.setBackground(new java.awt.Color(255, 255, 255));
         jpanelInfoPerf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -406,7 +398,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-        background.setVisible(true);
+        
         Panel_EditPerfil.setVisible(true);
         llenearFormEditarPerfilUs();
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
@@ -424,14 +416,14 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCorreoUsPerfilActionPerformed
 
     private void btnAceptarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabitacionActionPerformed
-        background.setVisible(false);
+        
         desbloquear(jpanelInfoPerf);
         bloquearComponentes();
         Panel_EditPerfil.setVisible(false);
     }//GEN-LAST:event_btnAceptarEditHabitacionActionPerformed
 
     private void btnCancelarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabitacionActionPerformed
-        background.setVisible(false);
+        
         desbloquear(jpanelInforLaboralPerf);
         Panel_EditPerfil.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditHabitacionActionPerformed
@@ -495,7 +487,6 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_EditPerfil;
-    private javax.swing.JPanel background;
     public javax.swing.JButton btnAceptarEditHabitacion;
     public javax.swing.JButton btnCancelarEditHabitacion;
     public javax.swing.JButton btnEditarPerfil;
