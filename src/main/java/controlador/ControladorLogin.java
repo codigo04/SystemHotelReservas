@@ -70,8 +70,10 @@ public class ControladorLogin implements ActionListener {
             Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado(usuario, contraseña);
 
             if (empleadoExist.isPresent()) {
+                System.out.println("entroo login");
                 Empleado emplLoged = empleadoExist.get();
 
+                econderComponentes();
                 //guardar el usuari logeado
                 eLoged = Optional.of(emplLoged);
 
@@ -82,8 +84,8 @@ public class ControladorLogin implements ActionListener {
                     if ("ADMIN".equals(roles.getNombreRol())) {
                         vistaLogin.panelAutenticacion.setVisible(true);
                         try {
-                            
-                           mandarToken(emplLoged);
+
+                            mandarToken(emplLoged);
                         } catch (MessagingException ex) {
                             Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -97,6 +99,7 @@ public class ControladorLogin implements ActionListener {
             }
 
         } else {
+            
             System.out.println("no hay datos");
         }
 
@@ -202,7 +205,7 @@ public class ControladorLogin implements ActionListener {
     private void mandarToken(Empleado empleado) throws MessagingException {
         numeroGenerado = String.valueOf(generarNumeroAleatorio6Digitos());
 
-      //  emailService.sendVerificationCode(empleado.getCorreoElectronico(), numeroGenerado);
+        emailService.sendVerificationCode(empleado.getCorreoElectronico(), numeroGenerado);
     }
 
     private boolean validarToken(String token) {
@@ -211,7 +214,13 @@ public class ControladorLogin implements ActionListener {
             return true;
         }
 
-        return true;
+        return false;
+    }
+
+    private void econderComponentes() {
+        vistaLogin.txtUsuario.setVisible(false);
+        vistaLogin.txtpassword.setVisible(false);
+        vistaLogin.btnIniciarSesion.setVisible(false);
     }
 
 }

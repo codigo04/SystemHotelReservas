@@ -42,7 +42,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         jBPerfil = new javax.swing.JButton();
         jBAsiHabitacion = new javax.swing.JButton();
         jBHistorial = new javax.swing.JButton();
-        jBSalir = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         empleadopng = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
@@ -106,17 +106,17 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         });
         menu.add(jBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 130, 42));
 
-        jBSalir.setBackground(new java.awt.Color(153, 0, 0));
-        jBSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jBSalir.setForeground(new java.awt.Color(255, 255, 255));
-        jBSalir.setText("Salir");
-        jBSalir.setBorder(null);
-        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setBackground(new java.awt.Color(153, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSalirActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        menu.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 80, 25));
+        menu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 80, 25));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,7 +127,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 660));
 
         panelPrincipal.setPreferredSize(new java.awt.Dimension(523, 480));
-        panelPrincipal.setLayout(new java.awt.GridLayout());
+        panelPrincipal.setLayout(new java.awt.GridLayout(1, 0));
         jPanel1.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 980, 630));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
@@ -206,10 +206,10 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBAsiHabitacionActionPerformed
 
-    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jBSalirActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         SwingUtilities.invokeLater(() -> {
@@ -286,12 +286,12 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnSalir;
     private javax.swing.JLabel empleadopng;
     private javax.swing.JButton jBAsiHabitacion;
     private javax.swing.JButton jBHistorial;
     private javax.swing.JButton jBInicio;
     private javax.swing.JButton jBPerfil;
-    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

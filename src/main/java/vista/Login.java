@@ -4,7 +4,6 @@
  */
 package vista;
 
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -12,7 +11,6 @@ import java.awt.Container;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import javax.swing.UIManager;
-
 
 //import com.sun.mail.imap.ACL;
 /**
@@ -138,7 +136,8 @@ public class Login extends javax.swing.JFrame {
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         principal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panelLogin.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 320, 480));
+        principal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/costavelaImg.png"))); // NOI18N
+        panelLogin.add(principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 260, 480));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -301,7 +300,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Buenos Dias");
+        jLabel8.setText("Buenos Tardes");
         panelLogin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         txtContrasennaError.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 10)); // NOI18N
@@ -409,11 +408,10 @@ public class Login extends javax.swing.JFrame {
         contraseña = String.valueOf(txtpassword.getPassword());
 
         //  bloquear(panelLogin);
-       // panelAutenticacion.setVisible(true);
-        
-        txtUsuario.setVisible(false);
-        txtpassword.setVisible(false);
-        btnIniciarSesion.setVisible(false);
+        // panelAutenticacion.setVisible(true);
+        ///txtUsuario.setVisible(false);
+       // txtpassword.setVisible(false);
+      //  btnIniciarSesion.setVisible(false);
         // llamamos la metodo buscar usuario
 
         //  boolean respuesta = val.buscarEmpleado(usuario, contraseña);
@@ -461,8 +459,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         panelAutenticacion.setVisible(false);
-        
-         txtUsuario.setVisible(true);
+
+        txtUsuario.setVisible(true);
         txtpassword.setVisible(true);
         btnIniciarSesion.setVisible(true);
     }//GEN-LAST:event_jLabel9MouseClicked
@@ -550,7 +548,7 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JPasswordField txtpassword;
     // End of variables declaration//GEN-END:variables
 public void bloquear(Component component) {
-        
+
         if (component instanceof Container) {
             Component[] components = ((Container) component).getComponents();
             for (Component child : components) {
@@ -558,11 +556,11 @@ public void bloquear(Component component) {
             }
         }
         component.setEnabled(false);
-        
+
     }
-    
+
     public void desbloquear(Component component) {
-        
+
         if (component instanceof Container) {
             Component[] components = ((Container) component).getComponents();
             for (Component child : components) {
@@ -570,7 +568,7 @@ public void bloquear(Component component) {
             }
         }
         component.setEnabled(true);
-        
+
     }
-    
+
 }

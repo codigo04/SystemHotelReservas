@@ -14,12 +14,13 @@
         <class>entity.Servicios</class>
         <class>entity.Empleado</class>
          <class>entity.Pago</class>
+         <class>modelo.entity.Servicio</class>
            <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
         <properties>
             <!-- Configuración de la base de datos -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdhotelcostabela?serverTimezone=UTC"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="Admin12345"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
             <!-- Configuración de Hibernate -->

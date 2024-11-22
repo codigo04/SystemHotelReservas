@@ -15,8 +15,8 @@ import java.util.Properties;
  */
 public class EmailService {
 
-    private final String senderEmail = "cuevabarriosfrancisco@gmail.com"; // Tu correo
-    private final String senderPassword = "sbfokegkofgnvjha"; // Contraseña de tu correo
+    private final String senderEmail = "hotelcostabela@gmail.com"; // Tu correo
+    private final String senderPassword = "korn jitv ffkb rsnc"; // Contraseña de tu correo
 
     public void sendVerificationCode(String recipientEmail, String code) throws MessagingException {
         Properties props = new Properties();

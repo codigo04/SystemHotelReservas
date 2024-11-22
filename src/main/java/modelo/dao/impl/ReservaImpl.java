@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  *
@@ -24,11 +25,11 @@ import java.util.Map;
  */
 public final class ReservaImpl implements ReservaDao {
 
-  private EntityManagerFactory emf;
+    private EntityManagerFactory emf;
 
     public ReservaImpl() {
         this.emf = EntityManagerFactorySingleton.getInstance();
-       
+
     }
 
     /**
@@ -73,15 +74,16 @@ public final class ReservaImpl implements ReservaDao {
      * @param reserva El objeto Reserva a guardar.
      */
     @Override
-    public void saveReserva(Reserva reserva) {
+    public Optional<Reserva> saveReserva(Reserva reserva) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(reserva);
             em.getTransaction().commit();
+            return Optional.of(reserva); // Devolvemos la reserva dentro de Optional
         } catch (Exception e) {
             em.getTransaction().rollback();
-            throw e;
+            return Optional.empty(); // Propagamos la excepción para manejarla en el nivel superior
         } finally {
             em.close();
         }
@@ -185,9 +187,8 @@ public final class ReservaImpl implements ReservaDao {
         return query.getResultList();
     }
 
-    
     public static void main(String[] args) {
-       ReservaImpl reservaImpl = new ReservaImpl();
+        ReservaImpl reservaImpl = new ReservaImpl();
         List<Object[]> ocupacionPorDia = reservaImpl.obtenerOcupacionPorDiaSemana();
 
         // Mapeo de días de la semana en inglés a español

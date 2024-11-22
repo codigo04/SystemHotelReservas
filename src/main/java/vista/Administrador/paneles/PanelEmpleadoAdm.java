@@ -505,7 +505,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         cboxRolesEditEm.setBackground(new java.awt.Color(255, 255, 255));
         cboxRolesEditEm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cboxRolesEditEm.setForeground(new java.awt.Color(0, 0, 0));
-        cboxRolesEditEm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cboxRolesEditEm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "ADMIN", "RECEPCIONISTA" }));
         cboxRolesEditEm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxRolesEditEmActionPerformed(evt);
@@ -638,7 +638,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
 
         if (fila == -1) {
 
-            JOptionPane.showConfirmDialog(null, "SELECCIONA UN PLATO", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showConfirmDialog(null, "SELECCIONA UNA CELDA", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
         } else {
             bloquear(jpanelContenidoEm);
@@ -664,7 +664,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreEmKeyTyped
 
     private void btnAceptarGuardarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarEmActionPerformed
-        
+
         desbloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(false);
 
@@ -707,7 +707,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAceptarGuardarEmActionPerformed
 
     private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
-        
+
         desbloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(false);
     }//GEN-LAST:event_btnCancelarEmActionPerformed
@@ -807,7 +807,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarReniecEmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         desbloquearImputs();
         bloquear(jpanelContenidoEm);
         Panel_RegistroEmpleados.setVisible(true);
@@ -859,13 +859,13 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreEditEmKeyTyped
 
     private void btnAceptarEditarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditarEmActionPerformed
-        
+
         desbloquear(jpanelContenidoEm);
         Panel_EditEmpleados.setVisible(false);
     }//GEN-LAST:event_btnAceptarEditarEmActionPerformed
 
     private void btnCancelarEditEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditEmActionPerformed
-        
+
         desbloquear(jpanelContenidoEm);
         Panel_EditEmpleados.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditEmActionPerformed
@@ -941,7 +941,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarEmpleadoMouseExited
 
     private void txtBuscarEmpleadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarEmpleadoFocusLost
-         if (txtBuscarEmpleado.getText().isEmpty()) {
+        if (txtBuscarEmpleado.getText().isEmpty()) {
             txtBuscarEmpleado.setText("Buscar Empleado"); // Restaura el texto si está vacío al perder el foco
         }
     }//GEN-LAST:event_txtBuscarEmpleadoFocusLost
@@ -1158,7 +1158,7 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
         List<Roles> assginedRoles = new ArrayList<>();
         Roles rol = new Roles();
 
-        rol.setNombreRol((String) cboxRoles.getSelectedItem());
+        rol.setNombreRol((String) cboxRolesEditEm.getSelectedItem());
 
         assginedRoles.add(rol);
 

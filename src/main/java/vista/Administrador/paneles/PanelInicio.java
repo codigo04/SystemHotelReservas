@@ -68,6 +68,8 @@ public class PanelInicio extends javax.swing.JPanel {
         panelGrafico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelGrafico.setLayout(new java.awt.GridLayout(1, 0));
         add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 610, 330));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 290, 470));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));

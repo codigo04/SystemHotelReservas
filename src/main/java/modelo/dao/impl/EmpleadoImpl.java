@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 import java.util.Optional;
+import javax.swing.JOptionPane;
 import modelo.dao.EmpleadoDao;
 import modelo.entity.Empleado;
 import org.springframework.stereotype.Repository;
@@ -45,7 +46,8 @@ public class EmpleadoImpl implements EmpleadoDao {
             query.setParameter("correo", correoElectronico);
             query.setParameter("pass", password);
             empleado = query.getSingleResult();
-        } catch (NoResultException e) {
+        } catch (Exception e) {
+             JOptionPane.showConfirmDialog(null, "DATOS INCORRECTOS INTENTALO NUEVAMENTE", "", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
             System.out.println("Credenciales inválidas");
             return Optional.empty();
         } finally {

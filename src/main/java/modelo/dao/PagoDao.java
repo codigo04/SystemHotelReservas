@@ -26,4 +26,8 @@ public interface PagoDao {
     Optional<List<Pago>> findPagosByReservaId(Long idReserva);
 
     Double obtenerMontoTotalPagado();
+    
+    Optional<Pago> savePago(Pago pago);
+    
+    Optional<Pago> editPago(int idPago,Pago pago);
 }
