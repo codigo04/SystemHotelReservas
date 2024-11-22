@@ -38,17 +38,13 @@ public class Ticket {
     @Column(length = 20)
     private String estado;
     
-    @Column(name = "idReserva")
-    private Long idReserva;
-    
-    private Long idPago;
     
     @ManyToOne
-    @JoinColumn(name = "idReserva",insertable = false, updatable = false)
+    @JoinColumn(name = "idReserva")
     private Reserva reserva;
 
     @ManyToOne
-    @JoinColumn(name = "idPago",insertable = false, updatable = false)
+    @JoinColumn(name = "idPago")
     private Pago pago;
 
     public Long getIdTicket() {
@@ -91,21 +87,7 @@ public class Ticket {
         this.estado = estado;
     }
 
-    public Long getIdReserva() {
-        return idReserva;
-    }
-
-    public void setIdReserva(Long idReserva) {
-        this.idReserva = idReserva;
-    }
-
-    public Long getIdPago() {
-        return idPago;
-    }
-
-    public void setIdPago(Long idPago) {
-        this.idPago = idPago;
-    }
+    
 
     public Reserva getReserva() {
         return reserva;

@@ -3,6 +3,7 @@ import modelo.entity.Reserva;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -29,8 +30,9 @@ public interface ReservaDao {
      * Guarda una nueva reserva en la base de datos.
      *
      * @param reserva el objeto Reserva a guardar.
+     * @return 
      */
-    void saveReserva(Reserva reserva);
+    Optional<Reserva> saveReserva(Reserva reserva);
 
     /**
      * Actualiza una reserva existente en la base de datos.

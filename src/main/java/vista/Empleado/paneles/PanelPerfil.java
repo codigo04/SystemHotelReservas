@@ -73,13 +73,12 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel25.setText("Correo Electronico");
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 30)); // NOI18N
         jLabel1.setText("Francisco Cueva");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 201, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 360, -1));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 27, 118, -1));
@@ -101,13 +100,15 @@ public class PanelPerfil extends javax.swing.JPanel {
         Panel_RegistroEmpleados.setEnabled(false);
         Panel_RegistroEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel14.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText(" Nombre Completo:");
-        Panel_RegistroEmpleados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 110, 20));
+        Panel_RegistroEmpleados.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 150, 20));
 
         txtNueContraEm.setBackground(new java.awt.Color(153, 153, 153));
-        txtNueContraEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtNueContraEm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNueContraEm.setForeground(new java.awt.Color(0, 0, 0));
         txtNueContraEm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNueContraEm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +120,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtNueContraEmKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtNueContraEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 210, -1));
+        Panel_RegistroEmpleados.add(txtNueContraEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 190, -1));
 
         btnAceptarEm.setBackground(new java.awt.Color(102, 204, 0));
         btnAceptarEm.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -144,37 +145,48 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         Panel_RegistroEmpleados.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 170, 30));
 
-        jLabel38.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel38.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel38.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Dirección:");
-        Panel_RegistroEmpleados.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 60, 20));
+        Panel_RegistroEmpleados.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 100, 20));
 
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Datos personales");
         Panel_RegistroEmpleados.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        jLabel24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lesli\\OneDrive\\Desktop\\ProyectoRes\\SystemHotelReservas\\src\\main\\java\\Imagenes\\Empleado.png")); // NOI18N
         Panel_RegistroEmpleados.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel26.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Contraseña:");
-        Panel_RegistroEmpleados.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+        Panel_RegistroEmpleados.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 120, -1));
 
-        jLabel27.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel27.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Correo Electronico:");
-        Panel_RegistroEmpleados.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        Panel_RegistroEmpleados.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 180, -1));
 
-        jLabel28.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("DNI:");
-        Panel_RegistroEmpleados.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+        Panel_RegistroEmpleados.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 70, -1));
 
-        jLabel29.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setText("Nueva Contraseña:");
-        Panel_RegistroEmpleados.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 110, 20));
+        Panel_RegistroEmpleados.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 20));
 
-        txtNombreEm1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtNombreEm1.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreEm1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNombreEm1.setForeground(new java.awt.Color(0, 0, 0));
         txtNombreEm1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreEm1ActionPerformed(evt);
@@ -185,9 +197,11 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtNombreEm1KeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtNombreEm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 210, -1));
+        Panel_RegistroEmpleados.add(txtNombreEm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 190, -1));
 
-        txtDireccionEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtDireccionEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccionEm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDireccionEm.setForeground(new java.awt.Color(0, 0, 0));
         txtDireccionEm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionEmActionPerformed(evt);
@@ -198,9 +212,11 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtDireccionEmKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtDireccionEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 210, -1));
+        Panel_RegistroEmpleados.add(txtDireccionEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 190, -1));
 
-        txtCorreoEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtCorreoEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoEm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCorreoEm.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreoEm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoEmActionPerformed(evt);
@@ -211,9 +227,11 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtCorreoEmKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtCorreoEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 210, -1));
+        Panel_RegistroEmpleados.add(txtCorreoEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 190, -1));
 
-        txtDNIemple.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtDNIemple.setBackground(new java.awt.Color(255, 255, 255));
+        txtDNIemple.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDNIemple.setForeground(new java.awt.Color(0, 0, 0));
         txtDNIemple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDNIempleActionPerformed(evt);
@@ -224,9 +242,11 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtDNIempleKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtDNIemple, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, -1));
+        Panel_RegistroEmpleados.add(txtDNIemple, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 190, -1));
 
-        txtContraseñaEm.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtContraseñaEm.setBackground(new java.awt.Color(255, 255, 255));
+        txtContraseñaEm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtContraseñaEm.setForeground(new java.awt.Color(0, 0, 0));
         txtContraseñaEm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaEmActionPerformed(evt);
@@ -237,7 +257,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtContraseñaEmKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtContraseñaEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 210, 20));
+        Panel_RegistroEmpleados.add(txtContraseñaEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 190, 20));
 
         add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 400, 450));
 
@@ -245,10 +265,15 @@ public class PanelPerfil extends javax.swing.JPanel {
         panelDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setBackground(null);
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Email");
         panelDatos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 18, -1, -1));
 
+        jTxtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        jTxtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTxtEmail.setForeground(new java.awt.Color(0, 0, 0));
         jTxtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtEmailActionPerformed(evt);
@@ -256,10 +281,15 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(jTxtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 49, 233, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setBackground(null);
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Direccion");
         panelDatos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 83, -1, -1));
 
+        jTxtDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        jTxtDireccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTxtDireccion.setForeground(new java.awt.Color(0, 0, 0));
         jTxtDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtDireccionActionPerformed(evt);
@@ -267,10 +297,15 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(jTxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 482, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setBackground(null);
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Telefono");
         panelDatos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 18, -1, -1));
 
+        jTxtTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        jTxtTelefono.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTxtTelefono.setForeground(new java.awt.Color(0, 0, 0));
         jTxtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtTelefonoActionPerformed(evt);
@@ -284,30 +319,37 @@ public class PanelPerfil extends javax.swing.JPanel {
         panelInfo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setBackground(null);
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Posicion");
         panelInfo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 91, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Recepcionista");
         panelInfo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 122, -1, -1));
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setBackground(null);
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Informacion Laboral");
         panelInfo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 15, 257, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         panelInfo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 91, -1, 50));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setBackground(null);
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fecha Inicio");
         panelInfo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 91, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("14/20/2024");
         panelInfo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 122, -1, -1));

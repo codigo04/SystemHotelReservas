@@ -129,4 +129,47 @@ public class PagoImpl implements PagoDao {
         Double totalPagado = query.getSingleResult();
         return (totalPagado != null) ? totalPagado : 0.0;
     }
+
+    @Override
+    public Optional<Pago> savePago(Pago pago) {
+        try {
+        em.getTransaction().begin(); // Inicia la transacción
+        em.persist(pago);           // Guarda la entidad en la base de datos
+        em.getTransaction().commit(); // Confirma la transacción
+        return Optional.of(pago);   // Retorna el pago guardado
+    } catch (Exception e) {
+        em.getTransaction().rollback(); // Reversa la transacción si hay error
+        e.printStackTrace();            // Registra el error
+        return Optional.empty();        // Retorna vacío si hay un problema
+    }
+    }
+
+    @Override
+    public Optional<Pago> editPago(int idPago, Pago pago) {
+        try {
+        em.getTransaction().begin(); // Inicia la transacción
+        
+        // Busca el pago existente por su ID
+        Pago pagoExistente = em.find(Pago.class, idPago);
+        
+        if (pagoExistente != null) {
+            // Actualiza los campos del pago existente con los nuevos valores
+            pagoExistente.setMontoPago(pago.getMontoPago());
+            pagoExistente.setEstadoPago(pago.getEstadoPago());
+            pagoExistente.setFechaPago(pago.getFechaPago());
+            // Agrega aquí más campos si es necesario
+
+            em.merge(pagoExistente); // Actualiza la entidad en la base de datos
+            em.getTransaction().commit(); // Confirma la transacción
+            return Optional.of(pagoExistente); // Retorna el pago actualizado
+        } else {
+            em.getTransaction().rollback(); // Reversa la transacción si no encuentra el pago
+            return Optional.empty();        // Retorna vacío si no existe el pago
+        }
+    } catch (Exception e) {
+        em.getTransaction().rollback(); // Reversa la transacción si hay error
+        e.printStackTrace();            // Registra el error
+        return Optional.empty();        // Retorna vacío si hay un problema
+    }
+    }
 }

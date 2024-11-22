@@ -14,6 +14,7 @@
         <class>entity.Servicios</class>
         <class>entity.Empleado</class>
          <class>entity.Pago</class>
+         <class>modelo.entity.Servicio</class>
            <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
         <properties>
             <!-- Configuración de la base de datos -->

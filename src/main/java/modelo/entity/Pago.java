@@ -13,7 +13,7 @@ public class Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPago;
 
-    private Long idReserva;
+   
 
     private Date fechaPago;
 
@@ -27,7 +27,7 @@ public class Pago {
     private List<Ticket> tickets;
 
     @ManyToOne
-    @JoinColumn(name = "idReserva",insertable=false,updatable=false)
+    @JoinColumn(name = "idReserva")
     private Reserva reserva;
 
     public Long getIdPago() {
@@ -38,13 +38,7 @@ public class Pago {
         this.idPago = idPago;
     }
 
-    public Long getIdReserva() {
-        return idReserva;
-    }
-
-    public void setIdReserva(Long idReserva) {
-        this.idReserva = idReserva;
-    }
+  
 
     public Date getFechaPago() {
         return fechaPago;

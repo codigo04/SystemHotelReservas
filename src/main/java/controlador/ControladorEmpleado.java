@@ -133,6 +133,7 @@ public class ControladorEmpleado implements ActionListener {
         if (emplExist.isPresent()) {
             Empleado newEm = emplExist.get();
 
+            // Actualizar los datos básicos
             newEm.setNombre(empleado.getNombre());
             newEm.setApellido(empleado.getApellido());
             newEm.setTelefono(empleado.getTelefono());
@@ -140,7 +141,24 @@ public class ControladorEmpleado implements ActionListener {
             newEm.setCorreoElectronico(empleado.getCorreoElectronico());
             newEm.setPassword(empleado.getPassword());
             newEm.setEstado(empleado.getEstado());
-            empleadoImpl.updateEmpleado(newEm);
+
+            // Manejo de roles
+            List<Roles> assignedRoles = new ArrayList<>();
+            for (Roles role : empleado.getRoles()) {
+                Roles rolExist = rolesImpl.findRoleByName(role.getNombreRol());
+
+                if (rolExist != null) {
+                    assignedRoles.add(rolExist);
+                } else {
+                    System.out.println("El rol " + role.getNombreRol() + " ya existe.");
+                    //ssignedRoles.add(rolExist);
+                }
+            }
+
+            newEm.setRoles(assignedRoles);  // Asignar los roles actualizados al empleado
+            empleadoImpl.updateEmpleado(newEm);  // Actualizar empleado en la base de datos
+        } else {
+            System.out.println("El empleado con DNI " + empleado.getDni() + " no existe.");
         }
 
     }

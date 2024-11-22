@@ -21,7 +21,6 @@ public class PanelReservas extends javax.swing.JPanel {
         initComponents();
         Panel_Cancelar.setVisible(false);
         Panel_Editar.setVisible(false);
-        background.setVisible(false);
         
     }
 
@@ -37,14 +36,6 @@ public class PanelReservas extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
-        PanelBotones = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        background = new javax.swing.JPanel();
         Panel_Cancelar = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -80,102 +71,19 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel36 = new javax.swing.JLabel();
         cboxRoles = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        PanelBotones = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnBuscar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jEditorPane1);
 
         setPreferredSize(new java.awt.Dimension(700, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
-        PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
-        PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204, 150));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setToolTipText("Buscar");
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setName(""); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 189, 31));
-        jTextField1.getAccessibleContext().setAccessibleName("Buscar");
-
-        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
-        btnCancelar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
-
-        jTable1.setBackground(new java.awt.Color(180, 180, 180));
-        jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N°", "Cliente", "Fecha de Registro", "Fecha de Llegada", "Fecha de Finalizacion", "Codigo", "Persona", "Monto"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setGridColor(new java.awt.Color(180, 180, 180));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(20);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(105);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(110);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(120);
-        }
-
-        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 652, 243));
-
-        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
-        btnBuscar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
-
-        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
-        btnEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 80, -1));
-
-        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 790, 350));
-
-        background.setBackground(new java.awt.Color(0, 0, 0, 150));
-        background.setForeground(new java.awt.Color(153, 153, 153));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Cancelar.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -252,7 +160,7 @@ public class PanelReservas extends javax.swing.JPanel {
         Panel_Cancelar.add(btnSalir_PanelCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 120, 30));
         btnSalir_PanelCancelar.getAccessibleContext().setAccessibleName("SALIR");
 
-        background.add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
+        add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
 
         Panel_Editar.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Editar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -424,9 +332,93 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel5.setText("Habitacion");
         Panel_Editar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 80, 20));
 
-        background.add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
+        add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
 
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1070, 690));
+        PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
+        PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
+        PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204, 150));
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setToolTipText("Buscar");
+        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField1.setName(""); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 189, 31));
+        jTextField1.getAccessibleContext().setAccessibleName("Buscar");
+
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
+
+        jTable1.setBackground(new java.awt.Color(180, 180, 180));
+        jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N°", "Cliente", "Fecha de Registro", "Fecha de Llegada", "Fecha de Finalizacion", "Codigo", "Persona", "Monto"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setGridColor(new java.awt.Color(180, 180, 180));
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(20);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(120);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(105);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(110);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(120);
+        }
+
+        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 652, 243));
+
+        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnBuscar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
+        btnEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 80, -1));
+
+        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 790, 350));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Reservas");
@@ -435,13 +427,11 @@ public class PanelReservas extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         bloquear(PanelBotones);
-        background.setVisible(true);
         Panel_Cancelar.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         bloquear(PanelBotones);
-        background.setVisible(true);
         Panel_Editar.setVisible(true);
 
         //creamos una arreglo de tipos object
@@ -495,7 +485,6 @@ public class PanelReservas extends javax.swing.JPanel {
     private void btnCancelar_PanelEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_PanelEditarActionPerformed
         desbloquear(PanelBotones);
         Panel_Editar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnCancelar_PanelEditarActionPerformed
 
     private void btnEditar_PanelEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_PanelEditar1ActionPerformed
@@ -506,7 +495,6 @@ public class PanelReservas extends javax.swing.JPanel {
         // ACTUALIZAR DE LA VENTANA EDITAR
         desbloquear(PanelBotones);
         Panel_Editar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnActualizar_PanelEditar1ActionPerformed
     
     // PANEL CONFIRMAR CANCELACIÓN !!!!
@@ -514,14 +502,12 @@ public class PanelReservas extends javax.swing.JPanel {
         // CANCELAR DE LA VENTANA CANCELAR
         desbloquear(PanelBotones);
         Panel_Cancelar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnCancelar_PanelCancelarActionPerformed
 
     private void btnSalir_PanelCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir_PanelCancelarActionPerformed
         // SALIR DE LA VENTANA CANCELAR
         desbloquear(PanelBotones);
         Panel_Cancelar.setVisible(false);
-        background.setVisible(false);
     }//GEN-LAST:event_btnSalir_PanelCancelarActionPerformed
 
     private void cboxRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRolesActionPerformed
@@ -539,7 +525,6 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JPanel PanelBotones;
     public javax.swing.JPanel Panel_Cancelar;
     public javax.swing.JPanel Panel_Editar;
-    private javax.swing.JPanel background;
     private javax.swing.JButton btnActualizar_PanelEditar1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
@@ -548,7 +533,7 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEditar_PanelEditar1;
     private javax.swing.JButton btnSalir_PanelCancelar;
-    private javax.swing.JComboBox<String> cboxRoles;
+    public javax.swing.JComboBox<String> cboxRoles;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

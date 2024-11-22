@@ -12,7 +12,7 @@ import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Empleado.JfrmEmpleado;
 
 public class ControladorPrincipal implements ActionListener {
-
+    
     private JfrmAdministradorPrueba administradorPrueba;
     private JfrmEmpleado vistaEmpleado;
     private ControladorEmpleado ctrEmpleado;
@@ -23,7 +23,7 @@ public class ControladorPrincipal implements ActionListener {
     private ControladorReservas controladorReservas;
     private ControladorInicio controladorInicio;
     private ControladorClientes controladorClientes;
-
+    
     public ControladorPrincipal(JfrmAdministradorPrueba administradorPrueba, JfrmEmpleado vistaEmpleado) {
         this.administradorPrueba = administradorPrueba;
         this.vistaEmpleado = vistaEmpleado;
@@ -32,6 +32,7 @@ public class ControladorPrincipal implements ActionListener {
         administradorPrueba.bntEmpleado.addActionListener(this);
         administradorPrueba.btnPerfil.addActionListener(this);
         administradorPrueba.btnSalir.addActionListener(this);
+        vistaEmpleado.btnSalir.addActionListener(this);
         // Inicializar controladores
         ctrEmpleado = new ControladorEmpleado(administradorPrueba.panelEmpleadoAdm);
         controladorRoles = new ControladorRoles(administradorPrueba.panelEmpleadoAdm);
@@ -41,38 +42,44 @@ public class ControladorPrincipal implements ActionListener {
         controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm, vistaEmpleado.panelRecervaHabitaciones);
         controladorInicio = new ControladorInicio(administradorPrueba.panelInicio);
         controladorClientes = new ControladorClientes(administradorPrueba.panelClientesAdm);
-
+        
     }
-
+    
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == administradorPrueba.bntEmpleado) {
-
+            
         }
-
+        
         if (e.getSource() == administradorPrueba.btnPerfil) {
-
+            
             controladorPerfil.cargarDatosPerfil();
         }
-
+        
         if (e.getSource() == administradorPrueba.btnSalir) {
             ControladorLogin controladorLogin = new ControladorLogin();
             controladorLogin.correrLogin();
             administradorPrueba.setVisible(false);
         }
+        
+        if (e.getSource() == vistaEmpleado.btnSalir) {
+            ControladorLogin controladorLogin = new ControladorLogin();
+            controladorLogin.correrLogin();
+            administradorPrueba.setVisible(false);
+        }
     }
-
+    
     public void iniciarPanelAdministrador() {
         if (administradorPrueba == null) {
             administradorPrueba = new JfrmAdministradorPrueba();
         }
         administradorPrueba.setVisible(true);
     }
-
+    
     public void iniciarPanelEmpleado() {
         if (vistaEmpleado == null) {
             vistaEmpleado = new JfrmEmpleado();
         }
         vistaEmpleado.setVisible(true);
     }
-
+    
 }
