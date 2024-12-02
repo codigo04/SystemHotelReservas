@@ -30,7 +30,7 @@ public class Reserva {
     //RELACIONES ENTRE TABLAS
     @ManyToOne
     @JoinColumn(name = "idHabitacion")
-    private Habitacion habitacion;
+    private Habitacion habitacion;   
 
     @ManyToOne
     @JoinColumn(name = "idCliente")

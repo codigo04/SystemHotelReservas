@@ -74,6 +74,7 @@ public class ControladorLogin implements ActionListener {
                 Empleado emplLoged = empleadoExist.get();
 
                 econderComponentes();
+                
                 //guardar el usuari logeado
                 eLoged = Optional.of(emplLoged);
 

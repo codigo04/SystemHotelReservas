@@ -4,6 +4,7 @@
  */
 package vista.Empleado.paneles;
 
+import aggregates.Servicios.pdf.PdfService;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -12,7 +13,10 @@ import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +28,7 @@ import modelo.entity.Cliente;
 import modelo.entity.Habitacion;
 import modelo.entity.Reserva;
 import modelo.entity.Servicio;
+import modelo.entity.Ticket;
 
 /**
  *
@@ -58,6 +63,9 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         busquedaDinamica();
         tablaHabitacionesRecervas.setBackground(Color.BLACK);
         tablaHabitacionesRecervas.setForeground(Color.WHITE);
+        fechaLlegadaRes.setDate(new Date());
+        fechaLlegadaRes.getDateEditor().addPropertyChangeListener("date", evt -> validarFechas());
+        fechaSalidaRes.getDateEditor().addPropertyChangeListener("date", evt -> validarFechas());
 
         Panel_Reserva.setVisible(false);
     }
@@ -77,7 +85,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        TxtApellidoClienteRes = new javax.swing.JTextField();
+        txtApellidoClienteRes = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         txtCelularClienteRes = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
@@ -91,7 +99,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         txtDniClienteRes = new javax.swing.JTextField();
         btnAgregarService = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
-        TxtNombreclienteRes = new javax.swing.JTextField();
+        txtNombreClienteRes = new javax.swing.JTextField();
         btnAceptarGuardarRes = new javax.swing.JButton();
         btnCancelarRes = new javax.swing.JButton();
         fechaLlegadaRes = new com.toedter.calendar.JDateChooser();
@@ -109,7 +117,16 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel31 = new javax.swing.JLabel();
         txtPrecioHabitacionRes = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        txtPagoTotalRes = new javax.swing.JTextField();
+        txtPagoRes = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        txtVuelto = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jpanelContenidoHabi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -129,10 +146,10 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Panel_Reserva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel25.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setText(" Reserva");
-        Panel_Reserva.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+        jLabel25.setText(" Recerva");
+        Panel_Reserva.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -146,12 +163,12 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel33.setText("Apellido");
         Panel_Reserva.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 60, -1));
 
-        TxtApellidoClienteRes.setBackground(new java.awt.Color(255, 255, 255));
-        TxtApellidoClienteRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TxtApellidoClienteRes.setForeground(new java.awt.Color(0, 0, 0));
-        TxtApellidoClienteRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtApellidoClienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Panel_Reserva.add(TxtApellidoClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 150, 30));
+        txtApellidoClienteRes.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoClienteRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtApellidoClienteRes.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoClienteRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtApellidoClienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Panel_Reserva.add(txtApellidoClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 150, 30));
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -216,13 +233,19 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         txtPrecioTotalRes.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecioTotalRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPrecioTotalRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Panel_Reserva.add(txtPrecioTotalRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 150, 30));
+        txtPrecioTotalRes.setEnabled(false);
+        txtPrecioTotalRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioTotalResActionPerformed(evt);
+            }
+        });
+        Panel_Reserva.add(txtPrecioTotalRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 150, 30));
 
         jLabel30.setBackground(new java.awt.Color(255, 255, 255));
         jLabel30.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel30.setText("Precio Total");
-        Panel_Reserva.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 140, -1));
+        jLabel30.setText("Precio  a pagar");
+        Panel_Reserva.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 110, -1));
 
         txtDniClienteRes.setBackground(new java.awt.Color(255, 255, 255));
         txtDniClienteRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -255,12 +278,12 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel36.setText("Nombres");
         Panel_Reserva.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 70, -1));
 
-        TxtNombreclienteRes.setBackground(new java.awt.Color(255, 255, 255));
-        TxtNombreclienteRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TxtNombreclienteRes.setForeground(new java.awt.Color(0, 0, 0));
-        TxtNombreclienteRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtNombreclienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Panel_Reserva.add(TxtNombreclienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 150, 30));
+        txtNombreClienteRes.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreClienteRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtNombreClienteRes.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreClienteRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNombreClienteRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Panel_Reserva.add(txtNombreClienteRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 150, 30));
 
         btnAceptarGuardarRes.setBackground(new java.awt.Color(0, 255, 0));
         btnAceptarGuardarRes.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -272,7 +295,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 btnAceptarGuardarResActionPerformed(evt);
             }
         });
-        Panel_Reserva.add(btnAceptarGuardarRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 160, 30));
+        Panel_Reserva.add(btnAceptarGuardarRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 230, 30));
 
         btnCancelarRes.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarRes.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -283,14 +306,30 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 btnCancelarResActionPerformed(evt);
             }
         });
-        Panel_Reserva.add(btnCancelarRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 160, 30));
+        Panel_Reserva.add(btnCancelarRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 230, 30));
 
         fechaLlegadaRes.setBackground(new java.awt.Color(255, 255, 255));
         fechaLlegadaRes.setForeground(new java.awt.Color(0, 0, 0));
+        fechaLlegadaRes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fechaLlegadaResFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fechaLlegadaResFocusLost(evt);
+            }
+        });
         Panel_Reserva.add(fechaLlegadaRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 150, 30));
 
         fechaSalidaRes.setBackground(new java.awt.Color(255, 255, 255));
         fechaSalidaRes.setForeground(new java.awt.Color(0, 0, 0));
+        fechaSalidaRes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fechaSalidaResFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fechaSalidaResFocusLost(evt);
+            }
+        });
         Panel_Reserva.add(fechaSalidaRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 150, 30));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -298,18 +337,23 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Tipo Pago");
-        Panel_Reserva.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 90, 20));
+        Panel_Reserva.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 90, 20));
 
         cboxTipoPago.setBackground(new java.awt.Color(255, 255, 255));
         cboxTipoPago.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cboxTipoPago.setForeground(new java.awt.Color(0, 0, 0));
         cboxTipoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Tarjeta de Crédito", "Transferencia Bancaria", "Efectivo" }));
+        cboxTipoPago.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboxTipoPagoFocusLost(evt);
+            }
+        });
         cboxTipoPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxTipoPagoActionPerformed(evt);
             }
         });
-        Panel_Reserva.add(cboxTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 150, 30));
+        Panel_Reserva.add(cboxTipoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 150, 30));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -353,7 +397,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Servicios");
-        Panel_Reserva.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 70, 20));
+        Panel_Reserva.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 70, 20));
 
         btnbuscarDni.setBackground(new java.awt.Color(0, 0, 0));
         btnbuscarDni.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -401,22 +445,78 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Panel_Reserva.add(txtPrecioHabitacionRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 150, 30));
 
         jLabel34.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("Ingrese monto");
-        Panel_Reserva.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 140, -1));
+        jLabel34.setText("Proceso de pago");
+        Panel_Reserva.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 310, 30));
 
-        txtPagoTotalRes.setBackground(new java.awt.Color(255, 255, 255));
-        txtPagoTotalRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtPagoTotalRes.setForeground(new java.awt.Color(0, 0, 0));
-        txtPagoTotalRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPagoTotalRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Panel_Reserva.add(txtPagoTotalRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 150, 30));
+        txtPagoRes.setBackground(new java.awt.Color(255, 255, 255));
+        txtPagoRes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtPagoRes.setForeground(new java.awt.Color(0, 0, 0));
+        txtPagoRes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPagoRes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtPagoRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPagoResActionPerformed(evt);
+            }
+        });
+        Panel_Reserva.add(txtPagoRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 150, 30));
 
-        add(Panel_Reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 690, 520));
+        jLabel37.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setText("Vuelto");
+        Panel_Reserva.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 140, -1));
+
+        txtVuelto.setBackground(new java.awt.Color(255, 255, 255));
+        txtVuelto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtVuelto.setForeground(new java.awt.Color(0, 0, 0));
+        txtVuelto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtVuelto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtVuelto.setEnabled(false);
+        Panel_Reserva.add(txtVuelto, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 150, 30));
+
+        jLabel38.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Ingrese monto");
+        Panel_Reserva.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 140, -1));
+        Panel_Reserva.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 690, 10));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("(*)");
+        Panel_Reserva.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("(*)");
+        Panel_Reserva.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 30));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("(*)");
+        Panel_Reserva.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, 30));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("(*)");
+        Panel_Reserva.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, 30));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("(*)");
+        Panel_Reserva.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, 30));
+
+        add(Panel_Reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 690, 540));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
-        jLabel1.setText("Gestión de Reservas");
+        jLabel1.setText("Gestión de Recervas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jpanelContenidoHabi.setBackground(new java.awt.Color(255, 255, 255));
@@ -502,9 +602,14 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNumHabitacionClienteResjTxtTipoHbi2ActionPerformed
 
     private void btnAceptarGuardarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarResActionPerformed
-        Panel_Reserva.setVisible(false);
-        btnRecervar.setVisible(true);
-        desbloquear(jpanelContenidoHabi);
+
+        if (validarFechas() && validarCamposRequeridos()) {
+            Panel_Reserva.setVisible(false);
+            btnRecervar.setVisible(true);
+            desbloquear(jpanelContenidoHabi);
+        } else {
+
+        }
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
         // ArrayList<String> list = new ArrayList<>();
@@ -590,7 +695,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 modTablaServiciosElegido.setRowCount(0);
 
                 llenarFormEditar();
-                
+
                 return;
             }
 
@@ -600,7 +705,22 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRecervarActionPerformed
 
     private void cboxTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTipoPagoActionPerformed
-        // TODO add your handling code here:
+
+        int indiceSeleccionado = cboxTipoPago.getSelectedIndex();
+
+        // Asegurarse de que el índice seleccionado es válido
+        if (indiceSeleccionado != -1) {
+            // Si no es el cuarto elemento, desabilitar el campo
+            if (indiceSeleccionado != 3) {
+                txtPagoRes.setEnabled(false);
+            } else {
+                txtPagoRes.setEnabled(true); // habilitar si es el cuarto elemento
+            }
+        } else {
+            System.out.println("No hay un elemento seleccionado.");
+        }
+
+
     }//GEN-LAST:event_cboxTipoPagoActionPerformed
 
     private void btnbuscarDnijBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarDnijBBuscarActionPerformed
@@ -675,29 +795,60 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarServicejBBuscarActionPerformed
 
+    private void txtPagoResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagoResActionPerformed
+
+        calcularVuelto();
+
+
+    }//GEN-LAST:event_txtPagoResActionPerformed
+
+    private void txtPrecioTotalResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioTotalResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioTotalResActionPerformed
+
+    private void fechaLlegadaResFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaLlegadaResFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaLlegadaResFocusGained
+
+    private void fechaSalidaResFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaSalidaResFocusGained
+
+    }//GEN-LAST:event_fechaSalidaResFocusGained
+
+    private void fechaSalidaResFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaSalidaResFocusLost
+        validarFechas();
+    }//GEN-LAST:event_fechaSalidaResFocusLost
+
+    private void fechaLlegadaResFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fechaLlegadaResFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaLlegadaResFocusLost
+
+    private void cboxTipoPagoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboxTipoPagoFocusLost
+        validarFechas();
+    }//GEN-LAST:event_cboxTipoPagoFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_Reserva;
-    private javax.swing.JTextField TxtApellidoClienteRes;
-    private javax.swing.JTextField TxtNombreclienteRes;
     public javax.swing.JButton btnAceptarGuardarRes;
     private javax.swing.JButton btnAgregarService;
     public javax.swing.JButton btnBuscarHabitacion;
     public javax.swing.JButton btnCancelarRes;
     private javax.swing.JButton btnEliminarService;
     public javax.swing.JButton btnRecervar;
-    private javax.swing.JButton btnbuscarDni;
+    public javax.swing.JButton btnbuscarDni;
     public javax.swing.JComboBox<String> cboxTipoPago;
     private com.toedter.calendar.JDateChooser fechaLlegadaRes;
     private com.toedter.calendar.JDateChooser fechaSalidaRes;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -705,25 +856,34 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator1;
     private com.toedter.components.JSpinField jSpinField1;
     private javax.swing.JPanel jpanelContenidoHabi;
     public javax.swing.JTable tablaHabitacionesRecervas;
     private javax.swing.JTable tablaServicios;
     private javax.swing.JTable tablaServiciosElegido;
+    public javax.swing.JTextField txtApellidoClienteRes;
     private javax.swing.JTextField txtBuscarHabitaciones;
-    private javax.swing.JTextField txtCelularClienteRes;
-    private javax.swing.JTextField txtCorreoClienteRes;
-    private javax.swing.JTextField txtDniClienteRes;
-    private javax.swing.JTextField txtNumHabitacionClienteRes;
-    private javax.swing.JTextField txtPagoTotalRes;
-    private javax.swing.JTextField txtPrecioHabitacionRes;
-    private javax.swing.JTextField txtPrecioTotalRes;
+    public javax.swing.JTextField txtCelularClienteRes;
+    public javax.swing.JTextField txtCorreoClienteRes;
+    public javax.swing.JTextField txtDniClienteRes;
+    public javax.swing.JTextField txtNombreClienteRes;
+    public javax.swing.JTextField txtNumHabitacionClienteRes;
+    private javax.swing.JTextField txtPagoRes;
+    public javax.swing.JTextField txtPrecioHabitacionRes;
+    public javax.swing.JTextField txtPrecioTotalRes;
+    private javax.swing.JTextField txtVuelto;
     // End of variables declaration//GEN-END:variables
 
     public void bloquear(Component component) {
@@ -785,8 +945,8 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
         Cliente cliente = new Cliente();
         cliente.setDni(txtDniClienteRes.getText());
-        cliente.setNombre(TxtNombreclienteRes.getText());
-        cliente.setApellido(TxtApellidoClienteRes.getText());
+        cliente.setNombre(txtNombreClienteRes.getText());
+        cliente.setApellido(txtApellidoClienteRes.getText());
         cliente.setCelular(txtCelularClienteRes.getText());
         cliente.setCorreoElectronico(txtCorreoClienteRes.getText());
         reserva.setCliente(cliente);
@@ -799,6 +959,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Timestamp timestampLLeg = new Timestamp(selectedDateLLegada.getTime());
         //fecha fin
         Date selectedDateFin = fechaSalidaRes.getDate();
+
         Timestamp timestampFin = new Timestamp(selectedDateFin.getTime());
 
         reserva.setFechaLLegada(timestampLLeg);
@@ -849,6 +1010,88 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 }
             }
         });
+
+    }
+
+    public void calcularVuelto() {
+        try {
+            // Validar que los campos no estén vacíos
+            if (txtPagoRes.getText().trim().isEmpty() || txtPrecioTotalRes.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor, completa ambos campos antes de calcular el vuelto.");
+                return;
+            }
+
+            // Intentar convertir los valores ingresados a números
+            double pago = Double.parseDouble(txtPagoRes.getText().trim());
+            double precioTotal = Double.parseDouble(txtPrecioTotalRes.getText().trim());
+
+            // Validar que los valores sean positivos
+            if (pago < 0 || precioTotal < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, ingresa valores positivos.");
+                txtPagoRes.setText("");
+                return;
+            }
+
+            // Validar que el pago sea suficiente
+            if (pago < precioTotal) {
+                JOptionPane.showMessageDialog(null, "El pago no es suficiente para cubrir el total.");
+                txtPagoRes.setText("");
+                return;
+            }
+
+            // Calcular el vuelto
+            double vuelto = pago - precioTotal;
+
+            // Formatear el resultado a dos decimales
+            DecimalFormat df = new DecimalFormat("#.00");
+            txtVuelto.setText(df.format(vuelto));
+        } catch (NumberFormatException e) {
+            // Manejar casos en los que los valores ingresados no sean numéricos
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa valores numéricos válidos.");
+        }
+    }
+
+    public boolean validarFechas() {
+
+        // Obtener las fechas seleccionadas
+        Date llegada = fechaLlegadaRes.getDate();
+        Date fin = fechaSalidaRes.getDate();
+        Date fechaActual = new Date(); // Fecha actual
+
+        if (llegada == null || fin == null) {
+
+            return false;
+        }
+
+        // Convertir las fechas a LocalDate para eliminar el componente de hora
+        LocalDate fechaLlegada = llegada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaFin = fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaHoy = fechaActual.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        // Validar que la fecha de llegada sea igual o posterior a la fecha actual
+        if (fechaLlegada.isBefore(fechaHoy)) {
+            JOptionPane.showMessageDialog(null, "La fecha de llegada debe ser igual o posterior a la fecha actual.");
+            return false;
+        }
+
+        // Validar que la fecha de fin sea posterior a la fecha de llegada
+        if (!fechaFin.isAfter(fechaLlegada)) {
+            JOptionPane.showMessageDialog(null, "La fecha de fin debe ser posterior a la fecha de llegada.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarCamposRequeridos() {
+
+        if (txtDniClienteRes.getText().isEmpty() || txtNombreClienteRes.getText().isEmpty() || txtApellidoClienteRes.getText().isEmpty()) {
+
+            return false;
+
+        }
+
+        return true;
 
     }
 

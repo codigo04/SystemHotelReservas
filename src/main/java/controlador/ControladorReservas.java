@@ -4,6 +4,10 @@
  */
 package controlador;
 
+import aggregates.Servicios.apis.EmpleadoService;
+import aggregates.Servicios.pdf.PdfService;
+import aggregates.request.PersonaRequest;
+import aggregates.response.ResponceReniec;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -14,7 +18,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.impl.ClienteImpl;
 import modelo.dao.impl.EmpleadoImpl;
@@ -32,6 +39,7 @@ import org.apache.poi.ss.usermodel.*;
 
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.scheduling.annotation.Scheduled;
+import vista.Administrador.paneles.PanelEmpleadoAdm;
 
 import vista.Administrador.paneles.PanelRecervasAdm;
 import vista.Empleado.paneles.PanelRecervarHabitaciones;
@@ -41,20 +49,21 @@ import vista.Empleado.paneles.PanelRecervarHabitaciones;
  * @author FranDev
  */
 public class ControladorReservas implements ActionListener {
-    
+
     private PanelRecervasAdm panelRecervasAdm;
-    
+
     private PanelRecervarHabitaciones panelRecervarHabitaciones;
-    
+
     private ReservaImpl reservaImpl;
     private EmpleadoImpl empleadoImpl;
     private ClienteImpl clienteImpl;
     private HabitacionImpl habitacionImpl;
     private ServicioImpl servicioImpl;
+    public EmpleadoService clienteReniec;
     private PagoImpl pagoImpl;
-    private  TicketImpl ticketImpl;
+    private TicketImpl ticketImpl;
     List<Servicio> servicios;
-    
+
     public ControladorReservas(PanelRecervasAdm panelRecervasAdm, PanelRecervarHabitaciones panelRecervarHabitaciones) {
         this.panelRecervasAdm = panelRecervasAdm;
         this.panelRecervarHabitaciones = panelRecervarHabitaciones;
@@ -65,33 +74,51 @@ public class ControladorReservas implements ActionListener {
         servicioImpl = new ServicioImpl();
         pagoImpl = new PagoImpl();
         ticketImpl = new TicketImpl();
+        clienteReniec = new EmpleadoService();
         agregarListeners();
         cargarRecervas();
         findServicios();
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         if (e.getSource() == panelRecervarHabitaciones.btnRecervar) {
             cargarServicios();
         }
-        
+
         if (e.getSource() == panelRecervasAdm.btnExportarReporteReservas) {
             generarReportes();
         }
-        
+
         if (e.getSource() == panelRecervarHabitaciones.btnAceptarGuardarRes) {
-            crearReservaConPagoYTicket();
-           //saveReserva();
-            
-            cargarHabitaciones();
+
+            if (panelRecervarHabitaciones.validarFechas() && panelRecervarHabitaciones.validarCamposRequeridos()) {
+                Ticket ticketCreado = crearReservaConPagoYTicket();
+
+                PdfService.generarTicket(ticketCreado);
+                 cargarHabitaciones();
+                 
+                 JOptionPane.showMessageDialog(null, "Recerva generada correctamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos requeridos. (*)");
+            }
+
+            //saveReserva();
+           
+        }
+        if (e.getSource() == panelRecervarHabitaciones.btnbuscarDni) {
+            try {
+                bucarPersona();
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorReservas.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-    
+
     public void cargarRecervas() {
-        
+
         List<Reserva> reservas = reservaImpl.getAllReservas();
 
         // Limpiar la tabla antes de agregar nuevos datos
@@ -108,12 +135,12 @@ public class ControladorReservas implements ActionListener {
             fila[4] = reserva.getFechaFin();
             fila[5] = "POR DEFENIR";
             fila[6] = reserva.getMontoTotal();
-            
+
             model.addRow(fila);  // Agrega la fila al modelo de tabla
         }
-        
+
     }
-    
+
     public void cargarServicios() {
 
         // Limpiar la tabla antes de agregar nuevos datos
@@ -126,42 +153,42 @@ public class ControladorReservas implements ActionListener {
             fila[0] = servicio.getIdServicios();
             fila[1] = servicio.getNombreServicio();
             fila[2] = servicio.getPrecio();
-            
+
             model.addRow(fila);  // Agrega la fila al modelo de tabla
         }
-        
+
     }
-    
+
     public void findServicios() {
         this.servicios = servicioImpl.getAllServicios();
     }
-    
+
     public List<Servicio> getServices() {
         List<Servicio> serv = panelRecervarHabitaciones.getServiciosReserva();
-        
+
         List<Servicio> servExistentes = new ArrayList<>();
-        
+
         for (Servicio servicio : serv) {
             Optional<Servicio> servExist = servicioImpl.findServicioById(servicio.getIdServicios());
-            
+
             if (servExist.isPresent()) {
                 servExistentes.add(servExist.get());
             }
         }
-        
+
         return servExistentes;
     }
-    
+
     public void generarReportes() {
         Workbook newLibro = new SXSSFWorkbook();
         Sheet hojaReportesReservas = newLibro.createSheet("reservas_report");
-        
+
         List<Reserva> reservas = reservaImpl.getAllReservas();
 
         // Crear encabezados String[] encabezados = {"ID", "Nombre del Cliente", "Habitacion", "Check-in", "Check-out", "Estado", "Total"};
         String[] encabezados = {"ID", "Nombre del Cliente", "Habitacion", "Check-in", "Check-out", "Estado", "Total"};
         Row filaEncabezados = hojaReportesReservas.createRow(0);
-        
+
         for (int j = 0; j < encabezados.length; j++) {
             Cell celda = filaEncabezados.createCell(j);
             celda.setCellValue(encabezados[j]);
@@ -197,7 +224,7 @@ public class ControladorReservas implements ActionListener {
         } else {
             System.out.println("La carpeta ya existe: " + directorio.getAbsolutePath());
         }
-        
+
         try (FileOutputStream fileOut = new FileOutputStream(archivo)) {
             newLibro.write(fileOut);
         } catch (IOException e) {
@@ -210,109 +237,111 @@ public class ControladorReservas implements ActionListener {
             }
         }
     }
-    
+
     public Optional<Reserva> saveReserva() {
         Reserva datosR = panelRecervarHabitaciones.getDatosReserva();
-        
+
         Reserva newReserva = new Reserva();
-        
+
         newReserva.setCliente(clienteImpl.saveCliente(datosR.getCliente()));
-        
+
         System.out.println("la habitaciones: " + datosR.getHabitacion().getNumeroDeHabitacion());
         Optional<Habitacion> habiExist = habitacionImpl.findHabitacionesPorNumHabitacion(datosR.getHabitacion().getNumeroDeHabitacion());
-        
+
         if (habiExist.isPresent()) {
             newReserva.setHabitacion(habiExist.get());
         } else {
             throw new RuntimeException("La habitación no existe");
         }
-        
+
         newReserva.setFechaRegistro(new Timestamp(System.currentTimeMillis()));
         newReserva.setFechaLLegada(datosR.getFechaLLegada());
         newReserva.setFechaFin(datosR.getFechaFin());
         newReserva.setMontoTotal(datosR.getMontoTotal());
         newReserva.setServicios(getServices());
-        
+
         habitacionImpl.updateDisponibilidadHabitacion(habiExist.get().getIdHabitacion(), "OCUPADA");
-        
+
         Optional<Reserva> createReserva = reservaImpl.saveReserva(newReserva);
-        
-        
-         Reserva resExist = createReserva.get();
-         
-         System.out.println("recerva id"+resExist.getIdReserva());
-        System.out.println("recerva crtead"+resExist.getFechaLLegada());
-        
-        
+
+        Reserva resExist = createReserva.get();
+
+        System.out.println("recerva id" + resExist.getIdReserva());
+        System.out.println("recerva crtead" + resExist.getFechaLLegada());
+
         if (createReserva.isPresent()) {
             return createReserva;
         }
-        
+
         return Optional.empty();
     }
-    
-    public Reserva crearReservaConPagoYTicket() {
+
+    public Ticket crearReservaConPagoYTicket() {
 
         // Guardar la reserva
-    Optional<Reserva> reservaCreate = saveReserva();
-    if (reservaCreate.isPresent()) {
-        Reserva resExist = reservaCreate.get();
-        System.out.println(resExist.getFechaLLegada());
+        Optional<Reserva> reservaCreate = saveReserva();
 
-        // Estructura de pago
-        Pago newPago = new Pago();
-        newPago.setEstadoPago("PAGADO");
-        newPago.setFechaPago(new Date(System.currentTimeMillis()));
-        newPago.setMetodoPago("Efectivo");
-        newPago.setReserva(resExist);
+        if (reservaCreate.isPresent()) {
+            Reserva resExist = reservaCreate.get();
+            System.out.println(resExist.getFechaLLegada());
 
-        // Crear pago
-        Optional<Pago> pagoCreate = pagoImpl.savePago(newPago);
-        if (pagoCreate.isPresent()) {
-            Pago pagoExist = pagoCreate.get();
+            // Estructura de pago
+            Pago newPago = new Pago();
+            newPago.setEstadoPago("PAGADO");
+            newPago.setFechaPago(new Date(System.currentTimeMillis()));
+            newPago.setMetodoPago("Efectivo");
+            newPago.setReserva(resExist);
+            newPago.setMetodoPago((String) panelRecervarHabitaciones.cboxTipoPago.getSelectedItem());
+            newPago.setMontoPago(Double.valueOf(panelRecervarHabitaciones.txtPrecioTotalRes.getText()));
+            // Crear pago
+            Optional<Pago> pagoCreate = pagoImpl.savePago(newPago);
 
-            // Estructura de ticket
-            Ticket newTicket = new Ticket();
-            newTicket.setDetalle("Este es un detalle");
-            newTicket.setEstado("Impreso");
-            newTicket.setFechaEmision(new Date(System.currentTimeMillis()));
+            if (pagoCreate.isPresent()) {
+                Pago pagoExist = pagoCreate.get();
 
-            newTicket.setPago(pagoExist);  // Asociar el pago al ticket
-            newTicket.setReserva(resExist);  // Asociar la reserva al ticket
-            newTicket.setMontoTotal(30.0);  // Establecer el monto total
+                // Estructura de tickets
+                Ticket newTicket = new Ticket();
+                newTicket.setDetalle("Sin detalles");
+                newTicket.setEstado("Impreso");
+                newTicket.setFechaEmision(new Date(System.currentTimeMillis()));
 
-            // Crear ticket
-            Optional<Ticket> ticketCreate = ticketImpl.saveTicket(newTicket);
-            if (ticketCreate.isPresent()) {
-                Ticket ticketExist = ticketCreate.get();
-                System.out.println(ticketExist.getDetalle());
-                return resExist;  // Retornar la reserva existente
+                newTicket.setPago(pagoExist);  // Asociar el pago al ticket
+                newTicket.setReserva(resExist);  // Asociar la reserva al ticket
+                newTicket.setMontoTotal(Double.valueOf(panelRecervarHabitaciones.txtPrecioTotalRes.getText()));  // Establecer el monto total 
+
+                // Crear ticket
+                Optional<Ticket> ticketCreate = ticketImpl.saveTicket(newTicket);
+                if (ticketCreate.isPresent()) {
+                    Ticket ticketExist = ticketCreate.get();
+                    System.out.println(ticketExist.getDetalle());
+                    return ticketCreate.get();  // Retornar la reserva existente
+                } else {
+                    // Manejo de error si no se pudo guardar el ticket
+                    System.out.println("Error al crear el ticket.");
+                    return null;
+                }
             } else {
-                // Manejo de error si no se pudo guardar el ticket
-                System.out.println("Error al crear el ticket.");
+                // Manejo de error si no se pudo guardar el pago
+                System.out.println("Error al crear el pago.");
                 return null;
             }
         } else {
-            // Manejo de error si no se pudo guardar el pago
-            System.out.println("Error al crear el pago.");
+            // Manejo de error si no se pudo guardar la reserva
+            System.out.println("Error al crear la reserva.");
             return null;
         }
-    } else {
-        // Manejo de error si no se pudo guardar la reserva
-        System.out.println("Error al crear la reserva.");
-        return null;
     }
-    }
-    
+
     public void cargarHabitaciones() {
         System.out.println("hola siii entro");
         List<Habitacion> habitaciones = habitacionImpl.getAllHabitaciones();
 
         // Limpiar la tabla antes de agregar nuevos datos
         DefaultTableModel modelHabiAdm = panelRecervarHabitaciones.modTablaHabitacionesRecervas;
-        DefaultTableModel modelHabiEm = panelRecervarHabitaciones.modTablaHabitacionesRecervas;
-        modelHabiAdm.setRowCount(0);  // Limpiar filas anteriores
-        modelHabiEm.setRowCount(0);
+       // DefaultTableModel modelHabiEm = panelRecervarHabitaciones.modTablaHabitacionesRecervas;
+        modelHabiAdm.setRowCount(0);
+                                               // Limpiar filas anteriores
+       // modelHabiEm.setRowCount(0);
         // Rellenar la tabla con los datos de los empleados
         for (Habitacion habitacion : habitaciones) {
             Object[] fila = new Object[6];
@@ -322,20 +351,20 @@ public class ControladorReservas implements ActionListener {
             fila[3] = habitacion.getTipoHabitacion().getCaracteristicas();
             fila[4] = habitacion.getTipoHabitacion().getPrecio();
             fila[5] = habitacion.getEstado();
-            
+
             modelHabiAdm.addRow(fila);
-            modelHabiEm.addRow(fila);
+           // modelHabiEm.addRow(fila);
         }
-        
+
     }
-    
+
     public void pruebaEscrituraExcel() {
         Workbook libroPrueba = new SXSSFWorkbook();
         Sheet hojaPrueba = libroPrueba.createSheet("Prueba");
-        
+
         Row fila = hojaPrueba.createRow(0);
         fila.createCell(0).setCellValue("Prueba de Escritura");
-        
+
         File archivoPrueba = new File("C:\\Users\\FranDev\\Documents\\reportes\\reservas_prueba.xlsx");
         try (FileOutputStream fileOut = new FileOutputStream(archivoPrueba)) {
             libroPrueba.write(fileOut);
@@ -350,12 +379,31 @@ public class ControladorReservas implements ActionListener {
             }
         }
     }
-    
+
+    public void bucarPersona() throws IOException {
+
+        PersonaRequest personaRequest = new PersonaRequest();
+
+        personaRequest.setDni(panelRecervarHabitaciones.txtDniClienteRes.getText());
+
+        ResponceReniec responceReniec = clienteReniec.getEntityRetrofit(personaRequest);
+
+        System.out.println(responceReniec.getApellidoMaterno());
+        if (responceReniec != null) {
+
+            panelRecervarHabitaciones.txtNombreClienteRes.setText(responceReniec.getNombres());
+            panelRecervarHabitaciones.txtApellidoClienteRes.setText(responceReniec.getApellidoPaterno() + " " + responceReniec.getApellidoMaterno());
+
+        }
+    }
+
     public void agregarListeners() {
         this.panelRecervasAdm.btnExportarReporteReservas.addActionListener(this);
         this.panelRecervarHabitaciones.btnAceptarGuardarRes.addActionListener(this);
-        
+
         this.panelRecervarHabitaciones.btnRecervar.addActionListener(this);
+
+        this.panelRecervarHabitaciones.btnbuscarDni.addActionListener(this);
     }
-    
+
 }

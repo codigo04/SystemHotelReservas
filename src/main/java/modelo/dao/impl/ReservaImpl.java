@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import modelo.entity.Habitacion;
 
 /**
  *
@@ -207,5 +208,36 @@ public final class ReservaImpl implements ReservaDao {
             Long totalReservas = ((Number) row[1]).longValue();
             System.out.println("Día: " + diaSemanaEspanol + ", Total de reservas: " + totalReservas);
         }
+    }
+
+    public Habitacion encontrarHabitacionDeReserva(Long idReserva) {
+        EntityManager em = emf.createEntityManager();
+        Habitacion habitacion = null;
+        try {
+            // Crear una consulta para obtener la reserva por idReserva
+            Reserva reserva = em.find(Reserva.class, idReserva);
+
+            if (reserva != null) {
+                // Si la reserva existe, devolver la habitación asociada
+                habitacion = reserva.getHabitacion();
+            }
+        } finally {
+            em.close();
+        }
+        return habitacion;
+    }
+
+    public List<Reserva> obtenerReservasPorHabitacion(Long idHabitacion) {
+        EntityManager em = emf.createEntityManager();
+        List<Reserva> reservas = null;
+        try {
+            TypedQuery<Reserva> query = em.createQuery(
+                    "FROM Reserva WHERE habitacion.idHabitacion = :idHabitacion", Reserva.class);
+            query.setParameter("idHabitacion", idHabitacion);
+            reservas = query.getResultList();
+        } finally {
+            em.close();
+        }
+        return reservas;
     }
 }
