@@ -4,6 +4,8 @@
  */
 package controlador;
 
+import aggregates.Servicios.InternoService.HabitacionService;
+import aggregates.Servicios.InternoService.ReservaScheduler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -13,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import modelo.dao.HabitacionDao;
 import modelo.dao.impl.HabitacionImpl;
+import modelo.dao.impl.ReservaImpl;
 import modelo.dao.impl.TipoHabitacionImpl;
 import modelo.entity.Habitacion;
 import modelo.entity.TipoHabitacion;
@@ -21,11 +24,12 @@ import org.springframework.stereotype.Controller;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
 import vista.Empleado.paneles.PanelRecervarHabitaciones;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author FranDev
  */
-@Controller
 public class ControladorHabitaciones implements ActionListener {
 
     private PanelHabitacionesAdm panelHabitacionesAdm;
@@ -34,15 +38,35 @@ public class ControladorHabitaciones implements ActionListener {
 
     private HabitacionImpl habitacionImpl;
     private TipoHabitacionImpl tipoHabitacionImpl;
+    private ReservaImpl reservaImpl;
+
+    private HabitacionService habitacionService;
+    private ReservaScheduler reservaScheduler;
 
     ControladorHabitaciones(PanelHabitacionesAdm panelHabitacionesAdm, PanelRecervarHabitaciones panelRecervarHabitaciones) {
         this.panelHabitacionesAdm = panelHabitacionesAdm;
         this.panelRecervarHabitaciones = panelRecervarHabitaciones;
-
+        reservaImpl = new ReservaImpl();
         habitacionImpl = new HabitacionImpl();
         tipoHabitacionImpl = new TipoHabitacionImpl();
+
+       
+        reservaScheduler = new ReservaScheduler(habitacionService); // Crear el scheduler
+
+        // Iniciar la tarea programada para verificar y actualizar habitaciones
+        reservaScheduler.iniciarTareaProgramada();
         agregarListeners();
         cargarHabitaciones();
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                 habitacionService = new HabitacionService(reservaImpl.getAllReservas()); // Crear el servicio de reservas
+                habitacionService.verificarYActualizarReservas();
+                cargarHabitaciones();  // Recargar las habitaciones después de actualizar los estados
+            }
+        }, 0, 60000); // Ejecutar cada 60,000 milisegundos (1 minuto)
 
     }
 

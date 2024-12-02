@@ -9,15 +9,20 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import modelo.dao.impl.ClienteImpl;
 
 import modelo.dao.impl.PagoImpl;
 import modelo.dao.impl.ReservaImpl;
 import modelo.entity.Cliente;
+import modelo.entity.Empleado;
+import modelo.entity.Roles;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.beans.factory.annotation.Autowired;
-import vista.Administrador.paneles.PanelInicio;
+import vista.Administrador.paneles.PanelInicioAdm;
+import vista.Empleado.paneles.PanelInicio;
 import vista.usuario;
 
 /**
@@ -26,31 +31,54 @@ import vista.usuario;
  */
 public class ControladorInicio implements ActionListener {
 
-    private PanelInicio panelInicio;
+    private static PanelInicioAdm panelInicioAdm;
+    //CRISTIAN panel
+    private static PanelInicio panelInicio;
+    
     private PagoImpl pagoImpl;
     private ClienteImpl clienteImpl;
     private ReservaImpl reservaImpl;
 
-    public ControladorInicio(PanelInicio panelInicio) {
+    public ControladorInicio(PanelInicioAdm panelInicioAdm, PanelInicio panelInicio) {
+        this.panelInicioAdm = panelInicioAdm;
         this.panelInicio = panelInicio;
         pagoImpl = new PagoImpl();
         clienteImpl = new ClienteImpl();
         reservaImpl = new ReservaImpl();
         cargarDasborad();
-
+        
     }
 
     public void actionPerformed(ActionEvent e) {
 
     }
 
+    public static void cargarEmpleado() {
+        Optional<Empleado> emLo = ControladorLogin.authUserLogin();
+        if (emLo.isPresent()) {
+            Empleado empleado = emLo.get();
+            String nombreCompleto = empleado.getNombre() + " " + empleado.getApellido();
+
+            for (Roles roles : empleado.getRoles()) {
+                
+                if (roles.getNombreRol().equals("ADMIN")) {
+                    panelInicioAdm.txtNombreAdmin.setText(nombreCompleto);
+                } else if (roles.getNombreRol().equals("RECEPCIONISTA")) {
+                    panelInicio.textEmpleado.setText(nombreCompleto);  
+                }
+            }
+        } else {
+            System.out.println("No se encontró un empleado logueado.");
+        }
+    }
+
     public void cargarDasborad() {
 
         double totalPafo = pagoImpl.obtenerMontoTotalPagado();
         List<Cliente> clientes = clienteImpl.getAllClientes();
-        panelInicio.jlbIngresoTotales.setText("S/ " + totalPafo);
+        panelInicioAdm.jlbIngresoTotales.setText("S/ " + totalPafo);
 
-        panelInicio.jlbClientes.setText("" + clientes.size());
+        panelInicioAdm.jlbClientes.setText("" + clientes.size());
         cargarGrafico();
         cargarReservas();
     }
@@ -81,12 +109,10 @@ public class ControladorInicio implements ActionListener {
 
             // System.out.println("Día: " + diaSemanaEspanol + ", Total de reservas: " + totalReservas);
         }
-
-        panelInicio.graficoReportes.crearDataset(dataset);
+        panelInicioAdm.graficoReportes.crearDataset(dataset);
     }
 
     public void cargarReservas() {
-
-        panelInicio.jlbReservasNuevas.setText("" + reservaImpl.getAllReservas().size());
+        panelInicioAdm.jlbReservasNuevas.setText("" + reservaImpl.getAllReservas().size());
     }
 }

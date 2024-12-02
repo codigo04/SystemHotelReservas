@@ -74,6 +74,7 @@ public class ControladorLogin implements ActionListener {
                 Empleado emplLoged = empleadoExist.get();
 
                 econderComponentes();
+                
                 //guardar el usuari logeado
                 eLoged = Optional.of(emplLoged);
 
@@ -84,14 +85,14 @@ public class ControladorLogin implements ActionListener {
                     if ("ADMIN".equals(roles.getNombreRol())) {
                         vistaLogin.panelAutenticacion.setVisible(true);
                         try {
-
                             mandarToken(emplLoged);
                         } catch (MessagingException ex) {
                             Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
                         controladorCliente.iniciarPanelEmpleado();
-
+                        controladorCliente.getControladorPerfil().cargarDatosPerfil();
+                        ControladorInicio.cargarEmpleado();
                         vistaLogin.setVisible(false);
                     }
                 }
@@ -110,7 +111,7 @@ public class ControladorLogin implements ActionListener {
 
             if (leged) {
                 controladorCliente.iniciarPanelAdministrador();
-
+                 ControladorInicio.cargarEmpleado();
                 vistaLogin.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "CODIGO INCORRECTO", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -127,7 +128,6 @@ public class ControladorLogin implements ActionListener {
 
         if (eLoged == null) {
             return Optional.empty();
-
         } else {
             return Optional.of(eLoged).get();
         }
@@ -150,13 +150,15 @@ public class ControladorLogin implements ActionListener {
     }
 
     public void crearPrimerUser() {
-        Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado("admin@admin.com", "admin");
+        Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado("cristianjosephav@gmail.com", "admin");
 
         if (!empleadoExist.isPresent()) {
             Empleado empleado = new Empleado();
-            empleado.setCorreoElectronico("admin@admin.com");
+            empleado.setCorreoElectronico("cristianjosephav@gmail.com");
+            empleado.setNombre("Cristian");
+            empleado.setApellido("Acuña");
             empleado.setPassword("admin");
-            empleado.setDni("00000000");
+            empleado.setDni("123456789");
             empleado.setDireccion("sin calle");
             empleado.setEstado("ACTIVO");
 

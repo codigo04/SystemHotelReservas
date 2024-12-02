@@ -20,11 +20,15 @@ import vista.Empleado.paneles.PanelReservas;
 
 public class JfrmEmpleado extends javax.swing.JFrame {
     
-  public  PanelRecervarHabitaciones panelRecervaHabitaciones = new PanelRecervarHabitaciones();
+    public  PanelRecervarHabitaciones panelRecervaHabitaciones = new PanelRecervarHabitaciones();
+    
+    public PanelInicio panelInicio = new PanelInicio();
+    public PanelPerfil panelPerfil = new PanelPerfil();
+    public PanelReservas panelReservas = new PanelReservas();
+    
     public JfrmEmpleado() {
         initComponents();
         setVisible(false);
-        PanelInicio panelInicio = new PanelInicio();
         panelPrincipal.removeAll();
         panelPrincipal.add(panelInicio);
         panelPrincipal.revalidate();
@@ -160,9 +164,6 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
         // TODO add your handling code here:
-
-        PanelInicio panelInicio = new PanelInicio();
-
 // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         panelPrincipal.removeAll();
         panelPrincipal.add(panelInicio);
@@ -175,7 +176,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     private void jBPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPerfilActionPerformed
         // TODO add your handling code here:
 
-        PanelPerfil panelPerfil = new PanelPerfil();
+       
 
 // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         panelPrincipal.removeAll();
@@ -187,7 +188,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     private void jBHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHistorialActionPerformed
         // TODO add your handling code here:
 
-        PanelReservas panelReservas = new PanelReservas();
+        
         panelPrincipal.removeAll();
         panelPrincipal.add(panelReservas);
         panelPrincipal.revalidate();
@@ -208,7 +209,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+       
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

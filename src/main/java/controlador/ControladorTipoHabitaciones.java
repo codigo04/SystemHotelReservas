@@ -34,6 +34,8 @@ public class ControladorTipoHabitaciones implements ActionListener {
         agregarListeners();
         cargarTipoHabitaciones();
     }
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {

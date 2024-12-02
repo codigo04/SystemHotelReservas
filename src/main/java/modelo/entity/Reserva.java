@@ -16,7 +16,8 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
-
+    
+    private String estado;
    
     private Timestamp fechaRegistro;
 
@@ -30,7 +31,7 @@ public class Reserva {
     //RELACIONES ENTRE TABLAS
     @ManyToOne
     @JoinColumn(name = "idHabitacion")
-    private Habitacion habitacion;
+    private Habitacion habitacion;   
 
     @ManyToOne
     @JoinColumn(name = "idCliente")
@@ -64,6 +65,14 @@ public class Reserva {
         this.idReserva = idReserva;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     public Timestamp getFechaRegistro() {
         return fechaRegistro;
     }

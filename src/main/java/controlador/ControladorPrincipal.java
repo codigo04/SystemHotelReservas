@@ -33,16 +33,18 @@ public class ControladorPrincipal implements ActionListener {
         administradorPrueba.btnPerfil.addActionListener(this);
         administradorPrueba.btnSalir.addActionListener(this);
         vistaEmpleado.btnSalir.addActionListener(this);
+        
+
         // Inicializar controladores
         ctrEmpleado = new ControladorEmpleado(administradorPrueba.panelEmpleadoAdm);
         controladorRoles = new ControladorRoles(administradorPrueba.panelEmpleadoAdm);
         controladorHabitaciones = new ControladorHabitaciones(administradorPrueba.panelHabitacionesAdm, vistaEmpleado.panelRecervaHabitaciones);
         controladorTipoHabitaciones = new ControladorTipoHabitaciones(administradorPrueba.panelTipoHabitacionesAdm);
-        controladorPerfil = new ControladorPerfil(administradorPrueba.panelPerfilAdm);
-        controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm, vistaEmpleado.panelRecervaHabitaciones);
-        controladorInicio = new ControladorInicio(administradorPrueba.panelInicio);
+        controladorPerfil = new ControladorPerfil(administradorPrueba.panelPerfilAdm, vistaEmpleado.panelPerfil);
+        controladorReservas = new ControladorReservas(administradorPrueba.panelRecervasAdm, vistaEmpleado.panelReservas , vistaEmpleado.panelRecervaHabitaciones);
+        controladorInicio = new ControladorInicio(administradorPrueba.panelInicioAdm, vistaEmpleado.panelInicio);
         controladorClientes = new ControladorClientes(administradorPrueba.panelClientesAdm);
-        
+        controladorReservas.cargarRecervas();
     }
     
     public void actionPerformed(ActionEvent e) {
@@ -61,11 +63,13 @@ public class ControladorPrincipal implements ActionListener {
             administradorPrueba.setVisible(false);
         }
         
+        //RECEPCIONISTA
         if (e.getSource() == vistaEmpleado.btnSalir) {
             ControladorLogin controladorLogin = new ControladorLogin();
             controladorLogin.correrLogin();
-            administradorPrueba.setVisible(false);
+            vistaEmpleado.setVisible(false);
         }
+      
     }
     
     public void iniciarPanelAdministrador() {
@@ -80,6 +84,10 @@ public class ControladorPrincipal implements ActionListener {
             vistaEmpleado = new JfrmEmpleado();
         }
         vistaEmpleado.setVisible(true);
+    }
+
+    public ControladorPerfil getControladorPerfil() {
+        return controladorPerfil;
     }
     
 }
