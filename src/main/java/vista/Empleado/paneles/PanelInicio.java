@@ -912,7 +912,6 @@ public class PanelInicio extends javax.swing.JPanel {
 
         textEmpleado.setEditable(false);
         textEmpleado.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        textEmpleado.setText("Cristian Acuña");
         textEmpleado.setAutoscrolls(false);
         textEmpleado.setBorder(null);
         textEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -1021,11 +1020,11 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTable jTable1;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
     private javax.swing.JTextPane jTextPane10;
     private javax.swing.JTextPane jTextPane11;
     private javax.swing.JTextPane jTextPane12;
@@ -1045,6 +1044,6 @@ public class PanelInicio extends javax.swing.JPanel {
     public vista.Empleado.paneles.PanelRound panelReservaciones;
     private vista.Empleado.paneles.PanelRound panelRound1;
     private vista.Empleado.paneles.PanelRound panelRound5;
-    private javax.swing.JTextField textEmpleado;
+    public javax.swing.JTextField textEmpleado;
     // End of variables declaration//GEN-END:variables
 }

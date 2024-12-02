@@ -11,14 +11,14 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
  *
  * @author FranDev
  */
-public class PanelInicio extends javax.swing.JPanel {
+public class PanelInicioAdm extends javax.swing.JPanel {
 
   public Grafico graficoReportes = new Grafico();
 
     /**
      * Creates new form PanelInicio
      */
-    public PanelInicio() {
+    public PanelInicioAdm() {
         initComponents();
 
         //panelGrafico.setLayout(new AbsoluteLayout());
@@ -46,6 +46,7 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jlbClientes = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        txtNombreAdmin = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -68,14 +69,12 @@ public class PanelInicio extends javax.swing.JPanel {
         panelGrafico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelGrafico.setLayout(new java.awt.GridLayout(1, 0));
         add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 610, 330));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\costavelaImg.png")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 290, 470));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Dashboard");
+        jLabel2.setText("Bienvenido,");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 200, 40));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,6 +106,10 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 180, 120));
+
+        txtNombreAdmin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtNombreAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        add(txtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 310, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -123,5 +126,6 @@ public class PanelInicio extends javax.swing.JPanel {
     public javax.swing.JLabel jlbIngresoTotales;
     public javax.swing.JLabel jlbReservasNuevas;
     private javax.swing.JPanel panelGrafico;
+    public javax.swing.JTextField txtNombreAdmin;
     // End of variables declaration//GEN-END:variables
 }

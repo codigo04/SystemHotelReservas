@@ -36,14 +36,12 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
      */
     public DefaultTableModel modTablaHabitacionesRecervas = new DefaultTableModel();
     public DefaultTableModel modTablaServicios = new DefaultTableModel();
-
     public DefaultTableModel modTablaServiciosElegido = new DefaultTableModel();
 
     public PanelRecervarHabitaciones() {
         initComponents();
 
         String cabeTableHabitaciones[] = {"ID", "Número de Habitación", "Tipo de Habitación	", "Características", "Precio", "Estado"};
-
         String cabeTableServicios[] = {"ID", "Servicio", "precio"};
 
         modTablaHabitacionesRecervas.setColumnIdentifiers(cabeTableHabitaciones);
@@ -576,7 +574,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
         if (fila == -1) {
 
-            JOptionPane.showConfirmDialog(null, "SELECCIONA UN HABITACION   ", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showConfirmDialog(null, "SELECCIONA UN HABITACION", "Error", JOptionPane.ERROR_MESSAGE);
 
         } else {
             String estadoHabitacion = String.valueOf(tablaHabitacionesRecervas.getValueAt(fila, 5));

@@ -11,7 +11,9 @@ import java.util.stream.Collectors;
 import modelo.dao.impl.EmpleadoImpl;
 import modelo.dao.impl.PagoImpl;
 import modelo.entity.Empleado;
+import modelo.entity.Roles;
 import vista.Administrador.paneles.PanelPerfilAdm;
+import vista.Empleado.paneles.PanelPerfil;
 
 /**
  *
@@ -20,15 +22,15 @@ import vista.Administrador.paneles.PanelPerfilAdm;
 public class ControladorPerfil implements ActionListener {
 
     private PanelPerfilAdm panelPerfilAdm;
+    private PanelPerfil panelPerfil; //RECEPCIONISTA
     private EmpleadoImpl empleadoImpl;
     
 
-    ControladorPerfil(PanelPerfilAdm panelPerfilAdm) {
+    ControladorPerfil(PanelPerfilAdm panelPerfilAdm, PanelPerfil panelPerfil) {
         this.panelPerfilAdm = panelPerfilAdm;
+        this.panelPerfil = panelPerfil;
         empleadoImpl = new EmpleadoImpl();
-       
         agregarListeners();
-
     }
 
     @Override
@@ -42,44 +44,72 @@ public class ControladorPerfil implements ActionListener {
             updateEmpleadoUsPerfil();
             cargarDatosPerfil();
         }
+
+//        RECEPCIONISTA
+        if (e.getSource() == panelPerfil.btnAceptarEm) {
+            updateEmpleadoUsPerfil();
+            cargarDatosPerfil();
+        }
     }
 
     public void cargarDatosPerfil() {
 
         Optional<Empleado> emLo = ControladorLogin.authUserLogin();
         if (emLo.isPresent()) {
-            panelPerfilAdm.txtNombreUsLoged.setText(emLo.get().getNombre());
-            panelPerfilAdm.txtApellidoUsLoged.setText(emLo.get().getApellido());
-            panelPerfilAdm.txtDireccionUsPerfil.setText(emLo.get().getDireccion());
-            panelPerfilAdm.txtTelefonoUsPerfil.setText(emLo.get().getTelefono());
-            panelPerfilAdm.txtCorreoUsPerfil.setText(emLo.get().getCorreoElectronico());
-            panelPerfilAdm.txtPasswordEmpleadoUsPerfil.setText(emLo.get().getPassword());
-            String rolesConcatenados = emLo.get().getRoles().stream()
-                    .map(rol -> rol.getNombreRol())
+
+            Empleado empleado = emLo.get();
+            String rolesConcatenados = empleado.getRoles().stream()
+                    .map(Roles::getNombreRol)
                     .collect(Collectors.joining(", "));
 
-            panelPerfilAdm.txtRolEmpleadoUsPerfil.setText(rolesConcatenados);
-
+            for (Roles roles : empleado.getRoles()) {
+                    if ("ADMIN".equals(roles.getNombreRol())) {
+                        panelPerfilAdm.txtNombreUsLoged.setText(emLo.get().getNombre());
+                        panelPerfilAdm.txtApellidoUsLoged.setText(emLo.get().getApellido());
+                        panelPerfilAdm.txtDireccionUsPerfil.setText(emLo.get().getDireccion());
+                        panelPerfilAdm.txtTelefonoUsPerfil.setText(emLo.get().getTelefono());
+                        panelPerfilAdm.txtCorreoUsPerfil.setText(emLo.get().getCorreoElectronico());
+                        panelPerfilAdm.txtPasswordEmpleadoUsPerfil.setText(emLo.get().getPassword());
+                        panelPerfilAdm.txtRolEmpleadoUsPerfil.setText(rolesConcatenados);
+                    } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
+                       panelPerfil.TXTNombre.setText(emLo.get().getNombre());
+                       panelPerfil.TXTApellido.setText(emLo.get().getApellido());
+                       panelPerfil.TXTCorreo.setText(emLo.get().getCorreoElectronico());
+                       panelPerfil.TXTTelefono.setText(emLo.get().getTelefono());
+                       panelPerfil.TXTDireccion.setText(emLo.get().getDireccion());
+                       panelPerfil.TXTRol.setText(rolesConcatenados);
+                    }
+                }
         }
         // panelPerfilAdm.txtEmailPerfil.setText(emLo.get().getCorreoElectronico());
     }
 
     public void updateEmpleadoUsPerfil() {
         Empleado datosEm = panelPerfilAdm.datosUpdateEmpleadoPerfil();
+        Empleado datosEmRecep = panelPerfil.datosUpdateEmpleadoPerfil();
         Optional<Empleado> emLo = ControladorLogin.authUserLogin();
 
         if (emLo.isPresent()) {
             Empleado updateEm = emLo.get();
 
-            updateEm.setNombre(datosEm.getNombre());
-            updateEm.setApellido(datosEm.getApellido());
-            updateEm.setCorreoElectronico(datosEm.getCorreoElectronico());
-            updateEm.setTelefono(datosEm.getTelefono());
-            updateEm.setDireccion(datosEm.getDireccion());
-            updateEm.setPassword(datosEm.getPassword());
+            if (updateEm.getRoles().stream().anyMatch(role -> "ADMIN".equals(role.getNombreRol()))) {
+                updateEm.setNombre(datosEm.getNombre());
+                updateEm.setApellido(datosEm.getApellido());
+                updateEm.setCorreoElectronico(datosEm.getCorreoElectronico());
+                updateEm.setTelefono(datosEm.getTelefono());
+                updateEm.setDireccion(datosEm.getDireccion());
+                updateEm.setPassword(datosEm.getPassword());
+            }
 
+            if (updateEm.getRoles().stream().anyMatch(role -> "RECEPCIONISTA".equals(role.getNombreRol()))) {
+                updateEm.setNombre(datosEmRecep.getNombre());
+                updateEm.setApellido(datosEmRecep.getApellido());
+                updateEm.setCorreoElectronico(datosEmRecep.getCorreoElectronico());
+                updateEm.setTelefono(datosEmRecep.getTelefono());
+                updateEm.setDireccion(datosEmRecep.getDireccion());
+                updateEm.setPassword(datosEmRecep.getPassword());
+            }
             empleadoImpl.updateEmpleado(updateEm);
-
         }
 
     }
@@ -88,6 +118,7 @@ public class ControladorPerfil implements ActionListener {
         this.panelPerfilAdm.btnEditarPerfil.addActionListener(this);
         this.panelPerfilAdm.btnAceptarEditHabitacion.addActionListener(this);
         this.panelPerfilAdm.btnCancelarEditHabitacion.addActionListener(this);
+        this.panelPerfil.btnAceptarEm.addActionListener(this);
     }
 
 }

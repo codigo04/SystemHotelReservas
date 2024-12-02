@@ -4,8 +4,19 @@
  */
 package vista.Empleado.paneles;
 
+import java.awt.Color;
+import modelo.entity.Reserva;
+
+import javax.swing.table.DefaultTableModel;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+import modelo.dao.impl.ReservaImpl;
 
 
 /**
@@ -14,14 +25,19 @@ import java.awt.Container;
  */
 public class PanelReservas extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelReservas
-     */
+    public DefaultTableModel modTablaReservas = new DefaultTableModel();
+
     public PanelReservas() {
         initComponents();
+        String cabeTableProduc[] = {"ID", "Cliente", "DNI", "Habitación", "Fecha de Inicio", "Fecha de Fin", "Estado","Total"};
+        modTablaReservas.setColumnIdentifiers(cabeTableProduc);
+        tablaReservas.setModel(modTablaReservas);
+        
+        tablaReservas.setBackground(Color.BLACK);
+        tablaReservas.setForeground(Color.WHITE);
+        
         Panel_Cancelar.setVisible(false);
         Panel_Editar.setVisible(false);
-        
     }
 
     /**
@@ -40,12 +56,12 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtDni_CancelarReserva = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        btnCancelar_PanelCancelar = new javax.swing.JButton();
-        btnSalir_PanelCancelar = new javax.swing.JButton();
+        txtNombreCliente_CancelarReserva = new javax.swing.JTextField();
+        btnCancelar_CancelarReserva = new javax.swing.JButton();
+        btnSalir_CancelarReserva = new javax.swing.JButton();
         Panel_Editar = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -56,28 +72,28 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        btnCancelar_PanelEditar = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        btnEditar_PanelEditar1 = new javax.swing.JButton();
-        btnActualizar_PanelEditar1 = new javax.swing.JButton();
-        jTextField13 = new javax.swing.JTextField();
+        btnCancelar_ReservaEdit = new javax.swing.JButton();
+        txtDniR = new javax.swing.JTextField();
+        txtHabitacionR = new javax.swing.JTextField();
+        txtTelefonoR = new javax.swing.JTextField();
+        txtCorreoR = new javax.swing.JTextField();
+        txtPrecioR = new javax.swing.JTextField();
+        txtTipoHabitacionR = new javax.swing.JTextField();
+        btnActualizar_ReservaEdit = new javax.swing.JButton();
+        txtNombreR = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        cboxRoles = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        txtApellidoR = new javax.swing.JTextField();
+        txtFechaLlegada = new com.toedter.calendar.JDateChooser();
+        txtFechaFinR = new com.toedter.calendar.JDateChooser();
         PanelBotones = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
+        btnCancelarReserva = new javax.swing.JButton();
+        btnEditarReserva = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        tablaReservas = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        txtBuscarReservas = new javax.swing.JTextField();
+        btnBuscarHabitacion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jEditorPane1);
@@ -105,10 +121,10 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel14.setText("Esta acción no se puede deshacer");
         Panel_Cancelar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
-        jTextField11.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField11.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Cancelar.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 90, -1));
+        txtDni_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
+        txtDni_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDni_CancelarReserva.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Cancelar.add(txtDni_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 90, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -122,43 +138,43 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel3.setText("Cliente");
         Panel_Cancelar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
-        jTextField12.setEditable(false);
-        jTextField12.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField12.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField12.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField12.setAutoscrolls(false);
-        jTextField12.setEnabled(false);
-        jTextField12.setFocusable(false);
-        jTextField12.setRequestFocusEnabled(false);
-        Panel_Cancelar.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
+        txtNombreCliente_CancelarReserva.setEditable(false);
+        txtNombreCliente_CancelarReserva.setBackground(new java.awt.Color(204, 204, 204));
+        txtNombreCliente_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNombreCliente_CancelarReserva.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombreCliente_CancelarReserva.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNombreCliente_CancelarReserva.setAutoscrolls(false);
+        txtNombreCliente_CancelarReserva.setEnabled(false);
+        txtNombreCliente_CancelarReserva.setFocusable(false);
+        txtNombreCliente_CancelarReserva.setRequestFocusEnabled(false);
+        Panel_Cancelar.add(txtNombreCliente_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
 
-        btnCancelar_PanelCancelar.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancelar_PanelCancelar.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
-        btnCancelar_PanelCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar_PanelCancelar.setText("Cancelar");
-        btnCancelar_PanelCancelar.setActionCommand("CANCELAR");
-        btnCancelar_PanelCancelar.setBorder(null);
-        btnCancelar_PanelCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar_CancelarReserva.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar_CancelarReserva.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
+        btnCancelar_CancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar_CancelarReserva.setText("Cancelar");
+        btnCancelar_CancelarReserva.setActionCommand("CANCELAR");
+        btnCancelar_CancelarReserva.setBorder(null);
+        btnCancelar_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar_PanelCancelarActionPerformed(evt);
+                btnCancelar_CancelarReservaActionPerformed(evt);
             }
         });
-        Panel_Cancelar.add(btnCancelar_PanelCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 30));
+        Panel_Cancelar.add(btnCancelar_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 30));
 
-        btnSalir_PanelCancelar.setBackground(new java.awt.Color(204, 204, 204));
-        btnSalir_PanelCancelar.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
-        btnSalir_PanelCancelar.setForeground(new java.awt.Color(51, 51, 51));
-        btnSalir_PanelCancelar.setText("Salir");
-        btnSalir_PanelCancelar.setActionCommand("SALIR");
-        btnSalir_PanelCancelar.setBorder(null);
-        btnSalir_PanelCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir_CancelarReserva.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir_CancelarReserva.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        btnSalir_CancelarReserva.setForeground(new java.awt.Color(51, 51, 51));
+        btnSalir_CancelarReserva.setText("Salir");
+        btnSalir_CancelarReserva.setActionCommand("SALIR");
+        btnSalir_CancelarReserva.setBorder(null);
+        btnSalir_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir_PanelCancelarActionPerformed(evt);
+                btnSalir_CancelarReservaActionPerformed(evt);
             }
         });
-        Panel_Cancelar.add(btnSalir_PanelCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 120, 30));
-        btnSalir_PanelCancelar.getAccessibleContext().setAccessibleName("SALIR");
+        Panel_Cancelar.add(btnSalir_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 120, 30));
+        btnSalir_CancelarReserva.getAccessibleContext().setAccessibleName("");
 
         add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
 
@@ -223,107 +239,73 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel37.setText("DNI");
         Panel_Editar.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        btnCancelar_PanelEditar.setBackground(new java.awt.Color(51, 51, 51));
-        btnCancelar_PanelEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnCancelar_PanelEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar_PanelEditar.setText("Cancelar");
-        btnCancelar_PanelEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar_ReservaEdit.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar_ReservaEdit.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnCancelar_ReservaEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar_ReservaEdit.setText("Cancelar");
+        btnCancelar_ReservaEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar_PanelEditarActionPerformed(evt);
+                btnCancelar_ReservaEditActionPerformed(evt);
             }
         });
-        Panel_Editar.add(btnCancelar_PanelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 120, 30));
+        Panel_Editar.add(btnCancelar_ReservaEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 120, 30));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 90, 30));
+        txtDniR.setBackground(new java.awt.Color(255, 255, 255));
+        txtDniR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDniR.setForeground(new java.awt.Color(0, 0, 0));
+        txtDniR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtDniR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 90, 30));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 130, 30));
+        txtHabitacionR.setBackground(new java.awt.Color(255, 255, 255));
+        txtHabitacionR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtHabitacionR.setForeground(new java.awt.Color(0, 0, 0));
+        txtHabitacionR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtHabitacionR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 130, 30));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 120, 30));
+        txtTelefonoR.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonoR.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefonoR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtTelefonoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 120, 30));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Editar.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 180, 30));
+        txtCorreoR.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCorreoR.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Editar.add(txtCorreoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 180, 30));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 140, 30));
+        txtPrecioR.setBackground(new java.awt.Color(255, 255, 255));
+        txtPrecioR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtPrecioR.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecioR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtPrecioR, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 140, 30));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 140, 30));
+        txtTipoHabitacionR.setBackground(new java.awt.Color(255, 255, 255));
+        txtTipoHabitacionR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTipoHabitacionR.setForeground(new java.awt.Color(0, 0, 0));
+        txtTipoHabitacionR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtTipoHabitacionR, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 130, 30));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 140, 30));
-
-        jTextField10.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 130, 30));
-
-        btnEditar_PanelEditar1.setBackground(new java.awt.Color(51, 51, 51));
-        btnEditar_PanelEditar1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnEditar_PanelEditar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_PanelEditar1.setText("Buscar");
-        btnEditar_PanelEditar1.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar_ReservaEdit.setBackground(new java.awt.Color(51, 51, 51));
+        btnActualizar_ReservaEdit.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnActualizar_ReservaEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar_ReservaEdit.setText("Actualizar");
+        btnActualizar_ReservaEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar_PanelEditar1ActionPerformed(evt);
+                btnActualizar_ReservaEditActionPerformed(evt);
             }
         });
-        Panel_Editar.add(btnEditar_PanelEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
+        Panel_Editar.add(btnActualizar_ReservaEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, 30));
 
-        btnActualizar_PanelEditar1.setBackground(new java.awt.Color(51, 51, 51));
-        btnActualizar_PanelEditar1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnActualizar_PanelEditar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizar_PanelEditar1.setText("Actualizar");
-        btnActualizar_PanelEditar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizar_PanelEditar1ActionPerformed(evt);
-            }
-        });
-        Panel_Editar.add(btnActualizar_PanelEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, 30));
-
-        jTextField13.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField13.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Panel_Editar.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 130, 30));
+        txtNombreR.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNombreR.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtNombreR, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 130, 30));
 
         jLabel36.setBackground(new java.awt.Color(255, 255, 255));
         jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Nombre ");
         Panel_Editar.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
-
-        cboxRoles.setBackground(new java.awt.Color(255, 255, 255));
-        cboxRoles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cboxRoles.setForeground(new java.awt.Color(0, 0, 0));
-        cboxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-        cboxRoles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboxRolesActionPerformed(evt);
-            }
-        });
-        Panel_Editar.add(cboxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 160, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -332,6 +314,20 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel5.setText("Habitacion");
         Panel_Editar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 80, 20));
 
+        txtApellidoR.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtApellidoR.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Panel_Editar.add(txtApellidoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 130, 30));
+
+        txtFechaLlegada.setBackground(new java.awt.Color(255, 255, 255));
+        txtFechaLlegada.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Editar.add(txtFechaLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 150, 30));
+
+        txtFechaFinR.setBackground(new java.awt.Color(255, 255, 255));
+        txtFechaFinR.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Editar.add(txtFechaFinR, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, 30));
+
         add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
 
         PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
@@ -339,100 +335,89 @@ public class PanelReservas extends javax.swing.JPanel {
         PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
         PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204, 150));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setToolTipText("Buscar");
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setName(""); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarReserva.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelarReserva.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnCancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarReserva.setText("Cancelar");
+        btnCancelarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnCancelarReservaActionPerformed(evt);
             }
         });
-        PanelBotones.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 189, 31));
-        jTextField1.getAccessibleContext().setAccessibleName("Buscar");
+        PanelBotones.add(btnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, -1, -1));
 
-        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
-        btnCancelar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarReserva.setBackground(new java.awt.Color(51, 51, 51));
+        btnEditarReserva.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnEditarReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarReserva.setText("Editar");
+        btnEditarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnEditarReservaActionPerformed(evt);
             }
         });
-        PanelBotones.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
+        PanelBotones.add(btnEditarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 80, -1));
 
-        jTable1.setBackground(new java.awt.Color(180, 180, 180));
-        jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaReservas.setBackground(new java.awt.Color(180, 180, 180));
+        tablaReservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tablaReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tablaReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "N°", "Cliente", "Fecha de Registro", "Fecha de Llegada", "Fecha de Finalizacion", "Codigo", "Persona", "Monto"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            }
+        ));
+        tablaReservas.setGridColor(new java.awt.Color(180, 180, 180));
+        jScrollPane1.setViewportView(tablaReservas);
+
+        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 810, 200));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Lista de Reservas");
+        PanelBotones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 48));
+
+        txtBuscarReservas.setBackground(new java.awt.Color(180, 180, 180));
+        txtBuscarReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtBuscarReservas.setForeground(new java.awt.Color(0, 0, 0));
+        txtBuscarReservas.setText("Buscar Reserva");
+        txtBuscarReservas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarReservasFocusLost(evt);
             }
         });
-        jTable1.setGridColor(new java.awt.Color(180, 180, 180));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(20);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(105);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(110);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(120);
-        }
+        txtBuscarReservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBuscarReservasMouseClicked(evt);
+            }
+        });
+        PanelBotones.add(txtBuscarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
 
-        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 652, 243));
-
-        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
-        btnBuscar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
+        btnBuscarHabitacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnBuscarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarHabitacion.setText("Buscar");
+        btnBuscarHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+                btnBuscarHabitacionActionPerformed(evt);
             }
         });
-        PanelBotones.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        PanelBotones.add(btnBuscarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 73, 86, 35));
 
-        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
-        btnEditar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 80, -1));
-
-        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 790, 350));
+        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 860, 360));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Reservas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        bloquear(PanelBotones);
-        Panel_Cancelar.setVisible(true);
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void btnCancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarReservaActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        bloquear(PanelBotones);
-        Panel_Editar.setVisible(true);
+    }//GEN-LAST:event_btnCancelarReservaActionPerformed
+
+    private void btnEditarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarReservaActionPerformed
+
 
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
@@ -470,70 +455,58 @@ public class PanelReservas extends javax.swing.JPanel {
         //agregamos una fila  a la tabla con el contedio que tiene el arreglo
         modTablaEmpleados.addRow(fila);
         */
-    }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-  
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_btnEditarReservaActionPerformed
     
     
     // PANEL EDITAR RESERVA !!!
-    private void btnCancelar_PanelEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_PanelEditarActionPerformed
+    private void btnCancelar_ReservaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_ReservaEditActionPerformed
         desbloquear(PanelBotones);
         Panel_Editar.setVisible(false);
-    }//GEN-LAST:event_btnCancelar_PanelEditarActionPerformed
+    }//GEN-LAST:event_btnCancelar_ReservaEditActionPerformed
 
-    private void btnEditar_PanelEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_PanelEditar1ActionPerformed
-        // BUSCAR POR DNI DE LA VENTANA EDITAR
-    }//GEN-LAST:event_btnEditar_PanelEditar1ActionPerformed
-
-    private void btnActualizar_PanelEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar_PanelEditar1ActionPerformed
+    private void btnActualizar_ReservaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar_ReservaEditActionPerformed
         // ACTUALIZAR DE LA VENTANA EDITAR
-        desbloquear(PanelBotones);
-        Panel_Editar.setVisible(false);
-    }//GEN-LAST:event_btnActualizar_PanelEditar1ActionPerformed
+    }//GEN-LAST:event_btnActualizar_ReservaEditActionPerformed
     
     // PANEL CONFIRMAR CANCELACIÓN !!!!
-    private void btnCancelar_PanelCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_PanelCancelarActionPerformed
+    private void btnCancelar_CancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar_CancelarReservaActionPerformed
         // CANCELAR DE LA VENTANA CANCELAR
-        desbloquear(PanelBotones);
-        Panel_Cancelar.setVisible(false);
-    }//GEN-LAST:event_btnCancelar_PanelCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelar_CancelarReservaActionPerformed
 
-    private void btnSalir_PanelCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir_PanelCancelarActionPerformed
+    private void btnSalir_CancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir_CancelarReservaActionPerformed
         // SALIR DE LA VENTANA CANCELAR
         desbloquear(PanelBotones);
         Panel_Cancelar.setVisible(false);
-    }//GEN-LAST:event_btnSalir_PanelCancelarActionPerformed
+    }//GEN-LAST:event_btnSalir_CancelarReservaActionPerformed
 
-    private void cboxRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRolesActionPerformed
-        cboxRoles.getSelectedItem();
-        if (cboxRoles.getSelectedIndex() == 1 || cboxRoles.getSelectedIndex() == 2 || cboxRoles.getSelectedIndex() == 3) {
-            // txtSalario.setText("1200");
-
-        } else if (cboxRoles.getSelectedIndex() == 4) {
-            // txtSalario.setText("2000");
+    private void txtBuscarReservasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarReservasFocusLost
+        if (txtBuscarReservas.getText().isEmpty()) {
+            txtBuscarReservas.setText("Buscar Reserva");
         }
-    }//GEN-LAST:event_cboxRolesActionPerformed
+    }//GEN-LAST:event_txtBuscarReservasFocusLost
+
+    private void txtBuscarReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarReservasMouseClicked
+        if (txtBuscarReservas.getText().equals("Buscar Reserva")) {
+            txtBuscarReservas.setText("");
+        }
+    }//GEN-LAST:event_txtBuscarReservasMouseClicked
+
+    private void btnBuscarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarHabitacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelBotones;
+    public javax.swing.JPanel PanelBotones;
     public javax.swing.JPanel Panel_Cancelar;
     public javax.swing.JPanel Panel_Editar;
-    private javax.swing.JButton btnActualizar_PanelEditar1;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCancelar_PanelCancelar;
-    private javax.swing.JButton btnCancelar_PanelEditar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEditar_PanelEditar1;
-    private javax.swing.JButton btnSalir_PanelCancelar;
-    public javax.swing.JComboBox<String> cboxRoles;
+    public javax.swing.JButton btnActualizar_ReservaEdit;
+    public javax.swing.JButton btnBuscarHabitacion;
+    public javax.swing.JButton btnCancelarReserva;
+    public javax.swing.JButton btnCancelar_CancelarReserva;
+    public javax.swing.JButton btnCancelar_ReservaEdit;
+    public javax.swing.JButton btnEditarReserva;
+    public javax.swing.JButton btnSalir_CancelarReserva;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -551,23 +524,25 @@ public class PanelReservas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    public javax.swing.JTable tablaReservas;
+    public javax.swing.JTextField txtApellidoR;
+    private javax.swing.JTextField txtBuscarReservas;
+    public javax.swing.JTextField txtCorreoR;
+    public javax.swing.JTextField txtDniR;
+    public javax.swing.JTextField txtDni_CancelarReserva;
+    public com.toedter.calendar.JDateChooser txtFechaFinR;
+    public com.toedter.calendar.JDateChooser txtFechaLlegada;
+    public javax.swing.JTextField txtHabitacionR;
+    public javax.swing.JTextField txtNombreCliente_CancelarReserva;
+    public javax.swing.JTextField txtNombreR;
+    public javax.swing.JTextField txtPrecioR;
+    public javax.swing.JTextField txtTelefonoR;
+    public javax.swing.JTextField txtTipoHabitacionR;
     // End of variables declaration//GEN-END:variables
     public void bloquear(Component component) {
 
@@ -590,5 +565,39 @@ public class PanelReservas extends javax.swing.JPanel {
             }
         }
         component.setEnabled(true);
+    }
+    
+    public void FormCloseReserva(){
+        txtDniR.setText("");
+        txtNombreR.setText("");
+        txtHabitacionR.setText("");
+        txtTelefonoR.setText("");
+        txtCorreoR.setText("");
+        txtTipoHabitacionR.setText("");
+        txtFechaLlegada.setDate(null);
+        txtFechaFinR.setDate(null);
+        txtPrecioR.setText("");
+    }
+    
+    public void busquedaDinamica() {
+        // Crear un TableRowSorter para el modelo de la tabla
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modTablaReservas);
+        tablaReservas.setRowSorter(sorter);
+
+        // Añadir un KeyListener al campo de búsqueda
+        txtBuscarReservas.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String textoBusqueda = txtBuscarReservas.getText().trim();
+
+                // Si el campo de búsqueda está vacío, mostrar todas las filas
+                if (textoBusqueda.isEmpty()) {
+                    sorter.setRowFilter(null);
+                } else {
+                    // Aplicar un filtro en la tabla según el texto ingresado
+                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + textoBusqueda));
+                }
+            }
+        });
     }
 }
