@@ -67,9 +67,9 @@ public class ControladorPrincipal implements ActionListener {
         if (e.getSource() == vistaEmpleado.btnSalir) {
             ControladorLogin controladorLogin = new ControladorLogin();
             controladorLogin.correrLogin();
-            administradorPrueba.setVisible(false);
+            vistaEmpleado.setVisible(false);
         }
-        controladorInicio.cargarEmpleado();
+      
     }
     
     public void iniciarPanelAdministrador() {

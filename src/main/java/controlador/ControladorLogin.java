@@ -92,6 +92,7 @@ public class ControladorLogin implements ActionListener {
                     } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
                         controladorCliente.iniciarPanelEmpleado();
                         controladorCliente.getControladorPerfil().cargarDatosPerfil();
+                        ControladorInicio.cargarEmpleado();
                         vistaLogin.setVisible(false);
                     }
                 }
@@ -110,7 +111,7 @@ public class ControladorLogin implements ActionListener {
 
             if (leged) {
                 controladorCliente.iniciarPanelAdministrador();
-
+                 ControladorInicio.cargarEmpleado();
                 vistaLogin.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "CODIGO INCORRECTO", "Advertencia", JOptionPane.WARNING_MESSAGE);

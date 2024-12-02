@@ -31,9 +31,9 @@ import vista.usuario;
  */
 public class ControladorInicio implements ActionListener {
 
-    private PanelInicioAdm panelInicioAdm;
+    private static PanelInicioAdm panelInicioAdm;
     //CRISTIAN panel
-    private PanelInicio panelInicio;
+    private static PanelInicio panelInicio;
     
     private PagoImpl pagoImpl;
     private ClienteImpl clienteImpl;
@@ -46,23 +46,25 @@ public class ControladorInicio implements ActionListener {
         clienteImpl = new ClienteImpl();
         reservaImpl = new ReservaImpl();
         cargarDasborad();
+        
     }
 
     public void actionPerformed(ActionEvent e) {
 
     }
 
-    public void cargarEmpleado() {
+    public static void cargarEmpleado() {
         Optional<Empleado> emLo = ControladorLogin.authUserLogin();
         if (emLo.isPresent()) {
             Empleado empleado = emLo.get();
             String nombreCompleto = empleado.getNombre() + " " + empleado.getApellido();
 
             for (Roles roles : empleado.getRoles()) {
-                if ("ADMIN".equals(roles.getNombreRol())) {
+                
+                if (roles.getNombreRol().equals("ADMIN")) {
                     panelInicioAdm.txtNombreAdmin.setText(nombreCompleto);
-                } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
-                    panelInicio.textEmpleado.setText(nombreCompleto);
+                } else if (roles.getNombreRol().equals("RECEPCIONISTA")) {
+                    panelInicio.textEmpleado.setText(nombreCompleto);  
                 }
             }
         } else {
