@@ -17,7 +17,7 @@ import vista.Administrador.paneles.PanelClientesAdm;
 import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
-import vista.Administrador.paneles.PanelInicio;
+import vista.Administrador.paneles.PanelInicioAdm;
 import vista.Administrador.paneles.PanelPerfilAdm;
 import vista.Administrador.paneles.PanelRecervasAdm;
 import vista.Administrador.paneles.PanelTipoHabitacionesAdm;
@@ -34,7 +34,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelPerfilAdm panelPerfilAdm = new PanelPerfilAdm();
     public PanelRecervasAdm panelRecervasAdm = new PanelRecervasAdm();
 
-    public PanelInicio panelInicio = new PanelInicio();
+    public PanelInicioAdm panelInicioAdm = new PanelInicioAdm();
     public PanelClientesAdm panelClientesAdm = new PanelClientesAdm();
 
     /**
@@ -51,7 +51,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
 
         dispositivoGrafico.setFullScreenWindow(this);  */
         this.panelPaginas.removeAll();
-        this.panelPaginas.add(panelInicio);
+        this.panelPaginas.add(panelInicioAdm);
         this.panelPaginas.revalidate();
         this.panelPaginas.repaint();
 
@@ -299,7 +299,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         this.panelPaginas.removeAll();
-        this.panelPaginas.add(panelInicio);
+        this.panelPaginas.add(panelInicioAdm);
         this.panelPaginas.revalidate();
         this.panelPaginas.repaint();
     }//GEN-LAST:event_btnInicioActionPerformed

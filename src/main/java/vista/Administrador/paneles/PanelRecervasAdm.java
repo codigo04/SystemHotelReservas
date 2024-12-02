@@ -43,7 +43,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
      */
     public PanelRecervasAdm() {
         initComponents();
-        String cabeTableProduc[] = {"ID", "Cliente", "Habitacion", "Check-in", "Check-out", "Estado","Total"};
+        String cabeTableProduc[] = {"ID", "Cliente", "DNI", "Habitación", "Fecha de Inicio", "Fecha de Fin", "Estado","Total"};
         darBordes(jpanelContenidoHabi);
         modTablaReservas.setColumnIdentifiers(cabeTableProduc);
         busquedaDinamica();
@@ -379,6 +379,11 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
                 txtBuscarReservasMouseClicked(evt);
             }
         });
+        txtBuscarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarReservasActionPerformed(evt);
+            }
+        });
         jpanelContenidoHabi.add(txtBuscarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
 
         btnBuscarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
@@ -564,6 +569,10 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
              txtBuscarReservas.setText("Buscar Reserva");
         }
     }//GEN-LAST:event_txtBuscarReservasFocusLost
+
+    private void txtBuscarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarReservasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarReservasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
