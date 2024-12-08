@@ -109,7 +109,7 @@ public class PanelInicioAdm extends javax.swing.JPanel {
 
         txtNombreAdmin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtNombreAdmin.setForeground(new java.awt.Color(0, 0, 0));
-        add(txtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 310, -1));
+        add(txtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 310, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

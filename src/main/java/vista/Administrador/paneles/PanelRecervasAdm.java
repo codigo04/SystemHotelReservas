@@ -109,9 +109,9 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
         jLabel1.setText("Gestión de Reservas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 571, -1));
 
-        btnExportarReporteReservas.setBackground(new java.awt.Color(0, 0, 0));
+        btnExportarReporteReservas.setBackground(new java.awt.Color(153, 255, 102));
         btnExportarReporteReservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnExportarReporteReservas.setForeground(new java.awt.Color(255, 255, 255));
+        btnExportarReporteReservas.setForeground(new java.awt.Color(0, 102, 0));
         btnExportarReporteReservas.setText("Exportar Excel");
         btnExportarReporteReservas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -354,7 +354,7 @@ public class PanelRecervasAdm extends javax.swing.JPanel {
 
         jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 860, 200));
 
-        btnEliminarReservas.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarReservas.setBackground(new java.awt.Color(255, 0, 0));
         btnEliminarReservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEliminarReservas.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarReservas.setText("Eliminar");

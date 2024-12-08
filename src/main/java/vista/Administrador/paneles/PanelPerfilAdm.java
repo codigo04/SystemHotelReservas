@@ -68,10 +68,6 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtNombreUsLoged = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtPasswordEmpleadoUsPerfil = new javax.swing.JTextField();
-        jpanelInforLaboralPerf = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jlabelFechaInicio = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -301,7 +297,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
                 btnEditarPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 130, 30));
+        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 130, 30));
 
         txtUsuarioLoged1.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuarioLoged1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -309,7 +305,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtUsuarioLoged1.setText("Perfil del Administrador");
         jPanel1.add(txtUsuarioLoged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 410, 50));
 
-        jpanelInfoPerf.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 50));
+        jpanelInfoPerf.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 50));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -367,31 +363,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtPasswordEmpleadoUsPerfil.setEnabled(false);
         jpanelInfoPerf.add(txtPasswordEmpleadoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 270, -1));
 
-        add(jpanelInfoPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 690, 380));
-
-        jpanelInforLaboralPerf.setBackground(new java.awt.Color(255, 255, 255));
-        jpanelInforLaboralPerf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jpanelInforLaboralPerf.setForeground(new java.awt.Color(0, 0, 0));
-        jpanelInforLaboralPerf.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Informacion Laboral");
-        jpanelInforLaboralPerf.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 15, 257, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Fecha Inicio");
-        jpanelInforLaboralPerf.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-
-        jlabelFechaInicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jlabelFechaInicio.setForeground(new java.awt.Color(204, 204, 204));
-        jlabelFechaInicio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlabelFechaInicio.setText("14/20/2024");
-        jpanelInforLaboralPerf.add(jlabelFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
-
-        add(jpanelInforLaboralPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 690, 170));
+        add(jpanelInfoPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 740, 540));
 
         getAccessibleContext().setAccessibleName("");
         getAccessibleContext().setAccessibleDescription("");
@@ -424,7 +396,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
 
     private void btnCancelarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabitacionActionPerformed
         
-        desbloquear(jpanelInforLaboralPerf);
+        desbloquear(jpanelInfoPerf);
         Panel_EditPerfil.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditHabitacionActionPerformed
 
@@ -503,13 +475,9 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JLabel jlabelFechaInicio;
     private javax.swing.JPanel jpanelInfoPerf;
-    private javax.swing.JPanel jpanelInforLaboralPerf;
     public javax.swing.JTextField txtApellidoEditPerf;
     public javax.swing.JTextField txtApellidoUsLoged;
     public javax.swing.JTextField txtCorreoElectronicoEditPerf;

@@ -104,24 +104,16 @@ public class PanelInicio extends javax.swing.JPanel {
         jTextPane17 = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        panelRound1 = new vista.Empleado.paneles.PanelRound();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        panelRound5 = new vista.Empleado.paneles.PanelRound();
-        jSeparator11 = new javax.swing.JSeparator();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         panelReservaciones = new vista.Empleado.paneles.PanelRound();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane20 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jlbIngresoTotales = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jlbIngresoTotales1 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
         textEmpleado = new javax.swing.JTextField();
 
         jPanel2.setBackground(new java.awt.Color(235, 237, 239));
@@ -737,143 +729,6 @@ public class PanelInicio extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cliente.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 70, 70));
-
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dinero.png"))); // NOI18N
-        jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
-
-        panelRound1.setBackground(new java.awt.Color(200, 200, 200));
-        panelRound1.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound1.setRoundBottomLeft(40);
-        panelRound1.setRoundBottomRight(40);
-        panelRound1.setRoundTopLeft(40);
-        panelRound1.setRoundTopRight(40);
-        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 240, -1));
-
-        jLabel43.setFont(new java.awt.Font("Berlin Sans FB", 0, 15)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel43.setText(" - Del dia anterior");
-        panelRound1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 20));
-
-        jLabel44.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel44.setText("Ganancias del dia");
-        panelRound1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(200, 200, 200));
-        jTextField1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setText("145");
-        jTextField1.setToolTipText("");
-        jTextField1.setBorder(null);
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setDoubleBuffered(true);
-        jTextField1.setEnabled(false);
-        jTextField1.setFocusable(false);
-        jTextField1.setOpaque(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 80, -1));
-
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(200, 200, 200));
-        jTextField4.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField4.setText("145");
-        jTextField4.setToolTipText("");
-        jTextField4.setBorder(null);
-        jTextField4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField4.setDoubleBuffered(true);
-        jTextField4.setEnabled(false);
-        jTextField4.setFocusable(false);
-        jTextField4.setOpaque(false);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        panelRound1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
-
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 210, 110));
-
-        panelRound5.setBackground(new java.awt.Color(200, 200, 200));
-        panelRound5.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound5.setRoundBottomLeft(40);
-        panelRound5.setRoundBottomRight(40);
-        panelRound5.setRoundTopLeft(40);
-        panelRound5.setRoundTopRight(40);
-        panelRound5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator11.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound5.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 240, -1));
-
-        jLabel51.setFont(new java.awt.Font("Berlin Sans FB", 0, 15)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel51.setText(" - Del dia anterior");
-        panelRound5.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 20));
-
-        jLabel52.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel52.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel52.setText("Total de clientes");
-        panelRound5.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
-
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(200, 200, 200));
-        jTextField2.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField2.setText("145");
-        jTextField2.setToolTipText("");
-        jTextField2.setBorder(null);
-        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField2.setDoubleBuffered(true);
-        jTextField2.setEnabled(false);
-        jTextField2.setFocusable(false);
-        jTextField2.setOpaque(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
-
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(200, 200, 200));
-        jTextField3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField3.setText("145");
-        jTextField3.setToolTipText("");
-        jTextField3.setAutoscrolls(false);
-        jTextField3.setBorder(null);
-        jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField3.setDoubleBuffered(true);
-        jTextField3.setEnabled(false);
-        jTextField3.setFocusable(false);
-        jTextField3.setOpaque(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 80, -1));
-
-        jPanel1.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 210, 110));
-        panelRound5.getAccessibleContext().setAccessibleName("");
-        panelRound5.getAccessibleContext().setAccessibleDescription("");
-
         panelReservaciones.setBackground(new java.awt.Color(200, 200, 200));
         panelReservaciones.setRoundBottomLeft(40);
         panelReservaciones.setRoundBottomRight(40);
@@ -901,14 +756,45 @@ public class PanelInicio extends javax.swing.JPanel {
         ));
         jTable1.setToolTipText("");
         jTable1.setGridColor(new java.awt.Color(180, 180, 180));
-        jTable1.setShowHorizontalLines(false);
         jScrollPane20.setViewportView(jTable1);
 
-        panelReservaciones.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 480, 180));
+        panelReservaciones.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, 180));
 
-        jPanel1.add(panelReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 530, 260));
+        jPanel1.add(panelReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 790, 260));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 600, 460));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbIngresoTotales.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbIngresoTotales.setForeground(new java.awt.Color(0, 0, 0));
+        jlbIngresoTotales.setText("3");
+        jPanel3.add(jlbIngresoTotales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 40));
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel30.setText("Habitaciones Disponibles");
+        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 400, 120));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbIngresoTotales1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbIngresoTotales1.setForeground(new java.awt.Color(0, 0, 0));
+        jlbIngresoTotales1.setText("10");
+        jPanel4.add(jlbIngresoTotales1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 40));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel31.setText("Huéspedes Actuales");
+        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 360, 120));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 980, 460));
 
         textEmpleado.setEditable(false);
         textEmpleado.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -917,7 +803,6 @@ public class PanelInicio extends javax.swing.JPanel {
         textEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textEmpleado.setEnabled(false);
         textEmpleado.setFocusable(false);
-        textEmpleado.setOpaque(false);
         textEmpleado.setRequestFocusEnabled(false);
         textEmpleado.setVerifyInputWhenFocusTarget(false);
         textEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -928,29 +813,12 @@ public class PanelInicio extends javax.swing.JPanel {
         add(textEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 370, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void textEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEmpleadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textEmpleadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -971,14 +839,11 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -991,6 +856,8 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane10;
@@ -1012,19 +879,13 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     public javax.swing.JTable jTable1;
-    public javax.swing.JTextField jTextField1;
-    public javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField3;
-    public javax.swing.JTextField jTextField4;
     private javax.swing.JTextPane jTextPane10;
     private javax.swing.JTextPane jTextPane11;
     private javax.swing.JTextPane jTextPane12;
@@ -1041,9 +902,9 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JTextPane jTextPane7;
     private javax.swing.JTextPane jTextPane8;
     private javax.swing.JTextPane jTextPane9;
+    public javax.swing.JLabel jlbIngresoTotales;
+    public javax.swing.JLabel jlbIngresoTotales1;
     public vista.Empleado.paneles.PanelRound panelReservaciones;
-    private vista.Empleado.paneles.PanelRound panelRound1;
-    private vista.Empleado.paneles.PanelRound panelRound5;
     public javax.swing.JTextField textEmpleado;
     // End of variables declaration//GEN-END:variables
 }

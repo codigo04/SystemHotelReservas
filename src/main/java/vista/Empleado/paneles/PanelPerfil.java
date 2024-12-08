@@ -76,6 +76,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel25.setText("Correo Electronico");
 
+        setForeground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -87,7 +88,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         Panel_RegistroEmpleados.setEnabled(false);
         Panel_RegistroEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAceptarEm.setBackground(new java.awt.Color(102, 204, 0));
+        btnAceptarEm.setBackground(new java.awt.Color(0, 255, 0));
         btnAceptarEm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnAceptarEm.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptarEm.setText("ACEPTAR");
@@ -97,7 +98,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnAceptarEmActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(btnAceptarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 130, 30));
+        Panel_RegistroEmpleados.add(btnAceptarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 140, 30));
 
         btnCancelarEm.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarEm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -108,7 +109,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnCancelarEmActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 130, 30));
+        Panel_RegistroEmpleados.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 140, 30));
 
         jLabel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -245,12 +246,12 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel28.setText("Nombre");
         Panel_RegistroEmpleados.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 70, 20));
 
-        add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 400, 470));
+        add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 420, 470));
 
         panelDatos.setBackground(new java.awt.Color(255, 255, 255));
-        panelDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Correo Electrónico");
@@ -281,6 +282,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(TXTDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 220, -1));
 
+        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Telefóno");
@@ -296,6 +298,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(TXTTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 220, -1));
 
+        TXTNombre.setEditable(false);
         TXTNombre.setBackground(new java.awt.Color(255, 255, 255));
         TXTNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TXTNombre.setForeground(new java.awt.Color(0, 0, 0));
@@ -306,6 +309,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(TXTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 220, -1));
 
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
         jLabel21.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Nombre");
@@ -356,7 +360,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel15.setText("Contraseña");
         panelDatos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
-        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 560, 420));
+        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 790, 440));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -376,9 +380,9 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnEditarPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 106, 32));
+        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 106, 32));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 560, 50));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 790, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
