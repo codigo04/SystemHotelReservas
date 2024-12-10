@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 import modelo.dao.impl.EmpleadoImpl;
 import modelo.dao.impl.PagoImpl;
 import modelo.entity.Empleado;
@@ -24,7 +25,6 @@ public class ControladorPerfil implements ActionListener {
     private PanelPerfilAdm panelPerfilAdm;
     private PanelPerfil panelPerfil; //RECEPCIONISTA
     private EmpleadoImpl empleadoImpl;
-    
 
     ControladorPerfil(PanelPerfilAdm panelPerfilAdm, PanelPerfil panelPerfil) {
         this.panelPerfilAdm = panelPerfilAdm;
@@ -46,9 +46,9 @@ public class ControladorPerfil implements ActionListener {
         }
 
 //        RECEPCIONISTA
-        if (e.getSource() == panelPerfil.btnAceptarEm) {
+        if (e.getSource() == panelPerfil.btnAceptarCambiarPasswordEm) {
             updateEmpleadoUsPerfil();
-            cargarDatosPerfil();
+            //cargarDatosPerfil();
         }
     }
 
@@ -63,23 +63,23 @@ public class ControladorPerfil implements ActionListener {
                     .collect(Collectors.joining(", "));
 
             for (Roles roles : empleado.getRoles()) {
-                    if ("ADMIN".equals(roles.getNombreRol())) {
-                        panelPerfilAdm.txtNombreUsLoged.setText(emLo.get().getNombre());
-                        panelPerfilAdm.txtApellidoUsLoged.setText(emLo.get().getApellido());
-                        panelPerfilAdm.txtDireccionUsPerfil.setText(emLo.get().getDireccion());
-                        panelPerfilAdm.txtTelefonoUsPerfil.setText(emLo.get().getTelefono());
-                        panelPerfilAdm.txtCorreoUsPerfil.setText(emLo.get().getCorreoElectronico());
-                        panelPerfilAdm.txtPasswordEmpleadoUsPerfil.setText(emLo.get().getPassword());
-                        panelPerfilAdm.txtRolEmpleadoUsPerfil.setText(rolesConcatenados);
-                    } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
-                       panelPerfil.TXTNombre.setText(emLo.get().getNombre());
-                       panelPerfil.TXTApellido.setText(emLo.get().getApellido());
-                       panelPerfil.TXTCorreo.setText(emLo.get().getCorreoElectronico());
-                       panelPerfil.TXTTelefono.setText(emLo.get().getTelefono());
-                       panelPerfil.TXTDireccion.setText(emLo.get().getDireccion());
-                       panelPerfil.TXTRol.setText(rolesConcatenados);
-                    }
+                if ("ADMIN".equals(roles.getNombreRol())) {
+                    panelPerfilAdm.txtNombreUsLoged.setText(emLo.get().getNombre());
+                    panelPerfilAdm.txtApellidoUsLoged.setText(emLo.get().getApellido());
+                    panelPerfilAdm.txtDireccionUsPerfil.setText(emLo.get().getDireccion());
+                    panelPerfilAdm.txtTelefonoUsPerfil.setText(emLo.get().getTelefono());
+                    panelPerfilAdm.txtCorreoUsPerfil.setText(emLo.get().getCorreoElectronico());
+                    panelPerfilAdm.txtPasswordEmpleadoUsPerfil.setText(emLo.get().getPassword());
+                    panelPerfilAdm.txtRolEmpleadoUsPerfil.setText(rolesConcatenados);
+                } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
+                    panelPerfil.TXTNombre.setText(emLo.get().getNombre());
+                    panelPerfil.TXTApellido.setText(emLo.get().getApellido());
+                    panelPerfil.TXTCorreo.setText(emLo.get().getCorreoElectronico());
+                    panelPerfil.TXTTelefono.setText(emLo.get().getTelefono());
+                    panelPerfil.TXTDireccion.setText(emLo.get().getDireccion());
+                    panelPerfil.TXTRol.setText(rolesConcatenados);
                 }
+            }
         }
         // panelPerfilAdm.txtEmailPerfil.setText(emLo.get().getCorreoElectronico());
     }
@@ -102,12 +102,24 @@ public class ControladorPerfil implements ActionListener {
             }
 
             if (updateEm.getRoles().stream().anyMatch(role -> "RECEPCIONISTA".equals(role.getNombreRol()))) {
-                updateEm.setNombre(datosEmRecep.getNombre());
-                updateEm.setApellido(datosEmRecep.getApellido());
-                updateEm.setCorreoElectronico(datosEmRecep.getCorreoElectronico());
-                updateEm.setTelefono(datosEmRecep.getTelefono());
-                updateEm.setDireccion(datosEmRecep.getDireccion());
-                updateEm.setPassword(datosEmRecep.getPassword());
+                //updateEm.setNombre(datosEmRecep.getNombre());
+                // updateEm.setApellido(datosEmRecep.getApellido());
+                //  updateEm.setCorreoElectronico(datosEmRecep.getCorreoElectronico());
+                // updateEm.setTelefono(datosEmRecep.getTelefono());
+                // updateEm.setDireccion(datosEmRecep.getDireccion());
+                System.out.println(datosEmRecep.getPassword());
+                System.out.println("pass");
+                System.out.println(updateEm.getPassword());
+
+                if (updateEm.getPassword().equals(datosEmRecep.getPassword())) {
+                    updateEm.setPassword(panelPerfil.txtNuevoPassword.getText());
+                    panelPerfil.desbloquear(panelPerfil.panelDatos);
+                    panelPerfil.bloquearComponnentes();
+                    panelPerfil.Panel_RegistroEmpleados.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La contraseña Actual no es válida", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
             empleadoImpl.updateEmpleado(updateEm);
         }
@@ -118,7 +130,7 @@ public class ControladorPerfil implements ActionListener {
         this.panelPerfilAdm.btnEditarPerfil.addActionListener(this);
         this.panelPerfilAdm.btnAceptarEditHabitacion.addActionListener(this);
         this.panelPerfilAdm.btnCancelarEditHabitacion.addActionListener(this);
-        this.panelPerfil.btnAceptarEm.addActionListener(this);
+        this.panelPerfil.btnAceptarCambiarPasswordEm.addActionListener(this);
     }
 
 }

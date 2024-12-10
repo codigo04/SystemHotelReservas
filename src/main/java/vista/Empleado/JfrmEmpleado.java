@@ -49,6 +49,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         empleadopng = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -74,7 +75,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBInicioActionPerformed(evt);
             }
         });
-        menu.add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 194, 130, 41));
+        menu.add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 194, 140, 41));
 
         jBPerfil.setBackground(new java.awt.Color(204, 204, 204));
         jBPerfil.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -85,30 +86,30 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 jBPerfilActionPerformed(evt);
             }
         });
-        menu.add(jBPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 247, 130, 41));
+        menu.add(jBPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 247, 140, 41));
 
         jBAsiHabitacion.setBackground(new java.awt.Color(204, 204, 204));
         jBAsiHabitacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBAsiHabitacion.setForeground(new java.awt.Color(51, 51, 51));
-        jBAsiHabitacion.setText(" Habitaciones");
+        jBAsiHabitacion.setText("Habitaciones");
         jBAsiHabitacion.setActionCommand("");
         jBAsiHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAsiHabitacionActionPerformed(evt);
             }
         });
-        menu.add(jBAsiHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 300, 130, 41));
+        menu.add(jBAsiHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 300, 140, 41));
 
         jBHistorial.setBackground(new java.awt.Color(204, 204, 204));
         jBHistorial.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBHistorial.setForeground(new java.awt.Color(51, 51, 51));
-        jBHistorial.setText("Reservas");
+        jBHistorial.setText("Reservaciones");
         jBHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBHistorialActionPerformed(evt);
             }
         });
-        menu.add(jBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 130, 42));
+        menu.add(jBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 140, 42));
 
         btnSalir.setBackground(new java.awt.Color(153, 0, 0));
         btnSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -128,7 +129,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         menu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         menu.add(empleadopng, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 136, -1, -1));
 
-        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 660));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\resources\\usuario.png")); // NOI18N
+        menu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, 90));
+
+        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 660));
 
         panelPrincipal.setPreferredSize(new java.awt.Dimension(523, 480));
         panelPrincipal.setLayout(new java.awt.GridLayout(1, 0));
@@ -293,6 +298,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jBHistorial;
     private javax.swing.JButton jBInicio;
     private javax.swing.JButton jBPerfil;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

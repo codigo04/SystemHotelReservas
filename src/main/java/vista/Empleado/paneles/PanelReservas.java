@@ -93,7 +93,6 @@ public class PanelReservas extends javax.swing.JPanel {
         tablaReservas = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txtBuscarReservas = new javax.swing.JTextField();
-        btnBuscarHabitacion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jEditorPane1);
@@ -139,7 +138,7 @@ public class PanelReservas extends javax.swing.JPanel {
         Panel_Cancelar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
         txtNombreCliente_CancelarReserva.setEditable(false);
-        txtNombreCliente_CancelarReserva.setBackground(new java.awt.Color(204, 204, 204));
+        txtNombreCliente_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreCliente_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtNombreCliente_CancelarReserva.setForeground(new java.awt.Color(102, 102, 102));
         txtNombreCliente_CancelarReserva.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -149,7 +148,7 @@ public class PanelReservas extends javax.swing.JPanel {
         txtNombreCliente_CancelarReserva.setRequestFocusEnabled(false);
         Panel_Cancelar.add(txtNombreCliente_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
 
-        btnCancelar_CancelarReserva.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar_CancelarReserva.setBackground(new java.awt.Color(255, 0, 0));
         btnCancelar_CancelarReserva.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         btnCancelar_CancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar_CancelarReserva.setText("Cancelar");
@@ -162,12 +161,12 @@ public class PanelReservas extends javax.swing.JPanel {
         });
         Panel_Cancelar.add(btnCancelar_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 30));
 
-        btnSalir_CancelarReserva.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
         btnSalir_CancelarReserva.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
-        btnSalir_CancelarReserva.setForeground(new java.awt.Color(51, 51, 51));
+        btnSalir_CancelarReserva.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir_CancelarReserva.setText("Salir");
         btnSalir_CancelarReserva.setActionCommand("SALIR");
-        btnSalir_CancelarReserva.setBorder(null);
+        btnSalir_CancelarReserva.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnSalir_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalir_CancelarReservaActionPerformed(evt);
@@ -179,7 +178,7 @@ public class PanelReservas extends javax.swing.JPanel {
         add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
 
         Panel_Editar.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Editar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        Panel_Editar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         Panel_Editar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Panel_Editar.setEnabled(false);
         Panel_Editar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -239,7 +238,7 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel37.setText("DNI");
         Panel_Editar.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        btnCancelar_ReservaEdit.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar_ReservaEdit.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelar_ReservaEdit.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnCancelar_ReservaEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar_ReservaEdit.setText("Cancelar");
@@ -284,7 +283,7 @@ public class PanelReservas extends javax.swing.JPanel {
         txtTipoHabitacionR.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         Panel_Editar.add(txtTipoHabitacionR, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 130, 30));
 
-        btnActualizar_ReservaEdit.setBackground(new java.awt.Color(51, 51, 51));
+        btnActualizar_ReservaEdit.setBackground(new java.awt.Color(51, 255, 51));
         btnActualizar_ReservaEdit.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnActualizar_ReservaEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar_ReservaEdit.setText("Actualizar");
@@ -335,7 +334,7 @@ public class PanelReservas extends javax.swing.JPanel {
         PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
         PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCancelarReserva.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelarReserva.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarReserva.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnCancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelarReserva.setText("Cancelar");
@@ -344,9 +343,9 @@ public class PanelReservas extends javax.swing.JPanel {
                 btnCancelarReservaActionPerformed(evt);
             }
         });
-        PanelBotones.add(btnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, -1, -1));
+        PanelBotones.add(btnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, -1, -1));
 
-        btnEditarReserva.setBackground(new java.awt.Color(51, 51, 51));
+        btnEditarReserva.setBackground(new java.awt.Color(0, 0, 0));
         btnEditarReserva.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnEditarReserva.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarReserva.setText("Editar");
@@ -355,7 +354,7 @@ public class PanelReservas extends javax.swing.JPanel {
                 btnEditarReservaActionPerformed(evt);
             }
         });
-        PanelBotones.add(btnEditarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 80, -1));
+        PanelBotones.add(btnEditarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 80, -1));
 
         tablaReservas.setBackground(new java.awt.Color(180, 180, 180));
         tablaReservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -378,7 +377,7 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel4.setText("Lista de Reservas");
         PanelBotones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 48));
 
-        txtBuscarReservas.setBackground(new java.awt.Color(180, 180, 180));
+        txtBuscarReservas.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscarReservas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBuscarReservas.setForeground(new java.awt.Color(0, 0, 0));
         txtBuscarReservas.setText("Buscar Reserva");
@@ -393,17 +392,6 @@ public class PanelReservas extends javax.swing.JPanel {
             }
         });
         PanelBotones.add(txtBuscarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
-
-        btnBuscarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
-        btnBuscarHabitacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnBuscarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarHabitacion.setText("Buscar");
-        btnBuscarHabitacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarHabitacionActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(btnBuscarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 73, 86, 35));
 
         add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 860, 360));
 
@@ -491,17 +479,12 @@ public class PanelReservas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarReservasMouseClicked
 
-    private void btnBuscarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHabitacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarHabitacionActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel PanelBotones;
     public javax.swing.JPanel Panel_Cancelar;
     public javax.swing.JPanel Panel_Editar;
     public javax.swing.JButton btnActualizar_ReservaEdit;
-    public javax.swing.JButton btnBuscarHabitacion;
     public javax.swing.JButton btnCancelarReserva;
     public javax.swing.JButton btnCancelar_CancelarReserva;
     public javax.swing.JButton btnCancelar_ReservaEdit;

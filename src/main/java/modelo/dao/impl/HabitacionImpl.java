@@ -26,7 +26,7 @@ public class HabitacionImpl implements HabitacionDao {
 
     public HabitacionImpl() {
         this.emf = EntityManagerFactorySingleton.getInstance();
-       
+
     }
 
     /**
@@ -111,19 +111,15 @@ public class HabitacionImpl implements HabitacionDao {
     @Override
     public Optional<Habitacion> findHabitacionesPorNumHabitacion(String numeroHabi) {
         EntityManager em = emf.createEntityManager();
-        Habitacion habitacion = null;
         try {
-            TypedQuery<Habitacion> query = em.createQuery("from Habitacion where numeroDeHabitacion = :numero", Habitacion.class);
+            TypedQuery<Habitacion> query = em.createQuery("FROM Habitacion WHERE numeroDeHabitacion = :numero", Habitacion.class);
             query.setParameter("numero", numeroHabi);
+            List<Habitacion> resultList = query.getResultList();
 
-            // Usar getSingleResult() para obtener un solo resultado
-            habitacion = query.getSingleResult();
-        } catch (NoResultException e) {
-            // No hacer nada, habitacion se mantendrá como null
+            return resultList.isEmpty() ? Optional.empty() : Optional.of(resultList.get(0));
         } finally {
             em.close();
         }
-        return Optional.ofNullable(habitacion);
     }
 
     /**

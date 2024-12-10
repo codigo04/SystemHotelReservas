@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -86,20 +87,19 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaTipoHabitaciones = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         txtBuscarTipoHabitacion = new javax.swing.JTextField();
-        btnBuscarEmpleado = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_EditHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_EditHabitaciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_EditHabitaciones.setForeground(new java.awt.Color(0, 0, 0));
         Panel_EditHabitaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Panel_EditHabitaciones.setEnabled(false);
         Panel_EditHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAceptarEditHabi.setBackground(new java.awt.Color(0, 0, 0));
+        btnAceptarEditHabi.setBackground(new java.awt.Color(51, 255, 0));
         btnAceptarEditHabi.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnAceptarEditHabi.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptarEditHabi.setText("ACEPTAR");
@@ -218,7 +218,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 410));
 
         Panel_RegistroHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_RegistroHabitaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        Panel_RegistroHabitaciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_RegistroHabitaciones.setForeground(new java.awt.Color(0, 0, 0));
         Panel_RegistroHabitaciones.setEnabled(false);
         Panel_RegistroHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -356,17 +356,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
         jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 860, 210));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jpanelContenidoHabi.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(676, 80, 100, 35));
-
         txtBuscarTipoHabitacion.setBackground(new java.awt.Color(180, 180, 180));
         txtBuscarTipoHabitacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBuscarTipoHabitacion.setForeground(new java.awt.Color(0, 0, 0));
@@ -388,17 +377,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         });
         jpanelContenidoHabi.add(txtBuscarTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
 
-        btnBuscarEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        btnBuscarEmpleado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnBuscarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarEmpleado.setText("Buscar");
-        btnBuscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEmpleadoActionPerformed(evt);
-            }
-        });
-        jpanelContenidoHabi.add(btnBuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 73, 86, 35));
-
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -413,35 +391,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 940, 380));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        bloquearImputs();
-
-        int fila = tablaTipoHabitaciones.getSelectedRow();
-
-        if (fila == -1) {
-
-            JOptionPane.showConfirmDialog(null, "SELECCIONA UN HABITACION   ", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-
-        } else {
-            bloquear(jpanelContenidoHabi);
-            bloquearImputs();
-            llenarFormEditar();
-            
-        }
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
-
     private void btnAceptarGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarHabitacionActionPerformed
-
-        desbloquear(jpanelContenidoHabi);
-        Panel_RegistroHabitaciones.setVisible(false);
-        
 
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
@@ -522,6 +472,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         } else {
             bloquear(jpanelContenidoHabi);
             llenarFormEditar();
+            bloquearTablaTipoHabi();
             Panel_EditHabitaciones.setVisible(true);
 
         }
@@ -536,12 +487,12 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTipoHabiKeyTyped
 
     private void btnAceptarEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabiActionPerformed
-        desbloquear(jpanelContenidoHabi);
-        Panel_EditHabitaciones.setVisible(false);
+        
     }//GEN-LAST:event_btnAceptarEditHabiActionPerformed
 
     private void btnCancelarEditHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabiActionPerformed
         desbloquear(jpanelContenidoHabi);
+        desbloquearTablaTipoHabi();
         Panel_EditHabitaciones.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditHabiActionPerformed
 
@@ -600,10 +551,8 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     public javax.swing.JButton btnAceptarEditHabi;
     public javax.swing.JButton btnAceptarGuardarHabitacion;
     public javax.swing.JButton btnAgregarHabi;
-    public javax.swing.JButton btnBuscarEmpleado;
     public javax.swing.JButton btnCancelarEditHabi;
     public javax.swing.JButton btnCancelarHabitacion;
-    public javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -618,7 +567,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel jpanelContenidoHabi;
+    public javax.swing.JPanel jpanelContenidoHabi;
     public javax.swing.JTable tablaTipoHabitaciones;
     private javax.swing.JTextField txtBuscarTipoHabitacion;
     public javax.swing.JTextField txtCaracteristicasEditHabi;
@@ -759,5 +708,77 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
             }
         });
 
+    }
+
+    public void bloquearTablaTipoHabi() {
+        // Obtener el JScrollPane que contiene la tabla
+        JScrollPane scrollPane = (JScrollPane) tablaTipoHabitaciones.getParent().getParent();
+
+        // Deshabilitar el desplazamiento
+        scrollPane.setWheelScrollingEnabled(false); // Deshabilita el scroll con el ratón
+        scrollPane.getVerticalScrollBar().setEnabled(false); // Deshabilita la barra de desplazamiento vertical
+        scrollPane.getHorizontalScrollBar().setEnabled(false); // Deshabilita la barra de desplazamiento horizontal
+
+        // También, puedes deshabilitar la tabla completamente, para evitar que interactúen con la misma
+        tablaTipoHabitaciones.setEnabled(false); // Deshabilita la interacción con la tabla
+
+    }
+
+    public void desbloquearTablaTipoHabi() {
+        // Obtener el JScrollPane que contiene la tabla
+        JScrollPane scrollPane = (JScrollPane) tablaTipoHabitaciones.getParent().getParent();
+
+        // Deshabilitar el desplazamiento
+        scrollPane.setWheelScrollingEnabled(true); // Deshabilita el scroll con el ratón
+        scrollPane.getVerticalScrollBar().setEnabled(true); // Deshabilita la barra de desplazamiento vertical
+        scrollPane.getHorizontalScrollBar().setEnabled(true); // Deshabilita la barra de desplazamiento horizontal
+
+        // También, puedes deshabilitar la tabla completamente, para evitar que interactúen con la misma
+        tablaTipoHabitaciones.setEnabled(true); // Deshabilita la interacción con la tabla
+
+    }
+
+    public boolean validarCamposTipoHabitacionSave() {
+
+        if (txtPrecioHabi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El precio del tipo de habitación es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        String precio = txtPrecioHabi.getText().trim();
+
+        // Verificar que sea un número válido (entero o decimal)
+        if (!precio.matches("^\\d+(\\.\\d+)?$")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un precio válido", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarCamposTipoHabitacionUpdate() {
+
+        if (txtPrecioEditHabi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El precio del tipo de habitación es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        String precio = txtPrecioEditHabi.getText().trim();
+
+        // Verificar que sea un número válido (entero o decimal)
+        if (!precio.matches("^\\d+(\\.\\d+)?$")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un precio válido", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (txtTipoEditHabi.getText().trim().isEmpty()
+                || txtPrecioEditHabi.getText().trim().isEmpty()
+                || txtCaracteristicasEditHabi.getText().trim().isEmpty()) {
+
+            javax.swing.JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error de Validación", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
     }
 }

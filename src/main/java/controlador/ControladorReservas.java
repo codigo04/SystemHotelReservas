@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import aggregates.Reports.ReservaReports;
 import aggregates.Servicios.apis.EmpleadoService;
 import aggregates.request.PersonaRequest;
 import aggregates.response.ResponceReniec;
@@ -13,6 +14,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -326,9 +329,9 @@ public class ControladorReservas implements ActionListener {
         Workbook newLibro = new SXSSFWorkbook();
         Sheet hojaReportesReservas = newLibro.createSheet("reservas_report");
 
-        List<Reserva> reservas = reservaImpl.getAllReservas();
+        List<ReservaReports> reservas = panelRecervasAdm.extraerResultadosFiltrados();
 
-        // Crear encabezados String[] encabezados = {"ID", "Nombre del Cliente", "Habitacion", "Check-in", "Check-out", "Estado", "Total"};
+// Crear encabezados
         String[] encabezados = {"ID", "Nombre del Cliente", "Habitacion", "Check-in", "Check-out", "Estado", "Total"};
         Row filaEncabezados = hojaReportesReservas.createRow(0);
 
@@ -337,25 +340,30 @@ public class ControladorReservas implements ActionListener {
             celda.setCellValue(encabezados[j]);
         }
 
-        // Agregar datos de reservas
+// Agregar datos de reservas
         for (int i = 0; i < reservas.size(); i++) {
-            Reserva reserva = reservas.get(i);
+            ReservaReports reserva = reservas.get(i);
             Row fila = hojaReportesReservas.createRow(i + 1); // i + 1 para no sobrescribir los encabezados
 
             fila.createCell(0).setCellValue(reserva.getIdReserva()); // ID de la reserva
-            fila.createCell(1).setCellValue(reserva.getCliente().getNombre()); // Nombre del cliente
-            fila.createCell(2).setCellValue(reserva.getHabitacion().getTipoHabitacion().getTipoHabitacion() + "  " + reserva.getHabitacion().getNumeroDeHabitacion()); // Fecha de reserva
-            fila.createCell(3).setCellValue(reserva.getFechaLLegada()); // Estado de la reserva
+            fila.createCell(1).setCellValue(reserva.getCliente()); // Nombre del cliente
+            fila.createCell(2).setCellValue(reserva.getHabitacion()); // Fecha de reserva
+            fila.createCell(3).setCellValue(reserva.getFechaInicio()); // Estado de la reserva
             fila.createCell(4).setCellValue(reserva.getFechaFin()); // Monto de la reserva
             fila.createCell(5).setCellValue("por definir");
-            fila.createCell(6).setCellValue(reserva.getMontoTotal());
+            fila.createCell(6).setCellValue(reserva.getTotalPagar());
         }
 
-        // Definir archivo y crear carpeta si no existe
-        File archivo = new File("C:\\Users\\FranDev\\Documents\\reportes\\reservas_reports.xlsx");
+// Obtener fecha y hora actual para el nombre del archivo
+        LocalDateTime ahora = LocalDateTime.now();
+        DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        String fechaHora = ahora.format(formatoFechaHora);
+
+// Definir archivo con el nombre basado en la fecha y hora
+        File archivo = new File("C:\\Users\\FranDev\\Documents\\reportes\\REPORTE-" + fechaHora + ".xlsx");
         File directorio = archivo.getParentFile();
 
-        // Verificación de carpeta y creación
+// Verificación de carpeta y creación
         if (!directorio.exists()) {
             System.out.println("La carpeta no existe, se creará: " + directorio.getAbsolutePath());
             boolean created = directorio.mkdirs(); // Crea la carpeta y sus subdirectorios si no existen
@@ -369,6 +377,7 @@ public class ControladorReservas implements ActionListener {
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(archivo)) {
+            JOptionPane.showMessageDialog(null, "Reporte generado con éxito: " + archivo.getName(), "Información", JOptionPane.INFORMATION_MESSAGE);
             newLibro.write(fileOut);
         } catch (IOException e) {
             e.printStackTrace();

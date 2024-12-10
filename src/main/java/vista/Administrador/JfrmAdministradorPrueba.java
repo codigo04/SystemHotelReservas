@@ -194,7 +194,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         btnReservas.setBackground(new java.awt.Color(204, 204, 204));
         btnReservas.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnReservas.setForeground(new java.awt.Color(51, 51, 51));
-        btnReservas.setText("Reservas");
+        btnReservas.setText("Reportes ");
         btnReservas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReservasMouseClicked(evt);

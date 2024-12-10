@@ -48,7 +48,7 @@ public class ControladorLogin implements ActionListener {
         vistaLogin.btnIniciarSesion.addActionListener(this);
         vistaLogin.btnVerificarCodigo.addActionListener(this);
         //crearRoles();
-        crearPrimerUser();
+        //crearPrimerUser();
     }
 
     //detecta las acciones
@@ -66,7 +66,9 @@ public class ControladorLogin implements ActionListener {
 
             System.out.println(contraseña);
 
+            System.out.println(usuario);
             //comunicacion con el modelo
+
             Optional<Empleado> empleadoExist = empleadoImpl.authenticateEmpleado(usuario, contraseña);
 
             if (empleadoExist.isPresent()) {
@@ -74,7 +76,7 @@ public class ControladorLogin implements ActionListener {
                 Empleado emplLoged = empleadoExist.get();
 
                 econderComponentes();
-                
+
                 //guardar el usuari logeado
                 eLoged = Optional.of(emplLoged);
 
@@ -84,11 +86,14 @@ public class ControladorLogin implements ActionListener {
 
                     if ("ADMIN".equals(roles.getNombreRol())) {
                         vistaLogin.panelAutenticacion.setVisible(true);
+
+                        /*
                         try {
                             mandarToken(emplLoged);
                         } catch (MessagingException ex) {
                             Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                         */
                     } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
                         controladorCliente.iniciarPanelEmpleado();
                         controladorCliente.getControladorPerfil().cargarDatosPerfil();
@@ -100,7 +105,7 @@ public class ControladorLogin implements ActionListener {
             }
 
         } else {
-            
+
             System.out.println("no hay datos");
         }
 
@@ -111,7 +116,7 @@ public class ControladorLogin implements ActionListener {
 
             if (leged) {
                 controladorCliente.iniciarPanelAdministrador();
-                 ControladorInicio.cargarEmpleado();
+                ControladorInicio.cargarEmpleado();
                 vistaLogin.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "CODIGO INCORRECTO", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -216,7 +221,7 @@ public class ControladorLogin implements ActionListener {
             return true;
         }
 
-        return false;
+        return true;
     }
 
     private void econderComponentes() {

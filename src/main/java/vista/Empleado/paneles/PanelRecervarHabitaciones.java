@@ -543,7 +543,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         tablaHabitacionesRecervas.setGridColor(new java.awt.Color(180, 180, 180));
         jScrollPane1.setViewportView(tablaHabitacionesRecervas);
 
-        jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 760, 190));
+        jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 760, 50));
 
         txtBuscarHabitaciones.setBackground(new java.awt.Color(180, 180, 180));
         txtBuscarHabitaciones.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

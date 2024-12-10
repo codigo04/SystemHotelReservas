@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.impl.HabitacionImpl;
 import modelo.dao.impl.TipoHabitacionImpl;
@@ -30,12 +31,10 @@ public class ControladorTipoHabitaciones implements ActionListener {
         this.panelTipoHabitacionesAdm = panelTipoHabitacionesAdm;
         habitacionImpl = new HabitacionImpl();
         tipoHabitacionImpl = new TipoHabitacionImpl();
-        
+
         agregarListeners();
         cargarTipoHabitaciones();
     }
-    
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -46,15 +45,26 @@ public class ControladorTipoHabitaciones implements ActionListener {
         if (e.getSource() == panelTipoHabitacionesAdm.btnAceptarGuardarHabitacion) {
 
             if (panelTipoHabitacionesAdm.validarCampos()) {
-                saveTipoHabitacion();
-                cargarTipoHabitaciones();
+
+                if (panelTipoHabitacionesAdm.validarCamposTipoHabitacionSave()) {
+                    saveTipoHabitacion();
+                    panelTipoHabitacionesAdm.desbloquear(panelTipoHabitacionesAdm.jpanelContenidoHabi);
+                    panelTipoHabitacionesAdm.Panel_RegistroHabitaciones.setVisible(false);
+                    cargarTipoHabitaciones();
+                }
+
             }
 
         }
 
         if (e.getSource() == panelTipoHabitacionesAdm.btnAceptarEditHabi) {
-            updateTipoHabitacion();
-            cargarTipoHabitaciones();
+            if (panelTipoHabitacionesAdm.validarCamposTipoHabitacionUpdate()) {
+                updateTipoHabitacion();
+                panelTipoHabitacionesAdm.desbloquear(panelTipoHabitacionesAdm.jpanelContenidoHabi);
+                panelTipoHabitacionesAdm.Panel_EditHabitaciones.setVisible(false);
+                cargarTipoHabitaciones();
+                JOptionPane.showMessageDialog(null, "Tipo de habitación actualizada correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 
@@ -82,8 +92,8 @@ public class ControladorTipoHabitaciones implements ActionListener {
     public void saveTipoHabitacion() {
         TipoHabitacion newTipoHabi = panelTipoHabitacionesAdm.datosSaveHbitacion();
 
-        System.out.printf(newTipoHabi.getCaracteristicas());
         tipoHabitacionImpl.save(newTipoHabi);
+        JOptionPane.showMessageDialog(null, "Tipo de habitacion guardada con éxito", "Información", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -97,7 +107,7 @@ public class ControladorTipoHabitaciones implements ActionListener {
             newtipoHabitacion.setTipoHabitacion(newTipoHabi.getTipoHabitacion());
             newtipoHabitacion.setPrecio(newTipoHabi.getPrecio());
             newtipoHabitacion.setCaracteristicas(newTipoHabi.getCaracteristicas());
-            
+
             tipoHabitacionImpl.update(newtipoHabitacion);
         }
 

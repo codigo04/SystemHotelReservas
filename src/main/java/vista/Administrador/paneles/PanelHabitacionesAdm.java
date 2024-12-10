@@ -5,6 +5,7 @@
 package vista.Administrador.paneles;
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -19,6 +20,7 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.RowFilter;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
@@ -84,6 +86,10 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         cboxTipoHabitacionHabi = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         Panel_EditHabitaciones = new javax.swing.JPanel();
         btnAceptarEditHabitacion = new javax.swing.JButton();
         btnCancelarEditHabitacion = new javax.swing.JButton();
@@ -189,9 +195,9 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Precio");
-        Panel_RegistroHabitaciones.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 110, 20));
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel17.setText("(*)");
+        Panel_RegistroHabitaciones.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 20, 20));
 
         txtPrecioHabi.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecioHabi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -244,7 +250,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Estado");
-        Panel_RegistroHabitaciones.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 70, 20));
+        Panel_RegistroHabitaciones.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, 20));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -268,6 +274,30 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Crear Nueva Habitación");
         Panel_RegistroHabitaciones.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+
+        jLabel18.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Precio");
+        Panel_RegistroHabitaciones.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, 20));
+
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel19.setText("(*)");
+        Panel_RegistroHabitaciones.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 20, 20));
+
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel21.setText("(*)");
+        Panel_RegistroHabitaciones.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 20, 20));
+
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel22.setText("(*)");
+        Panel_RegistroHabitaciones.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 20, 20));
 
         add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 470, 370));
 
@@ -505,8 +535,6 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarHabitacionActionPerformed
 
     private void btnAceptarGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarHabitacionActionPerformed
-        desbloquear(jpanelContenidoHabi);
-        Panel_RegistroHabitaciones.setVisible(false);
 
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
@@ -554,8 +582,25 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     private void btnAgregarHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarHabiActionPerformed
         bloquear(jpanelContenidoHabi);
         Panel_RegistroHabitaciones.setVisible(true);
+        tablaHabitaciones.setEnabled(false);
 
+        bloquearTablaHabitaciones();
     }//GEN-LAST:event_btnAgregarHabiActionPerformed
+
+    public void bloquearTablaHabitaciones() {
+        // Obtener el JScrollPane que contiene la tabla
+        JScrollPane scrollPane = (JScrollPane) tablaHabitaciones.getParent().getParent();
+
+        // Deshabilitar el desplazamiento
+        scrollPane.setWheelScrollingEnabled(false); // Deshabilita el scroll con el ratón
+        scrollPane.getVerticalScrollBar().setEnabled(false); // Deshabilita la barra de desplazamiento vertical
+        scrollPane.getHorizontalScrollBar().setEnabled(false); // Deshabilita la barra de desplazamiento horizontal
+
+        // También, puedes deshabilitar la tabla completamente, para evitar que interactúen con la misma
+        tablaHabitaciones.setEnabled(false); // Deshabilita la interacción con la tabla
+
+    }
+
 
     private void txtPrecioHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioHabiActionPerformed
         // TODO add your handling code here:
@@ -576,6 +621,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         } else {
             bloquearImputs();
             bloquear(jpanelContenidoHabi);
+            bloquearTablaHabitaciones();
             Panel_EditHabitaciones.setVisible(true);
             llenarFormEditar();
         }
@@ -598,8 +644,8 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_cboxTipoHabitacionHabiActionPerformed
 
     private void btnAceptarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabitacionActionPerformed
-        desbloquear(jpanelContenidoHabi);
-        Panel_EditHabitaciones.setVisible(false);
+        
+        
     }//GEN-LAST:event_btnAceptarEditHabitacionActionPerformed
 
     private void btnCancelarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabitacionActionPerformed
@@ -691,14 +737,18 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel jpanelContenidoHabi;
+    public javax.swing.JPanel jpanelContenidoHabi;
     public javax.swing.JTable tablaHabitaciones;
     private javax.swing.JTextField txtBuscarHabitaciones;
     public javax.swing.JTextField txtIdEditHabi;
@@ -883,5 +933,50 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
             }
         });
 
+    }
+
+    public boolean validarCamposHabitacion() {
+
+        if (txtNumeroHabitacionHi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El número de habitación es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (cboxTipoHabitacionHabi.getSelectedIndex() == 0) { // Asumiendo que la primera opción es "SELECCIONAR"
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de habitación", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (cboxEstadoHabi.getSelectedIndex() == 0) { // Asumiendo que la primera opción es "SELECCIONAR"
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un estado", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (txtPrecioHabi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El precio es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarSelectTipoHabitacion() {
+
+        if (cboxTipoHabitacionEditHabi.getSelectedIndex() == 0) { // Asumiendo que la primera opción es "SELECCIONAR"
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarSelectEstado() {
+
+        if (cboxEstadoEditHabi.getSelectedIndex() == 0) { // Asumiendo que la primera opción es "SELECCIONAR"
+
+            return false;
+        }
+
+        return true;
     }
 }

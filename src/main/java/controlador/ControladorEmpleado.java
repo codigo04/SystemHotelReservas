@@ -50,49 +50,80 @@ public class ControladorEmpleado implements ActionListener {
 
         if (e.getSource() == panelEmpleadoAdm.btnBuscarReniecEm) {
             System.out.println("se esta buscando el empleado espera");
-            try {
-                bucarPersona();
-            } catch (IOException ex) {
-                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+
+            if (panelEmpleadoAdm.validarDniEmpleado()) {
+                try {
+                    bucarPersona();
+                } catch (IOException ex) {
+                    Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
         }
 
         if (e.getSource() == panelEmpleadoAdm.btnAceptarGuardarEm) {
+
             System.out.println("Procesando datos del empleado...");
 
-            // Validar los campos 
-            if (!panelEmpleadoAdm.validarCampos()) {
-                return;
-            }
-            // Obtener datos del formulario
-            Empleado datos = panelEmpleadoAdm.getDatosEmpleado();
+            if (panelEmpleadoAdm.validarCamposSave()) {
 
-            System.out.println("Empleado no encontrado, guardando nuevo...");
-            saveEmpleado(datos);
-            cargarDatos();
+                // Obtener datos del formulario
+                Empleado datos = panelEmpleadoAdm.getDatosEmpleado();
+
+                if (saveEmpleado(datos)) {
+                    panelEmpleadoAdm.desbloquear(panelEmpleadoAdm.jpanelContenidoEm);
+
+                    panelEmpleadoAdm.Panel_RegistroEmpleados.setVisible(false);
+
+                    panelEmpleadoAdm.desbloquearTablaEmpleados();
+                    JOptionPane.showMessageDialog(null, "Empleado agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    cargarDatos();
+                }
+
+            }
+
+        }
+
+        if (e.getSource() == panelEmpleadoAdm.btnEditarEmpleado) {
+
+            String dniEmpleado = panelEmpleadoAdm.extraerDni();
+
+            if (dniEmpleado != null && !dniEmpleado.isEmpty()) {
+                Optional<Empleado> empleadoExistnte = findByDni(dniEmpleado);
+
+                if (empleadoExistnte.isPresent()) {
+                    cargarDatosEditar(empleadoExistnte.get());
+                } else {
+                    JOptionPane.showMessageDialog(null, "El empleado con DNI " + dniEmpleado + " no existe.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
 
         }
 
         if (e.getSource() == panelEmpleadoAdm.btnAceptarEditarEm) {
             Empleado datosEdit = panelEmpleadoAdm.getDatosEmpleadoEdit();
             System.out.println("Empleado encontrado, actualizando...");
+            if (panelEmpleadoAdm.validarCamposUpdate()) {
+                updateEmpleado(datosEdit);
+                panelEmpleadoAdm.Panel_EditEmpleados.setVisible(false);
+                panelEmpleadoAdm.desbloquear(panelEmpleadoAdm.jpanelContenidoEm);
+                panelEmpleadoAdm.desbloquearTablaEmpleados();
+            }
 
-            updateEmpleado(datosEdit);
-            cargarDatos();
         }
     }
 
-    private void agregarListeners() {
-        panelEmpleadoAdm.btnBuscarEmpleado.addActionListener(this);
-        panelEmpleadoAdm.btnAceptarGuardarEm.addActionListener(this);
-        panelEmpleadoAdm.btnBuscarReniecEm.addActionListener(this);
-        panelEmpleadoAdm.btnCancelarEm.addActionListener(this);
-        panelEmpleadoAdm.btnAceptarEditarEm.addActionListener(this);
-        panelEmpleadoAdm.btnCancelarEditEm.addActionListener(this);
-
+    public void cargarDatosEditar(Empleado empleado) {
+        panelEmpleadoAdm.txtDniEditEm.setText(empleado.getDni());
+        panelEmpleadoAdm.txtNombreEditEm.setText(empleado.getNombre());
+        panelEmpleadoAdm.txtApellidoEditEm.setText(empleado.getApellido());
+        panelEmpleadoAdm.txtTelefonoEditEm.setText(empleado.getTelefono());
+        panelEmpleadoAdm.txtDireccionEditEm.setText(empleado.getDireccion());
+        panelEmpleadoAdm.txtCorreoEditEm.setText(empleado.getCorreoElectronico());
+        panelEmpleadoAdm.txtPasswordEditEm.setText(empleado.getPassword());
     }
 
-    private void saveEmpleado(Empleado empleado) {
+    private boolean saveEmpleado(Empleado empleado) {
 
         empleado.setEstado("ACTIVO");
         // Lista para almacenar los roles asignados
@@ -120,8 +151,10 @@ public class ControladorEmpleado implements ActionListener {
 
         if (emplExist.isPresent()) {
             JOptionPane.showConfirmDialog(null, "EL EMPLEADO YA EXISTE", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            return false;
         } else {
             empleadoImpl.saveEmpleado(empleado);
+            return true;
         }
 
     }
@@ -140,23 +173,31 @@ public class ControladorEmpleado implements ActionListener {
             newEm.setDireccion(empleado.getDireccion());
             newEm.setCorreoElectronico(empleado.getCorreoElectronico());
             newEm.setPassword(empleado.getPassword());
-            newEm.setEstado(empleado.getEstado());
 
-            // Manejo de roles
-            List<Roles> assignedRoles = new ArrayList<>();
-            for (Roles role : empleado.getRoles()) {
-                Roles rolExist = rolesImpl.findRoleByName(role.getNombreRol());
-
-                if (rolExist != null) {
-                    assignedRoles.add(rolExist);
-                } else {
-                    System.out.println("El rol " + role.getNombreRol() + " ya existe.");
-                    //ssignedRoles.add(rolExist);
-                }
+            if (panelEmpleadoAdm.validarSelectEstadoEmpleado()) {
+                newEm.setEstado(empleado.getEstado());
             }
 
-            newEm.setRoles(assignedRoles);  // Asignar los roles actualizados al empleado
+            if (panelEmpleadoAdm.validarSelectPuesto()) {
+                // Manejo de roles
+                List<Roles> assignedRoles = new ArrayList<>();
+                for (Roles role : empleado.getRoles()) {
+                    Roles rolExist = rolesImpl.findRoleByName(role.getNombreRol());
+
+                    if (rolExist != null) {
+                        assignedRoles.add(rolExist);
+                    } else {
+                        System.out.println("El rol " + role.getNombreRol() + " ya existe.");
+                        //ssignedRoles.add(rolExist);
+                    }
+                }
+                newEm.setRoles(assignedRoles);
+            }
+
+            // Asignar los roles actualizados al empleado
             empleadoImpl.updateEmpleado(newEm);  // Actualizar empleado en la base de datos
+            JOptionPane.showMessageDialog(null, "La actualización se realizó con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            cargarDatos();
         } else {
             System.out.println("El empleado con DNI " + empleado.getDni() + " no existe.");
         }
@@ -211,12 +252,26 @@ public class ControladorEmpleado implements ActionListener {
         personaRequest.setDni(panelEmpleadoAdm.txtDniEm.getText());
 
         ResponceReniec responceReniec = clienteReniec.getEntityRetrofit(personaRequest);
-        System.out.println(responceReniec.getApellidoMaterno());
+
         if (responceReniec != null) {
             panelEmpleadoAdm.txtNombreEm.setText(responceReniec.getNombres());
             panelEmpleadoAdm.txtApellidoEm.setText(responceReniec.getApellidoPaterno() + " " + responceReniec.getApellidoMaterno());
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Persona no encontrada en RENIEC. Intente nuevamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+
         }
+    }
+
+    private void agregarListeners() {
+        panelEmpleadoAdm.btnBuscarEmpleado.addActionListener(this);
+        panelEmpleadoAdm.btnAceptarGuardarEm.addActionListener(this);
+        panelEmpleadoAdm.btnBuscarReniecEm.addActionListener(this);
+        panelEmpleadoAdm.btnCancelarEm.addActionListener(this);
+        panelEmpleadoAdm.btnAceptarEditarEm.addActionListener(this);
+        panelEmpleadoAdm.btnCancelarEditEm.addActionListener(this);
+        panelEmpleadoAdm.btnEditarEmpleado.addActionListener(this);
+
     }
 
 }

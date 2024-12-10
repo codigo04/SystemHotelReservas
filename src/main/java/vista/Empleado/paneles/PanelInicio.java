@@ -729,7 +729,7 @@ public class PanelInicio extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelReservaciones.setBackground(new java.awt.Color(200, 200, 200));
+        panelReservaciones.setBackground(new java.awt.Color(255, 255, 255));
         panelReservaciones.setRoundBottomLeft(40);
         panelReservaciones.setRoundBottomRight(40);
         panelReservaciones.setRoundTopLeft(40);
@@ -743,7 +743,7 @@ public class PanelInicio extends javax.swing.JPanel {
         panelReservaciones.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 20, 170, 31));
 
         jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(180, 180, 180));
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -766,15 +766,15 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbIngresoTotales.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbIngresoTotales.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jlbIngresoTotales.setForeground(new java.awt.Color(0, 0, 0));
         jlbIngresoTotales.setText("3");
-        jPanel3.add(jlbIngresoTotales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 40));
+        jPanel3.add(jlbIngresoTotales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 40));
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setText("Habitaciones Disponibles");
-        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 380, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 400, 120));
 
@@ -782,15 +782,15 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbIngresoTotales1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbIngresoTotales1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jlbIngresoTotales1.setForeground(new java.awt.Color(0, 0, 0));
         jlbIngresoTotales1.setText("10");
-        jPanel4.add(jlbIngresoTotales1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 40));
+        jPanel4.add(jlbIngresoTotales1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 40));
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("Huéspedes Actuales");
-        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 360, 120));
 
