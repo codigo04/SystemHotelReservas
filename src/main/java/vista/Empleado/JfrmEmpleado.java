@@ -137,7 +137,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
         panelPrincipal.setPreferredSize(new java.awt.Dimension(523, 480));
         panelPrincipal.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel1.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 980, 630));
+        jPanel1.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 850, 620));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 

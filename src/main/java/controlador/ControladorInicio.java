@@ -6,6 +6,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,11 +15,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import modelo.dao.impl.ClienteImpl;
+import modelo.dao.impl.HabitacionImpl;
 
 import modelo.dao.impl.PagoImpl;
 import modelo.dao.impl.ReservaImpl;
 import modelo.entity.Cliente;
 import modelo.entity.Empleado;
+import modelo.entity.Habitacion;
+import modelo.entity.Reserva;
 import modelo.entity.Roles;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +39,11 @@ public class ControladorInicio implements ActionListener {
     private static PanelInicioAdm panelInicioAdm;
     //CRISTIAN panel
     private static PanelInicio panelInicio;
-    
+
     private PagoImpl pagoImpl;
     private ClienteImpl clienteImpl;
     private ReservaImpl reservaImpl;
+    private HabitacionImpl habitacionImpl;
 
     public ControladorInicio(PanelInicioAdm panelInicioAdm, PanelInicio panelInicio) {
         this.panelInicioAdm = panelInicioAdm;
@@ -45,8 +51,12 @@ public class ControladorInicio implements ActionListener {
         pagoImpl = new PagoImpl();
         clienteImpl = new ClienteImpl();
         reservaImpl = new ReservaImpl();
+        habitacionImpl = new HabitacionImpl();
+        panelInicio.txtHuespedesActuales.setText("" + calcularHuespedesActuales());
+        panelInicio.txtHabitacionesDis.setText("" + calcalularHabitacionsDisponibles());
+
         cargarDasborad();
-        
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -60,11 +70,11 @@ public class ControladorInicio implements ActionListener {
             String nombreCompleto = empleado.getNombre() + " " + empleado.getApellido();
 
             for (Roles roles : empleado.getRoles()) {
-                
+
                 if (roles.getNombreRol().equals("ADMIN")) {
                     panelInicioAdm.txtNombreAdmin.setText(nombreCompleto);
                 } else if (roles.getNombreRol().equals("RECEPCIONISTA")) {
-                    panelInicio.textEmpleado.setText(nombreCompleto);  
+                    panelInicio.textEmpleado.setText(nombreCompleto);
                 }
             }
         } else {
@@ -110,6 +120,46 @@ public class ControladorInicio implements ActionListener {
             // System.out.println("Día: " + diaSemanaEspanol + ", Total de reservas: " + totalReservas);
         }
         panelInicioAdm.graficoReportes.crearDataset(dataset);
+    }
+
+    public int calcularHuespedesActuales() {
+        List<Reserva> reservas = reservaImpl.getAllReservas();
+        int totalHuespedes = 0;
+        LocalDate hoy = LocalDate.now();  // Fecha actual
+
+        for (Reserva reserva : reservas) {
+            LocalDate fechaLlegada = convertirTimestampALocalDate(reserva.getFechaLLegada());
+            LocalDate fechaFin = convertirTimestampALocalDate(reserva.getFechaFin());
+
+            System.out.println("fechaLlegada " + fechaLlegada);
+            System.out.println("fechaFin " + fechaFin);
+            System.out.println("hoy " + hoy);
+            System.out.println("hoy " + reserva.getNumeroHuespedes());
+            // Verifica si la reserva está activa y si la fecha actual está dentro del rango
+            if (reserva.getEstado().equals("ACTIVA") && !hoy.isBefore(fechaLlegada) && !hoy.isAfter(fechaFin)) {
+                totalHuespedes += reserva.getNumeroHuespedes();  // Suma el número de huéspedes
+            }
+        }
+        return totalHuespedes;
+    }
+
+    private LocalDate convertirTimestampALocalDate(Timestamp timestamp) {
+        // Convierte Timestamp (con fecha y hora) a LocalDate (solo fecha)
+        return timestamp.toLocalDateTime().toLocalDate();
+    }
+
+    public int calcalularHabitacionsDisponibles() {
+        List<Habitacion> habitaciones = habitacionImpl.getAllHabitaciones();
+        int totalHabitaciones = 0;
+
+        for (Habitacion habitacion : habitaciones) {
+
+            // Verifica si la reserva está activa y si la fecha actual está dentro del rango
+            if (habitacion.getEstado().equals("DISPONIBLE")) {
+                totalHabitaciones++;  // Suma el número de huéspedes
+            }
+        }
+        return totalHabitaciones;
     }
 
     public void cargarReservas() {

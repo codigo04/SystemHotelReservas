@@ -513,7 +513,9 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
         add(Panel_Reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 690, 540));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gestión de Recervas");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
@@ -543,7 +545,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         tablaHabitacionesRecervas.setGridColor(new java.awt.Color(180, 180, 180));
         jScrollPane1.setViewportView(tablaHabitacionesRecervas);
 
-        jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 760, 50));
+        jpanelContenidoHabi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 760, 190));
 
         txtBuscarHabitaciones.setBackground(new java.awt.Color(180, 180, 180));
         txtBuscarHabitaciones.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -564,7 +566,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 txtBuscarHabitacionesActionPerformed(evt);
             }
         });
-        jpanelContenidoHabi.add(txtBuscarHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 276, 32));
+        jpanelContenidoHabi.add(txtBuscarHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 276, 32));
 
         btnBuscarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
         btnBuscarHabitacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -575,7 +577,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 btnBuscarHabitacionActionPerformed(evt);
             }
         });
-        jpanelContenidoHabi.add(btnBuscarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 86, 35));
+        jpanelContenidoHabi.add(btnBuscarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 86, 35));
 
         btnRecervar.setBackground(new java.awt.Color(0, 0, 0));
         btnRecervar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -586,9 +588,9 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
                 btnRecervarActionPerformed(evt);
             }
         });
-        jpanelContenidoHabi.add(btnRecervar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 120, 40));
+        jpanelContenidoHabi.add(btnRecervar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 120, 40));
 
-        add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 850, 390));
+        add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 800, 390));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarServicejBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicejBBuscarActionPerformed

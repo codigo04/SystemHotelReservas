@@ -20,7 +20,7 @@ public class PanelPerfil extends javax.swing.JPanel {
      */
     public PanelPerfil() {
         initComponents();
-        Panel_RegistroEmpleados.setVisible(false);
+        panelCambiarPassword.setVisible(false);
         bloquearComponnentes();
     }
 
@@ -35,7 +35,7 @@ public class PanelPerfil extends javax.swing.JPanel {
 
         jLabel25 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        Panel_RegistroEmpleados = new javax.swing.JPanel();
+        panelCambiarPassword = new javax.swing.JPanel();
         btnAceptarCambiarPasswordEm = new javax.swing.JButton();
         btnCancelarEm = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
@@ -73,11 +73,11 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 27, 118, -1));
 
-        Panel_RegistroEmpleados.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_RegistroEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        Panel_RegistroEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Panel_RegistroEmpleados.setEnabled(false);
-        Panel_RegistroEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelCambiarPassword.setBackground(new java.awt.Color(255, 255, 255));
+        panelCambiarPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelCambiarPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelCambiarPassword.setEnabled(false);
+        panelCambiarPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAceptarCambiarPasswordEm.setBackground(new java.awt.Color(0, 255, 0));
         btnAceptarCambiarPasswordEm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -89,7 +89,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnAceptarCambiarPasswordEmActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(btnAceptarCambiarPasswordEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 30));
+        panelCambiarPassword.add(btnAceptarCambiarPasswordEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 30));
 
         btnCancelarEm.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarEm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -100,22 +100,22 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnCancelarEmActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 140, 30));
+        panelCambiarPassword.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 140, 30));
 
         jLabel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Contraseña Actual");
-        Panel_RegistroEmpleados.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 150, 20));
+        panelCambiarPassword.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 150, 20));
 
         jLabel24.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        Panel_RegistroEmpleados.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+        panelCambiarPassword.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Nueva Contraseña");
-        Panel_RegistroEmpleados.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 150, 20));
+        panelCambiarPassword.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 150, 20));
 
         txtPasswordActual.setBackground(new java.awt.Color(255, 255, 255));
         txtPasswordActual.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -130,7 +130,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtPasswordActualKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtPasswordActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 30));
+        panelCambiarPassword.add(txtPasswordActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 30));
 
         txtNuevoPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtNuevoPassword.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -145,16 +145,16 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtNuevoPasswordKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtNuevoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 140, 30));
+        panelCambiarPassword.add(txtNuevoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 140, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cambiar Contraseña");
-        Panel_RegistroEmpleados.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 370, 50));
+        panelCambiarPassword.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 370, 50));
 
-        add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 370, 270));
+        add(panelCambiarPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 360, 270));
 
         panelDatos.setBackground(new java.awt.Color(255, 255, 255));
         panelDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -265,7 +265,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 160, 32));
 
-        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 480, 430));
+        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 480, 430));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,7 +276,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         txtUsuarioLoged1.setText("PerfPerfil de Usuarioil");
         jPanel1.add(txtUsuarioLoged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, 50));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 790, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 790, 70));
 
         panelDatos1.setBackground(new java.awt.Color(255, 255, 255));
         panelDatos1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -299,11 +299,11 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos1.add(btnEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 120, 32));
 
-        add(panelDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 300, 430));
+        add(panelDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 300, 430));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-        Panel_RegistroEmpleados.setVisible(true);
+        panelCambiarPassword.setVisible(true);
         bloquear(panelDatos);
         FormEditarPerfil();
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
@@ -352,7 +352,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
         desbloquear(panelDatos);
         bloquearComponnentes();
-        Panel_RegistroEmpleados.setVisible(false);
+        panelCambiarPassword.setVisible(false);
 
     }//GEN-LAST:event_btnCancelarEmActionPerformed
 
@@ -402,7 +402,6 @@ public class PanelPerfil extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPanel Panel_RegistroEmpleados;
     public javax.swing.JTextField TXTApellido;
     public javax.swing.JTextField TXTCorreo;
     public javax.swing.JTextField TXTDireccion;
@@ -427,6 +426,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel panelCambiarPassword;
     public javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelDatos1;
     public javax.swing.JTextField txtNuevoPassword;

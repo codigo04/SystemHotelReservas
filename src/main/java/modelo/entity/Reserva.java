@@ -24,6 +24,7 @@ public class Reserva {
     
     private Timestamp fechaLLegada;
 
+    private Integer numeroHuespedes;
    
     private Timestamp fechaFin;
 
@@ -153,4 +154,11 @@ public class Reserva {
         this.pagos = pagos;
     }
 
+    public Integer getNumeroHuespedes() {
+        return numeroHuespedes;
+    }
+
+    public void setNumeroHuespedes(Integer numeroHuespedes) {
+        this.numeroHuespedes = numeroHuespedes;
+    }
 }
