@@ -4,14 +4,20 @@
  */
 package controlador;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.dao.impl.EmpleadoImpl;
 import modelo.dao.impl.PagoImpl;
@@ -131,6 +137,10 @@ public class ControladorPerfil implements ActionListener {
         }
 
     }
+    
+    
+    
+    
 
     public void agregarListeners() {
         this.panelPerfilAdm.btnEditarPerfil.addActionListener(this);

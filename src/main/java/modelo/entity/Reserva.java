@@ -17,6 +17,8 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
     
+    private String codigoReserva;
+    
     private String estado;
    
     private Timestamp fechaRegistro;
@@ -161,4 +163,15 @@ public class Reserva {
     public void setNumeroHuespedes(Integer numeroHuespedes) {
         this.numeroHuespedes = numeroHuespedes;
     }
+
+    public String getCodigoReserva() {
+        return codigoReserva;
+    }
+
+    public void setCodigoReserva(String codigoReserva) {
+        this.codigoReserva = codigoReserva;
+    }
+    
+    
+    
 }

@@ -6,6 +6,11 @@ package vista.Empleado.paneles;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.sql.Timestamp;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import modelo.entity.Habitacion;
+import modelo.entity.Reserva;
 
 /**
  *
@@ -108,8 +113,17 @@ public class PanelInicio extends javax.swing.JPanel {
         jScrollPane17 = new javax.swing.JScrollPane();
         jTextPane17 = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
+        panelNuevoCheckOut = new javax.swing.JPanel();
+        btnAceptarNuevoCheckOut = new javax.swing.JButton();
+        btnCancelarNuevoCheckOut = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        txtCodigoRecerva = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        dataChoseCheckOut = new com.toedter.calendar.JDateChooser();
         panelGestionHabi = new javax.swing.JPanel();
-        btnAceptarGH = new javax.swing.JButton();
+        btnAceptarGh = new javax.swing.JButton();
         btnCancelarGh = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -117,15 +131,6 @@ public class PanelInicio extends javax.swing.JPanel {
         txtNumeroHabitacion = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         cboxEstadoHabi = new javax.swing.JComboBox<>();
-        panelNuevoCheckOut = new javax.swing.JPanel();
-        btnAceptarNuevoCheckOut = new javax.swing.JButton();
-        btnCancelarNuevoCheckOut = new javax.swing.JButton();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        txtNumHabiCheckOut = new javax.swing.JTextField();
-        jLabel35 = new javax.swing.JLabel();
-        dataChoseCheckOut = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         panelBusquedaRapida = new vista.Empleado.paneles.PanelRound();
         jLabel30 = new javax.swing.JLabel();
@@ -757,23 +762,96 @@ public class PanelInicio extends javax.swing.JPanel {
         jLabel9.setText("Bienvenido,");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
+        panelNuevoCheckOut.setBackground(new java.awt.Color(255, 255, 255));
+        panelNuevoCheckOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelNuevoCheckOut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelNuevoCheckOut.setEnabled(false);
+        panelNuevoCheckOut.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAceptarNuevoCheckOut.setBackground(new java.awt.Color(51, 255, 0));
+        btnAceptarNuevoCheckOut.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarNuevoCheckOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarNuevoCheckOut.setText("Confirmar");
+        btnAceptarNuevoCheckOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarNuevoCheckOutActionPerformed(evt);
+            }
+        });
+        panelNuevoCheckOut.add(btnAceptarNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 120, 30));
+
+        btnCancelarNuevoCheckOut.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarNuevoCheckOut.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCancelarNuevoCheckOut.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarNuevoCheckOut.setText("X");
+        btnCancelarNuevoCheckOut.setBorderPainted(false);
+        btnCancelarNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarNuevoCheckOutActionPerformed(evt);
+            }
+        });
+        panelNuevoCheckOut.add(btnCancelarNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 30, 30));
+
+        jLabel38.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Codigo reserva (ultimo digito)");
+        panelNuevoCheckOut.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 240, 20));
+
+        jLabel28.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        panelNuevoCheckOut.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setText("Fecha de Check-out");
+        panelNuevoCheckOut.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 20));
+
+        txtCodigoRecerva.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodigoRecerva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCodigoRecerva.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodigoRecerva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoRecervaActionPerformed(evt);
+            }
+        });
+        txtCodigoRecerva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoRecervaKeyTyped(evt);
+            }
+        });
+        panelNuevoCheckOut.add(txtCodigoRecerva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 30));
+
+        jLabel35.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel35.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Nuevo Check-out");
+        panelNuevoCheckOut.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 40));
+
+        dataChoseCheckOut.setBackground(new java.awt.Color(255, 255, 255));
+        dataChoseCheckOut.setForeground(new java.awt.Color(255, 255, 255));
+        panelNuevoCheckOut.add(dataChoseCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 30));
+
+        add(panelNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 360, 270));
+
         panelGestionHabi.setBackground(new java.awt.Color(255, 255, 255));
         panelGestionHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelGestionHabi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panelGestionHabi.setEnabled(false);
         panelGestionHabi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAceptarGH.setBackground(new java.awt.Color(51, 255, 0));
-        btnAceptarGH.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnAceptarGH.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptarGH.setText("Confirmar");
-        btnAceptarGH.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAceptarGH.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptarGh.setBackground(new java.awt.Color(51, 255, 0));
+        btnAceptarGh.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarGh.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarGh.setText("Confirmar");
+        btnAceptarGh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarGh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarGHActionPerformed(evt);
+                btnAceptarGhActionPerformed(evt);
             }
         });
-        panelGestionHabi.add(btnAceptarGH, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 120, 30));
+        panelGestionHabi.add(btnAceptarGh, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 120, 30));
 
         btnCancelarGh.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelarGh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -826,7 +904,7 @@ public class PanelInicio extends javax.swing.JPanel {
 
         cboxEstadoHabi.setBackground(new java.awt.Color(255, 255, 255));
         cboxEstadoHabi.setForeground(new java.awt.Color(0, 0, 0));
-        cboxEstadoHabi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " " }));
+        cboxEstadoHabi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "DISPONIBLE", "OCUPADA" }));
         cboxEstadoHabi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxEstadoHabiActionPerformed(evt);
@@ -835,79 +913,6 @@ public class PanelInicio extends javax.swing.JPanel {
         panelGestionHabi.add(cboxEstadoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 30));
 
         add(panelGestionHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 360, 270));
-
-        panelNuevoCheckOut.setBackground(new java.awt.Color(255, 255, 255));
-        panelNuevoCheckOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        panelNuevoCheckOut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelNuevoCheckOut.setEnabled(false);
-        panelNuevoCheckOut.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAceptarNuevoCheckOut.setBackground(new java.awt.Color(51, 255, 0));
-        btnAceptarNuevoCheckOut.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnAceptarNuevoCheckOut.setForeground(new java.awt.Color(255, 255, 255));
-        btnAceptarNuevoCheckOut.setText("Confirmar");
-        btnAceptarNuevoCheckOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAceptarNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarNuevoCheckOutActionPerformed(evt);
-            }
-        });
-        panelNuevoCheckOut.add(btnAceptarNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 120, 30));
-
-        btnCancelarNuevoCheckOut.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelarNuevoCheckOut.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnCancelarNuevoCheckOut.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelarNuevoCheckOut.setText("X");
-        btnCancelarNuevoCheckOut.setBorderPainted(false);
-        btnCancelarNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarNuevoCheckOutActionPerformed(evt);
-            }
-        });
-        panelNuevoCheckOut.add(btnCancelarNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 30, 30));
-
-        jLabel38.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel38.setText("Número de Habitación");
-        panelNuevoCheckOut.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 180, 20));
-
-        jLabel28.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        panelNuevoCheckOut.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
-
-        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("Fecha de Check-out");
-        panelNuevoCheckOut.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 20));
-
-        txtNumHabiCheckOut.setBackground(new java.awt.Color(255, 255, 255));
-        txtNumHabiCheckOut.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNumHabiCheckOut.setForeground(new java.awt.Color(0, 0, 0));
-        txtNumHabiCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumHabiCheckOutActionPerformed(evt);
-            }
-        });
-        txtNumHabiCheckOut.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumHabiCheckOutKeyTyped(evt);
-            }
-        });
-        panelNuevoCheckOut.add(txtNumHabiCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 30));
-
-        jLabel35.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel35.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("Nuevo Check-out");
-        panelNuevoCheckOut.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 40));
-
-        dataChoseCheckOut.setBackground(new java.awt.Color(255, 255, 255));
-        dataChoseCheckOut.setForeground(new java.awt.Color(255, 255, 255));
-        panelNuevoCheckOut.add(dataChoseCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 30));
-
-        add(panelNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 360, 270));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1106,33 +1111,23 @@ public class PanelInicio extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAceptarNuevoCheckOutActionPerformed
 
     private void btnCancelarNuevoCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNuevoCheckOutActionPerformed
-        desbloquear(panelBusquedaRapida);
-        desbloquear(panelAccionesRapidas);
-        desbloquear(panelHuespedesActu);
-        desbloquear(panelHabiDis);
-        
-        panelNuevoCheckOut.setVisible(false);
+        exitModalNuevoCheckOut();
     }//GEN-LAST:event_btnCancelarNuevoCheckOutActionPerformed
 
-    private void txtNumHabiCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumHabiCheckOutActionPerformed
+    private void txtCodigoRecervaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoRecervaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumHabiCheckOutActionPerformed
+    }//GEN-LAST:event_txtCodigoRecervaActionPerformed
 
-    private void txtNumHabiCheckOutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumHabiCheckOutKeyTyped
+    private void txtCodigoRecervaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoRecervaKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumHabiCheckOutKeyTyped
+    }//GEN-LAST:event_txtCodigoRecervaKeyTyped
 
-    private void btnAceptarGHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGHActionPerformed
+    private void btnAceptarGhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptarGHActionPerformed
+    }//GEN-LAST:event_btnAceptarGhActionPerformed
 
     private void btnCancelarGhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarGhActionPerformed
-        desbloquear(panelBusquedaRapida);
-        desbloquear(panelAccionesRapidas);
-        desbloquear(panelHuespedesActu);
-        desbloquear(panelHabiDis);
-        btnGestionarHabitacion.setVisible(true);
-        panelGestionHabi.setVisible(false);
+        exitModalgestionarHabitaciones();
 
     }//GEN-LAST:event_btnCancelarGhActionPerformed
 
@@ -1150,14 +1145,14 @@ public class PanelInicio extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAceptarGH;
+    public javax.swing.JButton btnAceptarGh;
     public javax.swing.JButton btnAceptarNuevoCheckOut;
     public javax.swing.JButton btnCancelarGh;
     public javax.swing.JButton btnCancelarNuevoCheckOut;
     public javax.swing.JToggleButton btnGestionarHabitacion;
     public javax.swing.JToggleButton btnNuevoCheckOut;
     private javax.swing.JComboBox<String> cboxEstadoHabi;
-    private com.toedter.calendar.JDateChooser dataChoseCheckOut;
+    public com.toedter.calendar.JDateChooser dataChoseCheckOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1258,9 +1253,9 @@ public class PanelInicio extends javax.swing.JPanel {
     public javax.swing.JPanel panelNuevoCheckOut;
     public javax.swing.JTextField textEmpleado;
     public javax.swing.JTextField txtBuscadorNumHabi;
+    public javax.swing.JTextField txtCodigoRecerva;
     public javax.swing.JLabel txtHabitacionesDis;
     public javax.swing.JLabel txtHuespedesActuales;
-    public javax.swing.JTextField txtNumHabiCheckOut;
     public javax.swing.JTextField txtNumeroHabitacion;
     // End of variables declaration//GEN-END:variables
 
@@ -1292,4 +1287,93 @@ public class PanelInicio extends javax.swing.JPanel {
         panelGestionHabi.setVisible(false);
         panelNuevoCheckOut.setVisible(false);
     }
+
+    public boolean validarSelectEstado() {
+
+        if (cboxEstadoHabi.getSelectedIndex() == 0) { // Asumiendo que la primera opción es "SELECCIONAR"
+            JOptionPane.showMessageDialog(null, "El estado es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarCamposUpdateHabi() {
+
+        if (txtNumeroHabitacion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El Numero de habitacion es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public Habitacion datosUpdateHabitacion() {
+
+        Habitacion dataHabitacion = new Habitacion();
+
+        dataHabitacion.setNumeroDeHabitacion(txtNumeroHabitacion.getText());
+        dataHabitacion.setEstado((String) cboxEstadoHabi.getSelectedItem());
+        return dataHabitacion;
+
+    }
+
+    public Reserva datosUdateReservaFechaFin() {
+        Habitacion dataHabitacion = new Habitacion();
+        dataHabitacion.setNumeroDeHabitacion(txtCodigoRecerva.getText());
+
+        Reserva dataReserva = new Reserva();
+        Date selectedDateFin = dataChoseCheckOut.getDate();
+        Timestamp timestampfechaFin = new Timestamp(selectedDateFin.getTime());
+        dataReserva.setFechaFin(timestampfechaFin);
+        dataReserva.setHabitacion(dataHabitacion);
+         dataReserva.setCodigoReserva("RES-0000-"+txtCodigoRecerva.getText());
+        return dataReserva;
+    }
+
+    public boolean validarCamposUpdateReserva() {
+
+        if (txtCodigoRecerva.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El codigo de reserva es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        Date selectedDateFin = dataChoseCheckOut.getDate();
+
+// Verifica si la fecha seleccionada es null
+        if (selectedDateFin == null) {
+            JOptionPane.showMessageDialog(null, "La nueva fecha es obligatoria", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        // Convierte la fecha seleccionada a un Timestamp
+        Timestamp timestampfechaFin = new Timestamp(selectedDateFin.getTime());
+
+// Verifica si la fecha seleccionada es mayor a la fecha actual
+        Timestamp fechaActual = new Timestamp(System.currentTimeMillis());
+        if (timestampfechaFin.before(fechaActual)) {
+            JOptionPane.showMessageDialog(null, "La fecha debe ser mayor a la fecha actual", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public void exitModalgestionarHabitaciones() {
+        desbloquear(panelBusquedaRapida);
+        desbloquear(panelAccionesRapidas);
+        desbloquear(panelHuespedesActu);
+        desbloquear(panelHabiDis);
+        btnGestionarHabitacion.setVisible(true);
+        panelGestionHabi.setVisible(false);
+    }
+
+    public void exitModalNuevoCheckOut() {
+        desbloquear(panelBusquedaRapida);
+        desbloquear(panelAccionesRapidas);
+        desbloquear(panelHuespedesActu);
+        desbloquear(panelHabiDis);
+
+        panelNuevoCheckOut.setVisible(false);
+    }
+
 }

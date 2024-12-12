@@ -7,6 +7,13 @@ package vista.Empleado.paneles;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import modelo.entity.Empleado;
 
 /**
@@ -15,6 +22,9 @@ import modelo.entity.Empleado;
  */
 public class PanelPerfil extends javax.swing.JPanel {
 
+    private static final String IMAGE_PATH = "C:\\Users\\FranDev\\Pictures\\Saved Pictures\\avatarusuario.jpg";
+
+
     /**
      * Creates new form PanelPerfil
      */
@@ -22,6 +32,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         initComponents();
         panelCambiarPassword.setVisible(false);
         bloquearComponnentes();
+        loadAvatar();
     }
 
     /**
@@ -63,6 +74,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         panelDatos1 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         btnEditarPerfil1 = new javax.swing.JButton();
+        avatar = new javax.swing.JLabel();
 
         jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel25.setText("Correo Electronico");
@@ -299,6 +311,9 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos1.add(btnEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 120, 32));
 
+        avatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelDatos1.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 260));
+
         add(panelDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 300, 430));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -309,7 +324,6 @@ public class PanelPerfil extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 
     private void btnAceptarCambiarPasswordEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarCambiarPasswordEmActionPerformed
-       
 
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
@@ -385,7 +399,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     }//GEN-LAST:event_TXTApellidoActionPerformed
 
     private void btnEditarPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil1ActionPerformed
-        // TODO add your handling code here:
+        uploadAvatar();
     }//GEN-LAST:event_btnEditarPerfil1ActionPerformed
 
     private void TXTDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTDireccionActionPerformed
@@ -408,6 +422,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     public javax.swing.JTextField TXTNombre;
     public javax.swing.JTextField TXTRol;
     public javax.swing.JTextField TXTTelefono;
+    private javax.swing.JLabel avatar;
     public javax.swing.JButton btnAceptarCambiarPasswordEm;
     public javax.swing.JButton btnCancelarEm;
     public javax.swing.JButton btnEditarPerfil;
@@ -485,14 +500,58 @@ public class PanelPerfil extends javax.swing.JPanel {
 
     }
 
+    // Método para subir el avatar
+    public void uploadAvatar() {
+        // Crear un JFileChooser para seleccionar la imagen
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona una imagen");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.addChoosableFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "jpg", "png", "jpeg"));
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado
+            File selectedFile = fileChooser.getSelectedFile();
+
+            try {
+                // Guardar la imagen en la carpeta definida
+                File destFile = new File(IMAGE_PATH);
+                ImageIO.write(ImageIO.read(selectedFile), "jpg", destFile);
+
+                // Leer la imagen y mostrarla en el JLabel
+                Image image = ImageIO.read(destFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                avatar.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    // Método para cargar el avatar desde el archivo
+    public void loadAvatar() {
+        File imageFile = new File(IMAGE_PATH);
+        if (imageFile.exists()) {
+            try {
+                // Leer la imagen desde el archivo guardado y mostrarla
+                Image image = ImageIO.read(imageFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                avatar.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
     public Empleado datosUpdateEmpleadoPerfil() {
         Empleado empleadoUpdate = new Empleado();
 
-       // empleadoUpdate.setNombre(txtNombreEdit.getText());
-       // empleadoUpdate.setApellido(txtApellidoEdit.getText());
-       // empleadoUpdate.setCorreoElectronico(txtCorreoEdit.getText());
-       // empleadoUpdate.setTelefono(txtTelefonoEdit.getText());
-       // empleadoUpdate.setDireccion(txtDireccionEdit.getText());
+        // empleadoUpdate.setNombre(txtNombreEdit.getText());
+        // empleadoUpdate.setApellido(txtApellidoEdit.getText());
+        // empleadoUpdate.setCorreoElectronico(txtCorreoEdit.getText());
+        // empleadoUpdate.setTelefono(txtTelefonoEdit.getText());
+        // empleadoUpdate.setDireccion(txtDireccionEdit.getText());
         empleadoUpdate.setPassword(txtPasswordActual.getText());
 
         return empleadoUpdate;

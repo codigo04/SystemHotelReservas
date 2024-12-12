@@ -2,6 +2,7 @@ package modelo.dao.impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -69,13 +70,41 @@ public final class ReservaImpl implements ReservaDao {
         return reserva;
     }
 
+    public Optional<Reserva> findReservaByCodigoReserva(String codigoReserva) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            // Usamos JPQL para buscar la reserva por su código
+            TypedQuery<Reserva> query = em.createQuery("SELECT r FROM Reserva r WHERE r.codigoReserva = :codigo", Reserva.class);
+            query.setParameter("codigo", codigoReserva);
+
+            // Intentamos obtener un único resultado
+            Reserva reserva = null;
+            try {
+                reserva = query.getSingleResult(); // Lanzará NoResultException si no encuentra resultados
+            } catch (NoResultException e) {
+                // Si no se encuentra la reserva, retornamos Optional vacío
+                return Optional.empty();
+            }
+
+            // Envolvemos el resultado en un Optional para evitar null
+            return Optional.of(reserva);
+        } catch (Exception e) {
+            // Manejo de excepciones generales
+            System.err.println("Error al buscar la reserva: " + e.getMessage());
+            return Optional.empty(); // En caso de error, retornamos un Optional vacío
+        } finally {
+            em.close(); // Aseguramos el cierre del EntityManager
+        }
+    }
+
     /**
      * Guarda una nueva reserva en la base de datos.
      *
      * @param reserva El objeto Reserva a guardar.
      */
     @Override
-    public Optional<Reserva> saveReserva(Reserva reserva) {
+    public Optional<Reserva> saveReserva(Reserva reserva
+    ) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -96,7 +125,8 @@ public final class ReservaImpl implements ReservaDao {
      * @param reserva El objeto Reserva con la información actualizada.
      */
     @Override
-    public void updateReserva(Reserva reserva) {
+    public void updateReserva(Reserva reserva
+    ) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -116,7 +146,8 @@ public final class ReservaImpl implements ReservaDao {
      * @param id El ID de la reserva a eliminar.
      */
     @Override
-    public void deleteReservaById(Long id) {
+    public void deleteReservaById(Long id
+    ) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -140,7 +171,8 @@ public final class ReservaImpl implements ReservaDao {
      * @return Una lista de reservas asociadas al cliente especificado.
      */
     @Override
-    public List<Reserva> findReservasByClienteId(Long idCliente) {
+    public List<Reserva> findReservasByClienteId(Long idCliente
+    ) {
         EntityManager em = emf.createEntityManager();
         List<Reserva> reservas = null;
         try {
@@ -163,7 +195,8 @@ public final class ReservaImpl implements ReservaDao {
      * especificadas.
      */
     @Override
-    public List<Reserva> findReservasByFecha(Date fechaInicio, Date fechaFin) {
+    public List<Reserva> findReservasByFecha(Date fechaInicio, Date fechaFin
+    ) {
         EntityManager em = emf.createEntityManager();
         List<Reserva> reservas = null;
         try {

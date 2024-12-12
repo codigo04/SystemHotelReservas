@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 
 import modelo.dao.impl.ClienteImpl;
 import modelo.dao.impl.HabitacionImpl;
@@ -24,6 +25,7 @@ import modelo.entity.Empleado;
 import modelo.entity.Habitacion;
 import modelo.entity.Reserva;
 import modelo.entity.Roles;
+import modelo.entity.TipoHabitacion;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import vista.Administrador.paneles.PanelInicioAdm;
@@ -54,13 +56,19 @@ public class ControladorInicio implements ActionListener {
         habitacionImpl = new HabitacionImpl();
         panelInicio.txtHuespedesActuales.setText("" + calcularHuespedesActuales());
         panelInicio.txtHabitacionesDis.setText("" + calcalularHabitacionsDisponibles());
-
+        agregarListeners();
         cargarDasborad();
 
     }
 
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == panelInicio.btnAceptarGh) {
+            updateHabitacion();
+        }
 
+        if (e.getSource() == panelInicio.btnAceptarNuevoCheckOut) {
+            updateRecervaFechaFin();
+        }
     }
 
     public static void cargarEmpleado() {
@@ -162,7 +170,85 @@ public class ControladorInicio implements ActionListener {
         return totalHabitaciones;
     }
 
+    public void updateHabitacion() {
+        Habitacion dataNewHabitacion = panelInicio.datosUpdateHabitacion();
+
+        if (!panelInicio.validarCamposUpdateHabi()) {
+            return;
+        }
+
+        // Validar si el estado seleccionado es válido
+        if (!panelInicio.validarSelectEstado()) {
+
+            return;
+        }
+        // Buscar la habitación a actualizar por su numero
+        Optional<Habitacion> habitacionExist = habitacionImpl.findHabitacionesPorNumHabitacion(dataNewHabitacion.getNumeroDeHabitacion());
+
+        if (habitacionExist.isPresent()) {
+            Habitacion updateHabi = habitacionExist.get();
+
+            // Actualizar los campos necesarios
+            updateHabi.setEstado(dataNewHabitacion.getEstado());
+
+            // Guardar la actualización en la base de datos
+            habitacionImpl.updateHabitacion(updateHabi);
+
+            // Confirmar que la habitación fue actualizada
+            JOptionPane.showMessageDialog(null, "Habitación actualizada con éxito", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+            // Cerrar el modal de gestión de habitaciones
+            panelInicio.txtBuscadorNumHabi.setText("");
+            panelInicio.exitModalgestionarHabitaciones();
+
+        } else {
+            // Si no se encuentra la habitación a actualizar
+            JOptionPane.showMessageDialog(null, "La habitación no existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void updateRecervaFechaFin() {
+
+        if (!panelInicio.validarCamposUpdateReserva()) {
+            return;
+        }
+        Reserva dataNewHabitacion = panelInicio.datosUdateReservaFechaFin();
+        // Buscar la habitación a actualizar por su numero
+        Optional<Reserva> reservaExist = reservaImpl.findReservaByCodigoReserva(dataNewHabitacion.getCodigoReserva());
+
+        if (reservaExist.isPresent()) {
+            Reserva updateHabi = reservaExist.get();
+
+            // Actualizar los campos necesarios
+            updateHabi.setFechaFin(dataNewHabitacion.getFechaFin());
+
+            // Guardar la actualización en la base de datos
+            reservaImpl.updateReserva(updateHabi);
+
+            // Confirmar que la habitación fue actualizada
+            JOptionPane.showMessageDialog(null, "Reserva actualizada con éxito", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+            // Cerrar el modal de gestión de habitaciones
+            panelInicio.dataChoseCheckOut.setDate(null);
+            panelInicio.txtCodigoRecerva.setText("");
+            panelInicio.exitModalNuevoCheckOut();
+
+        } else {
+            // Si no se encuentra la habitación a actualizar
+            JOptionPane.showMessageDialog(null, "La Recerva no existe, intenta nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+            panelInicio.txtCodigoRecerva.setText("");
+        }
+    }
+
     public void cargarReservas() {
         panelInicioAdm.jlbReservasNuevas.setText("" + reservaImpl.getAllReservas().size());
+    }
+
+    private void agregarListeners() {
+
+        panelInicio.btnAceptarGh.addActionListener(this);
+        panelInicio.btnNuevoCheckOut.addActionListener(this);
+        panelInicio.btnGestionarHabitacion.addActionListener(this);
+        panelInicio.btnAceptarNuevoCheckOut.addActionListener(this);
     }
 }

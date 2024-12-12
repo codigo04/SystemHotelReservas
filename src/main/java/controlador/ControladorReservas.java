@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -411,10 +412,20 @@ public class ControladorReservas implements ActionListener {
         newReserva.setFechaFin(datosR.getFechaFin());
         newReserva.setMontoTotal(datosR.getMontoTotal());
         newReserva.setServicios(getServices());
-
+        newReserva.setEstado("ACTIVA");
+        newReserva.setNumeroHuespedes(3);
         habitacionImpl.updateDisponibilidadHabitacion(habiExist.get().getIdHabitacion(), "OCUPADA");
 
         Optional<Reserva> createReserva = reservaImpl.saveReserva(newReserva);
+
+        if (createReserva.isPresent()) {
+            Reserva reservaGuardada = createReserva.get();
+
+            String codigoGenerado = generarCodigo(reservaGuardada.getIdReserva());
+            reservaGuardada.setCodigoReserva(codigoGenerado);
+
+            reservaImpl.updateReserva(reservaGuardada);
+        }
 
         Reserva resExist = createReserva.get();
 
@@ -426,6 +437,11 @@ public class ControladorReservas implements ActionListener {
         }
 
         return Optional.empty();
+    }
+
+    public String generarCodigo(Long idReserva) {
+
+        return "RES-" + "0000" + "-" + idReserva;
     }
 
     public Reserva crearReservaConPagoYTicket() {
