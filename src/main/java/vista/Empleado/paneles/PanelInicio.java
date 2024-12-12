@@ -4,6 +4,14 @@
  */
 package vista.Empleado.paneles;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.sql.Timestamp;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import modelo.entity.Habitacion;
+import modelo.entity.Reserva;
+
 /**
  *
  * @author FranDev
@@ -17,6 +25,8 @@ public class PanelInicio extends javax.swing.JPanel {
         initComponents();
         textEmpleado.setEnabled(false);
         textEmpleado.setEditable(false);
+
+        desahabilitarModal();
     }
 
     /**
@@ -103,17 +113,42 @@ public class PanelInicio extends javax.swing.JPanel {
         jScrollPane17 = new javax.swing.JScrollPane();
         jTextPane17 = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        panelReservaciones = new vista.Empleado.paneles.PanelRound();
+        panelNuevoCheckOut = new javax.swing.JPanel();
+        btnAceptarNuevoCheckOut = new javax.swing.JButton();
+        btnCancelarNuevoCheckOut = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jScrollPane20 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jlbIngresoTotales = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        txtCodigoRecerva = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        dataChoseCheckOut = new com.toedter.calendar.JDateChooser();
+        panelGestionHabi = new javax.swing.JPanel();
+        btnAceptarGh = new javax.swing.JButton();
+        btnCancelarGh = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        txtNumeroHabitacion = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        cboxEstadoHabi = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        panelBusquedaRapida = new vista.Empleado.paneles.PanelRound();
         jLabel30 = new javax.swing.JLabel();
+        txtBuscadorNumHabi = new javax.swing.JTextField();
+        panelHuespedesActu = new vista.Empleado.paneles.PanelRound();
         jPanel4 = new javax.swing.JPanel();
-        jlbIngresoTotales1 = new javax.swing.JLabel();
+        txtHuespedesActuales = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panelHabiDis = new vista.Empleado.paneles.PanelRound();
+        jPanel3 = new javax.swing.JPanel();
+        txtHabitacionesDis = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        panelAccionesRapidas = new vista.Empleado.paneles.PanelRound();
+        jLabel33 = new javax.swing.JLabel();
+        btnGestionarHabitacion = new javax.swing.JToggleButton();
+        btnNuevoCheckOut = new javax.swing.JToggleButton();
         textEmpleado = new javax.swing.JTextField();
 
         jPanel2.setBackground(new java.awt.Color(235, 237, 239));
@@ -725,76 +760,274 @@ public class PanelInicio extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Bienvenido,");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+
+        panelNuevoCheckOut.setBackground(new java.awt.Color(255, 255, 255));
+        panelNuevoCheckOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelNuevoCheckOut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelNuevoCheckOut.setEnabled(false);
+        panelNuevoCheckOut.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAceptarNuevoCheckOut.setBackground(new java.awt.Color(51, 255, 0));
+        btnAceptarNuevoCheckOut.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarNuevoCheckOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarNuevoCheckOut.setText("Confirmar");
+        btnAceptarNuevoCheckOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarNuevoCheckOutActionPerformed(evt);
+            }
+        });
+        panelNuevoCheckOut.add(btnAceptarNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 120, 30));
+
+        btnCancelarNuevoCheckOut.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarNuevoCheckOut.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCancelarNuevoCheckOut.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarNuevoCheckOut.setText("X");
+        btnCancelarNuevoCheckOut.setBorderPainted(false);
+        btnCancelarNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarNuevoCheckOutActionPerformed(evt);
+            }
+        });
+        panelNuevoCheckOut.add(btnCancelarNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 30, 30));
+
+        jLabel38.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Codigo reserva (ultimo digito)");
+        panelNuevoCheckOut.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 240, 20));
+
+        jLabel28.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        panelNuevoCheckOut.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setText("Fecha de Check-out");
+        panelNuevoCheckOut.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 20));
+
+        txtCodigoRecerva.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodigoRecerva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCodigoRecerva.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodigoRecerva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoRecervaActionPerformed(evt);
+            }
+        });
+        txtCodigoRecerva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoRecervaKeyTyped(evt);
+            }
+        });
+        panelNuevoCheckOut.add(txtCodigoRecerva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 30));
+
+        jLabel35.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel35.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Nuevo Check-out");
+        panelNuevoCheckOut.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 40));
+
+        dataChoseCheckOut.setBackground(new java.awt.Color(255, 255, 255));
+        dataChoseCheckOut.setForeground(new java.awt.Color(255, 255, 255));
+        panelNuevoCheckOut.add(dataChoseCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 30));
+
+        add(panelNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 360, 270));
+
+        panelGestionHabi.setBackground(new java.awt.Color(255, 255, 255));
+        panelGestionHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelGestionHabi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelGestionHabi.setEnabled(false);
+        panelGestionHabi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAceptarGh.setBackground(new java.awt.Color(51, 255, 0));
+        btnAceptarGh.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarGh.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarGh.setText("Confirmar");
+        btnAceptarGh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarGh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarGhActionPerformed(evt);
+            }
+        });
+        panelGestionHabi.add(btnAceptarGh, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 120, 30));
+
+        btnCancelarGh.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarGh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCancelarGh.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarGh.setText("X");
+        btnCancelarGh.setBorderPainted(false);
+        btnCancelarGh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarGhActionPerformed(evt);
+            }
+        });
+        panelGestionHabi.add(btnCancelarGh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 30, 30));
+
+        jLabel39.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel39.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setText("Número de Habitación");
+        panelGestionHabi.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 180, 20));
+
+        jLabel36.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        panelGestionHabi.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+
+        jLabel37.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setText("Estado");
+        panelGestionHabi.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 20));
+
+        txtNumeroHabitacion.setBackground(new java.awt.Color(255, 255, 255));
+        txtNumeroHabitacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNumeroHabitacion.setForeground(new java.awt.Color(0, 0, 0));
+        txtNumeroHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroHabitacionActionPerformed(evt);
+            }
+        });
+        txtNumeroHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroHabitacionKeyTyped(evt);
+            }
+        });
+        panelGestionHabi.add(txtNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 30));
+
+        jLabel40.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel40.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText(" Gestionar Habitacion");
+        panelGestionHabi.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 40));
+
+        cboxEstadoHabi.setBackground(new java.awt.Color(255, 255, 255));
+        cboxEstadoHabi.setForeground(new java.awt.Color(0, 0, 0));
+        cboxEstadoHabi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "DISPONIBLE", "OCUPADA" }));
+        cboxEstadoHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxEstadoHabiActionPerformed(evt);
+            }
+        });
+        panelGestionHabi.add(cboxEstadoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 300, 30));
+
+        add(panelGestionHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 360, 270));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelReservaciones.setBackground(new java.awt.Color(255, 255, 255));
-        panelReservaciones.setRoundBottomLeft(40);
-        panelReservaciones.setRoundBottomRight(40);
-        panelReservaciones.setRoundTopLeft(40);
-        panelReservaciones.setRoundTopRight(40);
-        panelReservaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBusquedaRapida.setBackground(new java.awt.Color(255, 255, 255));
+        panelBusquedaRapida.setRoundBottomLeft(40);
+        panelBusquedaRapida.setRoundBottomRight(40);
+        panelBusquedaRapida.setRoundTopLeft(40);
+        panelBusquedaRapida.setRoundTopRight(40);
+        panelBusquedaRapida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel28.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel28.setText("Reservaciones ");
-        panelReservaciones.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 20, 170, 31));
-
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Habitación", "Estado"
-            }
-        ));
-        jTable1.setToolTipText("");
-        jTable1.setGridColor(new java.awt.Color(180, 180, 180));
-        jScrollPane20.setViewportView(jTable1);
-
-        panelReservaciones.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, 180));
-
-        jPanel1.add(panelReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 790, 260));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlbIngresoTotales.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jlbIngresoTotales.setForeground(new java.awt.Color(0, 0, 0));
-        jlbIngresoTotales.setText("3");
-        jPanel3.add(jlbIngresoTotales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 40));
-
+        jLabel30.setBackground(new java.awt.Color(0, 0, 0));
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel30.setText("Habitaciones Disponibles");
-        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 380, -1));
+        jLabel30.setText("Búsqueda Rápida");
+        panelBusquedaRapida.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 400, 120));
+        txtBuscadorNumHabi.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscadorNumHabi.setForeground(new java.awt.Color(0, 0, 0));
+        txtBuscadorNumHabi.setText("Busca por numero de habitacion");
+        panelBusquedaRapida.add(txtBuscadorNumHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, 40));
+
+        jPanel1.add(panelBusquedaRapida, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 370, 190));
+
+        panelHuespedesActu.setBackground(new java.awt.Color(255, 255, 255));
+        panelHuespedesActu.setRoundBottomLeft(40);
+        panelHuespedesActu.setRoundBottomRight(40);
+        panelHuespedesActu.setRoundTopLeft(40);
+        panelHuespedesActu.setRoundTopRight(40);
+        panelHuespedesActu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlbIngresoTotales1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jlbIngresoTotales1.setForeground(new java.awt.Color(0, 0, 0));
-        jlbIngresoTotales1.setText("10");
-        jPanel4.add(jlbIngresoTotales1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 40));
+        txtHuespedesActuales.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        txtHuespedesActuales.setForeground(new java.awt.Color(0, 0, 0));
+        txtHuespedesActuales.setText("10");
+        jPanel4.add(txtHuespedesActuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 40));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("Huéspedes Actuales");
         jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 360, 120));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\clientesIcon.png")); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 160, 120));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 980, 460));
+        panelHuespedesActu.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 130));
+
+        jPanel1.add(panelHuespedesActu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 380, 150));
+
+        panelHabiDis.setBackground(new java.awt.Color(255, 255, 255));
+        panelHabiDis.setRoundBottomLeft(40);
+        panelHabiDis.setRoundBottomRight(40);
+        panelHabiDis.setRoundTopLeft(40);
+        panelHabiDis.setRoundTopRight(40);
+        panelHabiDis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtHabitacionesDis.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        txtHabitacionesDis.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(txtHabitacionesDis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 40));
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\habitacionIcon.png")); // NOI18N
+        jPanel3.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 120, 120));
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel32.setText("Habitaciones Disponibles");
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 380, -1));
+
+        panelHabiDis.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 130));
+
+        jPanel1.add(panelHabiDis, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 380, 150));
+
+        panelAccionesRapidas.setBackground(new java.awt.Color(255, 255, 255));
+        panelAccionesRapidas.setRoundBottomLeft(40);
+        panelAccionesRapidas.setRoundBottomRight(40);
+        panelAccionesRapidas.setRoundTopLeft(40);
+        panelAccionesRapidas.setRoundTopRight(40);
+        panelAccionesRapidas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setText("Acciones Rapidas");
+        panelAccionesRapidas.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, -1));
+
+        btnGestionarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
+        btnGestionarHabitacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGestionarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestionarHabitacion.setText("Gestionar Habitacion");
+        btnGestionarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarHabitacionActionPerformed(evt);
+            }
+        });
+        panelAccionesRapidas.add(btnGestionarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 180, 50));
+
+        btnNuevoCheckOut.setBackground(new java.awt.Color(0, 0, 0));
+        btnNuevoCheckOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnNuevoCheckOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoCheckOut.setText("Nuevo Check-out");
+        btnNuevoCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoCheckOutActionPerformed(evt);
+            }
+        });
+        panelAccionesRapidas.add(btnNuevoCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, 50));
+
+        jPanel1.add(panelAccionesRapidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 380, 190));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 950, 460));
 
         textEmpleado.setEditable(false);
         textEmpleado.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -810,15 +1043,117 @@ public class PanelInicio extends javax.swing.JPanel {
                 textEmpleadoActionPerformed(evt);
             }
         });
-        add(textEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 370, 30));
+        add(textEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 370, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void textEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEmpleadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textEmpleadoActionPerformed
 
+    private void btnGestionarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarHabitacionActionPerformed
+        bloquear(panelBusquedaRapida);
+        bloquear(panelAccionesRapidas);
+        bloquear(panelHuespedesActu);
+        bloquear(panelHabiDis);
+        btnGestionarHabitacion.setVisible(false);
+        panelGestionHabi.setVisible(true);
+
+    }//GEN-LAST:event_btnGestionarHabitacionActionPerformed
+
+    private void btnNuevoCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoCheckOutActionPerformed
+
+        bloquear(panelBusquedaRapida);
+        bloquear(panelAccionesRapidas);
+        bloquear(panelHuespedesActu);
+        bloquear(panelHabiDis);
+
+        panelNuevoCheckOut.setVisible(true);
+    }//GEN-LAST:event_btnNuevoCheckOutActionPerformed
+
+    private void btnAceptarNuevoCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarNuevoCheckOutActionPerformed
+
+        //creamos una arreglo de tipos object
+        //Object fila[] = new Object[7];
+        // ArrayList<String> list = new ArrayList<>();
+        //obtenemos los datos que agrega el usuario
+        // String tDni = txtDni.getText();
+        //String tNombre = txtNombre.getText();
+        //String tApellido = txtApellido.getText();
+        //  String puesto = (String) cboxPuesto.getSelectedItem();
+        //  String tSalario = txtSalario.getText();
+        //  String tTelefno = txtTelefono.getText();
+        // list.add(tDni); //0
+        // list.add(tNombre); //1
+        // list.add(tApellido); //2
+        //falta fecha de contratacion
+        // list.add(puesto); //3
+        //  list.add(tSalario);//4
+        // list.add(tTelefno);//5
+        //  administrador.registrarEmpleado(modTablaEmpleados, list);
+
+        /*
+        String tPuesto = String.valueOf(cboxPuesto.getSelectedItem());
+        //
+        Empleado empledo1 = new Mozo(tDni, tPuesto, 200, tNombre, tApellido, "", tTelefno, "");
+        //        administrador.registrarEmpleado(empledo1);
+        //"DNI","NOMBRE","APELLIDO","TELEFONO" ,"PUESTO","FECHA INGRESO","SALARIO"
+        //agregamos cada ctenido al arreglo
+        fila[0] = empledo1.getDni();
+        fila[1] = empledo1.getNombre();
+        fila[2] = empledo1.getApellido();
+        fila[3] = empledo1.getCelular();
+        fila[4] = empledo1.getPuesto();
+        fila[5] = "200";
+        fila[6] = empledo1.getSalario();
+        //agregamos una fila  a la tabla con el contedio que tiene el arreglo
+        modTablaEmpleados.addRow(fila);
+         */
+    }//GEN-LAST:event_btnAceptarNuevoCheckOutActionPerformed
+
+    private void btnCancelarNuevoCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNuevoCheckOutActionPerformed
+        exitModalNuevoCheckOut();
+    }//GEN-LAST:event_btnCancelarNuevoCheckOutActionPerformed
+
+    private void txtCodigoRecervaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoRecervaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoRecervaActionPerformed
+
+    private void txtCodigoRecervaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoRecervaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoRecervaKeyTyped
+
+    private void btnAceptarGhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptarGhActionPerformed
+
+    private void btnCancelarGhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarGhActionPerformed
+        exitModalgestionarHabitaciones();
+
+    }//GEN-LAST:event_btnCancelarGhActionPerformed
+
+    private void txtNumeroHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroHabitacionActionPerformed
+
+    private void txtNumeroHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroHabitacionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroHabitacionKeyTyped
+
+    private void cboxEstadoHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxEstadoHabiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxEstadoHabiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAceptarGh;
+    public javax.swing.JButton btnAceptarNuevoCheckOut;
+    public javax.swing.JButton btnCancelarGh;
+    public javax.swing.JButton btnCancelarNuevoCheckOut;
+    public javax.swing.JToggleButton btnGestionarHabitacion;
+    public javax.swing.JToggleButton btnNuevoCheckOut;
+    private javax.swing.JComboBox<String> cboxEstadoHabi;
+    public com.toedter.calendar.JDateChooser dataChoseCheckOut;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -839,10 +1174,20 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -869,7 +1214,6 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -885,7 +1229,6 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    public javax.swing.JTable jTable1;
     private javax.swing.JTextPane jTextPane10;
     private javax.swing.JTextPane jTextPane11;
     private javax.swing.JTextPane jTextPane12;
@@ -902,9 +1245,135 @@ public class PanelInicio extends javax.swing.JPanel {
     private javax.swing.JTextPane jTextPane7;
     private javax.swing.JTextPane jTextPane8;
     private javax.swing.JTextPane jTextPane9;
-    public javax.swing.JLabel jlbIngresoTotales;
-    public javax.swing.JLabel jlbIngresoTotales1;
-    public vista.Empleado.paneles.PanelRound panelReservaciones;
+    public vista.Empleado.paneles.PanelRound panelAccionesRapidas;
+    public vista.Empleado.paneles.PanelRound panelBusquedaRapida;
+    public javax.swing.JPanel panelGestionHabi;
+    public vista.Empleado.paneles.PanelRound panelHabiDis;
+    public vista.Empleado.paneles.PanelRound panelHuespedesActu;
+    public javax.swing.JPanel panelNuevoCheckOut;
     public javax.swing.JTextField textEmpleado;
+    public javax.swing.JTextField txtBuscadorNumHabi;
+    public javax.swing.JTextField txtCodigoRecerva;
+    public javax.swing.JLabel txtHabitacionesDis;
+    public javax.swing.JLabel txtHuespedesActuales;
+    public javax.swing.JTextField txtNumeroHabitacion;
     // End of variables declaration//GEN-END:variables
+
+    public void desbloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                desbloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(true);
+
+    }
+
+    public void bloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                bloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(false);
+
+    }
+
+    public void desahabilitarModal() {
+        panelGestionHabi.setVisible(false);
+        panelNuevoCheckOut.setVisible(false);
+    }
+
+    public boolean validarSelectEstado() {
+
+        if (cboxEstadoHabi.getSelectedIndex() == 0) { // Asumiendo que la primera opción es "SELECCIONAR"
+            JOptionPane.showMessageDialog(null, "El estado es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarCamposUpdateHabi() {
+
+        if (txtNumeroHabitacion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El Numero de habitacion es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public Habitacion datosUpdateHabitacion() {
+
+        Habitacion dataHabitacion = new Habitacion();
+
+        dataHabitacion.setNumeroDeHabitacion(txtNumeroHabitacion.getText());
+        dataHabitacion.setEstado((String) cboxEstadoHabi.getSelectedItem());
+        return dataHabitacion;
+
+    }
+
+    public Reserva datosUdateReservaFechaFin() {
+        Habitacion dataHabitacion = new Habitacion();
+        dataHabitacion.setNumeroDeHabitacion(txtCodigoRecerva.getText());
+
+        Reserva dataReserva = new Reserva();
+        Date selectedDateFin = dataChoseCheckOut.getDate();
+        Timestamp timestampfechaFin = new Timestamp(selectedDateFin.getTime());
+        dataReserva.setFechaFin(timestampfechaFin);
+        dataReserva.setHabitacion(dataHabitacion);
+         dataReserva.setCodigoReserva("RES-0000-"+txtCodigoRecerva.getText());
+        return dataReserva;
+    }
+
+    public boolean validarCamposUpdateReserva() {
+
+        if (txtCodigoRecerva.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El codigo de reserva es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        Date selectedDateFin = dataChoseCheckOut.getDate();
+
+// Verifica si la fecha seleccionada es null
+        if (selectedDateFin == null) {
+            JOptionPane.showMessageDialog(null, "La nueva fecha es obligatoria", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        // Convierte la fecha seleccionada a un Timestamp
+        Timestamp timestampfechaFin = new Timestamp(selectedDateFin.getTime());
+
+// Verifica si la fecha seleccionada es mayor a la fecha actual
+        Timestamp fechaActual = new Timestamp(System.currentTimeMillis());
+        if (timestampfechaFin.before(fechaActual)) {
+            JOptionPane.showMessageDialog(null, "La fecha debe ser mayor a la fecha actual", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public void exitModalgestionarHabitaciones() {
+        desbloquear(panelBusquedaRapida);
+        desbloquear(panelAccionesRapidas);
+        desbloquear(panelHuespedesActu);
+        desbloquear(panelHabiDis);
+        btnGestionarHabitacion.setVisible(true);
+        panelGestionHabi.setVisible(false);
+    }
+
+    public void exitModalNuevoCheckOut() {
+        desbloquear(panelBusquedaRapida);
+        desbloquear(panelAccionesRapidas);
+        desbloquear(panelHuespedesActu);
+        desbloquear(panelHabiDis);
+
+        panelNuevoCheckOut.setVisible(false);
+    }
+
 }

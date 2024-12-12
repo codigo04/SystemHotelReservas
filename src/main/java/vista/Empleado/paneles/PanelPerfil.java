@@ -7,6 +7,13 @@ package vista.Empleado.paneles;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import modelo.entity.Empleado;
 
 /**
@@ -15,13 +22,17 @@ import modelo.entity.Empleado;
  */
 public class PanelPerfil extends javax.swing.JPanel {
 
+    private static final String IMAGE_PATH = "C:\\Users\\FranDev\\Pictures\\Saved Pictures\\avatarusuario.jpg";
+
+
     /**
      * Creates new form PanelPerfil
      */
     public PanelPerfil() {
         initComponents();
-        Panel_RegistroEmpleados.setVisible(false);
+        panelCambiarPassword.setVisible(false);
         bloquearComponnentes();
+        loadAvatar();
     }
 
     /**
@@ -35,7 +46,7 @@ public class PanelPerfil extends javax.swing.JPanel {
 
         jLabel25 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        Panel_RegistroEmpleados = new javax.swing.JPanel();
+        panelCambiarPassword = new javax.swing.JPanel();
         btnAceptarCambiarPasswordEm = new javax.swing.JButton();
         btnCancelarEm = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
@@ -63,6 +74,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         panelDatos1 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         btnEditarPerfil1 = new javax.swing.JButton();
+        avatar = new javax.swing.JLabel();
 
         jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel25.setText("Correo Electronico");
@@ -73,11 +85,11 @@ public class PanelPerfil extends javax.swing.JPanel {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 27, 118, -1));
 
-        Panel_RegistroEmpleados.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_RegistroEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        Panel_RegistroEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Panel_RegistroEmpleados.setEnabled(false);
-        Panel_RegistroEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelCambiarPassword.setBackground(new java.awt.Color(255, 255, 255));
+        panelCambiarPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelCambiarPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelCambiarPassword.setEnabled(false);
+        panelCambiarPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAceptarCambiarPasswordEm.setBackground(new java.awt.Color(0, 255, 0));
         btnAceptarCambiarPasswordEm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -89,7 +101,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnAceptarCambiarPasswordEmActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(btnAceptarCambiarPasswordEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 30));
+        panelCambiarPassword.add(btnAceptarCambiarPasswordEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 30));
 
         btnCancelarEm.setBackground(new java.awt.Color(0, 0, 0));
         btnCancelarEm.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -100,22 +112,22 @@ public class PanelPerfil extends javax.swing.JPanel {
                 btnCancelarEmActionPerformed(evt);
             }
         });
-        Panel_RegistroEmpleados.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 140, 30));
+        panelCambiarPassword.add(btnCancelarEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 140, 30));
 
         jLabel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Contraseña Actual");
-        Panel_RegistroEmpleados.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 150, 20));
+        panelCambiarPassword.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 150, 20));
 
         jLabel24.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        Panel_RegistroEmpleados.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+        panelCambiarPassword.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Nueva Contraseña");
-        Panel_RegistroEmpleados.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 150, 20));
+        panelCambiarPassword.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 150, 20));
 
         txtPasswordActual.setBackground(new java.awt.Color(255, 255, 255));
         txtPasswordActual.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -130,7 +142,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtPasswordActualKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtPasswordActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 30));
+        panelCambiarPassword.add(txtPasswordActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 30));
 
         txtNuevoPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtNuevoPassword.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -145,16 +157,16 @@ public class PanelPerfil extends javax.swing.JPanel {
                 txtNuevoPasswordKeyTyped(evt);
             }
         });
-        Panel_RegistroEmpleados.add(txtNuevoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 140, 30));
+        panelCambiarPassword.add(txtNuevoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 140, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cambiar Contraseña");
-        Panel_RegistroEmpleados.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 370, 50));
+        panelCambiarPassword.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 370, 50));
 
-        add(Panel_RegistroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 370, 270));
+        add(panelCambiarPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 360, 270));
 
         panelDatos.setBackground(new java.awt.Color(255, 255, 255));
         panelDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -265,7 +277,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 160, 32));
 
-        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 480, 430));
+        add(panelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 480, 430));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,7 +288,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         txtUsuarioLoged1.setText("PerfPerfil de Usuarioil");
         jPanel1.add(txtUsuarioLoged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, 50));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 790, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 790, 70));
 
         panelDatos1.setBackground(new java.awt.Color(255, 255, 255));
         panelDatos1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -299,17 +311,19 @@ public class PanelPerfil extends javax.swing.JPanel {
         });
         panelDatos1.add(btnEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 120, 32));
 
-        add(panelDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 300, 430));
+        avatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelDatos1.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 260));
+
+        add(panelDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 300, 430));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-        Panel_RegistroEmpleados.setVisible(true);
+        panelCambiarPassword.setVisible(true);
         bloquear(panelDatos);
         FormEditarPerfil();
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 
     private void btnAceptarCambiarPasswordEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarCambiarPasswordEmActionPerformed
-       
 
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
@@ -352,7 +366,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
         desbloquear(panelDatos);
         bloquearComponnentes();
-        Panel_RegistroEmpleados.setVisible(false);
+        panelCambiarPassword.setVisible(false);
 
     }//GEN-LAST:event_btnCancelarEmActionPerformed
 
@@ -385,7 +399,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     }//GEN-LAST:event_TXTApellidoActionPerformed
 
     private void btnEditarPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil1ActionPerformed
-        // TODO add your handling code here:
+        uploadAvatar();
     }//GEN-LAST:event_btnEditarPerfil1ActionPerformed
 
     private void TXTDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTDireccionActionPerformed
@@ -402,13 +416,13 @@ public class PanelPerfil extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPanel Panel_RegistroEmpleados;
     public javax.swing.JTextField TXTApellido;
     public javax.swing.JTextField TXTCorreo;
     public javax.swing.JTextField TXTDireccion;
     public javax.swing.JTextField TXTNombre;
     public javax.swing.JTextField TXTRol;
     public javax.swing.JTextField TXTTelefono;
+    private javax.swing.JLabel avatar;
     public javax.swing.JButton btnAceptarCambiarPasswordEm;
     public javax.swing.JButton btnCancelarEm;
     public javax.swing.JButton btnEditarPerfil;
@@ -427,6 +441,7 @@ public class PanelPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel panelCambiarPassword;
     public javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelDatos1;
     public javax.swing.JTextField txtNuevoPassword;
@@ -485,14 +500,58 @@ public class PanelPerfil extends javax.swing.JPanel {
 
     }
 
+    // Método para subir el avatar
+    public void uploadAvatar() {
+        // Crear un JFileChooser para seleccionar la imagen
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona una imagen");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.addChoosableFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "jpg", "png", "jpeg"));
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado
+            File selectedFile = fileChooser.getSelectedFile();
+
+            try {
+                // Guardar la imagen en la carpeta definida
+                File destFile = new File(IMAGE_PATH);
+                ImageIO.write(ImageIO.read(selectedFile), "jpg", destFile);
+
+                // Leer la imagen y mostrarla en el JLabel
+                Image image = ImageIO.read(destFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                avatar.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    // Método para cargar el avatar desde el archivo
+    public void loadAvatar() {
+        File imageFile = new File(IMAGE_PATH);
+        if (imageFile.exists()) {
+            try {
+                // Leer la imagen desde el archivo guardado y mostrarla
+                Image image = ImageIO.read(imageFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                avatar.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
     public Empleado datosUpdateEmpleadoPerfil() {
         Empleado empleadoUpdate = new Empleado();
 
-       // empleadoUpdate.setNombre(txtNombreEdit.getText());
-       // empleadoUpdate.setApellido(txtApellidoEdit.getText());
-       // empleadoUpdate.setCorreoElectronico(txtCorreoEdit.getText());
-       // empleadoUpdate.setTelefono(txtTelefonoEdit.getText());
-       // empleadoUpdate.setDireccion(txtDireccionEdit.getText());
+        // empleadoUpdate.setNombre(txtNombreEdit.getText());
+        // empleadoUpdate.setApellido(txtApellidoEdit.getText());
+        // empleadoUpdate.setCorreoElectronico(txtCorreoEdit.getText());
+        // empleadoUpdate.setTelefono(txtTelefonoEdit.getText());
+        // empleadoUpdate.setDireccion(txtDireccionEdit.getText());
         empleadoUpdate.setPassword(txtPasswordActual.getText());
 
         return empleadoUpdate;

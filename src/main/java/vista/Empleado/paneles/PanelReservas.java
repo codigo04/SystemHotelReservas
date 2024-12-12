@@ -330,7 +330,7 @@ public class PanelReservas extends javax.swing.JPanel {
         add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
 
         PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
-        PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         PanelBotones.setForeground(new java.awt.Color(0, 0, 0));
         PanelBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -343,7 +343,7 @@ public class PanelReservas extends javax.swing.JPanel {
                 btnCancelarReservaActionPerformed(evt);
             }
         });
-        PanelBotones.add(btnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, -1, -1));
+        PanelBotones.add(btnCancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
 
         btnEditarReserva.setBackground(new java.awt.Color(0, 0, 0));
         btnEditarReserva.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -354,7 +354,7 @@ public class PanelReservas extends javax.swing.JPanel {
                 btnEditarReservaActionPerformed(evt);
             }
         });
-        PanelBotones.add(btnEditarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 80, -1));
+        PanelBotones.add(btnEditarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 80, -1));
 
         tablaReservas.setBackground(new java.awt.Color(180, 180, 180));
         tablaReservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -370,7 +370,7 @@ public class PanelReservas extends javax.swing.JPanel {
         tablaReservas.setGridColor(new java.awt.Color(180, 180, 180));
         jScrollPane1.setViewportView(tablaReservas);
 
-        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 810, 200));
+        PanelBotones.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 770, 200));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -393,7 +393,7 @@ public class PanelReservas extends javax.swing.JPanel {
         });
         PanelBotones.add(txtBuscarReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 74, 276, 32));
 
-        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 860, 360));
+        add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 820, 360));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Reservas");

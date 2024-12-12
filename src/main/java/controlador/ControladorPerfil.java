@@ -4,14 +4,26 @@
  */
 package controlador;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.dao.impl.EmpleadoImpl;
 import modelo.dao.impl.PagoImpl;
+import modelo.dao.impl.ReservaImpl;
 import modelo.entity.Empleado;
+import modelo.entity.Reserva;
 import modelo.entity.Roles;
 import vista.Administrador.paneles.PanelPerfilAdm;
 import vista.Empleado.paneles.PanelPerfil;
@@ -30,7 +42,7 @@ public class ControladorPerfil implements ActionListener {
         this.panelPerfilAdm = panelPerfilAdm;
         this.panelPerfil = panelPerfil;
         empleadoImpl = new EmpleadoImpl();
-        agregarListeners();
+        agregarListeners();  
     }
 
     @Override
@@ -115,7 +127,7 @@ public class ControladorPerfil implements ActionListener {
                     updateEm.setPassword(panelPerfil.txtNuevoPassword.getText());
                     panelPerfil.desbloquear(panelPerfil.panelDatos);
                     panelPerfil.bloquearComponnentes();
-                    panelPerfil.Panel_RegistroEmpleados.setVisible(false);
+                    panelPerfil.panelCambiarPassword.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "La contraseña Actual no es válida", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -125,6 +137,10 @@ public class ControladorPerfil implements ActionListener {
         }
 
     }
+    
+    
+    
+    
 
     public void agregarListeners() {
         this.panelPerfilAdm.btnEditarPerfil.addActionListener(this);
@@ -132,5 +148,5 @@ public class ControladorPerfil implements ActionListener {
         this.panelPerfilAdm.btnCancelarEditHabitacion.addActionListener(this);
         this.panelPerfil.btnAceptarCambiarPasswordEm.addActionListener(this);
     }
-
+   
 }
