@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -603,13 +604,6 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
     private void btnAceptarGuardarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarResActionPerformed
 
-        if (validarFechas() && validarCamposRequeridos()) {
-            Panel_Reserva.setVisible(false);
-            btnRecervar.setVisible(true);
-            desbloquear(jpanelContenidoHabi);
-        } else {
-
-        }
         //creamos una arreglo de tipos object
         //Object fila[] = new Object[7];
         // ArrayList<String> list = new ArrayList<>();
@@ -652,6 +646,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Panel_Reserva.setVisible(false);
         btnRecervar.setVisible(true);
         desbloquear(jpanelContenidoHabi);
+        desbloquearTablaEmpleados();
     }//GEN-LAST:event_btnCancelarResActionPerformed
 
     private void txtBuscarHabitacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarHabitacionesFocusLost
@@ -689,6 +684,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
             if (!estadoHabitacion.equals("OCUPADA")) {
                 // bloquearImputs();
                 bloquear(jpanelContenidoHabi);
+                bloquearTablaEmpleados();
                 //  background.setVisible(true);
                 Panel_Reserva.setVisible(true);
                 btnRecervar.setVisible(false);
@@ -869,7 +865,7 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.components.JSpinField jSpinField1;
-    private javax.swing.JPanel jpanelContenidoHabi;
+    public javax.swing.JPanel jpanelContenidoHabi;
     public javax.swing.JTable tablaHabitacionesRecervas;
     private javax.swing.JTable tablaServicios;
     private javax.swing.JTable tablaServiciosElegido;
@@ -1058,11 +1054,16 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
         Date fin = fechaSalidaRes.getDate();
         Date fechaActual = new Date(); // Fecha actual
 
-        if (llegada == null || fin == null) {
-
+        // Validar que las fechas no sean nulas
+        if (llegada == null) {
+            JOptionPane.showMessageDialog(null, "Es necesario completar la Fecha de Entrada.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
+        if (fin == null) {
+            JOptionPane.showMessageDialog(null, "Es necesario completar la Fecha de Salida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         // Convertir las fechas a LocalDate para eliminar el componente de hora
         LocalDate fechaLlegada = llegada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate fechaFin = fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -1093,6 +1094,44 @@ public class PanelRecervarHabitaciones extends javax.swing.JPanel {
 
         return true;
 
+    }
+
+    public void bloquearTablaEmpleados() {
+        // Obtener el JScrollPane que contiene la tabla
+        JScrollPane scrollPane = (JScrollPane) tablaHabitacionesRecervas.getParent().getParent();
+
+        // Deshabilitar el desplazamiento
+        scrollPane.setWheelScrollingEnabled(false); // Deshabilita el scroll con el ratón
+        scrollPane.getVerticalScrollBar().setEnabled(false); // Deshabilita la barra de desplazamiento vertical
+        scrollPane.getHorizontalScrollBar().setEnabled(false); // Deshabilita la barra de desplazamiento horizontal
+
+        // También, puedes deshabilitar la tabla completamente, para evitar que interactúen con la misma
+        tablaHabitacionesRecervas.setEnabled(false); // Deshabilita la interacción con la tabla
+
+    }
+
+    public void desbloquearTablaEmpleados() {
+        // Obtener el JScrollPane que contiene la tabla
+        JScrollPane scrollPane = (JScrollPane) tablaHabitacionesRecervas.getParent().getParent();
+
+        // Deshabilitar el desplazamiento
+        scrollPane.setWheelScrollingEnabled(true); // Deshabilita el scroll con el ratón
+        scrollPane.getVerticalScrollBar().setEnabled(true); // Deshabilita la barra de desplazamiento vertical
+        scrollPane.getHorizontalScrollBar().setEnabled(true); // Deshabilita la barra de desplazamiento horizontal
+
+        // También, puedes deshabilitar la tabla completamente, para evitar que interactúen con la misma
+        tablaHabitacionesRecervas.setEnabled(true); // Deshabilita la interacción con la tabla
+
+    }
+
+    public boolean validarDni() {
+
+        if (txtDniClienteRes.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese numero de DNI ", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
     }
 
 }

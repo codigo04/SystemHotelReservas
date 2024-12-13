@@ -6,6 +6,7 @@ package controlador;
 
 import aggregates.Reports.ReservaReports;
 import aggregates.Servicios.apis.EmpleadoService;
+import aggregates.Servicios.pdf.PdfService;
 import aggregates.request.PersonaRequest;
 import aggregates.response.ResponceReniec;
 import java.awt.event.ActionEvent;
@@ -97,6 +98,9 @@ public class ControladorReservas implements ActionListener {
         }
 
         if (e.getSource() == panelRecervarHabitaciones.btnAceptarGuardarRes) {
+            if (!panelRecervarHabitaciones.validarFechas() || !panelRecervarHabitaciones.validarCamposRequeridos()) {
+                return;
+            }
             crearReservaConPagoYTicket();
             //saveReserva();
 
@@ -159,6 +163,11 @@ public class ControladorReservas implements ActionListener {
 
         if (e.getSource() == panelRecervarHabitaciones.btnbuscarDni) {
             try {
+
+                if (!panelRecervarHabitaciones.validarDni()) {
+                    return;
+                }
+
                 bucarPersona();
             } catch (IOException ex) {
                 Logger.getLogger(ControladorReservas.class.getName()).log(Level.SEVERE, null, ex);
@@ -479,6 +488,14 @@ public class ControladorReservas implements ActionListener {
                 if (ticketCreate.isPresent()) {
                     Ticket ticketExist = ticketCreate.get();
                     System.out.println(ticketExist.getDetalle());
+
+                    PdfService.generarTicket(newTicket);
+
+                    panelRecervarHabitaciones.Panel_Reserva.setVisible(false);
+                    panelRecervarHabitaciones.btnRecervar.setVisible(true);
+                    panelRecervarHabitaciones.desbloquear(panelRecervarHabitaciones.jpanelContenidoHabi);
+                    panelRecervarHabitaciones.desbloquearTablaEmpleados();
+
                     return resExist;  // Retornar la reserva existente
                 } else {
                     // Manejo de error si no se pudo guardar el ticket
@@ -546,18 +563,21 @@ public class ControladorReservas implements ActionListener {
 
     public void bucarPersona() throws IOException {
 
-        PersonaRequest personaRequest = new PersonaRequest();
+        try {
+            PersonaRequest personaRequest = new PersonaRequest();
+            personaRequest.setDni(panelRecervarHabitaciones.txtDniClienteRes.getText());
 
-        personaRequest.setDni(panelRecervarHabitaciones.txtDniClienteRes.getText());
+            ResponceReniec responceReniec = clienteReniec.getEntityRetrofit(personaRequest);
 
-        ResponceReniec responceReniec = clienteReniec.getEntityRetrofit(personaRequest);
-
-        System.out.println(responceReniec.getApellidoMaterno());
-        if (responceReniec != null) {
-
-            panelRecervarHabitaciones.txtNombreClienteRes.setText(responceReniec.getNombres());
-            panelRecervarHabitaciones.txtApellidoClienteRes.setText(responceReniec.getApellidoPaterno() + " " + responceReniec.getApellidoMaterno());
-
+            if (responceReniec != null) {
+                panelRecervarHabitaciones.txtNombreClienteRes.setText(responceReniec.getNombres());
+                panelRecervarHabitaciones.txtApellidoClienteRes.setText(responceReniec.getApellidoPaterno() + " " + responceReniec.getApellidoMaterno());
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró información para el DNI proporcionado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al intentar buscar la persona: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }
 

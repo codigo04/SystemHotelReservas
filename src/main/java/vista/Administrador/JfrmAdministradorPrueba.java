@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import vista.Empleado.paneles.PanelClientesAdm;
+import vista.Empleado.paneles.PanelClientesRecep;
 import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
@@ -35,7 +35,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     public PanelRecervasAdm panelRecervasAdm = new PanelRecervasAdm();
 
     public PanelInicioAdm panelInicioAdm = new PanelInicioAdm();
-    public PanelClientesAdm panelClientesAdm = new PanelClientesAdm();
+    public PanelClientesRecep panelClientesAdm = new PanelClientesRecep();
 
     /**
      * Creates new form JfrmAdministrador

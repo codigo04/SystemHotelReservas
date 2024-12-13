@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.impl.ClienteImpl;
 import modelo.entity.Cliente;
-import vista.Empleado.paneles.PanelClientesAdm;
+import vista.Empleado.paneles.PanelClientesRecep;
 
 /**
  *
@@ -18,10 +18,11 @@ import vista.Empleado.paneles.PanelClientesAdm;
  */
 public class ControladorClientes implements ActionListener {
 
-    public PanelClientesAdm panelClientesAdm;
+    public PanelClientesRecep panelClientesAdm;
+    
     private ClienteImpl clienteImpl;
 
-    public ControladorClientes(PanelClientesAdm panelClientesAdm) {
+    public ControladorClientes(PanelClientesRecep panelClientesAdm) {
         this.panelClientesAdm = panelClientesAdm;
         clienteImpl = new ClienteImpl();
         cargarDatos();

@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import vista.Empleado.paneles.PanelClientesAdm;
+import vista.Empleado.paneles.PanelClientesRecep;
 
 import vista.Empleado.paneles.PanelRecervarHabitaciones;
 import vista.Empleado.paneles.PanelInicio;
@@ -37,7 +37,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     public PanelPerfil panelPerfil = new PanelPerfil();
     public PanelReservas panelReservas = new PanelReservas();
 
-    public PanelClientesAdm panelClientes = new PanelClientesAdm();
+    public PanelClientesRecep panelClientes = new PanelClientesRecep();
 
     public JfrmEmpleado() {
         initComponents();
@@ -68,15 +68,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         jBInicio = new javax.swing.JButton();
         jBPerfil = new javax.swing.JButton();
         jBAsiHabitacion = new javax.swing.JButton();
-        jBHistorial = new javax.swing.JButton();
+        btonReservacion = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         empleadopng = new javax.swing.JLabel();
-
         iconUser = new javax.swing.JLabel();
-
         btnClientes = new javax.swing.JButton();
-
         panelPrincipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -127,16 +123,16 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         });
         menu.add(jBAsiHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 300, 140, 41));
 
-        jBHistorial.setBackground(new java.awt.Color(204, 204, 204));
-        jBHistorial.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jBHistorial.setForeground(new java.awt.Color(51, 51, 51));
-        jBHistorial.setText("Reservaciones");
-        jBHistorial.addActionListener(new java.awt.event.ActionListener() {
+        btonReservacion.setBackground(new java.awt.Color(204, 204, 204));
+        btonReservacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btonReservacion.setForeground(new java.awt.Color(51, 51, 51));
+        btonReservacion.setText("Reservaciones");
+        btonReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBHistorialActionPerformed(evt);
+                btonReservacionActionPerformed(evt);
             }
         });
-        menu.add(jBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 140, 42));
+        menu.add(btonReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 353, 140, 42));
 
         btnSalir.setBackground(new java.awt.Color(153, 0, 0));
         btnSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -149,19 +145,10 @@ public class JfrmEmpleado extends javax.swing.JFrame {
             }
         });
         menu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 80, 25));
-
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Empleado");
-        menu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         menu.add(empleadopng, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 136, -1, -1));
 
-
         iconUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconUser.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\resources\\usuario.png")); // NOI18N
-        menu.add(iconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 120));
-
-
+        menu.add(iconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 160));
 
         btnClientes.setBackground(new java.awt.Color(204, 204, 204));
         btnClientes.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -234,7 +221,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         panelPrincipal.repaint();
     }//GEN-LAST:event_jBPerfilActionPerformed
 
-    private void jBHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHistorialActionPerformed
+    private void btonReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonReservacionActionPerformed
         // TODO add your handling code here:
 
         panelPrincipal.removeAll();
@@ -242,7 +229,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
 
-    }//GEN-LAST:event_jBHistorialActionPerformed
+    }//GEN-LAST:event_btonReservacionActionPerformed
 
     private void jBAsiHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsiHabitacionActionPerformed
         // TODO 
@@ -287,10 +274,10 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         interacionBontenes(btnClientes);
-        this.panelPrincipal.removeAll();
-        this.panelPrincipal.add(panelClientes);
-        this.panelPrincipal.revalidate();
-        this.panelPrincipal.repaint();
+        panelPrincipal.removeAll();
+        panelPrincipal.add(panelClientes);
+        panelPrincipal.revalidate();
+        panelPrincipal.repaint();
     }//GEN-LAST:event_btnClientesActionPerformed
 
     /**
@@ -360,15 +347,14 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClientes;
+    public javax.swing.JButton btnClientes;
     public javax.swing.JButton btnSalir;
+    public javax.swing.JButton btonReservacion;
     private javax.swing.JLabel empleadopng;
     public static javax.swing.JLabel iconUser;
     private javax.swing.JButton jBAsiHabitacion;
-    private javax.swing.JButton jBHistorial;
     private javax.swing.JButton jBInicio;
     private javax.swing.JButton jBPerfil;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -390,9 +376,9 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
         jBAsiHabitacion.setForeground(Color.BLACK);
 
-        jBHistorial.setBackground(Color.WHITE);
+        btonReservacion.setBackground(Color.WHITE);
 
-        jBHistorial.setForeground(Color.BLACK);
+        btonReservacion.setForeground(Color.BLACK);
 
         btnClientes.setBackground(Color.WHITE);
 

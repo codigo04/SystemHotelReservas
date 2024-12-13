@@ -65,10 +65,12 @@ public class PdfService {
             // Información de la reserva
             Font infoFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
             document.add(new Paragraph("Reserva No: " + ticket.getReserva().getIdReserva(), infoFont));
+            document.add(new Paragraph("Codigo reserva: " + ticket.getReserva().getCodigoReserva(), infoFont));
             document.add(new Paragraph("Huésped: " + ticket.getReserva().getCliente().getNombre(), infoFont));
             document.add(new Paragraph("Fecha de Entrada: 24/11/2024", infoFont));
             document.add(new Paragraph("Fecha de Salida: 27/11/2024", infoFont));
-            document.add(new Paragraph("Habitación: Suite Deluxe", infoFont));
+            document.add(new Paragraph("Habitación: "+ticket.getReserva().getHabitacion().getTipoHabitacion().getTipoHabitacion(), infoFont));
+            document.add(new Paragraph("Precio habitación: "+ticket.getReserva().getHabitacion().getTipoHabitacion().getPrecio(), infoFont));
             document.add(new Paragraph("\n"));
 
             // Crear tabla para los servicios
@@ -83,15 +85,17 @@ public class PdfService {
             table.addCell(new PdfPCell(new Phrase("Cantidad", headerFont)));
             table.addCell(new PdfPCell(new Phrase("Precio", headerFont)));
 
-            
-            
             System.out.println(ticket.getReserva().getServicios());
-            System.out.println("cantidad "+ticket.getReserva().getServicios().size());
+            System.out.println("cantidad " + ticket.getReserva().getServicios().size());
 // Llenar los datos de la tabla
+
+            double totalPagar = ticket.getMontoTotal();
             for (Servicio servicio : ticket.getReserva().getServicios()) {
                 table.addCell(servicio.getNombreServicio());
                 table.addCell(String.valueOf("2")); // Asegúrate de que Servicio tiene este método
                 table.addCell(String.valueOf(servicio.getPrecio()));
+
+                totalPagar += servicio.getPrecio();
             }
 
             // Agregar tabla al documento
@@ -99,7 +103,7 @@ public class PdfService {
 
             // Total
             Font totalFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
-            Paragraph total = new Paragraph("\nTotal: S/" + ticket.getMontoTotal(), totalFont);
+            Paragraph total = new Paragraph("\nTotal: S/" + totalPagar, totalFont);
             total.setAlignment(Element.ALIGN_RIGHT);
             document.add(total);
 

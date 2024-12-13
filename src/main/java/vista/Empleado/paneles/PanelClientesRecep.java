@@ -35,14 +35,14 @@ import modelo.entity.TipoHabitacion;
 /**
  * @author FranDev
  */
-public class PanelClientesAdm extends javax.swing.JPanel {
+public class PanelClientesRecep extends javax.swing.JPanel {
 
     public DefaultTableModel modTablaClientes = new DefaultTableModel();
 
     /**
      * Creates new form PanelHabitacionesAdm
      */
-    public PanelClientesAdm() {
+    public PanelClientesRecep() {
         initComponents();
         String cabeTableProduc[] = {"ID", "Nombre", "Apellido", "Dni", "Correo Electronico", "Telefono"};
         darBordes(jpanelContenidoHabi);
