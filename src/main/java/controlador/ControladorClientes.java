@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.impl.ClienteImpl;
 import modelo.entity.Cliente;
-import vista.Administrador.paneles.PanelClientesAdm;
+import vista.Empleado.paneles.PanelClientesAdm;
 
 /**
  *

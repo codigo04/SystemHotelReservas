@@ -285,7 +285,7 @@ public class PanelPerfil extends javax.swing.JPanel {
         txtUsuarioLoged1.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuarioLoged1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         txtUsuarioLoged1.setForeground(new java.awt.Color(255, 255, 255));
-        txtUsuarioLoged1.setText("PerfPerfil de Usuarioil");
+        txtUsuarioLoged1.setText("Perfil Recepcionista");
         jPanel1.add(txtUsuarioLoged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, 50));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 790, 70));

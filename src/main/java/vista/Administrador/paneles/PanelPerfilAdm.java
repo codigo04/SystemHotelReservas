@@ -6,6 +6,13 @@ package vista.Administrador.paneles;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import modelo.entity.Empleado;
 import vista.Empleado.paneles.*;
 
@@ -15,14 +22,12 @@ import vista.Empleado.paneles.*;
  */
 public class PanelPerfilAdm extends javax.swing.JPanel {
 
-    /**
-     *
-     * Creates new form PanelPerfil
-     */
+    private static final String IMAGE_PATH = "C:\\Users\\Chris\\Desktop\\Yo\\fa.jpg";
     public PanelPerfilAdm() {
         initComponents();
         Panel_EditPerfil.setVisible(false);
         bloquearComponentes();
+        loadAvatar();
     }
 
     /**
@@ -50,24 +55,29 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtPasswordEditPerf = new javax.swing.JTextField();
         btnCancelarEditHabitacion = new javax.swing.JButton();
         btnAceptarEditHabitacion = new javax.swing.JButton();
-        jpanelInfoPerf = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtCorreoUsPerfil = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtDireccionUsPerfil = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtTelefonoUsPerfil = new javax.swing.JTextField();
+        txtNewPassEditPerf1 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnEditarPerfil = new javax.swing.JButton();
         txtUsuarioLoged1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtApellidoUsLoged = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtRolEmpleadoUsPerfil = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        jpanelInfoPerf = new javax.swing.JPanel();
         txtNombreUsLoged = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        txtPasswordEmpleadoUsPerfil = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtApellidoUsLoged = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtCorreoUsPerfil = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtTelefonoUsPerfil = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtRolEmpleadoUsPerfil = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDireccionUsPerfil = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jpanelAvatar = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        btnEditarPerfil1 = new javax.swing.JButton();
+        avatarAdm = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,7 +95,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jLabel20.setBackground(new java.awt.Color(0, 0, 0));
         jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("NOMBRE");
+        jLabel20.setText("Nombre");
         Panel_EditPerfil.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, 20));
 
         txtNombreEditPerf.setBackground(new java.awt.Color(255, 255, 255));
@@ -106,7 +116,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jLabel22.setBackground(new java.awt.Color(0, 0, 0));
         jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("APELLIDO");
+        jLabel22.setText("Apellido");
         Panel_EditPerfil.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 80, 20));
 
         txtApellidoEditPerf.setBackground(new java.awt.Color(255, 255, 255));
@@ -127,7 +137,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jLabel21.setBackground(new java.awt.Color(0, 0, 0));
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setText("CORREO ELECTRONICO");
+        jLabel21.setText("Correo Electrónico");
         Panel_EditPerfil.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 180, 20));
 
         txtCorreoElectronicoEditPerf.setBackground(new java.awt.Color(255, 255, 255));
@@ -148,7 +158,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("TELEFONO");
+        jLabel10.setText("Teléfono");
         Panel_EditPerfil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 130, 20));
 
         txtTelefonoEditPerf.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,7 +179,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("DIRECCION");
+        jLabel13.setText("Dirección");
         Panel_EditPerfil.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 90, 20));
 
         txtDireccionEditPerf.setBackground(new java.awt.Color(255, 255, 255));
@@ -190,8 +200,8 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         jLabel16.setBackground(new java.awt.Color(0, 0, 0));
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("CONTRASEÑA:");
-        Panel_EditPerfil.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 120, 20));
+        jLabel16.setText("Contraseña Actual");
+        Panel_EditPerfil.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 140, 20));
 
         txtPasswordEditPerf.setBackground(new java.awt.Color(255, 255, 255));
         txtPasswordEditPerf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -206,10 +216,10 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
                 txtPasswordEditPerfKeyTyped(evt);
             }
         });
-        Panel_EditPerfil.add(txtPasswordEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 320, -1));
+        Panel_EditPerfil.add(txtPasswordEditPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 140, -1));
 
         btnCancelarEditHabitacion.setBackground(new java.awt.Color(0, 0, 0));
-        btnCancelarEditHabitacion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCancelarEditHabitacion.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btnCancelarEditHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelarEditHabitacion.setText("CANCELAR");
         btnCancelarEditHabitacion.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +230,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         Panel_EditPerfil.add(btnCancelarEditHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 140, 30));
 
         btnAceptarEditHabitacion.setBackground(new java.awt.Color(0, 255, 0));
-        btnAceptarEditHabitacion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarEditHabitacion.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btnAceptarEditHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptarEditHabitacion.setText("ACEPTAR");
         btnAceptarEditHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -231,59 +241,28 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         });
         Panel_EditPerfil.add(btnAceptarEditHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 140, 30));
 
+        txtNewPassEditPerf1.setBackground(new java.awt.Color(255, 255, 255));
+        txtNewPassEditPerf1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNewPassEditPerf1.setForeground(new java.awt.Color(0, 0, 0));
+        txtNewPassEditPerf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewPassEditPerf1ActionPerformed(evt);
+            }
+        });
+        txtNewPassEditPerf1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewPassEditPerf1KeyTyped(evt);
+            }
+        });
+        Panel_EditPerfil.add(txtNewPassEditPerf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 140, -1));
+
+        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Nueva Contraseña");
+        Panel_EditPerfil.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 140, 20));
+
         add(Panel_EditPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 430, 470));
-
-        jpanelInfoPerf.setBackground(new java.awt.Color(255, 255, 255));
-        jpanelInfoPerf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jpanelInfoPerf.setForeground(new java.awt.Color(0, 0, 0));
-        jpanelInfoPerf.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("APELLIDO");
-        jpanelInfoPerf.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
-
-        txtCorreoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        txtCorreoUsPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtCorreoUsPerfil.setForeground(new java.awt.Color(0, 0, 0));
-        txtCorreoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCorreoUsPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoUsPerfilActionPerformed(evt);
-            }
-        });
-        jpanelInfoPerf.add(txtCorreoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 270, -1));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("ROL");
-        jpanelInfoPerf.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
-
-        txtDireccionUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        txtDireccionUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtDireccionUsPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionUsPerfilActionPerformed(evt);
-            }
-        });
-        jpanelInfoPerf.add(txtDireccionUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 270, -1));
-
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("TELEFONO");
-        jpanelInfoPerf.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
-
-        txtTelefonoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefonoUsPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtTelefonoUsPerfil.setForeground(new java.awt.Color(0, 0, 0));
-        txtTelefonoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtTelefonoUsPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoUsPerfilActionPerformed(evt);
-            }
-        });
-        jpanelInfoPerf.add(txtTelefonoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 270, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,7 +276,7 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
                 btnEditarPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 130, 30));
+        jPanel1.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 130, 30));
 
         txtUsuarioLoged1.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuarioLoged1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -305,38 +284,11 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtUsuarioLoged1.setText("Perfil del Administrador");
         jPanel1.add(txtUsuarioLoged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 410, 50));
 
-        jpanelInfoPerf.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 50));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 790, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("CORREO ELECTRONICO");
-        jpanelInfoPerf.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
-
-        txtApellidoUsLoged.setBackground(new java.awt.Color(255, 255, 255));
-        txtApellidoUsLoged.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtApellidoUsLoged.setForeground(new java.awt.Color(0, 0, 0));
-        txtApellidoUsLoged.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtApellidoUsLoged.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoUsLogedActionPerformed(evt);
-            }
-        });
-        jpanelInfoPerf.add(txtApellidoUsLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 270, -1));
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("DIRECCION");
-        jpanelInfoPerf.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
-
-        txtRolEmpleadoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        txtRolEmpleadoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jpanelInfoPerf.add(txtRolEmpleadoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 270, -1));
-
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("NOMBRE");
-        jpanelInfoPerf.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        jpanelInfoPerf.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelInfoPerf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanelInfoPerf.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNombreUsLoged.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreUsLoged.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -347,23 +299,119 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
                 txtNombreUsLogedActionPerformed(evt);
             }
         });
-        jpanelInfoPerf.add(txtNombreUsLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 270, -1));
+        jpanelInfoPerf.add(txtNombreUsLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 180, -1));
 
-        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("CONTRASEÑA");
-        jpanelInfoPerf.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("NOMBRE");
+        jpanelInfoPerf.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        txtPasswordEmpleadoUsPerfil.setEditable(false);
-        txtPasswordEmpleadoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        txtPasswordEmpleadoUsPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPasswordEmpleadoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtPasswordEmpleadoUsPerfil.setAutoscrolls(false);
-        txtPasswordEmpleadoUsPerfil.setEnabled(false);
-        jpanelInfoPerf.add(txtPasswordEmpleadoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 270, -1));
+        txtApellidoUsLoged.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellidoUsLoged.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtApellidoUsLoged.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoUsLoged.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtApellidoUsLoged.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoUsLogedActionPerformed(evt);
+            }
+        });
+        jpanelInfoPerf.add(txtApellidoUsLoged, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 180, -1));
 
-        add(jpanelInfoPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 740, 540));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("APELLIDO");
+        jpanelInfoPerf.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+
+        txtCorreoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoUsPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCorreoUsPerfil.setForeground(new java.awt.Color(0, 0, 0));
+        txtCorreoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCorreoUsPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoUsPerfilActionPerformed(evt);
+            }
+        });
+        jpanelInfoPerf.add(txtCorreoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 180, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("CORREO ELECTRONICO");
+        jpanelInfoPerf.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+
+        txtTelefonoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefonoUsPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTelefonoUsPerfil.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefonoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtTelefonoUsPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoUsPerfilActionPerformed(evt);
+            }
+        });
+        jpanelInfoPerf.add(txtTelefonoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 180, -1));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("TELEFONO");
+        jpanelInfoPerf.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
+
+        txtRolEmpleadoUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtRolEmpleadoUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jpanelInfoPerf.add(txtRolEmpleadoUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 180, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("ROL");
+        jpanelInfoPerf.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+
+        txtDireccionUsPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccionUsPerfil.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtDireccionUsPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionUsPerfilActionPerformed(evt);
+            }
+        });
+        jpanelInfoPerf.add(txtDireccionUsPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, -1));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("DIRECCION");
+        jpanelInfoPerf.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Datos Personales");
+        jpanelInfoPerf.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        add(jpanelInfoPerf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 480, 430));
+
+        jpanelAvatar.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelAvatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpanelAvatar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel23.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("Avatar");
+        jpanelAvatar.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        btnEditarPerfil1.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarPerfil1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEditarPerfil1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPerfil1.setText("Cambiar Avatar");
+        btnEditarPerfil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPerfil1ActionPerformed(evt);
+            }
+        });
+        jpanelAvatar.add(btnEditarPerfil1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 120, 32));
+
+        avatarAdm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jpanelAvatar.add(avatarAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 300, 260));
+
+        add(jpanelAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 300, 430));
 
         getAccessibleContext().setAccessibleName("");
         getAccessibleContext().setAccessibleDescription("");
@@ -388,15 +436,13 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCorreoUsPerfilActionPerformed
 
     private void btnAceptarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEditHabitacionActionPerformed
-        
-        desbloquear(jpanelInfoPerf);
-        bloquearComponentes();
-        Panel_EditPerfil.setVisible(false);
+
     }//GEN-LAST:event_btnAceptarEditHabitacionActionPerformed
 
     private void btnCancelarEditHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditHabitacionActionPerformed
         
         desbloquear(jpanelInfoPerf);
+        limpiarFormEditarPerfilUs();
         Panel_EditPerfil.setVisible(false);
     }//GEN-LAST:event_btnCancelarEditHabitacionActionPerformed
 
@@ -456,38 +502,55 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordEditPerfKeyTyped
 
+    private void btnEditarPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfil1ActionPerformed
+        uploadAvatar();        
+    }//GEN-LAST:event_btnEditarPerfil1ActionPerformed
+
+    private void txtNewPassEditPerf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewPassEditPerf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewPassEditPerf1ActionPerformed
+
+    private void txtNewPassEditPerf1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPassEditPerf1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewPassEditPerf1KeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel Panel_EditPerfil;
+    private javax.swing.JLabel avatarAdm;
     public javax.swing.JButton btnAceptarEditHabitacion;
     public javax.swing.JButton btnCancelarEditHabitacion;
     public javax.swing.JButton btnEditarPerfil;
+    public javax.swing.JButton btnEditarPerfil1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jpanelInfoPerf;
+    private javax.swing.JPanel jpanelAvatar;
+    public javax.swing.JPanel jpanelInfoPerf;
     public javax.swing.JTextField txtApellidoEditPerf;
     public javax.swing.JTextField txtApellidoUsLoged;
     public javax.swing.JTextField txtCorreoElectronicoEditPerf;
     public javax.swing.JTextField txtCorreoUsPerfil;
     public javax.swing.JTextField txtDireccionEditPerf;
     public javax.swing.JTextField txtDireccionUsPerfil;
+    public javax.swing.JTextField txtNewPassEditPerf1;
     public javax.swing.JTextField txtNombreEditPerf;
     public javax.swing.JTextField txtNombreUsLoged;
     public javax.swing.JTextField txtPasswordEditPerf;
-    public javax.swing.JTextField txtPasswordEmpleadoUsPerfil;
     public javax.swing.JTextField txtRolEmpleadoUsPerfil;
     public javax.swing.JTextField txtTelefonoEditPerf;
     public javax.swing.JTextField txtTelefonoUsPerfil;
@@ -509,7 +572,6 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtCorreoElectronicoEditPerf.setText(txtCorreoUsPerfil.getText());
         txtTelefonoEditPerf.setText(txtTelefonoUsPerfil.getText());
         txtDireccionEditPerf.setText(txtDireccionUsPerfil.getText());
-        txtPasswordEditPerf.setText(txtPasswordEmpleadoUsPerfil.getText());
     }
 
     public void limpiarFormEditarPerfilUs() {
@@ -518,6 +580,8 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         txtCorreoElectronicoEditPerf.setText("");
         txtTelefonoEditPerf.setText("");
         txtDireccionEditPerf.setText("");
+        txtPasswordEditPerf.setText("");
+        txtNewPassEditPerf1.setText("");
     }
 
     public void bloquear(Component component) {
@@ -553,9 +617,52 @@ public class PanelPerfilAdm extends javax.swing.JPanel {
         empleadoUpdate.setTelefono(txtTelefonoEditPerf.getText());
         empleadoUpdate.setDireccion(txtDireccionEditPerf.getText());
         empleadoUpdate.setPassword(txtPasswordEditPerf.getText());
-
      
         return empleadoUpdate;
+    }
+    
+    // Método para subir el avatar
+    public void uploadAvatar() {
+        // Crear un JFileChooser para seleccionar la imagen
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Selecciona una imagen");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.addChoosableFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "jpg", "png", "jpeg"));
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado
+            File selectedFile = fileChooser.getSelectedFile();
+
+            try {
+                // Guardar la imagen en la carpeta definida
+                File destFile = new File(IMAGE_PATH);
+                ImageIO.write(ImageIO.read(selectedFile), "jpg", destFile);
+
+                // Leer la imagen y mostrarla en el JLabel
+                Image image = ImageIO.read(destFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                avatarAdm.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    // Método para cargar el avatar desde el archivo
+    public void loadAvatar() {
+        File imageFile = new File(IMAGE_PATH);
+        if (imageFile.exists()) {
+            try {
+                // Leer la imagen desde el archivo guardado y mostrarla
+                Image image = ImageIO.read(imageFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                avatarAdm.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
 }

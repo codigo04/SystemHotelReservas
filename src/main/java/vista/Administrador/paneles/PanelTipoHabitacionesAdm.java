@@ -80,8 +80,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtTipoHabi = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        btnAgregarHabi = new javax.swing.JButton();
         jpanelContenidoHabi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -89,6 +87,8 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         tablaTipoHabitaciones = new javax.swing.JTable();
         txtBuscarTipoHabitacion = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnAgregarHabi = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -125,7 +125,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("PRECIO");
+        jLabel22.setText("Precio");
         Panel_EditHabitaciones.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 130, 20));
 
         txtPrecioEditHabi.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,7 +147,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel23.setBackground(new java.awt.Color(255, 255, 255));
         jLabel23.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setText("CARACTERISTICAS");
+        jLabel23.setText("Características");
         Panel_EditHabitaciones.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 20));
 
         txtCaracteristicasEditHabi.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,7 +168,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Tipo Habitacion");
+        jLabel9.setText("Tipo Habitación");
         Panel_EditHabitaciones.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 120, 20));
 
         txtTipoEditHabi.setBackground(new java.awt.Color(255, 255, 255));
@@ -224,7 +224,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         Panel_RegistroHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAceptarGuardarHabitacion.setBackground(new java.awt.Color(0, 255, 0));
-        btnAceptarGuardarHabitacion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarGuardarHabitacion.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         btnAceptarGuardarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptarGuardarHabitacion.setText("ACEPTAR");
         btnAceptarGuardarHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -236,7 +236,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         Panel_RegistroHabitaciones.add(btnAceptarGuardarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 150, 30));
 
         btnCancelarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
-        btnCancelarHabitacion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCancelarHabitacion.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         btnCancelarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelarHabitacion.setText("CANCELAR");
         btnCancelarHabitacion.addActionListener(new java.awt.event.ActionListener() {
@@ -314,21 +314,6 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
 
         add(Panel_RegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 410));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
-        jLabel1.setText("Gestión de Tipos de Habitaciones");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 710, -1));
-
-        btnAgregarHabi.setBackground(new java.awt.Color(0, 0, 0));
-        btnAgregarHabi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAgregarHabi.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarHabi.setText("+ Añadir Tipo Habitacion");
-        btnAgregarHabi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarHabiActionPerformed(evt);
-            }
-        });
-        add(btnAgregarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, 210, 48));
-
         jpanelContenidoHabi.setBackground(new java.awt.Color(255, 255, 255));
         jpanelContenidoHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jpanelContenidoHabi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -359,7 +344,7 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         txtBuscarTipoHabitacion.setBackground(new java.awt.Color(180, 180, 180));
         txtBuscarTipoHabitacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBuscarTipoHabitacion.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscarTipoHabitacion.setText("Buscar Tipo Habitacion");
+        txtBuscarTipoHabitacion.setText("Buscar Tipo Habitación");
         txtBuscarTipoHabitacion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtBuscarTipoHabitacionFocusLost(evt);
@@ -389,6 +374,21 @@ public class PanelTipoHabitacionesAdm extends javax.swing.JPanel {
         jpanelContenidoHabi.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 86, 35));
 
         add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 940, 380));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabel1.setText("Gestión de Tipos de Habitaciones");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 710, -1));
+
+        btnAgregarHabi.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarHabi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgregarHabi.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarHabi.setText("+ Añadir Tipo Habitación");
+        btnAgregarHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarHabiActionPerformed(evt);
+            }
+        });
+        add(btnAgregarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, 210, 48));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarHabitacionActionPerformed

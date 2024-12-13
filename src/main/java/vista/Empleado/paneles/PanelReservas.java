@@ -52,16 +52,6 @@ public class PanelReservas extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
-        Panel_Cancelar = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txtDni_CancelarReserva = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtNombreCliente_CancelarReserva = new javax.swing.JTextField();
-        btnCancelar_CancelarReserva = new javax.swing.JButton();
-        btnSalir_CancelarReserva = new javax.swing.JButton();
         Panel_Editar = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -86,6 +76,16 @@ public class PanelReservas extends javax.swing.JPanel {
         txtApellidoR = new javax.swing.JTextField();
         txtFechaLlegada = new com.toedter.calendar.JDateChooser();
         txtFechaFinR = new com.toedter.calendar.JDateChooser();
+        Panel_Cancelar = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtDni_CancelarReserva = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombreCliente_CancelarReserva = new javax.swing.JTextField();
+        btnCancelar_CancelarReserva = new javax.swing.JButton();
+        btnSalir_CancelarReserva = new javax.swing.JButton();
         PanelBotones = new javax.swing.JPanel();
         btnCancelarReserva = new javax.swing.JButton();
         btnEditarReserva = new javax.swing.JButton();
@@ -99,83 +99,6 @@ public class PanelReservas extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(700, 680));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Panel_Cancelar.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        Panel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Panel_Cancelar.setEnabled(false);
-        Panel_Cancelar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel11.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel11.setText("Confirmar Cancelación");
-        Panel_Cancelar.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel13.setText("¿Esta usted seguro que desea eliminar esta reserva?");
-        Panel_Cancelar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Esta acción no se puede deshacer");
-        Panel_Cancelar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
-
-        txtDni_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
-        txtDni_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtDni_CancelarReserva.setForeground(new java.awt.Color(0, 0, 0));
-        Panel_Cancelar.add(txtDni_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 90, -1));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("DNI");
-        Panel_Cancelar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, 20));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Cliente");
-        Panel_Cancelar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
-
-        txtNombreCliente_CancelarReserva.setEditable(false);
-        txtNombreCliente_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombreCliente_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNombreCliente_CancelarReserva.setForeground(new java.awt.Color(102, 102, 102));
-        txtNombreCliente_CancelarReserva.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNombreCliente_CancelarReserva.setAutoscrolls(false);
-        txtNombreCliente_CancelarReserva.setEnabled(false);
-        txtNombreCliente_CancelarReserva.setFocusable(false);
-        txtNombreCliente_CancelarReserva.setRequestFocusEnabled(false);
-        Panel_Cancelar.add(txtNombreCliente_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
-
-        btnCancelar_CancelarReserva.setBackground(new java.awt.Color(255, 0, 0));
-        btnCancelar_CancelarReserva.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
-        btnCancelar_CancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar_CancelarReserva.setText("Cancelar");
-        btnCancelar_CancelarReserva.setActionCommand("CANCELAR");
-        btnCancelar_CancelarReserva.setBorder(null);
-        btnCancelar_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar_CancelarReservaActionPerformed(evt);
-            }
-        });
-        Panel_Cancelar.add(btnCancelar_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 30));
-
-        btnSalir_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir_CancelarReserva.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
-        btnSalir_CancelarReserva.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalir_CancelarReserva.setText("Salir");
-        btnSalir_CancelarReserva.setActionCommand("SALIR");
-        btnSalir_CancelarReserva.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnSalir_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir_CancelarReservaActionPerformed(evt);
-            }
-        });
-        Panel_Cancelar.add(btnSalir_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 120, 30));
-        btnSalir_CancelarReserva.getAccessibleContext().setAccessibleName("");
-
-        add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
 
         Panel_Editar.setBackground(new java.awt.Color(255, 255, 255));
         Panel_Editar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -310,7 +233,7 @@ public class PanelReservas extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Habitacion");
+        jLabel5.setText("Habitación");
         Panel_Editar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 80, 20));
 
         txtApellidoR.setBackground(new java.awt.Color(255, 255, 255));
@@ -328,6 +251,83 @@ public class PanelReservas extends javax.swing.JPanel {
         Panel_Editar.add(txtFechaFinR, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 150, 30));
 
         add(Panel_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 550, 450));
+
+        Panel_Cancelar.setBackground(new java.awt.Color(255, 255, 255));
+        Panel_Cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        Panel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Panel_Cancelar.setEnabled(false);
+        Panel_Cancelar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 0, 0));
+        jLabel11.setText("Confirmar Cancelación");
+        Panel_Cancelar.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel13.setText("¿Esta usted seguro que desea eliminar esta reserva?");
+        Panel_Cancelar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setText("Esta acción no se puede deshacer");
+        Panel_Cancelar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
+
+        txtDni_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
+        txtDni_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDni_CancelarReserva.setForeground(new java.awt.Color(0, 0, 0));
+        Panel_Cancelar.add(txtDni_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 90, -1));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("DNI");
+        Panel_Cancelar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, 20));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Cliente");
+        Panel_Cancelar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+
+        txtNombreCliente_CancelarReserva.setEditable(false);
+        txtNombreCliente_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreCliente_CancelarReserva.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNombreCliente_CancelarReserva.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombreCliente_CancelarReserva.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNombreCliente_CancelarReserva.setAutoscrolls(false);
+        txtNombreCliente_CancelarReserva.setEnabled(false);
+        txtNombreCliente_CancelarReserva.setFocusable(false);
+        txtNombreCliente_CancelarReserva.setRequestFocusEnabled(false);
+        Panel_Cancelar.add(txtNombreCliente_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
+
+        btnCancelar_CancelarReserva.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancelar_CancelarReserva.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
+        btnCancelar_CancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar_CancelarReserva.setText("Cancelar");
+        btnCancelar_CancelarReserva.setActionCommand("CANCELAR");
+        btnCancelar_CancelarReserva.setBorder(null);
+        btnCancelar_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar_CancelarReservaActionPerformed(evt);
+            }
+        });
+        Panel_Cancelar.add(btnCancelar_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, 30));
+
+        btnSalir_CancelarReserva.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir_CancelarReserva.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        btnSalir_CancelarReserva.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir_CancelarReserva.setText("Salir");
+        btnSalir_CancelarReserva.setActionCommand("SALIR");
+        btnSalir_CancelarReserva.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSalir_CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir_CancelarReservaActionPerformed(evt);
+            }
+        });
+        Panel_Cancelar.add(btnSalir_CancelarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 120, 30));
+        btnSalir_CancelarReserva.getAccessibleContext().setAccessibleName("");
+
+        add(Panel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 420, 210));
 
         PanelBotones.setBackground(new java.awt.Color(235, 235, 235));
         PanelBotones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));

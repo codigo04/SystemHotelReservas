@@ -717,8 +717,6 @@ public class PanelEmpleadoAdm extends javax.swing.JPanel {
             bloquearTablaEmpleados();
             Panel_EditEmpleados.setVisible(true);
         }
-
-
     }//GEN-LAST:event_btnEditarEmpleadoActionPerformed
 
     private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed

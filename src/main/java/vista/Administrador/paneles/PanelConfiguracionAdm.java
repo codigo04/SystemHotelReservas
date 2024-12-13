@@ -4,17 +4,27 @@
  */
 package vista.Administrador.paneles;
 
+import java.awt.Component;
+import java.awt.Container;
+
 /**
  *
  * @author FranDev
  */
 public class PanelConfiguracionAdm extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelHabitacionesAdm
-     */
+    String nombreHotel = "Hotel CostaBela";
+    String correoContacto = "HotelCostaBela@gmail.com";
+    String direccionHotel = "Avenida Pacífico N° 586";
+    String telefonoHotel = "987654321";
+    
     public PanelConfiguracionAdm() {
         initComponents();
+        PanelEditar.setVisible(false);
+        txtNombreHotel.setText(nombreHotel);
+        txtContactoHotel.setText(correoContacto);
+        txtDireccionHotel.setText(direccionHotel);
+        txtTelefonoHotel.setText(telefonoHotel);
     }
 
     /**
@@ -27,18 +37,30 @@ public class PanelConfiguracionAdm extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        PanelEditar = new javax.swing.JPanel();
+        btnAceptarGuardarHabitacion = new javax.swing.JButton();
+        btnCancelarHabitacion = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtNuevoNombreHotel = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtNuevoCorreoHotel = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtNuevaDireccionHotel = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtNuevoTelefonoHotel = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombreHotel = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtDireccionHotel = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtContactoHotel = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtTelefonoHotel = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -47,7 +69,128 @@ public class PanelConfiguracionAdm extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Panel de Configuración");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 615, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 615, -1));
+
+        PanelEditar.setBackground(new java.awt.Color(255, 255, 255));
+        PanelEditar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        PanelEditar.setForeground(new java.awt.Color(0, 0, 0));
+        PanelEditar.setEnabled(false);
+        PanelEditar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAceptarGuardarHabitacion.setBackground(new java.awt.Color(0, 255, 0));
+        btnAceptarGuardarHabitacion.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
+        btnAceptarGuardarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptarGuardarHabitacion.setText("ACEPTAR");
+        btnAceptarGuardarHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptarGuardarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarGuardarHabitacionActionPerformed(evt);
+            }
+        });
+        PanelEditar.add(btnAceptarGuardarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 130, 30));
+
+        btnCancelarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelarHabitacion.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
+        btnCancelarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarHabitacion.setText("CANCELAR");
+        btnCancelarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarHabitacionActionPerformed(evt);
+            }
+        });
+        PanelEditar.add(btnCancelarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 130, 30));
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Nombre del hotel");
+        PanelEditar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 160, 20));
+
+        txtNuevoNombreHotel.setBackground(new java.awt.Color(255, 255, 255));
+        txtNuevoNombreHotel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNuevoNombreHotel.setForeground(new java.awt.Color(0, 0, 0));
+        txtNuevoNombreHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevoNombreHotelActionPerformed(evt);
+            }
+        });
+        txtNuevoNombreHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNuevoNombreHotelKeyTyped(evt);
+            }
+        });
+        PanelEditar.add(txtNuevoNombreHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 180, -1));
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Cambiar Datos Empresarial");
+        PanelEditar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+
+        txtNuevoCorreoHotel.setBackground(new java.awt.Color(255, 255, 255));
+        txtNuevoCorreoHotel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNuevoCorreoHotel.setForeground(new java.awt.Color(0, 0, 0));
+        txtNuevoCorreoHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevoCorreoHotelActionPerformed(evt);
+            }
+        });
+        txtNuevoCorreoHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNuevoCorreoHotelKeyTyped(evt);
+            }
+        });
+        PanelEditar.add(txtNuevoCorreoHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 180, -1));
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Correo de contacto");
+        PanelEditar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 160, 20));
+
+        txtNuevaDireccionHotel.setBackground(new java.awt.Color(255, 255, 255));
+        txtNuevaDireccionHotel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNuevaDireccionHotel.setForeground(new java.awt.Color(0, 0, 0));
+        txtNuevaDireccionHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevaDireccionHotelActionPerformed(evt);
+            }
+        });
+        txtNuevaDireccionHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNuevaDireccionHotelKeyTyped(evt);
+            }
+        });
+        PanelEditar.add(txtNuevaDireccionHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 180, -1));
+
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Direccion del hotel");
+        PanelEditar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 160, 20));
+
+        txtNuevoTelefonoHotel.setBackground(new java.awt.Color(255, 255, 255));
+        txtNuevoTelefonoHotel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNuevoTelefonoHotel.setForeground(new java.awt.Color(0, 0, 0));
+        txtNuevoTelefonoHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevoTelefonoHotelActionPerformed(evt);
+            }
+        });
+        txtNuevoTelefonoHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNuevoTelefonoHotelKeyTyped(evt);
+            }
+        });
+        PanelEditar.add(txtNuevoTelefonoHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 170, -1));
+
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Teléfono de contacto");
+        PanelEditar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 160, 20));
+
+        add(PanelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 470, 370));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -56,41 +199,149 @@ public class PanelConfiguracionAdm extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Configuración General");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 7, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 39, -1, -1));
 
         jLabel4.setText("Configura los ajustes generales del hotel.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 51, 342, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 104, 180, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 342, -1));
+
+        txtNombreHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreHotelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 240, -1));
 
         jLabel5.setText("Nombre del hotel");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 82, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
         jLabel6.setText("Direccion del Hotel");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 144, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 166, 180, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 160, -1));
+
+        txtDireccionHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionHotelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtDireccionHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 240, -1));
 
         jLabel7.setText("Correo de Contacto");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 82, -1, -1));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 104, 180, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 180, -1));
+
+        txtContactoHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContactoHotelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtContactoHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 260, -1));
 
         jLabel8.setText("Telefono de contacto");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 144, -1, -1));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 166, 180, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 190, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 89, 760, 220));
+        txtTelefonoHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoHotelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTelefonoHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 260, -1));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Guardar Configuracion");
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 329, -1, 48));
+        jButton4.setText("Editar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 90, 30));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 760, 280));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreHotelActionPerformed
+
+    }//GEN-LAST:event_txtNombreHotelActionPerformed
+
+    private void txtContactoHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactoHotelActionPerformed
+        
+    }//GEN-LAST:event_txtContactoHotelActionPerformed
+
+    private void txtDireccionHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionHotelActionPerformed
+        
+    }//GEN-LAST:event_txtDireccionHotelActionPerformed
+
+    private void txtTelefonoHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoHotelActionPerformed
+        
+    }//GEN-LAST:event_txtTelefonoHotelActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        bloquear(jPanel1);
+        PanelEditar.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnAceptarGuardarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarGuardarHabitacionActionPerformed
+        nombreHotel = txtNuevoNombreHotel.getText();
+        correoContacto = txtNuevoCorreoHotel.getText();
+        direccionHotel = txtNuevaDireccionHotel.getText();
+        telefonoHotel = txtNuevoTelefonoHotel.getText();
+
+        txtNombreHotel.setText(nombreHotel);
+        txtContactoHotel.setText(correoContacto);
+        txtDireccionHotel.setText(direccionHotel);
+        txtTelefonoHotel.setText(telefonoHotel);
+
+        PanelEditar.setVisible(false);
+        desbloquear(jPanel1);
+    }//GEN-LAST:event_btnAceptarGuardarHabitacionActionPerformed
+
+    private void btnCancelarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarHabitacionActionPerformed
+
+    }//GEN-LAST:event_btnCancelarHabitacionActionPerformed
+
+    private void txtNuevoNombreHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevoNombreHotelActionPerformed
+
+    }//GEN-LAST:event_txtNuevoNombreHotelActionPerformed
+
+    private void txtNuevoNombreHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNuevoNombreHotelKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNuevoNombreHotelKeyTyped
+
+    private void txtNuevoCorreoHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevoCorreoHotelActionPerformed
+        
+    }//GEN-LAST:event_txtNuevoCorreoHotelActionPerformed
+
+    private void txtNuevoCorreoHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNuevoCorreoHotelKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNuevoCorreoHotelKeyTyped
+
+    private void txtNuevaDireccionHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevaDireccionHotelActionPerformed
+        
+    }//GEN-LAST:event_txtNuevaDireccionHotelActionPerformed
+
+    private void txtNuevaDireccionHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNuevaDireccionHotelKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNuevaDireccionHotelKeyTyped
+
+    private void txtNuevoTelefonoHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevoTelefonoHotelActionPerformed
+       
+    }//GEN-LAST:event_txtNuevoTelefonoHotelActionPerformed
+
+    private void txtNuevoTelefonoHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNuevoTelefonoHotelKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNuevoTelefonoHotelKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel PanelEditar;
+    public javax.swing.JButton btnAceptarGuardarHabitacion;
+    public javax.swing.JButton btnCancelarHabitacion;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -98,10 +349,39 @@ public class PanelConfiguracionAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtContactoHotel;
+    private javax.swing.JTextField txtDireccionHotel;
+    private javax.swing.JTextField txtNombreHotel;
+    public javax.swing.JTextField txtNuevaDireccionHotel;
+    public javax.swing.JTextField txtNuevoCorreoHotel;
+    public javax.swing.JTextField txtNuevoNombreHotel;
+    public javax.swing.JTextField txtNuevoTelefonoHotel;
+    private javax.swing.JTextField txtTelefonoHotel;
     // End of variables declaration//GEN-END:variables
+        public void bloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                bloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(false);
+
+    }
+
+    public void desbloquear(Component component) {
+
+        if (component instanceof Container) {
+            Component[] components = ((Container) component).getComponents();
+            for (Component child : components) {
+                desbloquear(child); // Llamada recursiva
+            }
+        }
+        component.setEnabled(true);
+
+    }
+
 }
