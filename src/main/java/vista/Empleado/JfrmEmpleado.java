@@ -6,9 +6,12 @@ package vista.Empleado;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+
+import java.awt.Color;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import vista.Empleado.paneles.PanelClientesAdm;
 
 import vista.Empleado.paneles.PanelRecervarHabitaciones;
 import vista.Empleado.paneles.PanelInicio;
@@ -32,6 +36,8 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     public PanelInicio panelInicio = new PanelInicio();
     public PanelPerfil panelPerfil = new PanelPerfil();
     public PanelReservas panelReservas = new PanelReservas();
+
+    public PanelClientesAdm panelClientes = new PanelClientesAdm();
 
     public JfrmEmpleado() {
         initComponents();
@@ -66,7 +72,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         empleadopng = new javax.swing.JLabel();
+
         iconUser = new javax.swing.JLabel();
+
+        btnClientes = new javax.swing.JButton();
+
         panelPrincipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -138,7 +148,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        menu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 80, 25));
+        menu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 80, 25));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,9 +156,28 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         menu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         menu.add(empleadopng, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 136, -1, -1));
 
+
         iconUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconUser.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\resources\\usuario.png")); // NOI18N
         menu.add(iconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 120));
+
+
+
+        btnClientes.setBackground(new java.awt.Color(204, 204, 204));
+        btnClientes.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnClientes.setForeground(new java.awt.Color(51, 51, 51));
+        btnClientes.setText("Clientes");
+        btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClientesMouseClicked(evt);
+            }
+        });
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+        menu.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 405, 140, 42));
 
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 660));
 
@@ -252,6 +281,18 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientesMouseClicked
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        interacionBontenes(btnClientes);
+        this.panelPrincipal.removeAll();
+        this.panelPrincipal.add(panelClientes);
+        this.panelPrincipal.revalidate();
+        this.panelPrincipal.repaint();
+    }//GEN-LAST:event_btnClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +360,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClientes;
     public javax.swing.JButton btnSalir;
     private javax.swing.JLabel empleadopng;
     public static javax.swing.JLabel iconUser;
@@ -336,4 +378,24 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     public static javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
 
+    public void interacionBontenes(javax.swing.JButton button) {
+        jBInicio.setBackground(Color.WHITE);
+        jBInicio.setForeground(Color.BLACK);
+
+        jBPerfil.setBackground(Color.WHITE);
+
+        jBPerfil.setForeground(Color.BLACK);
+
+        jBAsiHabitacion.setBackground(Color.WHITE);
+
+        jBAsiHabitacion.setForeground(Color.BLACK);
+
+        jBHistorial.setBackground(Color.WHITE);
+
+        jBHistorial.setForeground(Color.BLACK);
+
+        btnClientes.setBackground(Color.WHITE);
+
+        btnClientes.setForeground(Color.BLACK);
+    }
 }

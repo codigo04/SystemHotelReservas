@@ -795,7 +795,7 @@ public class PanelInicio extends javax.swing.JPanel {
         jLabel38.setBackground(new java.awt.Color(255, 255, 255));
         jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel38.setText("Codigo reserva (ultimo digito)");
+        jLabel38.setText("Código reserva (último dígito)");
         panelNuevoCheckOut.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 240, 20));
 
         jLabel28.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
@@ -931,7 +931,12 @@ public class PanelInicio extends javax.swing.JPanel {
 
         txtBuscadorNumHabi.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscadorNumHabi.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscadorNumHabi.setText("Busca por numero de habitacion");
+        txtBuscadorNumHabi.setText("Busca por numero de habitación");
+        txtBuscadorNumHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscadorNumHabiActionPerformed(evt);
+            }
+        });
         panelBusquedaRapida.add(txtBuscadorNumHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, 40));
 
         jPanel1.add(panelBusquedaRapida, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 370, 190));
@@ -957,7 +962,6 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\clientesIcon.png")); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 160, 120));
 
         panelHuespedesActu.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 130));
@@ -979,7 +983,6 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel3.add(txtHabitacionesDis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 40));
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\habitacionIcon.png")); // NOI18N
         jPanel3.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 120, 120));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1031,6 +1034,7 @@ public class PanelInicio extends javax.swing.JPanel {
 
         textEmpleado.setEditable(false);
         textEmpleado.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        textEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         textEmpleado.setAutoscrolls(false);
         textEmpleado.setBorder(null);
         textEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -1142,6 +1146,10 @@ public class PanelInicio extends javax.swing.JPanel {
     private void cboxEstadoHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxEstadoHabiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxEstadoHabiActionPerformed
+
+    private void txtBuscadorNumHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorNumHabiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscadorNumHabiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

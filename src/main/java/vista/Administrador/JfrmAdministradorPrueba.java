@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import vista.Administrador.paneles.PanelClientesAdm;
+import vista.Empleado.paneles.PanelClientesAdm;
 import vista.Administrador.paneles.PanelConfiguracionAdm;
 import vista.Administrador.paneles.PanelEmpleadoAdm;
 import vista.Administrador.paneles.PanelHabitacionesAdm;
@@ -79,7 +79,7 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         btnConfiguracion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        imgUser = new javax.swing.JLabel();
         panelPaginas = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -261,9 +261,8 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
         });
         panelMenu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 80, 25));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\java\\Imagenes\\icons8-usuario-96.png")); // NOI18N
-        panelMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 120));
+        imgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelMenu.add(imgUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 130));
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 640));
 
@@ -500,8 +499,8 @@ public class JfrmAdministradorPrueba extends javax.swing.JFrame {
     private javax.swing.JButton btnReservas;
     public javax.swing.JButton btnSalir;
     public javax.swing.JButton btnTipoHabitaciones;
+    private javax.swing.JLabel imgUser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

@@ -81,7 +81,6 @@ public class ControladorPerfil implements ActionListener {
                     panelPerfilAdm.txtDireccionUsPerfil.setText(emLo.get().getDireccion());
                     panelPerfilAdm.txtTelefonoUsPerfil.setText(emLo.get().getTelefono());
                     panelPerfilAdm.txtCorreoUsPerfil.setText(emLo.get().getCorreoElectronico());
-                    panelPerfilAdm.txtPasswordEmpleadoUsPerfil.setText(emLo.get().getPassword());
                     panelPerfilAdm.txtRolEmpleadoUsPerfil.setText(rolesConcatenados);
                 } else if ("RECEPCIONISTA".equals(roles.getNombreRol())) {
                     panelPerfil.TXTNombre.setText(emLo.get().getNombre());
@@ -110,7 +109,20 @@ public class ControladorPerfil implements ActionListener {
                 updateEm.setCorreoElectronico(datosEm.getCorreoElectronico());
                 updateEm.setTelefono(datosEm.getTelefono());
                 updateEm.setDireccion(datosEm.getDireccion());
-                updateEm.setPassword(datosEm.getPassword());
+                if (datosEm.getPassword() != null && !datosEm.getPassword().isEmpty()) {
+                    if(updateEm.getPassword().equals(datosEm.getPassword())){
+                        updateEm.setPassword(panelPerfilAdm.txtNewPassEditPerf1.getText());
+                        panelPerfilAdm.desbloquear(panelPerfilAdm.jpanelInfoPerf);
+                        panelPerfilAdm.limpiarFormEditarPerfilUs();
+                        panelPerfilAdm.Panel_EditPerfil.setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La contraseña Actual no es válida", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                        panelPerfilAdm.bloquear(panelPerfil);
+                        panelPerfilAdm.bloquearComponentes();
+                        JOptionPane.showMessageDialog(null, "Complete el campo Contraseña Actual", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
 
             if (updateEm.getRoles().stream().anyMatch(role -> "RECEPCIONISTA".equals(role.getNombreRol()))) {
@@ -131,7 +143,6 @@ public class ControladorPerfil implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "La contraseña Actual no es válida", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-
             }
             empleadoImpl.updateEmpleado(updateEm);
         }

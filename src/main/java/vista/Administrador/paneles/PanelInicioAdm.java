@@ -69,14 +69,12 @@ public class PanelInicioAdm extends javax.swing.JPanel {
         panelGrafico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelGrafico.setLayout(new java.awt.GridLayout(1, 0));
         add(panelGrafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 610, 330));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\resources\\costavelaImg.png")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 290, 470));
 
-        txtNombreAdmin.setBackground(new java.awt.Color(0, 0, 0));
-        txtNombreAdmin.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtNombreAdmin.setForeground(new java.awt.Color(204, 204, 204));
-        add(txtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 580, 40));
+        txtNombreAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreAdmin.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        txtNombreAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        add(txtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 580, 40));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -111,7 +109,7 @@ public class PanelInicioAdm extends javax.swing.JPanel {
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("BIENVENIDO,");
+        jLabel3.setText("Bienvenido,");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 160, 40));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -102,8 +102,6 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         cboxTipoHabitacionEditHabi = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        btnAgregarHabi = new javax.swing.JButton();
         jpanelContenidoHabi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -112,6 +110,8 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         txtBuscarHabitaciones = new javax.swing.JTextField();
         btnBuscarHabitacion = new javax.swing.JButton();
         btnEditarHabi = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnAgregarHabi = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,8 +128,8 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("¿Esta usted seguro que desea eliminar esta reserva?");
-        Panel_Cancelar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+        jLabel15.setText("¿Esta usted seguro que desea eliminar esta habitación?");
+        Panel_Cancelar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(102, 102, 102));
@@ -171,7 +171,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         Panel_RegistroHabitaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAceptarGuardarHabitacion.setBackground(new java.awt.Color(0, 255, 0));
-        btnAceptarGuardarHabitacion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnAceptarGuardarHabitacion.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         btnAceptarGuardarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptarGuardarHabitacion.setText("ACEPTAR");
         btnAceptarGuardarHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -183,7 +183,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         Panel_RegistroHabitaciones.add(btnAceptarGuardarHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 130, 30));
 
         btnCancelarHabitacion.setBackground(new java.awt.Color(0, 0, 0));
-        btnCancelarHabitacion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCancelarHabitacion.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
         btnCancelarHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelarHabitacion.setText("CANCELAR");
         btnCancelarHabitacion.addActionListener(new java.awt.event.ActionListener() {
@@ -413,21 +413,6 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
 
         add(Panel_EditHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 470, 370));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
-        jLabel1.setText("Gestión de Habitaciones");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 571, -1));
-
-        btnAgregarHabi.setBackground(new java.awt.Color(0, 0, 0));
-        btnAgregarHabi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAgregarHabi.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarHabi.setText("+ Añadir Habitacion");
-        btnAgregarHabi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarHabiActionPerformed(evt);
-            }
-        });
-        add(btnAgregarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 170, 48));
-
         jpanelContenidoHabi.setBackground(new java.awt.Color(255, 255, 255));
         jpanelContenidoHabi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jpanelContenidoHabi.setForeground(new java.awt.Color(0, 0, 0));
@@ -470,7 +455,8 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         txtBuscarHabitaciones.setBackground(new java.awt.Color(180, 180, 180));
         txtBuscarHabitaciones.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtBuscarHabitaciones.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscarHabitaciones.setText("Buscar Habitacion");
+        txtBuscarHabitaciones.setText("Buscar Habitación");
+        txtBuscarHabitaciones.setToolTipText("");
         txtBuscarHabitaciones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtBuscarHabitacionesFocusLost(evt);
@@ -511,6 +497,21 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
         jpanelContenidoHabi.add(btnEditarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, 86, 35));
 
         add(jpanelContenidoHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 950, 390));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabel1.setText("Gestión de Habitaciones");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, 571, -1));
+
+        btnAgregarHabi.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarHabi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgregarHabi.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarHabi.setText("+ Añadir Habitación");
+        btnAgregarHabi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarHabiActionPerformed(evt);
+            }
+        });
+        add(btnAgregarHabi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 170, 48));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarHabiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarHabiActionPerformed
@@ -812,9 +813,7 @@ public class PanelHabitacionesAdm extends javax.swing.JPanel {
     }
 
     public void bloquearImputs() {
-
         txtIdEditHabi.setEnabled(false);
-
     }
 
     public void desbloquearImputs() {
