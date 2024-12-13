@@ -47,7 +47,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         panelPrincipal.add(panelInicio);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
-
+        interacionBontenes(jBInicio);
         loadAvatar();
 
     }
@@ -93,6 +93,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         jBInicio.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jBInicio.setForeground(new java.awt.Color(51, 51, 51));
         jBInicio.setText("Inicio");
+        jBInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBInicioMouseClicked(evt);
+            }
+        });
         jBInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInicioActionPerformed(evt);
@@ -104,6 +109,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         jBPerfil.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBPerfil.setForeground(new java.awt.Color(51, 51, 51));
         jBPerfil.setText("Perfil");
+        jBPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBPerfilMouseClicked(evt);
+            }
+        });
         jBPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBPerfilActionPerformed(evt);
@@ -116,6 +126,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         jBAsiHabitacion.setForeground(new java.awt.Color(51, 51, 51));
         jBAsiHabitacion.setText("Habitaciones");
         jBAsiHabitacion.setActionCommand("");
+        jBAsiHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBAsiHabitacionMouseClicked(evt);
+            }
+        });
         jBAsiHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAsiHabitacionActionPerformed(evt);
@@ -127,6 +142,11 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         btonReservacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btonReservacion.setForeground(new java.awt.Color(51, 51, 51));
         btonReservacion.setText("Reservaciones");
+        btonReservacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btonReservacionMouseClicked(evt);
+            }
+        });
         btonReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btonReservacionActionPerformed(evt);
@@ -269,16 +289,32 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
-        // TODO add your handling code here:
+        interacionBontenes(btnClientes);
     }//GEN-LAST:event_btnClientesMouseClicked
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        interacionBontenes(btnClientes);
+
         panelPrincipal.removeAll();
         panelPrincipal.add(panelClientes);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
     }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void jBInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInicioMouseClicked
+        interacionBontenes(jBInicio);
+    }//GEN-LAST:event_jBInicioMouseClicked
+
+    private void jBPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPerfilMouseClicked
+        interacionBontenes(jBPerfil);
+    }//GEN-LAST:event_jBPerfilMouseClicked
+
+    private void jBAsiHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAsiHabitacionMouseClicked
+      interacionBontenes(jBAsiHabitacion);
+    }//GEN-LAST:event_jBAsiHabitacionMouseClicked
+
+    private void btonReservacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btonReservacionMouseClicked
+         interacionBontenes(btonReservacion);
+    }//GEN-LAST:event_btonReservacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -383,5 +419,8 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         btnClientes.setBackground(Color.WHITE);
 
         btnClientes.setForeground(Color.BLACK);
+
+        button.setBackground(Color.RED);
+        button.setForeground(Color.WHITE);
     }
 }

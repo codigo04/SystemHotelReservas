@@ -104,6 +104,7 @@
                 <Property name="text" type="java.lang.String" value="Inicio"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBInicioMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBInicioActionPerformed"/>
               </Events>
               <Constraints>
@@ -126,6 +127,7 @@
                 <Property name="text" type="java.lang.String" value="Perfil"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBPerfilMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPerfilActionPerformed"/>
               </Events>
               <Constraints>
@@ -149,6 +151,7 @@
                 <Property name="actionCommand" type="java.lang.String" value=""/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBAsiHabitacionMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAsiHabitacionActionPerformed"/>
               </Events>
               <Constraints>
@@ -171,6 +174,7 @@
                 <Property name="text" type="java.lang.String" value="Reservaciones"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btonReservacionMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btonReservacionActionPerformed"/>
               </Events>
               <AuxValues>
