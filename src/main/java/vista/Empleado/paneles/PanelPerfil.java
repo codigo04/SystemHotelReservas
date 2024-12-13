@@ -13,8 +13,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.entity.Empleado;
+import vista.Empleado.JfrmEmpleado;
 
 /**
  *
@@ -28,6 +30,8 @@ public class PanelPerfil extends javax.swing.JPanel {
     /**
      * Creates new form PanelPerfil
      */
+    
+    
     public PanelPerfil() {
         initComponents();
         panelCambiarPassword.setVisible(false);
@@ -522,6 +526,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 // Leer la imagen y mostrarla en el JLabel
                 Image image = ImageIO.read(destFile);
                 ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                 JfrmEmpleado.getIconUser().setIcon(icon);
                 avatar.setIcon(icon);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
@@ -537,6 +542,7 @@ public class PanelPerfil extends javax.swing.JPanel {
                 // Leer la imagen desde el archivo guardado y mostrarla
                 Image image = ImageIO.read(imageFile);
                 ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                JfrmEmpleado.getIconUser().setIcon(icon);
                 avatar.setIcon(icon);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);

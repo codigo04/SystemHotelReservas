@@ -6,9 +6,16 @@ package vista.Empleado;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -19,21 +26,31 @@ import vista.Empleado.paneles.PanelPerfil;
 import vista.Empleado.paneles.PanelReservas;
 
 public class JfrmEmpleado extends javax.swing.JFrame {
-    
-    public  PanelRecervarHabitaciones panelRecervaHabitaciones = new PanelRecervarHabitaciones();
-    
+
+    public PanelRecervarHabitaciones panelRecervaHabitaciones = new PanelRecervarHabitaciones();
+    private static final String IMAGE_PATH = "C:\\Users\\FranDev\\Pictures\\Saved Pictures\\avatarusuario.jpg";
     public PanelInicio panelInicio = new PanelInicio();
     public PanelPerfil panelPerfil = new PanelPerfil();
     public PanelReservas panelReservas = new PanelReservas();
-    
+
     public JfrmEmpleado() {
         initComponents();
+
         setVisible(false);
         panelPrincipal.removeAll();
         panelPrincipal.add(panelInicio);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
-        
+
+        loadAvatar();
+
+    }
+
+    public static JLabel getIconUser() {
+        if (iconUser == null) {
+            iconUser = new JLabel(); // Inicializa solo una vez
+        }
+        return iconUser;
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +66,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         empleadopng = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        iconUser = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -129,9 +146,9 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         menu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
         menu.add(empleadopng, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 136, -1, -1));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\resources\\usuario.png")); // NOI18N
-        menu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, 90));
+        iconUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconUser.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS UNI\\Proyectos-Desktop\\SystemHotelReservas\\src\\main\\resources\\usuario.png")); // NOI18N
+        menu.add(iconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 120));
 
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 660));
 
@@ -181,8 +198,6 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     private void jBPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPerfilActionPerformed
         // TODO add your handling code here:
 
-       
-
 // Asegúrate de usar GridLayout con una sola celda (1 fila, 1 columna)
         panelPrincipal.removeAll();
         panelPrincipal.add(panelPerfil);
@@ -193,7 +208,6 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     private void jBHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHistorialActionPerformed
         // TODO add your handling code here:
 
-        
         panelPrincipal.removeAll();
         panelPrincipal.add(panelReservas);
         panelPrincipal.revalidate();
@@ -203,7 +217,6 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     private void jBAsiHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsiHabitacionActionPerformed
         // TODO 
-        
 
         panelPrincipal.removeAll();
         panelPrincipal.add(panelRecervaHabitaciones);
@@ -214,7 +227,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -242,7 +255,7 @@ public class JfrmEmpleado extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {    
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -284,21 +297,35 @@ public class JfrmEmpleado extends javax.swing.JFrame {
         });
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JfrmEmpleado().setVisible(true);
             }
         });*/
     }
 
+    public void loadAvatar() {
+        File imageFile = new File(IMAGE_PATH);
+        if (imageFile.exists()) {
+            try {
+                // Leer la imagen desde el archivo guardado y mostrarla
+                Image image = ImageIO.read(imageFile);
+                ImageIcon icon = new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+                iconUser.setIcon(icon);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSalir;
     private javax.swing.JLabel empleadopng;
+    public static javax.swing.JLabel iconUser;
     private javax.swing.JButton jBAsiHabitacion;
     private javax.swing.JButton jBHistorial;
     private javax.swing.JButton jBInicio;
     private javax.swing.JButton jBPerfil;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
